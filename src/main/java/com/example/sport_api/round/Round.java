@@ -1,6 +1,7 @@
 package com.example.sport_api.round;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 import com.example.sport_api.game.Game;
 import com.example.sport_api.playerSeason.PlayerSeason;
@@ -48,6 +49,27 @@ public class Round {
     private PlayerSeason[] PlayerSeasons;
 
     public Round() {
+        super();
+    }
+
+    public Round(int roundId, int soccerSeason, int seasonType, String name, String type, Date startDate, Date endDate,
+            int currentWeek, boolean currentRound, Season season, Game[] games, Standing[] standings,
+            TeamSeason[] teamSeasons, PlayerSeason[] playerSeasons) {
+        super();
+        RoundId = roundId;
+        SoccerSeason = soccerSeason;
+        SeasonType = seasonType;
+        Name = name;
+        Type = type;
+        StartDate = startDate;
+        EndDate = endDate;
+        CurrentWeek = currentWeek;
+        CurrentRound = currentRound;
+        this.season = season;
+        Games = games;
+        Standings = standings;
+        TeamSeasons = teamSeasons;
+        PlayerSeasons = playerSeasons;
     }
 
     public int getRoundId() {
@@ -144,6 +166,31 @@ public class Round {
 
     public void setPlayerSeasons(PlayerSeason[] playerSeasons) {
         PlayerSeasons = playerSeasons;
+    }
+
+    public int getSoccerSeason() {
+        return SoccerSeason;
+    }
+
+    public void setSoccerSeason(int soccerSeason) {
+        SoccerSeason = soccerSeason;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
+    }
+
+    @Override
+    public String toString() {
+        return "Round [RoundId=" + RoundId + ", SoccerSeason=" + SoccerSeason + ", SeasonType=" + SeasonType + ", Name="
+                + Name + ", Type=" + Type + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", CurrentWeek="
+                + CurrentWeek + ", CurrentRound=" + CurrentRound + ", season=" + season + ", Games="
+                + Arrays.toString(Games) + ", Standings=" + Arrays.toString(Standings) + ", TeamSeasons="
+                + Arrays.toString(TeamSeasons) + ", PlayerSeasons=" + Arrays.toString(PlayerSeasons) + "]";
     }
 
 }

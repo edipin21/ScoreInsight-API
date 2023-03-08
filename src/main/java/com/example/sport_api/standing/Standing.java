@@ -13,12 +13,11 @@ public class Standing {
 
     @Id
     private int StandingId;
-
-    // private int RoundId;
     private int TeamId;
     private String Name;
     private String ShortName;
     private String Scope;
+
     @JsonProperty("order")
     private int TeamsOrder;
     private int Games;
@@ -29,7 +28,11 @@ public class Standing {
     private int GoalsAgainst;
     private int GoalsDifferential;
     private int Points;
-    // fix !
+
+    @ManyToOne
+    @JoinColumn(name = "RoundId")
+    private Round round;
+
     @JsonProperty("Group")
     private String GroupName;
     private int GlobalTeamID;
@@ -38,34 +41,28 @@ public class Standing {
         super();
     }
 
-    @ManyToOne
-    @JoinColumn(name = "RoundId")
-    private Round round;
-
-    // public Standing(int standingId, int roundId, int teamId, String name, String
-    // shortName, String scope, int order,
-    // int games, int wins, int losses, int draws, int goalsScored, int
-    // goalsAgainst, int goalsDifferential,
-    // int points, String group, int globalTeamID) {
-    // super();
-    // StandingId = standingId;
-    // RoundId = roundId;
-    // TeamId = teamId;
-    // Name = name;
-    // ShortName = shortName;
-    // Scope = scope;
-    // Order = order;
-    // Games = games;
-    // Wins = wins;
-    // Losses = losses;
-    // Draws = draws;
-    // GoalsScored = goalsScored;
-    // GoalsAgainst = goalsAgainst;
-    // GoalsDifferential = goalsDifferential;
-    // Points = points;
-    // Group = group;
-    // GlobalTeamID = globalTeamID;
-    // }
+    public Standing(int standingId, int teamId, String name, String shortName, String scope, int teamsOrder, int games,
+            int wins, int losses, int draws, int goalsScored, int goalsAgainst, int goalsDifferential, int points,
+            Round round, String groupName, int globalTeamID) {
+        super();
+        StandingId = standingId;
+        TeamId = teamId;
+        Name = name;
+        ShortName = shortName;
+        Scope = scope;
+        TeamsOrder = teamsOrder;
+        Games = games;
+        Wins = wins;
+        Losses = losses;
+        Draws = draws;
+        GoalsScored = goalsScored;
+        GoalsAgainst = goalsAgainst;
+        GoalsDifferential = goalsDifferential;
+        Points = points;
+        this.round = round;
+        GroupName = groupName;
+        GlobalTeamID = globalTeamID;
+    }
 
     public int getStandingId() {
         return StandingId;
@@ -185,6 +182,31 @@ public class Standing {
 
     public void setGlobalTeamID(int globalTeamID) {
         GlobalTeamID = globalTeamID;
+    }
+
+    public String getGroupName() {
+        return GroupName;
+    }
+
+    public void setGroupName(String groupName) {
+        GroupName = groupName;
+    }
+
+    public Round getRound() {
+        return round;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+    }
+
+    @Override
+    public String toString() {
+        return "Standing [StandingId=" + StandingId + ", TeamId=" + TeamId + ", Name=" + Name + ", ShortName="
+                + ShortName + ", Scope=" + Scope + ", TeamsOrder=" + TeamsOrder + ", Games=" + Games + ", Wins=" + Wins
+                + ", Losses=" + Losses + ", Draws=" + Draws + ", GoalsScored=" + GoalsScored + ", GoalsAgainst="
+                + GoalsAgainst + ", GoalsDifferential=" + GoalsDifferential + ", Points=" + Points + ", round=" + round
+                + ", GroupName=" + GroupName + ", GlobalTeamID=" + GlobalTeamID + "]";
     }
 
 }

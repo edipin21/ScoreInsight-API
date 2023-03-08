@@ -1,6 +1,8 @@
 package com.example.sport_api.season;
 
 import java.sql.Date;
+import java.util.Arrays;
+
 import com.example.sport_api.competition.Competition;
 import com.example.sport_api.round.Round;
 import jakarta.persistence.CascadeType;
@@ -15,7 +17,6 @@ public class Season {
 
     @Id
     private int SeasonId;
-    // private int CompetitionId;
     private int Season;
     private String Name;
     private String CompetitionName;
@@ -31,6 +32,21 @@ public class Season {
     private Competition competition;
 
     public Season() {
+        super();
+    }
+
+    public Season(int seasonId, int season, String name, String competitionName, Date startDate, Date endDate,
+            boolean currentSeason, Round[] rounds, Competition competition) {
+        super();
+        SeasonId = seasonId;
+        Season = season;
+        Name = name;
+        CompetitionName = competitionName;
+        StartDate = startDate;
+        EndDate = endDate;
+        CurrentSeason = currentSeason;
+        Rounds = rounds;
+        this.competition = competition;
     }
 
     public int getSeasonId() {
@@ -103,6 +119,13 @@ public class Season {
 
     public void setCompetition(Competition competition) {
         this.competition = competition;
+    }
+
+    @Override
+    public String toString() {
+        return "Season [SeasonId=" + SeasonId + ", Season=" + Season + ", Name=" + Name + ", CompetitionName="
+                + CompetitionName + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", CurrentSeason="
+                + CurrentSeason + ", Rounds=" + Arrays.toString(Rounds) + ", competition=" + competition + "]";
     }
 
 }

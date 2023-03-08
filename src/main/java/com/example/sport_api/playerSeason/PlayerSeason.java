@@ -16,7 +16,6 @@ public class PlayerSeason {
 
     private int SeasonType;
     private int Season;
-    // private int RoundId;
     private int TeamId;
     private int PlayerId;
     private String Name;
@@ -75,6 +74,77 @@ public class PlayerSeason {
     private Round round;
 
     public PlayerSeason() {
+        super();
+    }
+
+    public PlayerSeason(int statId, int seasonType, int season, int teamId, int playerId, String name, String shortName,
+            String team, String positionCategory, String position, int started, int globalTeamId, Date updated,
+            Date updatedUtc, int games, float fantasyPoints, float fantasyPointsFanDuel, float fantasyPointsDraftKings,
+            float fantasyPointsYahoo, float fantasyPointsMondogoal, float minutes, float goals, float assists,
+            float shots, float shotsOnGoal, float yellowCards, float redCards, float yellowRedCards, float crosses,
+            float tacklesWon, float interceptions, float ownGoals, float fouls, float fouled, float offsides,
+            float passes, float passesCompleted, float lastManTackle, float cornersWon, float blockedShots,
+            float touches, float defenderCleanSheets, float goalkeeperSaves, float goalkeeperGoalsAgainst,
+            float goalkeeperSingleGoalAgainst, float goalkeeperCleanSheets, float goalkeeperWins,
+            float penaltyKickGoals, float penaltyKickMisses, float penaltyKickSaves, float penaltiesWon,
+            float penaltiesConceded, float score, float opponentScore, float tackles, Round round) {
+        super();
+        StatId = statId;
+        SeasonType = seasonType;
+        Season = season;
+        TeamId = teamId;
+        PlayerId = playerId;
+        Name = name;
+        ShortName = shortName;
+        Team = team;
+        PositionCategory = positionCategory;
+        Position = position;
+        Started = started;
+        GlobalTeamId = globalTeamId;
+        Updated = updated;
+        UpdatedUtc = updatedUtc;
+        Games = games;
+        FantasyPoints = fantasyPoints;
+        FantasyPointsFanDuel = fantasyPointsFanDuel;
+        FantasyPointsDraftKings = fantasyPointsDraftKings;
+        FantasyPointsYahoo = fantasyPointsYahoo;
+        FantasyPointsMondogoal = fantasyPointsMondogoal;
+        Minutes = minutes;
+        Goals = goals;
+        Assists = assists;
+        Shots = shots;
+        ShotsOnGoal = shotsOnGoal;
+        YellowCards = yellowCards;
+        RedCards = redCards;
+        YellowRedCards = yellowRedCards;
+        Crosses = crosses;
+        TacklesWon = tacklesWon;
+        Interceptions = interceptions;
+        OwnGoals = ownGoals;
+        Fouls = fouls;
+        Fouled = fouled;
+        Offsides = offsides;
+        Passes = passes;
+        PassesCompleted = passesCompleted;
+        LastManTackle = lastManTackle;
+        CornersWon = cornersWon;
+        BlockedShots = blockedShots;
+        Touches = touches;
+        DefenderCleanSheets = defenderCleanSheets;
+        GoalkeeperSaves = goalkeeperSaves;
+        GoalkeeperGoalsAgainst = goalkeeperGoalsAgainst;
+        GoalkeeperSingleGoalAgainst = goalkeeperSingleGoalAgainst;
+        GoalkeeperCleanSheets = goalkeeperCleanSheets;
+        GoalkeeperWins = goalkeeperWins;
+        PenaltyKickGoals = penaltyKickGoals;
+        PenaltyKickMisses = penaltyKickMisses;
+        PenaltyKickSaves = penaltyKickSaves;
+        PenaltiesWon = penaltiesWon;
+        PenaltiesConceded = penaltiesConceded;
+        Score = score;
+        OpponentScore = opponentScore;
+        Tackles = tackles;
+        this.round = round;
     }
 
     public int getStatId() {
@@ -515,6 +585,38 @@ public class PlayerSeason {
 
     public void setTackles(float tackles) {
         Tackles = tackles;
+    }
+
+    public Round getRound() {
+        return round;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerSeason [StatId=" + StatId + ", SeasonType=" + SeasonType + ", Season=" + Season + ", TeamId="
+                + TeamId + ", PlayerId=" + PlayerId + ", Name=" + Name + ", ShortName=" + ShortName + ", Team=" + Team
+                + ", PositionCategory=" + PositionCategory + ", Position=" + Position + ", Started=" + Started
+                + ", GlobalTeamId=" + GlobalTeamId + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", Games="
+                + Games + ", FantasyPoints=" + FantasyPoints + ", FantasyPointsFanDuel=" + FantasyPointsFanDuel
+                + ", FantasyPointsDraftKings=" + FantasyPointsDraftKings + ", FantasyPointsYahoo=" + FantasyPointsYahoo
+                + ", FantasyPointsMondogoal=" + FantasyPointsMondogoal + ", Minutes=" + Minutes + ", Goals=" + Goals
+                + ", Assists=" + Assists + ", Shots=" + Shots + ", ShotsOnGoal=" + ShotsOnGoal + ", YellowCards="
+                + YellowCards + ", RedCards=" + RedCards + ", YellowRedCards=" + YellowRedCards + ", Crosses=" + Crosses
+                + ", TacklesWon=" + TacklesWon + ", Interceptions=" + Interceptions + ", OwnGoals=" + OwnGoals
+                + ", Fouls=" + Fouls + ", Fouled=" + Fouled + ", Offsides=" + Offsides + ", Passes=" + Passes
+                + ", PassesCompleted=" + PassesCompleted + ", LastManTackle=" + LastManTackle + ", CornersWon="
+                + CornersWon + ", BlockedShots=" + BlockedShots + ", Touches=" + Touches + ", DefenderCleanSheets="
+                + DefenderCleanSheets + ", GoalkeeperSaves=" + GoalkeeperSaves + ", GoalkeeperGoalsAgainst="
+                + GoalkeeperGoalsAgainst + ", GoalkeeperSingleGoalAgainst=" + GoalkeeperSingleGoalAgainst
+                + ", GoalkeeperCleanSheets=" + GoalkeeperCleanSheets + ", GoalkeeperWins=" + GoalkeeperWins
+                + ", PenaltyKickGoals=" + PenaltyKickGoals + ", PenaltyKickMisses=" + PenaltyKickMisses
+                + ", PenaltyKickSaves=" + PenaltyKickSaves + ", PenaltiesWon=" + PenaltiesWon + ", PenaltiesConceded="
+                + PenaltiesConceded + ", Score=" + Score + ", OpponentScore=" + OpponentScore + ", Tackles=" + Tackles
+                + ", round=" + round + "]";
     }
 
 }

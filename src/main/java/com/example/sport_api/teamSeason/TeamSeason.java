@@ -67,6 +67,71 @@ public class TeamSeason {
     private Round round;
 
     public TeamSeason() {
+        super();
+    }
+
+    public TeamSeason(int statId, int seasonType, int season, int teamId, String name, String team, int globalTeamId,
+            float possession, Date updated, Date updatedUtc, int games, float fantasyPoints, float fantasyPointsFanDuel,
+            float fantasyPointsDraftKings, float fantasyPointsYahoo, float fantasyPointsMondogoal, float minutes,
+            float goals, float assists, float shots, float shotsOnGoal, float yellowCards, float redCards,
+            float yellowRedCards, float crosses, float tacklesWon, float interceptions, float ownGoals, float fouls,
+            float fouled, float offsides, float passes, float passesCompleted, float lastManTackle, float cornersWon,
+            float blockedShots, float touches, float defenderCleanSheets, float goalkeeperSaves,
+            float goalkeeperGoalsAgainst, float goalkeeperSingleGoalAgainst, float goalkeeperCleanSheets,
+            float goalkeeperWins, float penaltyKickGoals, float penaltyKickMisses, float penaltyKickSaves,
+            float penaltiesWon, float penaltiesConceded, float score, float opponentScore, float tackles, Round round) {
+        StatId = statId;
+        SeasonType = seasonType;
+        Season = season;
+        TeamId = teamId;
+        Name = name;
+        Team = team;
+        GlobalTeamId = globalTeamId;
+        Possession = possession;
+        Updated = updated;
+        UpdatedUtc = updatedUtc;
+        Games = games;
+        FantasyPoints = fantasyPoints;
+        FantasyPointsFanDuel = fantasyPointsFanDuel;
+        FantasyPointsDraftKings = fantasyPointsDraftKings;
+        FantasyPointsYahoo = fantasyPointsYahoo;
+        FantasyPointsMondogoal = fantasyPointsMondogoal;
+        Minutes = minutes;
+        Goals = goals;
+        Assists = assists;
+        Shots = shots;
+        ShotsOnGoal = shotsOnGoal;
+        YellowCards = yellowCards;
+        RedCards = redCards;
+        YellowRedCards = yellowRedCards;
+        Crosses = crosses;
+        TacklesWon = tacklesWon;
+        Interceptions = interceptions;
+        OwnGoals = ownGoals;
+        Fouls = fouls;
+        Fouled = fouled;
+        Offsides = offsides;
+        Passes = passes;
+        PassesCompleted = passesCompleted;
+        LastManTackle = lastManTackle;
+        CornersWon = cornersWon;
+        BlockedShots = blockedShots;
+        Touches = touches;
+        DefenderCleanSheets = defenderCleanSheets;
+        GoalkeeperSaves = goalkeeperSaves;
+        GoalkeeperGoalsAgainst = goalkeeperGoalsAgainst;
+        GoalkeeperSingleGoalAgainst = goalkeeperSingleGoalAgainst;
+        GoalkeeperCleanSheets = goalkeeperCleanSheets;
+        GoalkeeperWins = goalkeeperWins;
+        PenaltyKickGoals = penaltyKickGoals;
+        PenaltyKickMisses = penaltyKickMisses;
+        PenaltyKickSaves = penaltyKickSaves;
+        PenaltiesWon = penaltiesWon;
+        PenaltiesConceded = penaltiesConceded;
+        Score = score;
+        OpponentScore = opponentScore;
+        Tackles = tackles;
+        this.round = round;
     }
 
     public int getStatId() {
@@ -475,6 +540,37 @@ public class TeamSeason {
 
     public void setTackles(float tackles) {
         Tackles = tackles;
+    }
+
+    public Round getRound() {
+        return round;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+    }
+
+    @Override
+    public String toString() {
+        return "TeamSeason [StatId=" + StatId + ", SeasonType=" + SeasonType + ", Season=" + Season + ", TeamId="
+                + TeamId + ", Name=" + Name + ", Team=" + Team + ", GlobalTeamId=" + GlobalTeamId + ", Possession="
+                + Possession + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", Games=" + Games
+                + ", FantasyPoints=" + FantasyPoints + ", FantasyPointsFanDuel=" + FantasyPointsFanDuel
+                + ", FantasyPointsDraftKings=" + FantasyPointsDraftKings + ", FantasyPointsYahoo=" + FantasyPointsYahoo
+                + ", FantasyPointsMondogoal=" + FantasyPointsMondogoal + ", Minutes=" + Minutes + ", Goals=" + Goals
+                + ", Assists=" + Assists + ", Shots=" + Shots + ", ShotsOnGoal=" + ShotsOnGoal + ", YellowCards="
+                + YellowCards + ", RedCards=" + RedCards + ", YellowRedCards=" + YellowRedCards + ", Crosses=" + Crosses
+                + ", TacklesWon=" + TacklesWon + ", Interceptions=" + Interceptions + ", OwnGoals=" + OwnGoals
+                + ", Fouls=" + Fouls + ", Fouled=" + Fouled + ", Offsides=" + Offsides + ", Passes=" + Passes
+                + ", PassesCompleted=" + PassesCompleted + ", LastManTackle=" + LastManTackle + ", CornersWon="
+                + CornersWon + ", BlockedShots=" + BlockedShots + ", Touches=" + Touches + ", DefenderCleanSheets="
+                + DefenderCleanSheets + ", GoalkeeperSaves=" + GoalkeeperSaves + ", GoalkeeperGoalsAgainst="
+                + GoalkeeperGoalsAgainst + ", GoalkeeperSingleGoalAgainst=" + GoalkeeperSingleGoalAgainst
+                + ", GoalkeeperCleanSheets=" + GoalkeeperCleanSheets + ", GoalkeeperWins=" + GoalkeeperWins
+                + ", PenaltyKickGoals=" + PenaltyKickGoals + ", PenaltyKickMisses=" + PenaltyKickMisses
+                + ", PenaltyKickSaves=" + PenaltyKickSaves + ", PenaltiesWon=" + PenaltiesWon + ", PenaltiesConceded="
+                + PenaltiesConceded + ", Score=" + Score + ", OpponentScore=" + OpponentScore + ", Tackles=" + Tackles
+                + ", round=" + round + "]";
     }
 
 }

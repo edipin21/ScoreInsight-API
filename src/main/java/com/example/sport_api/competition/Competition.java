@@ -37,19 +37,19 @@ public class Competition {
         super();
     }
 
-    // public Competition(int competitionId, int areaId, String areaName, String
-    // name, String gender, String type,
-    // String format, List<Season> seasons, String stringKey) {
-    // CompetitionId = competitionId;
-    // AreaId = areaId;
-    // AreaName = areaName;
-    // Name = name;
-    // Gender = gender;
-    // Type = type;
-    // Format = format;
-    // Seasons = seasons;
-    // StringKey = stringKey;
-    // }
+    public Competition(int competitionId, String areaName, String name, String gender, String type, String format,
+            Area area, Season[] seasons, String stringKey) {
+        super();
+        CompetitionId = competitionId;
+        AreaName = areaName;
+        Name = name;
+        Gender = gender;
+        Type = type;
+        Format = format;
+        this.area = area;
+        Seasons = seasons;
+        StringKey = stringKey;
+    }
 
     public int getCompetitionId() {
         return CompetitionId;
@@ -99,20 +99,28 @@ public class Competition {
         Format = format;
     }
 
-    // public List<Season> getSeasons() {
-    // return Seasons;
-    // }
-
-    // public void setSeasons(List<Season> seasons) {
-    // Seasons = seasons;
-    // }
-
     public String getStringKey() {
         return StringKey;
     }
 
     public void setStringKey(String stringKey) {
         StringKey = stringKey;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public Season[] getSeasons() {
+        return Seasons;
+    }
+
+    public void setSeasons(Season[] seasons) {
+        Seasons = seasons;
     }
 
 }

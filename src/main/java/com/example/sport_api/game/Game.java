@@ -77,6 +77,73 @@ public class Game {
         super();
     }
 
+    public Game(int gameId, int season, int seasonType, String groupName, int awayTeamId, int homeTeamId, int venueId,
+            Date day, Date dateTime, String status, int week, String period, int clock, String winner, String venueType,
+            String awayTeamKey, String awayTeamName, String awayTeamCountryCode, int awayTeamScore,
+            int awayTeamScorePeriod1, int awayTeamScorePeriod2, int awayTeamScoreExtraTime, int awayTeamScorePenalty,
+            String homeTeamKey, String homeTeamName, String homeTeamCountryCode, int homeTeamScore,
+            int homeTeamScorePeriod1, int homeTeamScorePeriod2, int homeTeamScoreExtraTime, int homeTeamScorePenalty,
+            int homeTeamMoneyLine, int awayTeamMoneyLine, int drawMoneyLine, float pointSpread,
+            int homeTeamPointSpreadPayout, int awayTeamPointSpreadPayout, float overUnder, int overPayout,
+            int underPayout, int attendance, Date updated, Date updatedUtc, int globalGameId, int globalAwayTeamId,
+            int globalHomeTeamId, int clockExtra, String clockDisplay, boolean isClosed, String homeTeamFormation,
+            String awayTeamFormation, PlayoffAggregateScore playoffAggregateScore, Round round) {
+        super();
+        GameId = gameId;
+        Season = season;
+        SeasonType = seasonType;
+        GroupName = groupName;
+        AwayTeamId = awayTeamId;
+        HomeTeamId = homeTeamId;
+        VenueId = venueId;
+        Day = day;
+        DateTime = dateTime;
+        Status = status;
+        Week = week;
+        Period = period;
+        Clock = clock;
+        Winner = winner;
+        VenueType = venueType;
+        AwayTeamKey = awayTeamKey;
+        AwayTeamName = awayTeamName;
+        AwayTeamCountryCode = awayTeamCountryCode;
+        AwayTeamScore = awayTeamScore;
+        AwayTeamScorePeriod1 = awayTeamScorePeriod1;
+        AwayTeamScorePeriod2 = awayTeamScorePeriod2;
+        AwayTeamScoreExtraTime = awayTeamScoreExtraTime;
+        AwayTeamScorePenalty = awayTeamScorePenalty;
+        HomeTeamKey = homeTeamKey;
+        HomeTeamName = homeTeamName;
+        HomeTeamCountryCode = homeTeamCountryCode;
+        HomeTeamScore = homeTeamScore;
+        HomeTeamScorePeriod1 = homeTeamScorePeriod1;
+        HomeTeamScorePeriod2 = homeTeamScorePeriod2;
+        HomeTeamScoreExtraTime = homeTeamScoreExtraTime;
+        HomeTeamScorePenalty = homeTeamScorePenalty;
+        HomeTeamMoneyLine = homeTeamMoneyLine;
+        AwayTeamMoneyLine = awayTeamMoneyLine;
+        DrawMoneyLine = drawMoneyLine;
+        PointSpread = pointSpread;
+        HomeTeamPointSpreadPayout = homeTeamPointSpreadPayout;
+        AwayTeamPointSpreadPayout = awayTeamPointSpreadPayout;
+        OverUnder = overUnder;
+        OverPayout = overPayout;
+        UnderPayout = underPayout;
+        Attendance = attendance;
+        Updated = updated;
+        UpdatedUtc = updatedUtc;
+        GlobalGameId = globalGameId;
+        GlobalAwayTeamId = globalAwayTeamId;
+        GlobalHomeTeamId = globalHomeTeamId;
+        ClockExtra = clockExtra;
+        ClockDisplay = clockDisplay;
+        IsClosed = isClosed;
+        HomeTeamFormation = homeTeamFormation;
+        AwayTeamFormation = awayTeamFormation;
+        this.playoffAggregateScore = playoffAggregateScore;
+        this.round = round;
+    }
+
     public int getGameId() {
         return GameId;
     }
@@ -491,6 +558,39 @@ public class Game {
 
     public void setPlayoffAggregateScore(PlayoffAggregateScore playoffAggregateScore) {
         this.playoffAggregateScore = playoffAggregateScore;
+    }
+
+    public Round getRound() {
+        return round;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+    }
+
+    @Override
+    public String toString() {
+        return "Game [GameId=" + GameId + ", Season=" + Season + ", SeasonType=" + SeasonType + ", GroupName="
+                + GroupName + ", AwayTeamId=" + AwayTeamId + ", HomeTeamId=" + HomeTeamId + ", VenueId=" + VenueId
+                + ", Day=" + Day + ", DateTime=" + DateTime + ", Status=" + Status + ", Week=" + Week + ", Period="
+                + Period + ", Clock=" + Clock + ", Winner=" + Winner + ", VenueType=" + VenueType + ", AwayTeamKey="
+                + AwayTeamKey + ", AwayTeamName=" + AwayTeamName + ", AwayTeamCountryCode=" + AwayTeamCountryCode
+                + ", AwayTeamScore=" + AwayTeamScore + ", AwayTeamScorePeriod1=" + AwayTeamScorePeriod1
+                + ", AwayTeamScorePeriod2=" + AwayTeamScorePeriod2 + ", AwayTeamScoreExtraTime="
+                + AwayTeamScoreExtraTime + ", AwayTeamScorePenalty=" + AwayTeamScorePenalty + ", HomeTeamKey="
+                + HomeTeamKey + ", HomeTeamName=" + HomeTeamName + ", HomeTeamCountryCode=" + HomeTeamCountryCode
+                + ", HomeTeamScore=" + HomeTeamScore + ", HomeTeamScorePeriod1=" + HomeTeamScorePeriod1
+                + ", HomeTeamScorePeriod2=" + HomeTeamScorePeriod2 + ", HomeTeamScoreExtraTime="
+                + HomeTeamScoreExtraTime + ", HomeTeamScorePenalty=" + HomeTeamScorePenalty + ", HomeTeamMoneyLine="
+                + HomeTeamMoneyLine + ", AwayTeamMoneyLine=" + AwayTeamMoneyLine + ", DrawMoneyLine=" + DrawMoneyLine
+                + ", PointSpread=" + PointSpread + ", HomeTeamPointSpreadPayout=" + HomeTeamPointSpreadPayout
+                + ", AwayTeamPointSpreadPayout=" + AwayTeamPointSpreadPayout + ", OverUnder=" + OverUnder
+                + ", OverPayout=" + OverPayout + ", UnderPayout=" + UnderPayout + ", Attendance=" + Attendance
+                + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", GlobalGameId=" + GlobalGameId
+                + ", GlobalAwayTeamId=" + GlobalAwayTeamId + ", GlobalHomeTeamId=" + GlobalHomeTeamId + ", ClockExtra="
+                + ClockExtra + ", ClockDisplay=" + ClockDisplay + ", IsClosed=" + IsClosed + ", HomeTeamFormation="
+                + HomeTeamFormation + ", AwayTeamFormation=" + AwayTeamFormation + ", playoffAggregateScore="
+                + playoffAggregateScore + ", round=" + round + "]";
     }
 
 }

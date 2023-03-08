@@ -10,7 +10,6 @@ public class PlayoffAggregateScore {
 
     @Id
     private int TeamA_Id;
-
     private int TeamA_AggregateScore;
     private int TeamB_Id;
     private int TeamB_AggregateScore;

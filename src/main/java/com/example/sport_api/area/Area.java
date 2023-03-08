@@ -3,7 +3,6 @@ package com.example.sport_api.area;
 import java.util.Arrays;
 
 import com.example.sport_api.competition.Competition;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,11 +1,10 @@
-package com.example.sport_api;
+package com.example.sport_api.competition;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import com.example.sport_api.team.Team;
-import com.example.sport_api.team.TeamRepository;
+
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,16 +15,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class ApiService {
+@RestController
+public class competitionResource {
 
-    @Autowired
-    private TeamRepository teamRepository;
+    private competitionRepository competitionRepository;
 
-    // Make the update more efficient
-    public void fetchTeamsAndUpdate() {
+    public competitionResource(com.example.sport_api.competition.competitionRepository competitionRepository) {
+        this.competitionRepository = competitionRepository;
+    }
+
+    @RequestMapping("/com")
+    public List<Competition> retrieveAllTeams() {
         RestTemplate restTemplate = new RestTemplate();
-        String resourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=2db931a014ad4b1e90d3f614e7927f11";
+        String resourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=2db931a014ad4b1e90d3f614e7927f11";
 
         ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl,
                 String.class);
@@ -36,15 +38,18 @@ public class ApiService {
         objectMapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
         objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 
-        List<Team> teams = new ArrayList<>();
+        List<Competition> competitions = new ArrayList<>();
 
         try {
 
-            teams = objectMapper.readValue(s, new TypeReference<List<Team>>() {
+            competitions = objectMapper.readValue(s, new TypeReference<List<Competition>>() {
             });
         } catch (JsonProcessingException e) {
             System.out.println(e.getMessage());
         }
-        teamRepository.saveAll(teams);
+        competitionRepository.saveAll(competitions);
+
+        return competitions;
     }
+
 }

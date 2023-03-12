@@ -1,13 +1,8 @@
-package com.example.sport_api.round;
+package com.example.sport_api.models;
 
 import java.sql.Date;
 import java.util.Arrays;
 
-import com.example.sport_api.game.Game;
-import com.example.sport_api.playerSeason.PlayerSeason;
-import com.example.sport_api.season.Season;
-import com.example.sport_api.standing.Standing;
-import com.example.sport_api.teamSeason.TeamSeason;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
@@ -16,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
 
 @Entity
 public class Round {
@@ -36,16 +32,16 @@ public class Round {
     @JoinColumn(name = "SeasonId")
     private Season season;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Game[] Games;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Standing[] Standings;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private TeamSeason[] TeamSeasons;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private PlayerSeason[] PlayerSeasons;
 
     public Round() {

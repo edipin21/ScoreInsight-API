@@ -1,6 +1,5 @@
-package com.example.sport_api.standing;
+package com.example.sport_api.models;
 
-import com.example.sport_api.round.Round;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;

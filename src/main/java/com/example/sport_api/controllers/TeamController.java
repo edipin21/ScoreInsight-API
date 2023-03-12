@@ -1,4 +1,4 @@
-package com.example.sport_api.team;
+package com.example.sport_api.controllers;
 
 // import java.io.IOException;
 import java.util.List;
@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.sport_api.models.Team;
+import com.example.sport_api.services.TeamService;
+
 @RestController
-public class TeamResource {
+public class TeamController {
 
     private TeamService teamService;
 
-    public TeamResource(TeamService teamService) {
+    public TeamController(TeamService teamService) {
         this.teamService = teamService;
     }
 

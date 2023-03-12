@@ -1,8 +1,7 @@
-package com.example.sport_api.game;
+package com.example.sport_api.models;
 
 import java.sql.Date;
-import com.example.sport_api.playoffAggregateScore.PlayoffAggregateScore;
-import com.example.sport_api.round.Round;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

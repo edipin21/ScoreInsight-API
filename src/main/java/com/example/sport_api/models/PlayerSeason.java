@@ -1,8 +1,6 @@
-package com.example.sport_api.playerSeason;
+package com.example.sport_api.models;
 
 import java.sql.Date;
-
-import com.example.sport_api.round.Round;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

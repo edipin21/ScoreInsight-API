@@ -1,10 +1,10 @@
-package com.example.sport_api.area;
+package com.example.sport_api.models;
 
 import java.util.Arrays;
 
-import com.example.sport_api.competition.Competition;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -16,7 +16,7 @@ public class Area {
     private String CountryCode;
     private String Name;
 
-    @OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Competition[] Competitions;
 
     public Area() {

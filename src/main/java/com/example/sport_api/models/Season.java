@@ -1,12 +1,11 @@
-package com.example.sport_api.season;
+package com.example.sport_api.models;
 
 import java.sql.Date;
 import java.util.Arrays;
 
-import com.example.sport_api.competition.Competition;
-import com.example.sport_api.round.Round;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -24,7 +23,7 @@ public class Season {
     private Date EndDate;
     private boolean CurrentSeason;
 
-    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Round[] Rounds;
 
     @ManyToOne

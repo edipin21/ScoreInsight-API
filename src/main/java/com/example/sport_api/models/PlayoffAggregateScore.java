@@ -1,4 +1,4 @@
-package com.example.sport_api.playoffAggregateScore;
+package com.example.sport_api.models;
 
 import java.sql.Date;
 

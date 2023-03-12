@@ -9,6 +9,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
+		
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>sport_api</artifactId>
@@ -20,6 +21,12 @@
 	</properties>
 	
 	<dependencies>
+
+		<dependency>
+  			<groupId>io.github.cdimascio</groupId>
+  			<artifactId>dotenv-java</artifactId>
+ 			 <version>2.3.2</version>
+			</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,6 +55,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+	
 
 		<dependency>
 			<groupId>mysql</groupId>

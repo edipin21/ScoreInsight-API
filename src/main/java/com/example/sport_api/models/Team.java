@@ -1,4 +1,4 @@
-package com.example.sport_api.team;
+package com.example.sport_api.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

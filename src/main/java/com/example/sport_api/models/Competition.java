@@ -1,7 +1,5 @@
-package com.example.sport_api.competition;
+package com.example.sport_api.models;
 
-import com.example.sport_api.area.Area;
-import com.example.sport_api.season.Season;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -9,29 +7,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
 
 @Entity
 public class Competition {
     @Id
     private int CompetitionId;
-
-    // private int AreaId;
     private String AreaName;
     private String Name;
     private String Gender;
     private String Type;
     private String Format;
 
+    @JsonProperty("Key")
+    private String StringKey;
+
     @ManyToOne
     @JoinColumn(name = "AreaId")
     private Area area;
 
-    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, orphanRemoval = true)
-    // @NotFound(action = NotFoundAction.IGNORE)
+    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Season[] Seasons;
-
-    @JsonProperty("Key")
-    private String StringKey;
 
     public Competition() {
         super();

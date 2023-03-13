@@ -40,8 +40,9 @@ public class DataUpdaterScheduler {
         apiService.fetchAreasAndUpdate();
     }
 
-    @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
-    public void updateCompetitionDB() throws JsonMappingException, JsonProcessingException {
-        apiService.fetchCompetitionsAndUpdate();
-    }
+    // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateCompetitionDB() throws JsonMappingException,
+    // JsonProcessingException {
+    // apiService.fetchCompetitionsAndUpdate();
+    // }
 }

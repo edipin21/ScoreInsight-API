@@ -7,9 +7,12 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.sport_api.models.Area;
 import com.example.sport_api.models.Competition;
+import com.example.sport_api.models.Season;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.repositories.AreaRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
+import com.example.sport_api.repositories.RoundRepository;
+import com.example.sport_api.repositories.SeasonRepository;
 import com.example.sport_api.repositories.TeamRepository;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -43,6 +46,9 @@ public class ApiService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
+    @Autowired
+    private SeasonRepository seasonRepository;
+
     // Make the update more efficient
     public void fetchTeamsAndUpdate() throws JsonMappingException, JsonProcessingException {
 
@@ -66,8 +72,26 @@ public class ApiService {
 
         // List<Area> areas = new ArrayList<>();
         Area[] areas;
-        areas = objectMapper.readValue(areasJson, new TypeReference<Area[]>() {
-        });
+        areas = objectMapper.readValue(areasJson, Area[].class);
+
+        // for (Area area : areas) {
+
+        // areaRepository.save(area);
+        // System.out.println(area.toString());
+        // for (Competition competition : area.getCompetitions()) {
+        // competition.setArea(area);
+        // competitionRepository.save(competition);
+        // for (Season season : competition.getSeasons()) {
+        // season.setCompetition(competition);
+        // seasonRepository.save(season);
+
+        // for (Round round : season.getRounds()) {
+        // round.setSeason(season);
+        // roundRepository.save(round);
+        // }
+        // }
+        // }
+        // }
 
         areaRepository.saveAll(Arrays.asList(areas));
     }
@@ -85,7 +109,19 @@ public class ApiService {
         // });
         competitions = objectMapper.readValue(areasJson, Competition[].class);
 
-        competitionRepository.saveAll(Arrays.asList(competitions));
+        for (Competition competition : competitions) {
+
+            competitionRepository.save(competition);
+
+            for (Season season : competition.getSeasons()) {
+                season.setCompetition(competition);
+                seasonRepository.save(season);
+
+            }
+
+        }
+
+        // competitionRepository.saveAll(Arrays.asList(competitions));
     }
 
     public String fetchData(String resourceUrl) {

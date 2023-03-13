@@ -2,8 +2,9 @@ package com.example.sport_api.models;
 
 import java.sql.Date;
 import java.util.Arrays;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -14,6 +15,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 
 @Entity
+@JsonPropertyOrder({ "roundId", "Season", "seasonType", "name", "type", "startDate", "endDate", "currentWeek",
+        "currentRound", "games", "standings", "teamSeasons", "playerSeasons" })
 public class Round {
     @Id
     private int RoundId;
@@ -30,6 +33,7 @@ public class Round {
 
     @ManyToOne
     @JoinColumn(name = "SeasonId")
+    @JsonBackReference
     private Season season;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

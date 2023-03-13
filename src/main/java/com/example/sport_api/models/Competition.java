@@ -1,6 +1,9 @@
 package com.example.sport_api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,6 +13,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 
 @Entity
+@JsonPropertyOrder({ "competitionId", "areaId", "areaName", "name", "gender", "type", "format", "stringKey",
+        "seasons" })
 public class Competition {
     @Id
     private int CompetitionId;
@@ -24,9 +29,11 @@ public class Competition {
 
     @ManyToOne
     @JoinColumn(name = "AreaId")
+    @JsonBackReference
     private Area area;
 
     @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Season[] Seasons;
 
     public Competition() {

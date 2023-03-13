@@ -18,6 +18,7 @@ public class CompetitionContrller {
 
     @RequestMapping("/com")
     public List<Competition> retrieveAllTeams() {
+
         return competitionRepository.findAll();
     }
 

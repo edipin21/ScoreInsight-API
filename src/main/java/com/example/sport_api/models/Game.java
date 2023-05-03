@@ -2,6 +2,7 @@ package com.example.sport_api.models;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -69,8 +70,14 @@ public class Game {
     private PlayoffAggregateScore playoffAggregateScore;
 
     @ManyToOne
-    @JoinColumn(name = "RoundId")
+    @JoinColumn(name = "roundId")
+    @JsonBackReference("round-game")
     private Round round;
+
+    @ManyToOne
+    @JoinColumn(name = "competitionId")
+    @JsonBackReference
+    private CompetitionDetail competitionDetail;
 
     public Game() {
         super();
@@ -567,29 +574,12 @@ public class Game {
         this.round = round;
     }
 
-    @Override
-    public String toString() {
-        return "Game [GameId=" + GameId + ", Season=" + Season + ", SeasonType=" + SeasonType + ", GroupName="
-                + GroupName + ", AwayTeamId=" + AwayTeamId + ", HomeTeamId=" + HomeTeamId + ", VenueId=" + VenueId
-                + ", Day=" + Day + ", DateTime=" + DateTime + ", Status=" + Status + ", Week=" + Week + ", Period="
-                + Period + ", Clock=" + Clock + ", Winner=" + Winner + ", VenueType=" + VenueType + ", AwayTeamKey="
-                + AwayTeamKey + ", AwayTeamName=" + AwayTeamName + ", AwayTeamCountryCode=" + AwayTeamCountryCode
-                + ", AwayTeamScore=" + AwayTeamScore + ", AwayTeamScorePeriod1=" + AwayTeamScorePeriod1
-                + ", AwayTeamScorePeriod2=" + AwayTeamScorePeriod2 + ", AwayTeamScoreExtraTime="
-                + AwayTeamScoreExtraTime + ", AwayTeamScorePenalty=" + AwayTeamScorePenalty + ", HomeTeamKey="
-                + HomeTeamKey + ", HomeTeamName=" + HomeTeamName + ", HomeTeamCountryCode=" + HomeTeamCountryCode
-                + ", HomeTeamScore=" + HomeTeamScore + ", HomeTeamScorePeriod1=" + HomeTeamScorePeriod1
-                + ", HomeTeamScorePeriod2=" + HomeTeamScorePeriod2 + ", HomeTeamScoreExtraTime="
-                + HomeTeamScoreExtraTime + ", HomeTeamScorePenalty=" + HomeTeamScorePenalty + ", HomeTeamMoneyLine="
-                + HomeTeamMoneyLine + ", AwayTeamMoneyLine=" + AwayTeamMoneyLine + ", DrawMoneyLine=" + DrawMoneyLine
-                + ", PointSpread=" + PointSpread + ", HomeTeamPointSpreadPayout=" + HomeTeamPointSpreadPayout
-                + ", AwayTeamPointSpreadPayout=" + AwayTeamPointSpreadPayout + ", OverUnder=" + OverUnder
-                + ", OverPayout=" + OverPayout + ", UnderPayout=" + UnderPayout + ", Attendance=" + Attendance
-                + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", GlobalGameId=" + GlobalGameId
-                + ", GlobalAwayTeamId=" + GlobalAwayTeamId + ", GlobalHomeTeamId=" + GlobalHomeTeamId + ", ClockExtra="
-                + ClockExtra + ", ClockDisplay=" + ClockDisplay + ", IsClosed=" + IsClosed + ", HomeTeamFormation="
-                + HomeTeamFormation + ", AwayTeamFormation=" + AwayTeamFormation + ", playoffAggregateScore="
-                + playoffAggregateScore + ", round=" + round + "]";
+    public CompetitionDetail getCompetitionDetail() {
+        return competitionDetail;
+    }
+
+    public void setCompetitionDetail(CompetitionDetail competitionDetail) {
+        this.competitionDetail = competitionDetail;
     }
 
 }

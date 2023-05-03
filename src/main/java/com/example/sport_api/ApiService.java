@@ -4,16 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import com.example.sport_api.models.Area;
 import com.example.sport_api.models.Competition;
-import com.example.sport_api.models.Season;
+import com.example.sport_api.models.CompetitionDetail;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.repositories.AreaRepository;
+import com.example.sport_api.repositories.CompetitionDetailRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
-import com.example.sport_api.repositories.RoundRepository;
-import com.example.sport_api.repositories.SeasonRepository;
 import com.example.sport_api.repositories.TeamRepository;
+import com.example.sport_api.services.CompetitionDetailService;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -34,6 +33,7 @@ public class ApiService {
     private final String teamsResourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=";
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
+    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/ucl?key=";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -47,7 +47,9 @@ public class ApiService {
     private CompetitionRepository competitionRepository;
 
     @Autowired
-    private SeasonRepository seasonRepository;
+    private CompetitionDetailRepository competitionDetailRepository;
+    @Autowired
+    private CompetitionDetailService competitionDetailService;
 
     // Make the update more efficient
     public void fetchTeamsAndUpdate() throws JsonMappingException, JsonProcessingException {
@@ -70,30 +72,19 @@ public class ApiService {
 
         ObjectMapper objectMapper = initializeObjectMapper();
 
-        // List<Area> areas = new ArrayList<>();
-        Area[] areas;
-        areas = objectMapper.readValue(areasJson, Area[].class);
+        List<Area> areas = new ArrayList<>();
+        // Area[] areas;
+        areas = objectMapper.readValue(areasJson, new TypeReference<List<Area>>() {
+        });
 
-        // for (Area area : areas) {
+        try {
+            // areaRepository.saveAll(Arrays.asList(areas));
+            areaRepository.saveAll(areas);
 
-        // areaRepository.save(area);
-        // System.out.println(area.toString());
-        // for (Competition competition : area.getCompetitions()) {
-        // competition.setArea(area);
-        // competitionRepository.save(competition);
-        // for (Season season : competition.getSeasons()) {
-        // season.setCompetition(competition);
-        // seasonRepository.save(season);
-
-        // for (Round round : season.getRounds()) {
-        // round.setSeason(season);
-        // roundRepository.save(round);
-        // }
-        // }
-        // }
-        // }
-
-        areaRepository.saveAll(Arrays.asList(areas));
+        } catch (Exception e) {
+            System.out.println("the error is : -------------------------------");
+            System.out.println(e.getMessage());
+        }
     }
 
     public void fetchCompetitionsAndUpdate() throws JsonMappingException, JsonProcessingException {
@@ -102,26 +93,13 @@ public class ApiService {
 
         ObjectMapper objectMapper = initializeObjectMapper();
 
-        Competition[] competitions;
+        List<CompetitionDetail> competitions;
 
-        // competitions = objectMapper.readValue(areasJson, new
-        // TypeReference<Competition[]>() {
-        // });
-        competitions = objectMapper.readValue(areasJson, Competition[].class);
+        competitions = objectMapper.readValue(areasJson, new TypeReference<List<CompetitionDetail>>() {
+        });
 
-        for (Competition competition : competitions) {
+        competitionDetailRepository.saveAll(competitions);
 
-            competitionRepository.save(competition);
-
-            for (Season season : competition.getSeasons()) {
-                season.setCompetition(competition);
-                seasonRepository.save(season);
-
-            }
-
-        }
-
-        // competitionRepository.saveAll(Arrays.asList(competitions));
     }
 
     public String fetchData(String resourceUrl) {
@@ -145,5 +123,22 @@ public class ApiService {
         objectMapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
         objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
         return objectMapper;
+    }
+
+    public void fetchCompetitionFixturesAndUpdate() throws JsonMappingException,
+            JsonProcessingException {
+
+        String competitionFixturesJson = fetchData(competitionFixturesUrl);
+
+        ObjectMapper objectMapper = initializeObjectMapper();
+
+        CompetitionDetail competitionDetails;
+
+        competitionDetails = objectMapper.readValue(competitionFixturesJson,
+                CompetitionDetail.class);
+
+        competitionDetailService.addCompetitionDetail(competitionDetails);
+        // competitionDetailRepository.save(competitionDetails);
+
     }
 }

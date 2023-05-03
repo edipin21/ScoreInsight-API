@@ -1,29 +1,43 @@
 package com.example.sport_api.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.FetchType;
 
+// @JsonPropertyOrder({ "competitionId", "AreaId", "areaName",
+// "competitionName", "name", "gender", "type",
+// "format", "seasons", "stringKey" })
+// @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+// property = "competitionId")
 @Entity
-@JsonPropertyOrder({ "competitionId", "areaId", "areaName", "name", "gender", "type", "format", "stringKey",
-        "seasons" })
+@Inheritance(strategy = InheritanceType.JOINED)
+// @PrimaryKeyJoinColumn(name = "CompetitionId")
 public class Competition {
+
     @Id
+    // @Column(name = "CompetitionId")
     private int CompetitionId;
     private String AreaName;
     private String Name;
     private String Gender;
     private String Type;
     private String Format;
-
     @JsonProperty("Key")
     private String StringKey;
 
@@ -34,24 +48,22 @@ public class Competition {
 
     @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
-    private Season[] Seasons;
+    private List<Season> Seasons;
 
     public Competition() {
-        super();
     }
 
     public Competition(int competitionId, String areaName, String name, String gender, String type, String format,
-            Area area, Season[] seasons, String stringKey) {
-        super();
+            String stringKey, Area area, List<Season> seasons) {
         CompetitionId = competitionId;
         AreaName = areaName;
         Name = name;
         Gender = gender;
         Type = type;
         Format = format;
+        StringKey = stringKey;
         this.area = area;
         Seasons = seasons;
-        StringKey = stringKey;
     }
 
     public int getCompetitionId() {
@@ -118,12 +130,19 @@ public class Competition {
         this.area = area;
     }
 
-    public Season[] getSeasons() {
+    public List<Season> getSeasons() {
         return Seasons;
     }
 
-    public void setSeasons(Season[] seasons) {
+    public void setSeasons(List<Season> seasons) {
         Seasons = seasons;
+    }
+
+    @Override
+    public String toString() {
+        return "Competition [CompetitionId=" + CompetitionId + ", AreaName=" + AreaName + ", Name=" + Name + ", Gender="
+                + Gender + ", Type=" + Type + ", Format=" + Format + ", StringKey=" + StringKey + ", area=" + area
+                + ", Seasons=" + Seasons + "]";
     }
 
 }

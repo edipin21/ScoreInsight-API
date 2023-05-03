@@ -1,10 +1,13 @@
 package com.example.sport_api.models;
 
 import java.sql.Date;
-import java.util.Arrays;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.core.sym.Name;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -15,7 +18,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 
 @Entity
-@JsonPropertyOrder({ "roundId", "Season", "seasonType", "name", "type", "startDate", "endDate", "currentWeek",
+@JsonPropertyOrder({ "roundId", "soccerSeason", "seasonType", "name", "type",
+        "startDate", "endDate", "currentWeek",
         "currentRound", "games", "standings", "teamSeasons", "playerSeasons" })
 public class Round {
     @Id
@@ -32,29 +36,55 @@ public class Round {
     private boolean CurrentRound;
 
     @ManyToOne
-    @JoinColumn(name = "SeasonId")
-    @JsonBackReference
+    @JoinColumn(name = "seasonId")
+    @JsonBackReference(("season-rounds"))
     private Season season;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Game[] Games;
+    @JsonManagedReference("round-game")
+    private List<Game> Games;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Standing[] Standings;
+    @JsonManagedReference("round-standings")
+    private List<Standing> Standings;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private TeamSeason[] TeamSeasons;
+    @JsonManagedReference("round-TeamSeasons")
+    private List<TeamSeason> TeamSeasons;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PlayerSeason[] PlayerSeasons;
+    @JsonManagedReference("round-PlayerSeasons")
+    private List<PlayerSeason> PlayerSeasons;
 
     public Round() {
         super();
     }
 
+    // public Round(int roundId, int soccerSeason, int seasonType, String name,
+    // String type, Date startDate, Date endDate,
+    // int currentWeek, boolean currentRound, Season season, Game[] games,
+    // Standing[] standings,
+    // TeamSeason[] teamSeasons, PlayerSeason[] playerSeasons) {
+    // super();
+    // RoundId = roundId;
+    // SoccerSeason = soccerSeason;
+    // SeasonType = seasonType;
+    // Name = name;
+    // Type = type;
+    // StartDate = startDate;
+    // EndDate = endDate;
+    // CurrentWeek = currentWeek;
+    // CurrentRound = currentRound;
+    // this.season = season;
+    // Games = games;
+    // Standings = standings;
+    // TeamSeasons = teamSeasons;
+    // PlayerSeasons = playerSeasons;
+    // }
+
     public Round(int roundId, int soccerSeason, int seasonType, String name, String type, Date startDate, Date endDate,
-            int currentWeek, boolean currentRound, Season season, Game[] games, Standing[] standings,
-            TeamSeason[] teamSeasons, PlayerSeason[] playerSeasons) {
+            int currentWeek, boolean currentRound, Season season, List<Game> games, List<Standing> standings,
+            List<TeamSeason> teamSeasons, List<PlayerSeason> playerSeasons) {
         super();
         RoundId = roundId;
         SoccerSeason = soccerSeason;
@@ -136,37 +166,37 @@ public class Round {
         CurrentRound = currentRound;
     }
 
-    public Game[] getGames() {
-        return Games;
-    }
+    // public Game[] getGames() {
+    // return Games;
+    // }
 
-    public void setGames(Game[] games) {
-        Games = games;
-    }
+    // public void setGames(Game[] games) {
+    // Games = games;
+    // }
 
-    public Standing[] getStandings() {
-        return Standings;
-    }
+    // public Standing[] getStandings() {
+    // return Standings;
+    // }
 
-    public void setStandings(Standing[] standings) {
-        Standings = standings;
-    }
+    // public void setStandings(Standing[] standings) {
+    // Standings = standings;
+    // }
 
-    public TeamSeason[] getTeamSeasons() {
-        return TeamSeasons;
-    }
+    // public TeamSeason[] getTeamSeasons() {
+    // return TeamSeasons;
+    // }
 
-    public void setTeamSeasons(TeamSeason[] teamSeasons) {
-        TeamSeasons = teamSeasons;
-    }
+    // public void setTeamSeasons(TeamSeason[] teamSeasons) {
+    // TeamSeasons = teamSeasons;
+    // }
 
-    public PlayerSeason[] getPlayerSeasons() {
-        return PlayerSeasons;
-    }
+    // public PlayerSeason[] getPlayerSeasons() {
+    // return PlayerSeasons;
+    // }
 
-    public void setPlayerSeasons(PlayerSeason[] playerSeasons) {
-        PlayerSeasons = playerSeasons;
-    }
+    // public void setPlayerSeasons(PlayerSeason[] playerSeasons) {
+    // PlayerSeasons = playerSeasons;
+    // }
 
     public int getSoccerSeason() {
         return SoccerSeason;
@@ -184,13 +214,36 @@ public class Round {
         this.season = season;
     }
 
-    @Override
-    public String toString() {
-        return "Round [RoundId=" + RoundId + ", SoccerSeason=" + SoccerSeason + ", SeasonType=" + SeasonType + ", Name="
-                + Name + ", Type=" + Type + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", CurrentWeek="
-                + CurrentWeek + ", CurrentRound=" + CurrentRound + ", season=" + season + ", Games="
-                + Arrays.toString(Games) + ", Standings=" + Arrays.toString(Standings) + ", TeamSeasons="
-                + Arrays.toString(TeamSeasons) + ", PlayerSeasons=" + Arrays.toString(PlayerSeasons) + "]";
+    public List<Game> getGames() {
+        return Games;
+    }
+
+    public void setGames(List<Game> games) {
+        Games = games;
+    }
+
+    public List<Standing> getStandings() {
+        return Standings;
+    }
+
+    public void setStandings(List<Standing> standings) {
+        Standings = standings;
+    }
+
+    public List<TeamSeason> getTeamSeasons() {
+        return TeamSeasons;
+    }
+
+    public void setTeamSeasons(List<TeamSeason> teamSeasons) {
+        TeamSeasons = teamSeasons;
+    }
+
+    public List<PlayerSeason> getPlayerSeasons() {
+        return PlayerSeasons;
+    }
+
+    public void setPlayerSeasons(List<PlayerSeason> playerSeasons) {
+        PlayerSeasons = playerSeasons;
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.sport_api.models;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -69,6 +71,7 @@ public class PlayerSeason {
 
     @ManyToOne
     @JoinColumn(name = "RoundId")
+    @JsonBackReference("round-PlayerSeasons")
     private Round round;
 
     public PlayerSeason() {

@@ -1,6 +1,7 @@
 package com.example.sport_api.models;
 
-import java.util.Arrays;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
@@ -20,22 +21,30 @@ public class Area {
 
     @OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
-    private Competition[] Competitions;
+    private List<Competition> Competitions;
 
     public Area() {
         super();
     }
 
-    public Area(int areaId, String countryCode, String name, Competition[] competitions) {
-        super();
+    // public Area(int areaId, String countryCode, String name, Competition[]
+    // competitions) {
+    // super();
+    // AreaId = areaId;
+    // CountryCode = countryCode;
+    // Name = name;
+    // Competitions = competitions;
+    // }
+
+    public int getAreaId() {
+        return AreaId;
+    }
+
+    public Area(int areaId, String countryCode, String name, List<Competition> competitions) {
         AreaId = areaId;
         CountryCode = countryCode;
         Name = name;
         Competitions = competitions;
-    }
-
-    public int getAreaId() {
-        return AreaId;
     }
 
     public void setAreaId(int areaId) {
@@ -58,18 +67,20 @@ public class Area {
         Name = name;
     }
 
-    public Competition[] getCompetitions() {
+    public List<Competition> getCompetitions() {
         return Competitions;
     }
 
-    public void setCompetitions(Competition[] competitions) {
+    public void setCompetitions(List<Competition> competitions) {
         Competitions = competitions;
     }
 
-    @Override
-    public String toString() {
-        return "Area [AreaId=" + AreaId + ", CountryCode=" + CountryCode + ", Name=" + Name + ", Competitions="
-                + Arrays.toString(Competitions) + "]";
-    }
+    // public Competition[] getCompetitions() {
+    // return Competitions;
+    // }
+
+    // public void setCompetitions(Competition[] competitions) {
+    // Competitions = competitions;
+    // }
 
 }

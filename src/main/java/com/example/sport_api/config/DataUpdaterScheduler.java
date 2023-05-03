@@ -27,22 +27,29 @@ public class DataUpdaterScheduler {
 
     // (fixedRate = 4 * 60 * 60 * 1000)
 
-    @Scheduled(cron = "0 48 13 * * *", zone = "Asia/Jerusalem")
-    public void updateTeamsDB() throws JsonMappingException, JsonProcessingException {
+    // @Scheduled(cron = "0 48 13 * * *", zone = "Asia/Jerusalem")
+    // public void updateTeamsDB() throws JsonMappingException,
+    // JsonProcessingException {
 
-        // System.out.println(apiService.fetchData(teamsResourceUrl));
-        apiService.fetchTeamsAndUpdate();
-    }
+    // // System.out.println(apiService.fetchData(teamsResourceUrl));
+    // apiService.fetchTeamsAndUpdate();
+    // }
 
-    @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
-    public void updateAreasDB() throws JsonMappingException,
-            JsonProcessingException {
-        apiService.fetchAreasAndUpdate();
-    }
+    // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateAreasDB() throws JsonMappingException,
+    // JsonProcessingException {
+    // apiService.fetchAreasAndUpdate();
+    // }
 
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateCompetitionDB() throws JsonMappingException,
     // JsonProcessingException {
     // apiService.fetchCompetitionsAndUpdate();
     // }
+
+    @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
+    public void updateCompetitionfeDB() throws JsonMappingException,
+            JsonProcessingException {
+        apiService.fetchCompetitionFixturesAndUpdate();
+    }
 }

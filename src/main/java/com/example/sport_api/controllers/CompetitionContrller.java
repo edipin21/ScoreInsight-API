@@ -12,7 +12,7 @@ public class CompetitionContrller {
 
     private CompetitionRepository competitionRepository;
 
-    public CompetitionContrller(com.example.sport_api.repositories.CompetitionRepository competitionRepository) {
+    public CompetitionContrller(CompetitionRepository competitionRepository) {
         this.competitionRepository = competitionRepository;
     }
 

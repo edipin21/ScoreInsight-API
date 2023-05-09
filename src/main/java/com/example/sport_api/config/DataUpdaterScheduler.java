@@ -35,11 +35,11 @@ public class DataUpdaterScheduler {
     // apiService.fetchTeamsAndUpdate();
     // }
 
-    // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
-    // public void updateAreasDB() throws JsonMappingException,
-    // JsonProcessingException {
-    // apiService.fetchAreasAndUpdate();
-    // }
+    @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
+    public void updateAreasDB() throws JsonMappingException,
+            JsonProcessingException {
+        apiService.fetchAreasAndUpdate();
+    }
 
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateCompetitionDB() throws JsonMappingException,
@@ -47,9 +47,9 @@ public class DataUpdaterScheduler {
     // apiService.fetchCompetitionsAndUpdate();
     // }
 
-    @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
-    public void updateCompetitionfeDB() throws JsonMappingException,
-            JsonProcessingException {
-        apiService.fetchCompetitionFixturesAndUpdate();
-    }
+    // @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateCompetitionfeDB() throws JsonMappingException,
+    // JsonProcessingException {
+    // apiService.fetchCompetitionFixturesAndUpdate();
+    // }
 }

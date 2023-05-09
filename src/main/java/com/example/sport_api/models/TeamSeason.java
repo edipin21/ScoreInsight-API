@@ -66,7 +66,7 @@ public class TeamSeason {
 
     @ManyToOne
     @JoinColumn(name = "RoundId")
-    @JsonBackReference("round-TeamSeasons")
+    // @JsonBackReference("round-TeamSeasons")
     private Round round;
 
     public TeamSeason() {

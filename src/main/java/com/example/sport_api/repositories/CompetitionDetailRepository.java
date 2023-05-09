@@ -1,9 +1,12 @@
-package com.example.sport_api.repositories;
+// package com.example.sport_api.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import java.util.List;
 
-import com.example.sport_api.models.CompetitionDetail;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.Query;
 
-public interface CompetitionDetailRepository extends JpaRepository<CompetitionDetail, Integer> {
+// import com.example.sport_api.models.CompetitionDetail;
 
-}
+// public interface CompetitionDetailRepository extends
+// JpaRepository<CompetitionDetail, Integer> {
+// }

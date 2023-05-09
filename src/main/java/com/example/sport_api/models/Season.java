@@ -15,7 +15,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-// import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -38,55 +37,11 @@ public class Season {
 
     @ManyToOne
     @JoinColumn(name = "CompetitionId", referencedColumnName = "CompetitionId")
-    @JsonBackReference
+    @JsonBackReference("competition-season")
     private Competition competition;
-
-    // @ManyToOne
-    // @JoinColumn(name = "CompetitionId", insertable = false, updatable = false)
-    // @JsonBackReference("competitionDetail-seasons")
-    // private CompetitionDetail competitionDetail;
 
     public Season() {
         super();
-    }
-
-    // public Season(int seasonId, int season, String name, String competitionName,
-    // Date startDate, Date endDate,
-    // boolean currentSeason, Round[] rounds, Competition competition) {
-    // super();
-    // SeasonId = seasonId;
-    // Season = season;
-    // Name = name;
-    // CompetitionName = competitionName;
-    // StartDate = startDate;
-    // EndDate = endDate;
-    // CurrentSeason = currentSeason;
-    // Rounds = rounds;
-    // this.competition = competition;
-    // }
-
-    public int getSeasonId() {
-        return SeasonId;
-    }
-
-    // public Season(int seasonId, int season, String name, String competitionName,
-    // Date startDate, Date endDate,
-    // boolean currentSeason, List<Round> rounds, Competition competition,
-    // CompetitionDetail competitionDetail) {
-    // SeasonId = seasonId;
-    // Season = season;
-    // Name = name;
-    // CompetitionName = competitionName;
-    // StartDate = startDate;
-    // EndDate = endDate;
-    // CurrentSeason = currentSeason;
-    // Rounds = rounds;
-    // this.competition = competition;
-    // this.competitionDetail = competitionDetail;
-    // }
-
-    public void setSeasonId(int seasonId) {
-        SeasonId = seasonId;
     }
 
     public Season(int seasonId, int season, String name, String competitionName, Date startDate, Date endDate,
@@ -100,6 +55,14 @@ public class Season {
         CurrentSeason = currentSeason;
         Rounds = rounds;
         this.competition = competition;
+    }
+
+    public int getSeasonId() {
+        return SeasonId;
+    }
+
+    public void setSeasonId(int seasonId) {
+        SeasonId = seasonId;
     }
 
     public int getSeason() {
@@ -150,14 +113,6 @@ public class Season {
         CurrentSeason = currentSeason;
     }
 
-    // public Round[] getRounds() {
-    // return Rounds;
-    // }
-
-    // public void setRounds(Round[] rounds) {
-    // Rounds = rounds;
-    // }
-
     public Competition getCompetition() {
         return competition;
     }
@@ -166,14 +121,6 @@ public class Season {
         this.competition = competition;
     }
 
-    // public CompetitionDetail getCompetitionDetail() {
-    // return competitionDetail;
-    // }
-
-    // public void setCompetitionDetail(CompetitionDetail competitionDetail) {
-    // this.competitionDetail = competitionDetail;
-    // }
-
     public List<Round> getRounds() {
         return Rounds;
     }
@@ -181,15 +128,5 @@ public class Season {
     public void setRounds(List<Round> rounds) {
         Rounds = rounds;
     }
-
-    // @Override
-    // public String toString() {
-    // return "Season [SeasonId=" + SeasonId + ", Season=" + Season + ", Name=" +
-    // Name + ", CompetitionName="
-    // + CompetitionName + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ",
-    // CurrentSeason="
-    // + CurrentSeason + ", Rounds=" + Rounds + ", competition=" + competition +
-    // "]";
-    // }
 
 }

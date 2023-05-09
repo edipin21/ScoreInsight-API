@@ -31,7 +31,7 @@ public class Standing {
 
     @ManyToOne
     @JoinColumn(name = "RoundId")
-    @JsonBackReference("round-standings")
+    // @JsonBackReference("round-standings")
     private Round round;
 
     @JsonProperty("Group")

@@ -2,13 +2,10 @@ package com.example.sport_api.models;
 
 import java.sql.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.core.sym.Name;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -41,46 +38,24 @@ public class Round {
     private Season season;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference("round-game")
+    // @JsonManagedReference("round-game")
     private List<Game> Games;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference("round-standings")
+    // @JsonManagedReference("round-standings")
     private List<Standing> Standings;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference("round-TeamSeasons")
+    // @JsonManagedReference("round-TeamSeasons")
     private List<TeamSeason> TeamSeasons;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference("round-PlayerSeasons")
+    // @JsonManagedReference("round-PlayerSeasons")
     private List<PlayerSeason> PlayerSeasons;
 
     public Round() {
         super();
     }
-
-    // public Round(int roundId, int soccerSeason, int seasonType, String name,
-    // String type, Date startDate, Date endDate,
-    // int currentWeek, boolean currentRound, Season season, Game[] games,
-    // Standing[] standings,
-    // TeamSeason[] teamSeasons, PlayerSeason[] playerSeasons) {
-    // super();
-    // RoundId = roundId;
-    // SoccerSeason = soccerSeason;
-    // SeasonType = seasonType;
-    // Name = name;
-    // Type = type;
-    // StartDate = startDate;
-    // EndDate = endDate;
-    // CurrentWeek = currentWeek;
-    // CurrentRound = currentRound;
-    // this.season = season;
-    // Games = games;
-    // Standings = standings;
-    // TeamSeasons = teamSeasons;
-    // PlayerSeasons = playerSeasons;
-    // }
 
     public Round(int roundId, int soccerSeason, int seasonType, String name, String type, Date startDate, Date endDate,
             int currentWeek, boolean currentRound, Season season, List<Game> games, List<Standing> standings,
@@ -165,38 +140,6 @@ public class Round {
     public void setCurrentRound(boolean currentRound) {
         CurrentRound = currentRound;
     }
-
-    // public Game[] getGames() {
-    // return Games;
-    // }
-
-    // public void setGames(Game[] games) {
-    // Games = games;
-    // }
-
-    // public Standing[] getStandings() {
-    // return Standings;
-    // }
-
-    // public void setStandings(Standing[] standings) {
-    // Standings = standings;
-    // }
-
-    // public TeamSeason[] getTeamSeasons() {
-    // return TeamSeasons;
-    // }
-
-    // public void setTeamSeasons(TeamSeason[] teamSeasons) {
-    // TeamSeasons = teamSeasons;
-    // }
-
-    // public PlayerSeason[] getPlayerSeasons() {
-    // return PlayerSeasons;
-    // }
-
-    // public void setPlayerSeasons(PlayerSeason[] playerSeasons) {
-    // PlayerSeasons = playerSeasons;
-    // }
 
     public int getSoccerSeason() {
         return SoccerSeason;

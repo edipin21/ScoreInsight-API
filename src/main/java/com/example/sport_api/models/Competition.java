@@ -3,31 +3,31 @@ package com.example.sport_api.models;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
-// @JsonPropertyOrder({ "competitionId", "AreaId", "areaName",
-// "competitionName", "name", "gender", "type",
-// "format", "seasons", "stringKey" })
+@JsonPropertyOrder({ "competitionId", "AreaId", "areaName",
+        "competitionName", "name", "gender", "type",
+        "format", "seasons", "stringKey" })
 // @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
 // property = "competitionId")
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-// @PrimaryKeyJoinColumn(name = "CompetitionId")
+// @Inheritance(strategy = InheritanceType.JOINED)
 public class Competition {
 
     @Id
@@ -47,14 +47,26 @@ public class Competition {
     private Area area;
 
     @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonManagedReference("competition-season")
     private List<Season> Seasons;
+
+    @OneToOne // (cascade = CascadeType.MERGE)
+    private Season CurrentSeason;
+
+    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
+    @JsonManagedReference("competition-teamDetail")
+    private List<TeamDetail> Teams;
+
+    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
+    @JsonManagedReference("competition-game")
+    private List<Game> games;
 
     public Competition() {
     }
 
     public Competition(int competitionId, String areaName, String name, String gender, String type, String format,
-            String stringKey, Area area, List<Season> seasons) {
+            String stringKey, Area area, List<Season> seasons, Season currentSeason, List<TeamDetail> teams,
+            List<Game> games) {
         CompetitionId = competitionId;
         AreaName = areaName;
         Name = name;
@@ -64,6 +76,33 @@ public class Competition {
         StringKey = stringKey;
         this.area = area;
         Seasons = seasons;
+        CurrentSeason = currentSeason;
+        Teams = teams;
+        this.games = games;
+    }
+
+    public Season getCurrentSeason() {
+        return CurrentSeason;
+    }
+
+    public void setCurrentSeason(Season currentSeason) {
+        CurrentSeason = currentSeason;
+    }
+
+    public List<TeamDetail> getTeams() {
+        return Teams;
+    }
+
+    public void setTeams(List<TeamDetail> teams) {
+        Teams = teams;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
     }
 
     public int getCompetitionId() {

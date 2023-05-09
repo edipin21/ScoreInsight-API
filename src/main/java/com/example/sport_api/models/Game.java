@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.sym.Name;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -71,13 +73,13 @@ public class Game {
 
     @ManyToOne
     @JoinColumn(name = "roundId")
-    @JsonBackReference("round-game")
+    // @JsonBackReference("round-game")
     private Round round;
 
     @ManyToOne
     @JoinColumn(name = "competitionId")
-    @JsonBackReference
-    private CompetitionDetail competitionDetail;
+    @JsonBackReference("competition-game")
+    private Competition competition;
 
     public Game() {
         super();
@@ -574,12 +576,20 @@ public class Game {
         this.round = round;
     }
 
-    public CompetitionDetail getCompetitionDetail() {
-        return competitionDetail;
+    public Competition getCompetition() {
+        return competition;
     }
 
-    public void setCompetitionDetail(CompetitionDetail competitionDetail) {
-        this.competitionDetail = competitionDetail;
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
     }
+
+    // public CompetitionDetail getCompetitionDetail() {
+    // return competitionDetail;
+    // }
+
+    // public void setCompetitionDetail(CompetitionDetail competitionDetail) {
+    // this.competitionDetail = competitionDetail;
+    // }
 
 }

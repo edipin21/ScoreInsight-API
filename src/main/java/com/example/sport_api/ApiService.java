@@ -6,13 +6,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.example.sport_api.models.Area;
 import com.example.sport_api.models.Competition;
-import com.example.sport_api.models.CompetitionDetail;
+// import com.example.sport_api.models.Competition;
+// import com.example.sport_api.models.CompetitionDetail;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.repositories.AreaRepository;
-import com.example.sport_api.repositories.CompetitionDetailRepository;
+// import com.example.sport_api.repositories.CompetitionDetailRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
+// import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.TeamRepository;
-import com.example.sport_api.services.CompetitionDetailService;
+import com.example.sport_api.services.CompetitionService;
+// import com.example.sport_api.services.CompetitionDetailService;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -46,10 +49,13 @@ public class ApiService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
+    // @Autowired
+    // private CompetitionDetailRepository competitionDetailRepository;
+    // @Autowired
+    // private CompetitionDetailService competitionDetailService;
+
     @Autowired
-    private CompetitionDetailRepository competitionDetailRepository;
-    @Autowired
-    private CompetitionDetailService competitionDetailService;
+    CompetitionService competitionService;
 
     // Make the update more efficient
     public void fetchTeamsAndUpdate() throws JsonMappingException, JsonProcessingException {
@@ -93,12 +99,12 @@ public class ApiService {
 
         ObjectMapper objectMapper = initializeObjectMapper();
 
-        List<CompetitionDetail> competitions;
+        List<Competition> competitions;
 
-        competitions = objectMapper.readValue(areasJson, new TypeReference<List<CompetitionDetail>>() {
+        competitions = objectMapper.readValue(areasJson, new TypeReference<List<Competition>>() {
         });
 
-        competitionDetailRepository.saveAll(competitions);
+        competitionRepository.saveAll(competitions);
 
     }
 
@@ -132,13 +138,14 @@ public class ApiService {
 
         ObjectMapper objectMapper = initializeObjectMapper();
 
-        CompetitionDetail competitionDetails;
+        Competition competition;
 
-        competitionDetails = objectMapper.readValue(competitionFixturesJson,
-                CompetitionDetail.class);
+        competition = objectMapper.readValue(competitionFixturesJson,
+                Competition.class);
 
-        competitionDetailService.addCompetitionDetail(competitionDetails);
+        // CompetitionService.addCompetitionDetail1(competition);
         // competitionDetailRepository.save(competitionDetails);
 
+        competitionRepository.save(competition);
     }
 }

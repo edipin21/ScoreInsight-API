@@ -55,11 +55,15 @@ public class TeamDetail {
 
     @ManyToOne
     @JoinColumn(name = "competitionId")
-    @JsonBackReference
-    private CompetitionDetail competitionDetail;
+    @JsonBackReference("competition-teamDetail")
+    private Competition competition;
 
     public TeamDetail() {
         super();
+    }
+
+    public int getTeamId() {
+        return TeamId;
     }
 
     public TeamDetail(int teamId, int areaId, int venueId, String stringKey, String name, String fullName,
@@ -67,8 +71,7 @@ public class TeamDetail {
             String zip, String phone, String fax, String website, String email, int founded, String clubColor1,
             String clubColor2, String clubColor3, String nickname1, String nickname2, String nickname3,
             String wikipediaLogoUrl, String wikipediaWordMarkUrl, int globalTeamId, List<Player> players,
-            CompetitionDetail competitionDetail) {
-        super();
+            Competition competition) {
         TeamId = teamId;
         AreaId = areaId;
         VenueId = venueId;
@@ -98,19 +101,7 @@ public class TeamDetail {
         WikipediaWordMarkUrl = wikipediaWordMarkUrl;
         GlobalTeamId = globalTeamId;
         Players = players;
-        this.competitionDetail = competitionDetail;
-    }
-
-    public CompetitionDetail getCompetitionDetail() {
-        return competitionDetail;
-    }
-
-    public void setCompetitionDetail(CompetitionDetail competitionDetail) {
-        this.competitionDetail = competitionDetail;
-    }
-
-    public int getTeamId() {
-        return TeamId;
+        this.competition = competition;
     }
 
     public void setTeamId(int teamId) {
@@ -347,6 +338,14 @@ public class TeamDetail {
 
     public void setPlayers(List<Player> players) {
         Players = players;
+    }
+
+    public Competition getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
     }
 
 }

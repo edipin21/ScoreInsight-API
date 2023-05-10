@@ -19,7 +19,6 @@ public class AreaService {
 
     public List<Area> retrieveAllAreas() {
         return areaRepository.findAll();
-        // return areaRepository.findAllWithRelatedEntities();
     }
 
 }

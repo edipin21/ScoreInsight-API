@@ -2,11 +2,11 @@ package com.example.sport_api.models;
 
 import java.sql.Date;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -15,12 +15,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 
 @Entity
-@JsonPropertyOrder({ "roundId", "soccerSeason", "seasonType", "name", "type",
+@JsonPropertyOrder({ "roundId", "seasonId", "soccerSeason", "seasonType", "name", "type",
         "startDate", "endDate", "currentWeek",
         "currentRound", "games", "standings", "teamSeasons", "playerSeasons" })
 public class Round {
     @Id
     private int RoundId;
+
+    @Column(name = "season_id")
+    private int SeasonId;
 
     @JsonProperty("Season")
     private int SoccerSeason;
@@ -32,36 +35,32 @@ public class Round {
     private int CurrentWeek;
     private boolean CurrentRound;
 
-    @ManyToOne
-    @JoinColumn(name = "seasonId")
-    @JsonBackReference(("season-rounds"))
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "season_id", insertable = false, updatable = false)
     private Season season;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // @JsonManagedReference("round-game")
     private List<Game> Games;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // @JsonManagedReference("round-standings")
     private List<Standing> Standings;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // @JsonManagedReference("round-TeamSeasons")
     private List<TeamSeason> TeamSeasons;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // @JsonManagedReference("round-PlayerSeasons")
     private List<PlayerSeason> PlayerSeasons;
 
     public Round() {
         super();
     }
 
-    public Round(int roundId, int soccerSeason, int seasonType, String name, String type, Date startDate, Date endDate,
-            int currentWeek, boolean currentRound, Season season, List<Game> games, List<Standing> standings,
-            List<TeamSeason> teamSeasons, List<PlayerSeason> playerSeasons) {
-        super();
+    public Round(int roundId, int seasonId, int soccerSeason, int seasonType, String name, String type, Date startDate,
+            Date endDate, int currentWeek, boolean currentRound, Season season, List<Game> games,
+            List<Standing> standings, List<TeamSeason> teamSeasons, List<PlayerSeason> playerSeasons) {
         RoundId = roundId;
+        SeasonId = seasonId;
         SoccerSeason = soccerSeason;
         SeasonType = seasonType;
         Name = name;
@@ -187,6 +186,14 @@ public class Round {
 
     public void setPlayerSeasons(List<PlayerSeason> playerSeasons) {
         PlayerSeasons = playerSeasons;
+    }
+
+    public int getSeasonId() {
+        return SeasonId;
+    }
+
+    public void setSeasonId(int seasonId) {
+        SeasonId = seasonId;
     }
 
 }

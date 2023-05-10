@@ -6,10 +6,12 @@ import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -18,12 +20,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
-@JsonPropertyOrder({ "seasonId", "season", "name", "competitionName", "startDate", "endDate", "currentSeason",
+@JsonPropertyOrder({ "seasonId", "competitionId", "season", "name", "competitionName", "startDate", "endDate",
+        "currentSeason",
         "rounds" })
 public class Season {
 
     @Id
     private int SeasonId;
+    @Column(name = "competition_id")
+    private int CompetitionId;
     private int Season;
     private String Name;
     private String CompetitionName;
@@ -31,22 +36,23 @@ public class Season {
     private Date EndDate;
     private boolean CurrentSeason;
 
-    @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference("season-rounds")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "season_id")
     private List<Round> Rounds;
 
-    @ManyToOne
-    @JoinColumn(name = "CompetitionId", referencedColumnName = "CompetitionId")
-    @JsonBackReference("competition-season")
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competition_id", insertable = false, updatable = false)
     private Competition competition;
 
     public Season() {
         super();
     }
 
-    public Season(int seasonId, int season, String name, String competitionName, Date startDate, Date endDate,
-            boolean currentSeason, List<Round> rounds, Competition competition) {
+    public Season(int seasonId, int competitionId, int season, String name, String competitionName, Date startDate,
+            Date endDate, boolean currentSeason, List<Round> rounds, Competition competition) {
         SeasonId = seasonId;
+        CompetitionId = competitionId;
         Season = season;
         Name = name;
         CompetitionName = competitionName;
@@ -127,6 +133,14 @@ public class Season {
 
     public void setRounds(List<Round> rounds) {
         Rounds = rounds;
+    }
+
+    public int getCompetitionId() {
+        return CompetitionId;
+    }
+
+    public void setCompetitionId(int competitionId) {
+        CompetitionId = competitionId;
     }
 
 }

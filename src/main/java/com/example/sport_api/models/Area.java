@@ -8,6 +8,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -19,26 +20,31 @@ public class Area {
     private String CountryCode;
     private String Name;
 
-    @OneToMany(mappedBy = "area", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "area_id")
     private List<Competition> Competitions;
 
     public Area() {
         super();
     }
 
-    // public Area(int areaId, String countryCode, String name, Competition[]
+    public Area(int areaId, String countryCode, String name) {
+        AreaId = areaId;
+        CountryCode = countryCode;
+        Name = name;
+    }
+
+    public int getAreaId() {
+        return AreaId;
+    }
+
+    // public Area(int areaId, String countryCode, String name, List<Competition>
     // competitions) {
-    // super();
     // AreaId = areaId;
     // CountryCode = countryCode;
     // Name = name;
     // Competitions = competitions;
     // }
-
-    public int getAreaId() {
-        return AreaId;
-    }
 
     public Area(int areaId, String countryCode, String name, List<Competition> competitions) {
         AreaId = areaId;
@@ -74,13 +80,5 @@ public class Area {
     public void setCompetitions(List<Competition> competitions) {
         Competitions = competitions;
     }
-
-    // public Competition[] getCompetitions() {
-    // return Competitions;
-    // }
-
-    // public void setCompetitions(Competition[] competitions) {
-    // Competitions = competitions;
-    // }
 
 }

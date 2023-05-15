@@ -15,4 +15,11 @@ public interface CompetitionRepository extends JpaRepository<Competition, Intege
     // @Query(value = "SELECT c.CompetitionId, c.Format FROM Competition c")
     @Query(value = "SELECT c.CompetitionId AS competitionId,c.Format AS format,c.AreaName AS areaName, c.Name AS name,c.Gender AS gender,c.Type AS type,c.StringKey AS stringKey , c.Seasons AS seasons, c.AreaId AS areaId FROM Competition c")
     List<CompetitionProjection> findAllCompetitions();
+
+    // @Query(value = "SELECT new
+    // com.example.sport_api.models.CompetitionDto(c.competitionId, c.format,
+    // c.areaName, c.name, c.gender, c.type, c.stringKey, c.seasons, c.areaId) FROM
+    // Competition c")
+    // List<CompetitionDto> findAllCompetition();
+
 }

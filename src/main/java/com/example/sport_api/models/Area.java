@@ -1,8 +1,6 @@
 package com.example.sport_api.models;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

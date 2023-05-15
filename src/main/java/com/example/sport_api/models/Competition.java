@@ -16,9 +16,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
-@JsonPropertyOrder({ "competitionId", "areaId", "areaName",
-        "competitionName", "name", "gender", "type",
-        "format", "stringKey", "seasons" })
+@JsonPropertyOrder({ "competitionId", "areaId", "areaName", "name", "gender", "type", "format",
+        "Key", "currentSeason", "seasons" })
 @Entity
 public class Competition {
 
@@ -39,7 +38,7 @@ public class Competition {
     @JoinColumn(name = "area_id", insertable = false, updatable = false)
     private Area area;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "competition_id")
     private List<Season> Seasons;
 

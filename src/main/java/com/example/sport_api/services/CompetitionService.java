@@ -1,11 +1,13 @@
 package com.example.sport_api.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.sport_api.models.Competition;
+import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.repositories.CompetitionRepository;
 
 import jakarta.transaction.Transactional;
@@ -34,25 +36,31 @@ public class CompetitionService {
 
     }
 
-    // @Transactional
-    // public void addCompetitionDetail(CompetitionDetail competitionDetail) {
-    // // check if the parent entity exists in the database
-    // Competition existingCompetition =
-    // if (existingCompetition != null) {
-    // // check if the child entity already exists in the database
-    // CompetitionDetail existingCompetitionDetail =
-    // entityManager.find(CompetitionDetail.class,
-    // competitionDetail.getCompetitionId());
-    // if (existingCompetitionDetail == null) {
-    // entityManager.merge(competitionDetail);
-    // } else {
-    // // update the existing entity with the new data
+    public List<CompetitionDto> getAllCompetitions() {
 
-    // existingCompetitionDetail.setCurrentSeason(competitionDetail.getCurrentSeason());
-    // // existingCompetitionDetail.setTeams(competitionDetail.getTeams());
-    // // existingCompetitionDetail.setGames(competitionDetail.getGames());
-    // // entityManager.merge(existingCompetitionDetail);
-    // // }
-    // // }
-    // // }
+        List<Competition> competitions = competitionRepository.findAll();
+
+        List<CompetitionDto> competitionDtos = new ArrayList<>();
+
+        for (Competition competition : competitions) {
+
+            CompetitionDto competitionDto = new CompetitionDto();
+
+            competitionDto.setAreaId(competition.getAreaId());
+            competitionDto.setAreaName(competition.getAreaName());
+            competitionDto.setCompetitionId(competition.getCompetitionId());
+            competitionDto.setFormat(competition.getFormat());
+            competitionDto.setGender(competition.getGender());
+            competitionDto.setName(competition.getName());
+            competitionDto.setSeasons(competition.getSeasons());
+            competitionDto.setStringKey(competition.getStringKey());
+            competitionDto.setType(competition.getType());
+
+            competitionDtos.add(competitionDto);
+
+        }
+
+        return competitionDtos;
+    }
+
 }

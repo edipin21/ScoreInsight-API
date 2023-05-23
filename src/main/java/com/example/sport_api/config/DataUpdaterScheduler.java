@@ -1,5 +1,6 @@
 package com.example.sport_api.config;
 
+import java.io.IOException;
 import java.time.ZoneId;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +42,14 @@ public class DataUpdaterScheduler {
     // apiService.fetchAreasAndUpdate();
     // }
 
-    // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
+    // @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateCompetitionDB() throws JsonMappingException,
     // JsonProcessingException {
     // apiService.fetchCompetitionsAndUpdate();
     // }
 
-    @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
-    public void updateCompetitionfeDB() throws JsonMappingException,
-            JsonProcessingException {
+    @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    public void updateCompetitionfeDB() throws IOException {
         apiService.fetchCompetitionFixturesAndUpdate();
     }
 }

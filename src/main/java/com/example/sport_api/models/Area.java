@@ -32,23 +32,15 @@ public class Area {
         Name = name;
     }
 
-    public int getAreaId() {
-        return AreaId;
-    }
-
-    // public Area(int areaId, String countryCode, String name, List<Competition>
-    // competitions) {
-    // AreaId = areaId;
-    // CountryCode = countryCode;
-    // Name = name;
-    // Competitions = competitions;
-    // }
-
     public Area(int areaId, String countryCode, String name, List<Competition> competitions) {
         AreaId = areaId;
         CountryCode = countryCode;
         Name = name;
         Competitions = competitions;
+    }
+
+    public int getAreaId() {
+        return AreaId;
     }
 
     public void setAreaId(int areaId) {

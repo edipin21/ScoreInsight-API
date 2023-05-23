@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class PlayoffAggregateScore {
@@ -17,13 +19,12 @@ public class PlayoffAggregateScore {
     private Date Created;
     private Date Updated;
 
-    public PlayoffAggregateScore() {
-        super();
-    }
+    @OneToOne
+    @JoinColumn(name = "game_id")
+    private Game game;
 
     public PlayoffAggregateScore(int teamA_Id, int teamA_AggregateScore, int teamB_Id, int teamB_AggregateScore,
-            int winningTeamId, Date created, Date updated) {
-        super();
+            int winningTeamId, Date created, Date updated, Game game) {
         TeamA_Id = teamA_Id;
         TeamA_AggregateScore = teamA_AggregateScore;
         TeamB_Id = teamB_Id;
@@ -31,6 +32,11 @@ public class PlayoffAggregateScore {
         WinningTeamId = winningTeamId;
         Created = created;
         Updated = updated;
+        this.game = game;
+    }
+
+    public PlayoffAggregateScore() {
+        super();
     }
 
     public int getTeamA_Id() {
@@ -89,11 +95,18 @@ public class PlayoffAggregateScore {
         Updated = updated;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
     @Override
     public String toString() {
         return "PlayoffAggregateScore [TeamA_Id=" + TeamA_Id + ", TeamA_AggregateScore=" + TeamA_AggregateScore
                 + ", TeamB_Id=" + TeamB_Id + ", TeamB_AggregateScore=" + TeamB_AggregateScore + ", WinningTeamId="
                 + WinningTeamId + ", Created=" + Created + ", Updated=" + Updated + "]";
     }
-
 }

@@ -1,100 +1,118 @@
 package com.example.sport_api.models;
 
 import java.sql.Date;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
+@JsonPropertyOrder({ "gameId", "roundId", "season", "seasonType", "groupName", "awayTeamId", "homeTeamId",
+        "venueId", "day", "dateTime", "status", "week", "period", "clock", "winner", "venueType", "awayTeamKey",
+        "awayTeamName", "awayTeamCountryCode", "awayTeamScore", "awayTeamScorePeriod1", "awayTeamScorePeriod2",
+        "AwayTeamScoreExtraTime", "awayTeamScorePenalty", "homeTeamKey", "homeTeamName", "homeTeamCountryCode",
+        "homeTeamScore", "homeTeamScorePeriod1", "homeTeamScorePeriod2", "homeTeamScoreExtraTime",
+        "homeTeamScorePenalty", "homeTeamMoneyLine", "awayTeamMoneyLine", "drawMoneyLine", "pointSpread",
+        "homeTeamPointSpreadPayout", "awayTeamPointSpreadPayout", "overUnder", "overPayout", "underPayout",
+        "attendance", "updated", "updatedUtc", "globalGameId", "globalAwayTeamId", "globalHomeTeamId", "clockExtra",
+        "clockDisplay", "isClosed", "homeTeamFormation", "awayTeamFormation" })
 @Entity
 public class Game {
     @Id
     private int GameId;
-    private int Season;
-    private int SeasonType;
+    @Column(name = "round_id")
+    private Integer RoundId;
+    private Integer Season;
+    private Integer SeasonType;
     @JsonProperty("Group")
     private String GroupName;
-    private int AwayTeamId;
-    private int HomeTeamId;
-    private int VenueId;
+    private Integer AwayTeamId;
+    private Integer HomeTeamId;
+    private Integer VenueId;
     private Date Day;
     private Date DateTime;
     private String Status;
-    private int Week;
+    private Integer Week;
     private String Period;
-    private int Clock;
+    private Integer Clock;
     private String Winner;
     private String VenueType;
     private String AwayTeamKey;
     private String AwayTeamName;
     private String AwayTeamCountryCode;
-    private int AwayTeamScore;
-    private int AwayTeamScorePeriod1;
-    private int AwayTeamScorePeriod2;
-    private int AwayTeamScoreExtraTime;
-    private int AwayTeamScorePenalty;
+    private Integer AwayTeamScore;
+    private Integer AwayTeamScorePeriod1;
+    private Integer AwayTeamScorePeriod2;
+    private Integer AwayTeamScoreExtraTime;
+    private Integer AwayTeamScorePenalty;
     private String HomeTeamKey;
     private String HomeTeamName;
     private String HomeTeamCountryCode;
-    private int HomeTeamScore;
-    private int HomeTeamScorePeriod1;
-    private int HomeTeamScorePeriod2;
-    private int HomeTeamScoreExtraTime;
-    private int HomeTeamScorePenalty;
-    private int HomeTeamMoneyLine;
-    private int AwayTeamMoneyLine;
-    private int DrawMoneyLine;
+    private Integer HomeTeamScore;
+    private Integer HomeTeamScorePeriod1;
+    private Integer HomeTeamScorePeriod2;
+    private Integer HomeTeamScoreExtraTime;
+    private Integer HomeTeamScorePenalty;
+    private Integer HomeTeamMoneyLine;
+    private Integer AwayTeamMoneyLine;
+    private Integer DrawMoneyLine;
     private float PointSpread;
-    private int HomeTeamPointSpreadPayout;
-    private int AwayTeamPointSpreadPayout;
+    private Integer HomeTeamPointSpreadPayout;
+    private Integer AwayTeamPointSpreadPayout;
     private float OverUnder;
-    private int OverPayout;
-    private int UnderPayout;
-    private int Attendance;
+    private Integer OverPayout;
+    private Integer UnderPayout;
+    private Integer Attendance;
     private Date Updated;
     private Date UpdatedUtc;
-    private int GlobalGameId;
-    private int GlobalAwayTeamId;
-    private int GlobalHomeTeamId;
-    private int ClockExtra;
+    private Integer GlobalGameId;
+    private Integer GlobalAwayTeamId;
+    private Integer GlobalHomeTeamId;
+    private Integer ClockExtra;
     private String ClockDisplay;
     private boolean IsClosed;
     private String HomeTeamFormation;
     private String AwayTeamFormation;
 
-    @OneToOne
+    @OneToOne(mappedBy = "game", cascade = CascadeType.ALL)
     private PlayoffAggregateScore playoffAggregateScore;
 
-    @ManyToOne
-    @JoinColumn(name = "roundId")
-    // @JsonBackReference("round-game")
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "round_id", insertable = false, updatable = false)
     private Round round;
 
-    @ManyToOne
-    @JoinColumn(name = "competitionId")
-    @JsonBackReference("competition-game")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competition_id")
+    @JsonIgnore
     private Competition competition;
 
     public Game() {
         super();
     }
 
-    public Game(int gameId, int season, int seasonType, String groupName, int awayTeamId, int homeTeamId, int venueId,
-            Date day, Date dateTime, String status, int week, String period, int clock, String winner, String venueType,
-            String awayTeamKey, String awayTeamName, String awayTeamCountryCode, int awayTeamScore,
-            int awayTeamScorePeriod1, int awayTeamScorePeriod2, int awayTeamScoreExtraTime, int awayTeamScorePenalty,
-            String homeTeamKey, String homeTeamName, String homeTeamCountryCode, int homeTeamScore,
-            int homeTeamScorePeriod1, int homeTeamScorePeriod2, int homeTeamScoreExtraTime, int homeTeamScorePenalty,
-            int homeTeamMoneyLine, int awayTeamMoneyLine, int drawMoneyLine, float pointSpread,
-            int homeTeamPointSpreadPayout, int awayTeamPointSpreadPayout, float overUnder, int overPayout,
-            int underPayout, int attendance, Date updated, Date updatedUtc, int globalGameId, int globalAwayTeamId,
-            int globalHomeTeamId, int clockExtra, String clockDisplay, boolean isClosed, String homeTeamFormation,
-            String awayTeamFormation, PlayoffAggregateScore playoffAggregateScore, Round round) {
-        super();
+    public Game(int gameId, Integer roundId, Integer season, Integer seasonType, String groupName, Integer awayTeamId,
+            Integer homeTeamId, Integer venueId, Date day, Date dateTime, String status, Integer week, String period,
+            Integer clock, String winner, String venueType, String awayTeamKey, String awayTeamName,
+            String awayTeamCountryCode, Integer awayTeamScore, Integer awayTeamScorePeriod1,
+            Integer awayTeamScorePeriod2, Integer awayTeamScoreExtraTime, Integer awayTeamScorePenalty,
+            String homeTeamKey, String homeTeamName, String homeTeamCountryCode, Integer homeTeamScore,
+            Integer homeTeamScorePeriod1, Integer homeTeamScorePeriod2, Integer homeTeamScoreExtraTime,
+            Integer homeTeamScorePenalty, Integer homeTeamMoneyLine, Integer awayTeamMoneyLine, Integer drawMoneyLine,
+            float pointSpread, Integer homeTeamPointSpreadPayout, Integer awayTeamPointSpreadPayout, float overUnder,
+            Integer overPayout, Integer underPayout, Integer attendance, Date updated, Date updatedUtc,
+            Integer globalGameId, Integer globalAwayTeamId, Integer globalHomeTeamId, Integer clockExtra,
+            String clockDisplay, boolean isClosed, String homeTeamFormation, String awayTeamFormation,
+            PlayoffAggregateScore playoffAggregateScore, Round round, Competition competition) {
         GameId = gameId;
+        RoundId = roundId;
         Season = season;
         SeasonType = seasonType;
         GroupName = groupName;
@@ -147,6 +165,7 @@ public class Game {
         AwayTeamFormation = awayTeamFormation;
         this.playoffAggregateScore = playoffAggregateScore;
         this.round = round;
+        this.competition = competition;
     }
 
     public int getGameId() {
@@ -157,19 +176,27 @@ public class Game {
         GameId = gameId;
     }
 
-    public int getSeason() {
+    public Integer getRoundId() {
+        return RoundId;
+    }
+
+    public void setRoundId(Integer roundId) {
+        RoundId = roundId;
+    }
+
+    public Integer getSeason() {
         return Season;
     }
 
-    public void setSeason(int season) {
+    public void setSeason(Integer season) {
         Season = season;
     }
 
-    public int getSeasonType() {
+    public Integer getSeasonType() {
         return SeasonType;
     }
 
-    public void setSeasonType(int seasonType) {
+    public void setSeasonType(Integer seasonType) {
         SeasonType = seasonType;
     }
 
@@ -181,27 +208,27 @@ public class Game {
         GroupName = groupName;
     }
 
-    public int getAwayTeamId() {
+    public Integer getAwayTeamId() {
         return AwayTeamId;
     }
 
-    public void setAwayTeamId(int awayTeamId) {
+    public void setAwayTeamId(Integer awayTeamId) {
         AwayTeamId = awayTeamId;
     }
 
-    public int getHomeTeamId() {
+    public Integer getHomeTeamId() {
         return HomeTeamId;
     }
 
-    public void setHomeTeamId(int homeTeamId) {
+    public void setHomeTeamId(Integer homeTeamId) {
         HomeTeamId = homeTeamId;
     }
 
-    public int getVenueId() {
+    public Integer getVenueId() {
         return VenueId;
     }
 
-    public void setVenueId(int venueId) {
+    public void setVenueId(Integer venueId) {
         VenueId = venueId;
     }
 
@@ -229,11 +256,11 @@ public class Game {
         Status = status;
     }
 
-    public int getWeek() {
+    public Integer getWeek() {
         return Week;
     }
 
-    public void setWeek(int week) {
+    public void setWeek(Integer week) {
         Week = week;
     }
 
@@ -245,11 +272,11 @@ public class Game {
         Period = period;
     }
 
-    public int getClock() {
+    public Integer getClock() {
         return Clock;
     }
 
-    public void setClock(int clock) {
+    public void setClock(Integer clock) {
         Clock = clock;
     }
 
@@ -293,43 +320,43 @@ public class Game {
         AwayTeamCountryCode = awayTeamCountryCode;
     }
 
-    public int getAwayTeamScore() {
+    public Integer getAwayTeamScore() {
         return AwayTeamScore;
     }
 
-    public void setAwayTeamScore(int awayTeamScore) {
+    public void setAwayTeamScore(Integer awayTeamScore) {
         AwayTeamScore = awayTeamScore;
     }
 
-    public int getAwayTeamScorePeriod1() {
+    public Integer getAwayTeamScorePeriod1() {
         return AwayTeamScorePeriod1;
     }
 
-    public void setAwayTeamScorePeriod1(int awayTeamScorePeriod1) {
+    public void setAwayTeamScorePeriod1(Integer awayTeamScorePeriod1) {
         AwayTeamScorePeriod1 = awayTeamScorePeriod1;
     }
 
-    public int getAwayTeamScorePeriod2() {
+    public Integer getAwayTeamScorePeriod2() {
         return AwayTeamScorePeriod2;
     }
 
-    public void setAwayTeamScorePeriod2(int awayTeamScorePeriod2) {
+    public void setAwayTeamScorePeriod2(Integer awayTeamScorePeriod2) {
         AwayTeamScorePeriod2 = awayTeamScorePeriod2;
     }
 
-    public int getAwayTeamScoreExtraTime() {
+    public Integer getAwayTeamScoreExtraTime() {
         return AwayTeamScoreExtraTime;
     }
 
-    public void setAwayTeamScoreExtraTime(int awayTeamScoreExtraTime) {
+    public void setAwayTeamScoreExtraTime(Integer awayTeamScoreExtraTime) {
         AwayTeamScoreExtraTime = awayTeamScoreExtraTime;
     }
 
-    public int getAwayTeamScorePenalty() {
+    public Integer getAwayTeamScorePenalty() {
         return AwayTeamScorePenalty;
     }
 
-    public void setAwayTeamScorePenalty(int awayTeamScorePenalty) {
+    public void setAwayTeamScorePenalty(Integer awayTeamScorePenalty) {
         AwayTeamScorePenalty = awayTeamScorePenalty;
     }
 
@@ -357,67 +384,67 @@ public class Game {
         HomeTeamCountryCode = homeTeamCountryCode;
     }
 
-    public int getHomeTeamScore() {
+    public Integer getHomeTeamScore() {
         return HomeTeamScore;
     }
 
-    public void setHomeTeamScore(int homeTeamScore) {
+    public void setHomeTeamScore(Integer homeTeamScore) {
         HomeTeamScore = homeTeamScore;
     }
 
-    public int getHomeTeamScorePeriod1() {
+    public Integer getHomeTeamScorePeriod1() {
         return HomeTeamScorePeriod1;
     }
 
-    public void setHomeTeamScorePeriod1(int homeTeamScorePeriod1) {
+    public void setHomeTeamScorePeriod1(Integer homeTeamScorePeriod1) {
         HomeTeamScorePeriod1 = homeTeamScorePeriod1;
     }
 
-    public int getHomeTeamScorePeriod2() {
+    public Integer getHomeTeamScorePeriod2() {
         return HomeTeamScorePeriod2;
     }
 
-    public void setHomeTeamScorePeriod2(int homeTeamScorePeriod2) {
+    public void setHomeTeamScorePeriod2(Integer homeTeamScorePeriod2) {
         HomeTeamScorePeriod2 = homeTeamScorePeriod2;
     }
 
-    public int getHomeTeamScoreExtraTime() {
+    public Integer getHomeTeamScoreExtraTime() {
         return HomeTeamScoreExtraTime;
     }
 
-    public void setHomeTeamScoreExtraTime(int homeTeamScoreExtraTime) {
+    public void setHomeTeamScoreExtraTime(Integer homeTeamScoreExtraTime) {
         HomeTeamScoreExtraTime = homeTeamScoreExtraTime;
     }
 
-    public int getHomeTeamScorePenalty() {
+    public Integer getHomeTeamScorePenalty() {
         return HomeTeamScorePenalty;
     }
 
-    public void setHomeTeamScorePenalty(int homeTeamScorePenalty) {
+    public void setHomeTeamScorePenalty(Integer homeTeamScorePenalty) {
         HomeTeamScorePenalty = homeTeamScorePenalty;
     }
 
-    public int getHomeTeamMoneyLine() {
+    public Integer getHomeTeamMoneyLine() {
         return HomeTeamMoneyLine;
     }
 
-    public void setHomeTeamMoneyLine(int homeTeamMoneyLine) {
+    public void setHomeTeamMoneyLine(Integer homeTeamMoneyLine) {
         HomeTeamMoneyLine = homeTeamMoneyLine;
     }
 
-    public int getAwayTeamMoneyLine() {
+    public Integer getAwayTeamMoneyLine() {
         return AwayTeamMoneyLine;
     }
 
-    public void setAwayTeamMoneyLine(int awayTeamMoneyLine) {
+    public void setAwayTeamMoneyLine(Integer awayTeamMoneyLine) {
         AwayTeamMoneyLine = awayTeamMoneyLine;
     }
 
-    public int getDrawMoneyLine() {
+    public Integer getDrawMoneyLine() {
         return DrawMoneyLine;
     }
 
-    public void setDrawMoneyLine(int drawMoneyLine) {
+    public void setDrawMoneyLine(Integer drawMoneyLine) {
         DrawMoneyLine = drawMoneyLine;
     }
 
@@ -429,19 +456,19 @@ public class Game {
         PointSpread = pointSpread;
     }
 
-    public int getHomeTeamPointSpreadPayout() {
+    public Integer getHomeTeamPointSpreadPayout() {
         return HomeTeamPointSpreadPayout;
     }
 
-    public void setHomeTeamPointSpreadPayout(int homeTeamPointSpreadPayout) {
+    public void setHomeTeamPointSpreadPayout(Integer homeTeamPointSpreadPayout) {
         HomeTeamPointSpreadPayout = homeTeamPointSpreadPayout;
     }
 
-    public int getAwayTeamPointSpreadPayout() {
+    public Integer getAwayTeamPointSpreadPayout() {
         return AwayTeamPointSpreadPayout;
     }
 
-    public void setAwayTeamPointSpreadPayout(int awayTeamPointSpreadPayout) {
+    public void setAwayTeamPointSpreadPayout(Integer awayTeamPointSpreadPayout) {
         AwayTeamPointSpreadPayout = awayTeamPointSpreadPayout;
     }
 
@@ -453,27 +480,27 @@ public class Game {
         OverUnder = overUnder;
     }
 
-    public int getOverPayout() {
+    public Integer getOverPayout() {
         return OverPayout;
     }
 
-    public void setOverPayout(int overPayout) {
+    public void setOverPayout(Integer overPayout) {
         OverPayout = overPayout;
     }
 
-    public int getUnderPayout() {
+    public Integer getUnderPayout() {
         return UnderPayout;
     }
 
-    public void setUnderPayout(int underPayout) {
+    public void setUnderPayout(Integer underPayout) {
         UnderPayout = underPayout;
     }
 
-    public int getAttendance() {
+    public Integer getAttendance() {
         return Attendance;
     }
 
-    public void setAttendance(int attendance) {
+    public void setAttendance(Integer attendance) {
         Attendance = attendance;
     }
 
@@ -493,35 +520,35 @@ public class Game {
         UpdatedUtc = updatedUtc;
     }
 
-    public int getGlobalGameId() {
+    public Integer getGlobalGameId() {
         return GlobalGameId;
     }
 
-    public void setGlobalGameId(int globalGameId) {
+    public void setGlobalGameId(Integer globalGameId) {
         GlobalGameId = globalGameId;
     }
 
-    public int getGlobalAwayTeamId() {
+    public Integer getGlobalAwayTeamId() {
         return GlobalAwayTeamId;
     }
 
-    public void setGlobalAwayTeamId(int globalAwayTeamId) {
+    public void setGlobalAwayTeamId(Integer globalAwayTeamId) {
         GlobalAwayTeamId = globalAwayTeamId;
     }
 
-    public int getGlobalHomeTeamId() {
+    public Integer getGlobalHomeTeamId() {
         return GlobalHomeTeamId;
     }
 
-    public void setGlobalHomeTeamId(int globalHomeTeamId) {
+    public void setGlobalHomeTeamId(Integer globalHomeTeamId) {
         GlobalHomeTeamId = globalHomeTeamId;
     }
 
-    public int getClockExtra() {
+    public Integer getClockExtra() {
         return ClockExtra;
     }
 
-    public void setClockExtra(int clockExtra) {
+    public void setClockExtra(Integer clockExtra) {
         ClockExtra = clockExtra;
     }
 
@@ -581,12 +608,50 @@ public class Game {
         this.competition = competition;
     }
 
-    // public CompetitionDetail getCompetitionDetail() {
-    // return competitionDetail;
-    // }
-
-    // public void setCompetitionDetail(CompetitionDetail competitionDetail) {
-    // this.competitionDetail = competitionDetail;
+    // @Override
+    // public String toString() {
+    // return "Game [GameId=" + GameId + ", RoundId=" + RoundId + ", Season=" +
+    // Season + ", SeasonType=" + SeasonType
+    // + ", GroupName=" + GroupName + ", AwayTeamId=" + AwayTeamId + ", HomeTeamId="
+    // + HomeTeamId
+    // + ", VenueId=" + VenueId + ", Day=" + Day + ", DateTime=" + DateTime + ",
+    // Status=" + Status + ", Week="
+    // + Week + ", Period=" + Period + ", Clock=" + Clock + ", Winner=" + Winner +
+    // ", VenueType=" + VenueType
+    // + ", AwayTeamKey=" + AwayTeamKey + ", AwayTeamName=" + AwayTeamName + ",
+    // AwayTeamCountryCode="
+    // + AwayTeamCountryCode + ", AwayTeamScore=" + AwayTeamScore + ",
+    // AwayTeamScorePeriod1="
+    // + AwayTeamScorePeriod1 + ", AwayTeamScorePeriod2=" + AwayTeamScorePeriod2 +
+    // ", AwayTeamScoreExtraTime="
+    // + AwayTeamScoreExtraTime + ", AwayTeamScorePenalty=" + AwayTeamScorePenalty +
+    // ", HomeTeamKey="
+    // + HomeTeamKey + ", HomeTeamName=" + HomeTeamName + ", HomeTeamCountryCode=" +
+    // HomeTeamCountryCode
+    // + ", HomeTeamScore=" + HomeTeamScore + ", HomeTeamScorePeriod1=" +
+    // HomeTeamScorePeriod1
+    // + ", HomeTeamScorePeriod2=" + HomeTeamScorePeriod2 + ",
+    // HomeTeamScoreExtraTime="
+    // + HomeTeamScoreExtraTime + ", HomeTeamScorePenalty=" + HomeTeamScorePenalty +
+    // ", HomeTeamMoneyLine="
+    // + HomeTeamMoneyLine + ", AwayTeamMoneyLine=" + AwayTeamMoneyLine + ",
+    // DrawMoneyLine=" + DrawMoneyLine
+    // + ", PointSpread=" + PointSpread + ", HomeTeamPointSpreadPayout=" +
+    // HomeTeamPointSpreadPayout
+    // + ", AwayTeamPointSpreadPayout=" + AwayTeamPointSpreadPayout + ", OverUnder="
+    // + OverUnder
+    // + ", OverPayout=" + OverPayout + ", UnderPayout=" + UnderPayout + ",
+    // Attendance=" + Attendance
+    // + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", GlobalGameId=" +
+    // GlobalGameId
+    // + ", GlobalAwayTeamId=" + GlobalAwayTeamId + ", GlobalHomeTeamId=" +
+    // GlobalHomeTeamId + ", ClockExtra="
+    // + ClockExtra + ", ClockDisplay=" + ClockDisplay + ", IsClosed=" + IsClosed +
+    // ", HomeTeamFormation="
+    // + HomeTeamFormation + ", AwayTeamFormation=" + AwayTeamFormation + ",
+    // playoffAggregateScore="
+    // + playoffAggregateScore + ", round=" + round + ", competition=" + competition
+    // + "]";
     // }
 
 }

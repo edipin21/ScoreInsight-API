@@ -40,7 +40,8 @@ public class Round {
     @JoinColumn(name = "season_id", insertable = false, updatable = false)
     private Season season;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "round_id")
     private List<Game> Games;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

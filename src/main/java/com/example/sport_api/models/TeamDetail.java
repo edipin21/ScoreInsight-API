@@ -1,11 +1,9 @@
 package com.example.sport_api.models;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +12,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+@JsonPropertyOrder({ "teamId", "areaId", "venueId", "stringKey", "name", "fullName", "active",
+        "areaName", "venueName", "gender", "type", "address", "city", "zip", "phone", "fax", "website", "email",
+        "founded", "clubColor1", "clubColor2", "clubColor3", "nickname1", "nickname2", "nickname3", "wikipediaLogoUrl",
+        "wikipediaWordMarkUrl", "globalTeamId", "players" })
 @Entity
 public class TeamDetail {
 
@@ -49,13 +51,13 @@ public class TeamDetail {
     private String WikipediaWordMarkUrl;
     private int GlobalTeamId;
 
-    @OneToMany(mappedBy = "teamDetail", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "team_id")
     private List<Player> Players;
 
-    @ManyToOne
-    @JoinColumn(name = "competitionId")
-    @JsonBackReference("competition-teamDetail")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "competition_id")
+    @JsonIgnore
     private Competition competition;
 
     public TeamDetail() {
@@ -337,6 +339,7 @@ public class TeamDetail {
     }
 
     public void setPlayers(List<Player> players) {
+
         Players = players;
     }
 

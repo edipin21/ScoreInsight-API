@@ -1,9 +1,7 @@
 package com.example.sport_api.models;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
@@ -17,7 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @JsonPropertyOrder({ "competitionId", "areaId", "areaName", "name", "gender", "type", "format",
-        "Key", "currentSeason", "seasons" })
+        "stringKey", "key", "currentSeason", "teams", "games", "seasons" })
 @Entity
 public class Competition {
 
@@ -42,16 +40,17 @@ public class Competition {
     @JoinColumn(name = "competition_id")
     private List<Season> Seasons;
 
-    @OneToOne // (cascade = CascadeType.MERGE)
+    @OneToOne
     private Season CurrentSeason;
 
-    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
-    @JsonManagedReference("competition-teamDetail")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
+    @JoinColumn(name = "competition_id")
     private List<TeamDetail> Teams;
 
-    @OneToMany(mappedBy = "competition", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
-    @JsonManagedReference("competition-game")
-    private List<Game> games;
+    // @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER) // CompetitionDetail
+    @JoinColumn(name = "competition_id")
+    private List<Game> Games;
 
     public Competition() {
     }
@@ -71,7 +70,7 @@ public class Competition {
         Seasons = seasons;
         CurrentSeason = currentSeason;
         Teams = teams;
-        this.games = games;
+        Games = games;
     }
 
     public Season getCurrentSeason() {
@@ -91,11 +90,11 @@ public class Competition {
     }
 
     public List<Game> getGames() {
-        return games;
+        return Games;
     }
 
     public void setGames(List<Game> games) {
-        this.games = games;
+        Games = games;
     }
 
     public int getCompetitionId() {
@@ -176,6 +175,17 @@ public class Competition {
 
     public void setArea(Area area) {
         this.area = area;
+    }
+
+    @Override
+    public String toString() {
+        return "Competition [CompetitionId=" + CompetitionId + ", AreaId=" + AreaId +
+                ", AreaName=" + AreaName
+                + ", Name=" + Name + ", Gender=" + Gender + ", Type=" + Type + ", Format=" +
+                Format + ", StringKey="
+                + StringKey + ", area=" + area + ", Seasons=" + Seasons + ", CurrentSeason="
+                + CurrentSeason
+                + ", Teams=" + Teams + ", games=" + Games + "]";
     }
 
 }

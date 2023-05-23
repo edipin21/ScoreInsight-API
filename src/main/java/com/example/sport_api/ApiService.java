@@ -1,21 +1,23 @@
 package com.example.sport_api;
 
+import com.example.sport_api.models.Area;
+import com.example.sport_api.models.Competition;
+import com.example.sport_api.models.Game;
+import com.example.sport_api.models.Team;
+import com.example.sport_api.models.TeamDetail;
+import com.example.sport_api.repositories.AreaRepository;
+import com.example.sport_api.repositories.CompetitionRepository;
+import com.example.sport_api.repositories.GameRepository;
+import com.example.sport_api.repositories.RoundRepository;
+import com.example.sport_api.repositories.SeasonRepository;
+import com.example.sport_api.repositories.TeamDetailRepository;
+import com.example.sport_api.repositories.TeamRepository;
+import com.example.sport_api.services.CompetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.example.sport_api.models.Area;
-import com.example.sport_api.models.Competition;
-// import com.example.sport_api.models.Competition;
-// import com.example.sport_api.models.CompetitionDetail;
-import com.example.sport_api.models.Team;
-import com.example.sport_api.repositories.AreaRepository;
-// import com.example.sport_api.repositories.CompetitionDetailRepository;
-import com.example.sport_api.repositories.CompetitionRepository;
-// import com.example.sport_api.repositories.CompetitionRepository;
-import com.example.sport_api.repositories.TeamRepository;
-import com.example.sport_api.services.CompetitionService;
-// import com.example.sport_api.services.CompetitionDetailService;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,12 +25,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.github.cdimascio.dotenv.Dotenv;
-
+import java.io.IOException;
 import java.util.ArrayList;
-// import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApiService {
@@ -36,7 +37,7 @@ public class ApiService {
     private final String teamsResourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=";
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
-    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/ucl?key=";
+    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/3?key=";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -49,15 +50,21 @@ public class ApiService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
-    // @Autowired
-    // private CompetitionDetailRepository competitionDetailRepository;
-    // @Autowired
-    // private CompetitionDetailService competitionDetailService;
-
     @Autowired
     CompetitionService competitionService;
 
-    // Make the update more efficient
+    @Autowired
+    private GameRepository gameRepository;
+
+    @Autowired
+    private RoundRepository roundRepository;
+
+    @Autowired
+    private SeasonRepository seasonRepository;
+
+    @Autowired
+    private TeamDetailRepository teamDetailRepository;
+
     public void fetchTeamsAndUpdate() throws JsonMappingException, JsonProcessingException {
 
         String teamsJson = fetchData(teamsResourceUrl);
@@ -79,12 +86,11 @@ public class ApiService {
         ObjectMapper objectMapper = initializeObjectMapper();
 
         List<Area> areas = new ArrayList<>();
-        // Area[] areas;
+
         areas = objectMapper.readValue(areasJson, new TypeReference<List<Area>>() {
         });
 
         try {
-            // areaRepository.saveAll(Arrays.asList(areas));
             areaRepository.saveAll(areas);
 
         } catch (Exception e) {
@@ -131,21 +137,51 @@ public class ApiService {
         return objectMapper;
     }
 
-    public void fetchCompetitionFixturesAndUpdate() throws JsonMappingException,
-            JsonProcessingException {
+    public void fetchCompetitionFixturesAndUpdate() throws JsonProcessingException, IOException {
 
-        String competitionFixturesJson = fetchData(competitionFixturesUrl);
+        try {
+            String competitionFixturesJson = fetchData(competitionFixturesUrl);
 
-        ObjectMapper objectMapper = initializeObjectMapper();
+            ObjectMapper objectMapper = initializeObjectMapper();
 
-        Competition competition;
+            Competition competition = objectMapper.readValue(competitionFixturesJson,
+                    Competition.class);
 
-        competition = objectMapper.readValue(competitionFixturesJson,
-                Competition.class);
+            Optional<List<Game>> games = Optional.of(competition.getGames());
+            List<Game> theGames = new ArrayList<>();
+            if (games.isPresent()) {
+                theGames = games.get();
+                for (Game game : theGames) {
+                    game.setCompetition(competition);
+                }
 
-        // CompetitionService.addCompetitionDetail1(competition);
-        // competitionDetailRepository.save(competitionDetails);
+            }
+            Optional<List<TeamDetail>> teams = Optional.of(competition.getTeams());
+            List<TeamDetail> theTeams = new ArrayList<>();
+            if (teams.isPresent()) {
+                System.out.println(teams.get().get(0));
+                theTeams = teams.get();
+                for (TeamDetail team : theTeams) {
+                    team.setCompetition(competition);
+                }
 
-        competitionRepository.save(competition);
+            }
+            competitionRepository.save(competition);
+
+            if (!theGames.isEmpty()) {
+                gameRepository.saveAll(theGames);
+            }
+            if (!theTeams.isEmpty()) {
+                teamDetailRepository.saveAll(theTeams);
+            }
+        } catch (IOException e) {
+            if (e instanceof JsonProcessingException) {
+                System.out.println("Error occurred during JSON processing: " + e.getMessage());
+                throw e;
+            } else {
+                System.out.println("Error occurred during I/O operation: " + e.getMessage());
+                throw e;
+            }
+        }
     }
 }

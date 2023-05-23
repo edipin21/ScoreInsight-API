@@ -90,7 +90,7 @@ public class Game {
     private Round round;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "competition_id")
+    @JoinColumn(name = "competition_id", insertable = false, updatable = false)
     @JsonIgnore
     private Competition competition;
 

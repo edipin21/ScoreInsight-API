@@ -37,7 +37,7 @@ public class ApiService {
     private final String teamsResourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=";
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
-    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/3?key=";
+    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/2?key=";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -162,6 +162,7 @@ public class ApiService {
                 System.out.println(teams.get().get(0));
                 theTeams = teams.get();
                 for (TeamDetail team : theTeams) {
+
                     team.setCompetition(competition);
                 }
 
@@ -171,9 +172,9 @@ public class ApiService {
             if (!theGames.isEmpty()) {
                 gameRepository.saveAll(theGames);
             }
-            if (!theTeams.isEmpty()) {
-                teamDetailRepository.saveAll(theTeams);
-            }
+            // if (!theTeams.isEmpty()) {
+            // teamDetailRepository.saveAll(theTeams);
+            // }
         } catch (IOException e) {
             if (e instanceof JsonProcessingException) {
                 System.out.println("Error occurred during JSON processing: " + e.getMessage());
@@ -182,6 +183,14 @@ public class ApiService {
                 System.out.println("Error occurred during I/O operation: " + e.getMessage());
                 throw e;
             }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid argument provided: " + e.getMessage());
+            throw e;
+
+        } catch (DataAccessException e) {
+            System.out.println("Error occurred during data access: " + e.getMessage());
+            throw e;
         }
     }
+
 }

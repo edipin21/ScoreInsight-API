@@ -1,14 +1,13 @@
 package com.example.sport_api.models;
 
 import java.sql.Date;
-
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({ "playerId", "firstName", "lastName", "commonName", "shortName", "position", "positionCategory",
         "jersey", "foot", "height", "weight", "gender", "birthCity", "birthCity", "birthCountry", "nationality",
@@ -49,7 +48,8 @@ public class Player {
     private Date UsaTodayHeadshotNoBackgroundUpdated;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id", insertable = true, updatable = false)
+    @JsonIgnore
     private TeamDetail teamDetail;
 
     public int getPlayerId() {

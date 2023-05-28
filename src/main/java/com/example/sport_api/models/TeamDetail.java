@@ -23,8 +23,6 @@ public class TeamDetail {
     private int TeamId;
     private int AreaId;
     private int VenueId;
-    // need to fix
-    @JsonProperty("Key")
     private String StringKey;
     private String Name;
     private String FullName;
@@ -325,11 +323,12 @@ public class TeamDetail {
     // public void setPlayers(Player[] players) {
     // Players = players;
     // }
-
+    @JsonProperty("Key")
     public String getStringKey() {
         return StringKey;
     }
 
+    @JsonProperty("Key")
     public void setStringKey(String stringKey) {
         StringKey = stringKey;
     }

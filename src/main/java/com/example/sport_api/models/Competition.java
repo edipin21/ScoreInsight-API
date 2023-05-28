@@ -28,15 +28,15 @@ public class Competition {
     private String Gender;
     private String Type;
     private String Format;
-    @JsonProperty("Key")
+    // @JsonProperty("Key")
     private String StringKey;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne // (fetch = FetchType.EAGER)
     @JoinColumn(name = "area_id", insertable = false, updatable = false)
     private Area area;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "competition_id")
     private List<Season> Seasons;
 
@@ -47,7 +47,6 @@ public class Competition {
     @JoinColumn(name = "competition_id")
     private List<TeamDetail> Teams;
 
-    // @OneToMany(mappedBy = "competition", fetch = FetchType.EAGER)
     @OneToMany(fetch = FetchType.EAGER) // CompetitionDetail
     @JoinColumn(name = "competition_id")
     private List<Game> Games;
@@ -145,10 +144,12 @@ public class Competition {
         Format = format;
     }
 
+    @JsonProperty("Key")
     public String getStringKey() {
         return StringKey;
     }
 
+    @JsonProperty("Key")
     public void setStringKey(String stringKey) {
         StringKey = stringKey;
     }

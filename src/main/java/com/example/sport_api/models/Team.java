@@ -13,10 +13,7 @@ public class Team {
 
     private int AreaId;
     private int VenueId;
-
-    @JsonProperty("Key")
     private String shortName;
-
     private String Name;
     private String FullName;
     private Boolean Active;
@@ -94,6 +91,7 @@ public class Team {
         return VenueId;
     }
 
+    @JsonProperty("Key")
     public String getShortName() {
         return shortName;
     }
@@ -302,6 +300,7 @@ public class Team {
         GlobalTeamId = globalTeamId;
     }
 
+    @JsonProperty("Key")
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }

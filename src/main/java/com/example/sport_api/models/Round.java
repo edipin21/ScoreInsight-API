@@ -25,7 +25,7 @@ public class Round {
     @Column(name = "season_id")
     private int SeasonId;
 
-    @JsonProperty("Season")
+    // @JsonProperty("Season")
     private int SoccerSeason;
     private int SeasonType;
     private String Name;
@@ -36,7 +36,7 @@ public class Round {
     private boolean CurrentRound;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "season_id", insertable = false, updatable = false)
     private Season season;
 
@@ -141,10 +141,12 @@ public class Round {
         CurrentRound = currentRound;
     }
 
+    @JsonProperty("Season")
     public int getSoccerSeason() {
         return SoccerSeason;
     }
 
+    @JsonProperty("Season")
     public void setSoccerSeason(int soccerSeason) {
         SoccerSeason = soccerSeason;
     }

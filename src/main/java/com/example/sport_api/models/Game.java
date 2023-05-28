@@ -31,7 +31,6 @@ public class Game {
     private Integer RoundId;
     private Integer Season;
     private Integer SeasonType;
-    @JsonProperty("Group")
     private String GroupName;
     private Integer AwayTeamId;
     private Integer HomeTeamId;
@@ -200,10 +199,12 @@ public class Game {
         SeasonType = seasonType;
     }
 
+    @JsonProperty("Group")
     public String getGroupName() {
         return GroupName;
     }
 
+    @JsonProperty("Group")
     public void setGroupName(String groupName) {
         GroupName = groupName;
     }

@@ -8,8 +8,6 @@ import com.example.sport_api.models.TeamDetail;
 import com.example.sport_api.repositories.AreaRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.GameRepository;
-import com.example.sport_api.repositories.RoundRepository;
-import com.example.sport_api.repositories.SeasonRepository;
 import com.example.sport_api.repositories.TeamDetailRepository;
 import com.example.sport_api.repositories.TeamRepository;
 import com.example.sport_api.services.CompetitionService;
@@ -37,7 +35,7 @@ public class ApiService {
     private final String teamsResourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=";
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
-    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/2?key=";
+    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/1?key=";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -55,12 +53,6 @@ public class ApiService {
 
     @Autowired
     private GameRepository gameRepository;
-
-    @Autowired
-    private RoundRepository roundRepository;
-
-    @Autowired
-    private SeasonRepository seasonRepository;
 
     @Autowired
     private TeamDetailRepository teamDetailRepository;
@@ -172,9 +164,9 @@ public class ApiService {
             if (!theGames.isEmpty()) {
                 gameRepository.saveAll(theGames);
             }
-            // if (!theTeams.isEmpty()) {
-            // teamDetailRepository.saveAll(theTeams);
-            // }
+            if (!theTeams.isEmpty()) {
+                teamDetailRepository.saveAll(theTeams);
+            }
         } catch (IOException e) {
             if (e instanceof JsonProcessingException) {
                 System.out.println("Error occurred during JSON processing: " + e.getMessage());

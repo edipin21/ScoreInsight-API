@@ -15,8 +15,6 @@ public class Standing {
     private String Name;
     private String ShortName;
     private String Scope;
-
-    @JsonProperty("order")
     private int TeamsOrder;
     private int Games;
     private int Wins;
@@ -103,10 +101,12 @@ public class Standing {
         Scope = scope;
     }
 
+    @JsonProperty("order")
     public int getTeamsOrder() {
         return TeamsOrder;
     }
 
+    @JsonProperty("order")
     public void setTeamsOrder(int TeamsOrder) {
         this.TeamsOrder = TeamsOrder;
     }

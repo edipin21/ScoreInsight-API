@@ -27,12 +27,6 @@ public class CompetitionContrller {
 
     @RequestMapping("/com")
     public List<CompetitionDto> retrieveAllTeams() {
-
-        // return competitionRepository.findAllCompetitions();
-
-        // return competitionRepository.findById(1).get();
-        // return competitionRepository.findAll();
-        // return competitionRepository.findAllCompetitions();
         return competitionService.getAllCompetitions();
     }
 

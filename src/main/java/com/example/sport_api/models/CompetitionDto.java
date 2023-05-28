@@ -1,5 +1,6 @@
 package com.example.sport_api.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -78,6 +79,15 @@ public class CompetitionDto {
     }
 
     public void setSeasons(List<Season> seasons) {
+        for (Season season : seasons) {
+            List<Round> rounds = season.getRounds();
+            for (Round round : rounds) {
+                round.setGames(new ArrayList<>());
+                round.setStandings(new ArrayList<>());
+                round.setTeamSeasons(new ArrayList<>());
+                round.setPlayerSeasons(new ArrayList<>());
+            }
+        }
         this.seasons = seasons;
     }
 

@@ -1,30 +1,18 @@
 package com.example.sport_api.config;
 
 import java.io.IOException;
-import java.time.ZoneId;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import com.example.sport_api.ApiService;
+import com.example.sport_api.DataSyncService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-
-import jakarta.annotation.PostConstruct;
 
 @Component
 public class DataUpdaterScheduler {
 
     @Autowired
-    private ApiService apiService;
-
-    @PostConstruct
-    public void init() {
-        ZoneId zone = ZoneId.systemDefault();
-        String timeZone = zone.toString();
-        System.out.println("Server timezone!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: " + timeZone);
-    }
+    private DataSyncService apiService;
 
     // (fixedRate = 4 * 60 * 60 * 1000)
 
@@ -42,11 +30,11 @@ public class DataUpdaterScheduler {
     // apiService.fetchAreasAndUpdate();
     // }
 
-    // @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
-    // public void updateCompetitionDB() throws JsonMappingException,
-    // JsonProcessingException {
-    // apiService.fetchCompetitionsAndUpdate();
-    // }
+    @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
+    public void updateCompetitionDB() throws JsonMappingException,
+            JsonProcessingException {
+        apiService.fetchCompetitionsAndUpdate();
+    }
 
     @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     public void updateCompetitionfeDB() throws IOException {

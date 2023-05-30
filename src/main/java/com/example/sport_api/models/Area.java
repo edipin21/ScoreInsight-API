@@ -1,16 +1,13 @@
 package com.example.sport_api.models;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
 @JsonPropertyOrder({ "areaId", "countryCode", "name", "competitions" })
@@ -23,8 +20,6 @@ public class Area {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "area_id")
-    // @JsonIgnoreProperties(value = { "seasons", "currentSeason", "teams", "games"
-    // })
     private List<Competition> Competitions;
 
     public Area() {

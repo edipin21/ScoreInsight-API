@@ -3,14 +3,12 @@ package com.example.sport_api.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.repositories.CompetitionRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class CompetitionService {
@@ -57,9 +55,7 @@ public class CompetitionService {
             competitionDto.setType(competition.getType());
 
             competitionDtos.add(competitionDto);
-
         }
-
         return competitionDtos;
     }
 

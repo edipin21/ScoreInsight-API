@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.example.sport_api.exceptions.AreaNotFoundException;
 import com.example.sport_api.mappers.CompetitionMapper;
 import com.example.sport_api.models.Area;
 import com.example.sport_api.models.AreaDto;
@@ -16,6 +20,8 @@ import com.example.sport_api.repositories.AreaRepository;
 
 @Service
 public class AreaService {
+
+    private static final Logger logger = LogManager.getLogger(AreaService.class);
 
     @Autowired
     private AreaRepository areaRepository;
@@ -28,30 +34,37 @@ public class AreaService {
         return areaRepository.findAll();
     }
 
-    public List<AreaDto> getAllAreasWithCompetitions() {
+    public List<AreaDto> getAllAreasWithCompetitions() throws AreaNotFoundException {
+        logger.info("Try to retrive areas with competition from database");
+        try {
+            List<Area> areas = areaRepository.findAll();
+            List<AreaDto> areaDtos = new ArrayList<>();
 
-        // the error is here!!!!!!!!!!!!!!
-        List<Area> areas = areaRepository.findAll();
+            for (Area area : areas) {
+                AreaDto areaDto = new AreaDto();
+                areaDto.setAreaId(area.getAreaId());
+                areaDto.setCountryCode(area.getCountryCode());
+                areaDto.setName(area.getName());
 
-        List<AreaDto> areaDtos = new ArrayList<>();
+                List<Competition> competitions = area.getCompetitions();
+                List<CompetitionDto> competitionDtos = competitions.stream()
+                        .map(CompetitionMapper::toDto)
+                        .collect(Collectors.toList());
 
-        for (Area area : areas) {
-            AreaDto areaDto = new AreaDto();
-            areaDto.setAreaId(area.getAreaId());
-            areaDto.setCountryCode(area.getCountryCode());
-            areaDto.setName(area.getName());
+                areaDto.setCompetitions(competitionDtos);
 
-            List<Competition> competitions = area.getCompetitions();
-            List<CompetitionDto> competitionDtos = competitions.stream()
-                    .map(CompetitionMapper::toDto)
-                    .collect(Collectors.toList());
+                areaDtos.add(areaDto);
+            }
+            return areaDtos;
 
-            areaDto.setCompetitions(competitionDtos);
+        } catch (DataAccessException e) {
+            logger.error("Error occurred while accessing data: " + e.getMessage(), e);
+            throw e;
 
-            areaDtos.add(areaDto);
+        } catch (AreaNotFoundException e) {
+            logger.error(new AreaNotFoundException("null"));
+            throw e;
         }
-
-        return areaDtos;
     }
 
 }

@@ -3,8 +3,6 @@ package com.example.sport_api.services;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.stereotype.Service;
 import org.springframework.dao.DataAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,8 @@ import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.mappers.CompetitionMapper;
 import com.example.sport_api.repositories.AreaRepository;
-import com.example.sport_api.exceptions.AreaNotFoundException;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 @Service
 public class AreaService {

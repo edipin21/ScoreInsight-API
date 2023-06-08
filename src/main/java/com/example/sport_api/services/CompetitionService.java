@@ -6,32 +6,25 @@ import java.util.Optional;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.repositories.CompetitionRepository;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 
 @Service
 public class CompetitionService {
+
+    private static final Logger logger = LogManager.getLogger(CompetitionService.class);
 
     @Autowired
     private CompetitionRepository competitionRepository;
 
     public CompetitionService(CompetitionRepository competitionRepository) {
         this.competitionRepository = competitionRepository;
-    }
-
-    @Transactional
-    public void addCompetitionDetail1(Competition competition) {
-
-        Optional<Competition> com = competitionRepository.findById(competition.getCompetitionId());
-
-        if (com.isPresent()) {
-            Competition exsistedCompetition = com.get();
-
-            exsistedCompetition.setCurrentSeason(competition.getCurrentSeason());
-            competitionRepository.save(exsistedCompetition);
-        }
-
     }
 
     public List<CompetitionDto> getAllCompetitions() {
@@ -59,4 +52,19 @@ public class CompetitionService {
         return competitionDtos;
     }
 
+    public Competition getCompetitionById(int competitionId) {
+        try {
+            Optional<Competition> competition = competitionRepository.findById(competitionId);
+
+            if (competition.isPresent()) {
+                return competition.get();
+            } else {
+                throw new NotFoundException("Competition not found");
+            }
+        } catch (NotFoundException e) {
+            logger.log(Level.WARN, "Competition not found for ID: " + competitionId, e);
+            throw e;
+        }
+
+    }
 }

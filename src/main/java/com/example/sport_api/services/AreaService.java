@@ -1,22 +1,20 @@
 package com.example.sport_api.services;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
-
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.stereotype.Service;
-
-import com.example.sport_api.exceptions.AreaNotFoundException;
-import com.example.sport_api.mappers.CompetitionMapper;
+import org.springframework.dao.DataAccessException;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.example.sport_api.models.Area;
 import com.example.sport_api.models.AreaDto;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
+import com.example.sport_api.mappers.CompetitionMapper;
 import com.example.sport_api.repositories.AreaRepository;
+import com.example.sport_api.exceptions.AreaNotFoundException;
 
 @Service
 public class AreaService {
@@ -34,7 +32,7 @@ public class AreaService {
         return areaRepository.findAll();
     }
 
-    public List<AreaDto> getAllAreasWithCompetitions() throws AreaNotFoundException {
+    public List<AreaDto> getAllAreasWithCompetitions() {
         logger.info("Try to retrive areas with competition from database");
         try {
             List<Area> areas = areaRepository.findAll();
@@ -60,11 +58,6 @@ public class AreaService {
         } catch (DataAccessException e) {
             logger.error("Error occurred while accessing data: " + e.getMessage(), e);
             throw e;
-
-        } catch (AreaNotFoundException e) {
-            logger.error(new AreaNotFoundException("null"));
-            throw e;
         }
     }
-
 }

@@ -63,16 +63,22 @@ public class DataSyncService {
 
     public void fetchTeamsAndUpdate() throws JsonMappingException, JsonProcessingException {
 
-        String teamsJson = fetchData(teamsResourceUrl);
+        try {
+            String teamsJson = fetchData(teamsResourceUrl);
 
-        ObjectMapper objectMapper = initializeObjectMapper();
+            ObjectMapper objectMapper = initializeObjectMapper();
 
-        List<Team> teams = new ArrayList<>();
+            List<Team> teams = new ArrayList<>();
 
-        teams = objectMapper.readValue(teamsJson, new TypeReference<List<Team>>() {
-        });
+            teams = objectMapper.readValue(teamsJson, new TypeReference<List<Team>>() {
+            });
 
-        teamRepository.saveAll(teams);
+            teamRepository.saveAll(teams);
+        } catch (Exception e) {
+            handleException(e);
+            throw e;
+        }
+
     }
 
     public void fetchAreasAndUpdate() throws JsonProcessingException {
@@ -88,32 +94,29 @@ public class DataSyncService {
 
             areaRepository.saveAll(areas);
 
-        } catch (IOException e) {
-            if (e instanceof JsonProcessingException) {
-                logger.error("Error occurred during JSON processing: {}", e.getMessage(), e);
-            } else {
-                logger.error("Error occurred during I/O operation: {}", e.getMessage(), e);
-            }
-            throw e;
-        } catch (DataAccessException e) {
-            logger.error("Error occurred during data access: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            handleException(e);
             throw e;
         }
-
     }
 
-    public void fetchCompetitionsAndUpdate() throws JsonMappingException, JsonProcessingException {
+    public void fetchCompetitionsAndUpdate() throws JsonProcessingException {
 
-        String areasJson = fetchData(competitionsResourceUrl);
+        try {
+            String areasJson = fetchData(competitionsResourceUrl);
 
-        ObjectMapper objectMapper = initializeObjectMapper();
+            ObjectMapper objectMapper = initializeObjectMapper();
 
-        List<Competition> competitions;
+            List<Competition> competitions;
 
-        competitions = objectMapper.readValue(areasJson, new TypeReference<List<Competition>>() {
-        });
+            competitions = objectMapper.readValue(areasJson, new TypeReference<List<Competition>>() {
+            });
 
-        competitionRepository.saveAll(competitions);
+            competitionRepository.saveAll(competitions);
+        } catch (Exception e) {
+            handleException(e);
+            throw e;
+        }
 
     }
 
@@ -178,21 +181,24 @@ public class DataSyncService {
             if (!theTeams.isEmpty()) {
                 teamDetailRepository.saveAll(theTeams);
             }
-        } catch (IOException e) {
-            if (e instanceof JsonProcessingException) {
-                logger.error("Error occurred during JSON processing: {}", e.getMessage(), e);
-            } else {
-                logger.error("Error occurred during I/O operation: {}", e.getMessage(), e);
-            }
-            throw e;
-
         } catch (IllegalArgumentException e) {
             logger.error("Invalid argument provided: {}", e.getMessage(), e);
             throw e;
-        } catch (DataAccessException e) {
-            logger.error("Error occurred during data access: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            handleException(e);
             throw e;
         }
+    }
+
+    public void handleException(Exception e) {
+        if (e instanceof JsonProcessingException) {
+            logger.error("Error occurred during JSON processing: {}", e.getMessage(), e);
+        } else if (e instanceof IOException) {
+            logger.error("Error occurred during I/O operation: {}", e.getMessage(), e);
+        } else if (e instanceof DataAccessException) {
+            logger.error("Error occurred during data access: {}", e.getMessage(), e);
+        }
+
     }
 
 }

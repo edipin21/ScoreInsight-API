@@ -66,4 +66,9 @@ public class CompetitionService {
         }
 
     }
+
+    public boolean isCompetitionIdValid(Integer competitionId) {
+        List<Integer> allCompetitionIds = competitionRepository.findAllCompetitionIds();
+        return allCompetitionIds.contains(competitionId);
+    }
 }

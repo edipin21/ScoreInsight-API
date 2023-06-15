@@ -39,7 +39,7 @@ public class DataSyncService {
     private final String teamsResourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=";
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
-    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/1?key=";
+    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/3?key=";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -61,7 +61,8 @@ public class DataSyncService {
     @Autowired
     private TeamDetailRepository teamDetailRepository;
 
-    public void fetchTeamsAndUpdate() throws JsonMappingException, JsonProcessingException {
+    public void fetchTeamsAndUpdate() throws JsonMappingException,
+            JsonProcessingException {
 
         try {
             String teamsJson = fetchData(teamsResourceUrl);
@@ -127,7 +128,8 @@ public class DataSyncService {
         System.out.println(resourceUrl + apiKey);
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl + apiKey,
+        ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl +
+                apiKey,
                 String.class);
         String responsesData = response.getBody();
 
@@ -137,7 +139,8 @@ public class DataSyncService {
     public ObjectMapper initializeObjectMapper() {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+                false);
         objectMapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
         objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
         return objectMapper;
@@ -153,11 +156,14 @@ public class DataSyncService {
             Competition competition = objectMapper.readValue(competitionFixturesJson,
                     Competition.class);
 
+            System.out.println(competition.getGames().get(0));
             Optional<List<Game>> games = Optional.of(competition.getGames());
             List<Game> theGames = new ArrayList<>();
             if (games.isPresent()) {
+                System.out.println("game is present");
                 theGames = games.get();
                 for (Game game : theGames) {
+                    System.out.println(1);
                     game.setCompetition(competition);
                 }
 
@@ -176,9 +182,11 @@ public class DataSyncService {
             competitionRepository.save(competition);
 
             if (!theGames.isEmpty()) {
+                System.out.println("work1");
                 gameRepository.saveAll(theGames);
             }
             if (!theTeams.isEmpty()) {
+                System.out.println("work2");
                 teamDetailRepository.saveAll(theTeams);
             }
         } catch (IllegalArgumentException e) {

@@ -26,7 +26,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Game {
     @Id
-    private int GameId;
+    private Integer GameId;
     @Column(name = "round_id")
     private Integer RoundId;
     private Integer Season;
@@ -88,9 +88,9 @@ public class Game {
     @JoinColumn(name = "round_id", insertable = false, updatable = false)
     private Round round;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "competition_id", insertable = false, updatable = false)
-    @JsonIgnore
     private Competition competition;
 
     public Game() {
@@ -609,50 +609,8 @@ public class Game {
         this.competition = competition;
     }
 
-    // @Override
-    // public String toString() {
-    // return "Game [GameId=" + GameId + ", RoundId=" + RoundId + ", Season=" +
-    // Season + ", SeasonType=" + SeasonType
-    // + ", GroupName=" + GroupName + ", AwayTeamId=" + AwayTeamId + ", HomeTeamId="
-    // + HomeTeamId
-    // + ", VenueId=" + VenueId + ", Day=" + Day + ", DateTime=" + DateTime + ",
-    // Status=" + Status + ", Week="
-    // + Week + ", Period=" + Period + ", Clock=" + Clock + ", Winner=" + Winner +
-    // ", VenueType=" + VenueType
-    // + ", AwayTeamKey=" + AwayTeamKey + ", AwayTeamName=" + AwayTeamName + ",
-    // AwayTeamCountryCode="
-    // + AwayTeamCountryCode + ", AwayTeamScore=" + AwayTeamScore + ",
-    // AwayTeamScorePeriod1="
-    // + AwayTeamScorePeriod1 + ", AwayTeamScorePeriod2=" + AwayTeamScorePeriod2 +
-    // ", AwayTeamScoreExtraTime="
-    // + AwayTeamScoreExtraTime + ", AwayTeamScorePenalty=" + AwayTeamScorePenalty +
-    // ", HomeTeamKey="
-    // + HomeTeamKey + ", HomeTeamName=" + HomeTeamName + ", HomeTeamCountryCode=" +
-    // HomeTeamCountryCode
-    // + ", HomeTeamScore=" + HomeTeamScore + ", HomeTeamScorePeriod1=" +
-    // HomeTeamScorePeriod1
-    // + ", HomeTeamScorePeriod2=" + HomeTeamScorePeriod2 + ",
-    // HomeTeamScoreExtraTime="
-    // + HomeTeamScoreExtraTime + ", HomeTeamScorePenalty=" + HomeTeamScorePenalty +
-    // ", HomeTeamMoneyLine="
-    // + HomeTeamMoneyLine + ", AwayTeamMoneyLine=" + AwayTeamMoneyLine + ",
-    // DrawMoneyLine=" + DrawMoneyLine
-    // + ", PointSpread=" + PointSpread + ", HomeTeamPointSpreadPayout=" +
-    // HomeTeamPointSpreadPayout
-    // + ", AwayTeamPointSpreadPayout=" + AwayTeamPointSpreadPayout + ", OverUnder="
-    // + OverUnder
-    // + ", OverPayout=" + OverPayout + ", UnderPayout=" + UnderPayout + ",
-    // Attendance=" + Attendance
-    // + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", GlobalGameId=" +
-    // GlobalGameId
-    // + ", GlobalAwayTeamId=" + GlobalAwayTeamId + ", GlobalHomeTeamId=" +
-    // GlobalHomeTeamId + ", ClockExtra="
-    // + ClockExtra + ", ClockDisplay=" + ClockDisplay + ", IsClosed=" + IsClosed +
-    // ", HomeTeamFormation="
-    // + HomeTeamFormation + ", AwayTeamFormation=" + AwayTeamFormation + ",
-    // playoffAggregateScore="
-    // + playoffAggregateScore + ", round=" + round + ", competition=" + competition
-    // + "]";
-    // }
+    public void setGameId(Integer gameId) {
+        GameId = gameId;
+    }
 
 }

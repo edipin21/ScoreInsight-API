@@ -28,7 +28,6 @@ public class Competition {
     private String Gender;
     private String Type;
     private String Format;
-    // @JsonProperty("Key")
     private String StringKey;
 
     @JsonIgnore

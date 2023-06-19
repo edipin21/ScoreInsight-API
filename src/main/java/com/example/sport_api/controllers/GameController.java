@@ -1,10 +1,11 @@
 package com.example.sport_api.controllers;
 
-import java.sql.Date;
-import java.time.format.DateTimeParseException;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import java.time.format.DateTimeParseException;
+import com.example.sport_api.models.Game;
+import com.example.sport_api.services.GameService;
+import com.example.sport_api.util.ResponseUtil;
+import com.example.sport_api.services.CompetitionService;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,10 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.sport_api.models.Game;
-import com.example.sport_api.services.CompetitionService;
-import com.example.sport_api.services.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 
 @RestController
 public class GameController {
@@ -28,31 +27,32 @@ public class GameController {
 
     // need to fix the catch blocks and add the rest of the exception
     @GetMapping("/scores/gamesByDate/{competition}/{date}")
-    public ResponseEntity<List<Game>> retrivegamesByCompetitionIdAndDate(@PathVariable String date,
-            @PathVariable Integer competitionId) {
+    public ResponseEntity<List<Game>> retriveGamesByCompetitionIdAndDate(
+            @PathVariable Integer competition, @PathVariable String date) {
 
         try {
+            System.out.println("start");
             if (date == null || !gameService.isValidDate(date)) {
-                throw new IllegalArgumentException("Invalid date");
+                throw new IllegalArgumentException("The date parameter is invalid");
             }
 
-            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
-                throw new IllegalArgumentException("Invalid competitionId");
+            if (competition == null ||
+                    !competitionService.isCompetitionIdValid(competition)) {
+                System.out.println("its need to neeeee");
+                throw new IllegalArgumentException("The competition parameter is invalid");
             }
-            List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(competitionId, date);
-            return ResponseEntity.ok(games);
+            List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(competition, date);
+
+            return ResponseUtil.createOkResponse(games);
 
         } catch (DateTimeParseException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .cacheControl(CacheControl.noCache())
-                    .body(null);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .cacheControl(CacheControl.noCache())
-                    .body(null);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (DataAccessException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
 
     }
+
 }

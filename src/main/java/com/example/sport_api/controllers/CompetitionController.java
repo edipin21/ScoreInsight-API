@@ -13,7 +13,6 @@ import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.services.CompetitionService;
-
 import java.util.List;
 
 @RestController

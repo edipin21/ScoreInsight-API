@@ -26,8 +26,8 @@ public class GameService {
 
         Date theDate = Date.valueOf(date);
         List<Game> games = gameRepository.findByDateTimeAndCompetitionId(theDate, id);
-
         return games;
+
     }
 
     public boolean isValidDate(String dateString) {

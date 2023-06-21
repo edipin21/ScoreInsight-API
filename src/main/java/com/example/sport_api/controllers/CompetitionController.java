@@ -13,6 +13,8 @@ import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.services.CompetitionService;
+import com.example.sport_api.util.ResponseUtil;
+
 import java.util.List;
 
 @RestController
@@ -26,29 +28,25 @@ public class CompetitionController {
         return competitionService.getAllCompetitions();
     }
 
+    // need to fix IllegalArgument exception that will chack if the input is Intger!
     @GetMapping("/c/{competitionId}")
-    public ResponseEntity<Competition> retrieveCompetitionById(@PathVariable int competitionId) {
+    public ResponseEntity<Competition> retrieveCompetitionById(@PathVariable Integer competitionId) {
         try {
+
+            if (competitionId == null ||
+                    !competitionService.isCompetitionIdValid(competitionId)) {
+                throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
+            }
             Competition competition = competitionService.getCompetitionById(competitionId);
-            return ResponseEntity.ok()
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .cacheControl(CacheControl.noCache())
-                    .body(competition);
+
+            return ResponseUtil.createOkResponse(competition);
         } catch (NotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .cacheControl(CacheControl.noCache())
-                    .body(null);
+            return ResponseUtil.createErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .cacheControl(CacheControl.noCache())
-                    .body(null);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    e.getMessage());
         } catch (DataAccessException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .cacheControl(CacheControl.noCache())
-                    .body(null);
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 

@@ -3,6 +3,8 @@ package com.example.sport_api.controllers;
 import java.util.List;
 import com.example.sport_api.models.AreaDto;
 import com.example.sport_api.services.AreaService;
+import com.example.sport_api.util.ResponseUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -25,10 +27,11 @@ public class AreaConrtoller {
 
         try {
             List<AreaDto> areaDtos = areaService.getAllAreasWithCompetitions();
-            return ResponseEntity.ok(areaDtos);
+            return ResponseUtil.createOkResponse(areaDtos);
         } catch (DataAccessException e) {
 
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+
         }
 
     }

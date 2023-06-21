@@ -25,7 +25,6 @@ public class GameController {
     @Autowired
     private CompetitionService competitionService;
 
-    // need to fix the catch blocks and add the rest of the exception
     @GetMapping("/scores/gamesByDate/{competition}/{date}")
     public ResponseEntity<List<Game>> retriveGamesByCompetitionIdAndDate(
             @PathVariable Integer competition, @PathVariable String date) {
@@ -33,13 +32,12 @@ public class GameController {
         try {
             System.out.println("start");
             if (date == null || !gameService.isValidDate(date)) {
-                throw new IllegalArgumentException("The date parameter is invalid");
+                throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
             }
 
             if (competition == null ||
                     !competitionService.isCompetitionIdValid(competition)) {
-                System.out.println("its need to neeeee");
-                throw new IllegalArgumentException("The competition parameter is invalid");
+                throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
             List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(competition, date);
 

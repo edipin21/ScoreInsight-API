@@ -32,7 +32,6 @@ public class AreaService {
     }
 
     public List<AreaDto> getAllAreasWithCompetitions() {
-        logger.info("Try to retrive areas with competition from database");
         try {
             List<Area> areas = areaRepository.findAll();
             List<AreaDto> areaDtos = new ArrayList<>();

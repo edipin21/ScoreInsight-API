@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +17,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ResponseUtil {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    // @Autowired
+    // private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static <T> ResponseEntity<T> createOkResponse(T body) {
 
@@ -50,7 +52,7 @@ public class ResponseUtil {
         Map<String, Object> responseBody = new LinkedHashMap<>();
         responseBody.put("HttpStatusCode", status.value());
         responseBody.put("Code", status.value());
-        responseBody.put("Description", "Invalid Argument: " + description);
+        responseBody.put("Description", description);
         responseBody.put("Help", "Please contact support@eddie.sportdata for assistance");
 
         return new ResponseEntity<>((T) responseBody, headers, status);

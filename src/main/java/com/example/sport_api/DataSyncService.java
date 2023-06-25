@@ -3,11 +3,13 @@ package com.example.sport_api;
 import com.example.sport_api.models.Area;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.Game;
+import com.example.sport_api.models.Membership;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.models.TeamDetail;
 import com.example.sport_api.repositories.AreaRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.GameRepository;
+import com.example.sport_api.repositories.MembershipRepository;
 import com.example.sport_api.repositories.TeamDetailRepository;
 import com.example.sport_api.repositories.TeamRepository;
 import com.example.sport_api.services.CompetitionService;
@@ -39,7 +41,8 @@ public class DataSyncService {
     private final String teamsResourceUrl = "https://api.sportsdata.io/v3/soccer/scores/json/Teams?key=";
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
-    private final String competitionFixturesUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/3?key=";
+    private final String competitionFixturesResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/";
+    private final String membershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/ActiveMemberships/";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -60,6 +63,9 @@ public class DataSyncService {
 
     @Autowired
     private TeamDetailRepository teamDetailRepository;
+
+    @Autowired
+    private MembershipRepository membershipRepository;
 
     public void fetchTeamsAndUpdate() throws JsonMappingException,
             JsonProcessingException {
@@ -149,46 +155,47 @@ public class DataSyncService {
     public void fetchCompetitionFixturesAndUpdate() throws JsonProcessingException, IOException {
 
         try {
-            String competitionFixturesJson = fetchData(competitionFixturesUrl);
 
-            ObjectMapper objectMapper = initializeObjectMapper();
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            competitioIntegers.sort(null);
 
-            Competition competition = objectMapper.readValue(competitionFixturesJson,
-                    Competition.class);
+            // Partial loop for sanity checks - Change it later
+            for (int i = 0; i < 5; i++) {
+                Integer competitionId = competitioIntegers.get(i);
+                System.out.println(competitionId);
+                String competitionFixturesJson = fetchData(competitionFixturesResourceUrl +
+                        competitionId + "?key=");
 
-            System.out.println(competition.getGames().get(0));
-            Optional<List<Game>> games = Optional.of(competition.getGames());
-            List<Game> theGames = new ArrayList<>();
-            if (games.isPresent()) {
-                System.out.println("game is present");
-                theGames = games.get();
-                for (Game game : theGames) {
-                    System.out.println(1);
-                    game.setCompetition(competition);
+                ObjectMapper objectMapper = initializeObjectMapper();
+
+                Competition competition = objectMapper.readValue(competitionFixturesJson,
+                        Competition.class);
+
+                Optional<List<Game>> games = Optional.of(competition.getGames());
+                List<Game> theGames = new ArrayList<>();
+                if (games.isPresent()) {
+                    theGames = games.get();
+                    theGames.forEach(game -> game.setCompetition(competition));
+                }
+
+                Optional<List<TeamDetail>> teams = Optional.of(competition.getTeams());
+                List<TeamDetail> theTeams = new ArrayList<>();
+                if (teams.isPresent()) {
+                    theTeams = teams.get();
+                    theTeams.forEach(team -> team.setCompetition(competition));
+
+                }
+                competitionRepository.save(competition);
+
+                if (!theGames.isEmpty()) {
+                    gameRepository.saveAll(theGames);
+                }
+                if (!theTeams.isEmpty()) {
+                    teamDetailRepository.saveAll(theTeams);
                 }
 
             }
-            Optional<List<TeamDetail>> teams = Optional.of(competition.getTeams());
-            List<TeamDetail> theTeams = new ArrayList<>();
-            if (teams.isPresent()) {
-                System.out.println(teams.get().get(0));
-                theTeams = teams.get();
-                for (TeamDetail team : theTeams) {
 
-                    team.setCompetition(competition);
-                }
-
-            }
-            competitionRepository.save(competition);
-
-            if (!theGames.isEmpty()) {
-                System.out.println("work1");
-                gameRepository.saveAll(theGames);
-            }
-            if (!theTeams.isEmpty()) {
-                System.out.println("work2");
-                teamDetailRepository.saveAll(theTeams);
-            }
         } catch (IllegalArgumentException e) {
             logger.error("Invalid argument provided: {}", e.getMessage(), e);
             throw e;
@@ -196,6 +203,35 @@ public class DataSyncService {
             handleException(e);
             throw e;
         }
+    }
+
+    public void fetchMembershipAndUpdate() throws JsonProcessingException {
+
+        try {
+
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            competitioIntegers.sort(null);
+
+            for (Integer competitionId : competitioIntegers) {
+                String membershipJson = fetchData(membershipResourceUrl + competitionId + "?key=");
+
+                ObjectMapper objectMapper = initializeObjectMapper();
+
+                List<Membership> memberships;
+
+                memberships = objectMapper.readValue(membershipJson, new TypeReference<List<Membership>>() {
+                });
+
+                memberships.forEach(membership -> membership.setCompetitionId(competitionId));
+
+                membershipRepository.saveAll(memberships);
+            }
+
+        } catch (Exception e) {
+            handleException(e);
+            throw e;
+        }
+
     }
 
     public void handleException(Exception e) {

@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @Component
 public class DataUpdaterScheduler {
 
-    // @Autowired
-    // private DataSyncService apiService;
+    @Autowired
+    private DataSyncService apiService;
 
     // (fixedRate = 4 * 60 * 60 * 1000)
 
@@ -40,4 +40,10 @@ public class DataUpdaterScheduler {
     // public void updateCompetitionfeDB() throws IOException {
     // apiService.fetchCompetitionFixturesAndUpdate();
     // }
+
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateMembershipDB() throws IOException {
+    // apiService.fetchMembershipAndUpdate();
+    // }
+
 }

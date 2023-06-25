@@ -1,315 +1,269 @@
-2023-06-21 13:36:12,025 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:36:12,079 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:36:12,190 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-21 13:36:12,191 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-21 13:36:12,709 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:36:12,743 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 28 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:36:13,263 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:36:13,273 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:36:13,275 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:36:13,276 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:36:13,328 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:36:13,330 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1136 ms
-2023-06-21 13:36:13,618 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:36:13,630 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
-2023-06-21 13:36:13,809 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37c1a83a
-2023-06-21 13:36:13,810 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
-2023-06-21 13:36:15,235 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:36:15,265 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:36:15,271 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:36:15,429 INFO o.s.d.j.r.q.QueryEnhancerFactory [restartedMain] Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-06-21 13:36:15,497 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:36:15,579 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:36:15,591 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:36:15,772 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:36:15,777 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:36:15,785 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:36:15,792 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 4.243 seconds (process running for 4.698)
-2023-06-21 13:36:19,083 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 13:36:19,083 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2023-06-21 13:36:19,084 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
-2023-06-21 13:37:07,810 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:37:07,816 INFO o.a.j.l.DirectJDKLog [Thread-5] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:07,816 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping service [Tomcat]
-2023-06-21 13:37:07,817 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-21 13:37:07,819 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:07,821 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:07,822 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:37:07,824 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
-2023-06-21 13:37:07,841 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
-2023-06-21 13:37:07,895 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:37:07,895 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:37:07,956 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:37:07,964 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:37:08,072 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:37:08,073 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:08,073 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:37:08,073 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:37:08,079 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:37:08,079 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 182 ms
-2023-06-21 13:37:08,104 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:37:08,105 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
-2023-06-21 13:37:08,145 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1d353c33
-2023-06-21 13:37:08,145 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
-2023-06-21 13:37:09,058 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:37:09,069 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:37:09,070 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:37:09,117 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:37:09,119 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:37:09,127 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:37:09,188 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:37:09,190 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:09,191 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:37:09,193 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.32 seconds (process running for 58.102)
-2023-06-21 13:37:09,194 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:37:43,981 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:37:43,983 INFO o.a.j.l.DirectJDKLog [Thread-7] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:43,983 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping service [Tomcat]
-2023-06-21 13:37:43,984 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:43,985 INFO o.a.j.l.DirectJDKLog [Thread-7] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:43,986 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:37:43,987 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
-2023-06-21 13:37:44,003 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
-2023-06-21 13:37:44,064 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:37:44,065 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:37:44,126 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:37:44,151 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 24 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:37:44,296 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:37:44,296 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:44,296 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:37:44,296 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:37:44,303 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:37:44,304 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 238 ms
-2023-06-21 13:37:44,387 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:37:44,388 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
-2023-06-21 13:37:44,528 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2cb7be64
-2023-06-21 13:37:44,530 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
-2023-06-21 13:37:45,519 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:37:45,528 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:37:45,529 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:37:45,570 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:37:45,572 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:37:45,579 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:37:45,625 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:37:45,626 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:37:45,628 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:37:45,630 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.59 seconds (process running for 94.538)
-2023-06-21 13:37:45,630 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:38:03,943 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 13:38:03,944 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2023-06-21 13:38:03,945 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
-2023-06-21 13:38:03,957 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "tt"]
-2023-06-21 13:38:58,898 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:38:58,900 INFO o.a.j.l.DirectJDKLog [Thread-11] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:38:58,900 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping service [Tomcat]
-2023-06-21 13:38:58,901 INFO o.a.j.l.DirectJDKLog [Thread-11] Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-21 13:38:58,901 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:38:58,902 INFO o.a.j.l.DirectJDKLog [Thread-11] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:38:58,903 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:38:58,903 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown initiated...
-2023-06-21 13:38:58,915 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown completed.
-2023-06-21 13:38:59,125 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:38:59,126 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:38:59,161 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:38:59,167 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:38:59,205 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:38:59,206 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:38:59,206 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:38:59,206 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:38:59,212 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:38:59,212 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 86 ms
-2023-06-21 13:38:59,225 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:38:59,225 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
-2023-06-21 13:38:59,242 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16062579
-2023-06-21 13:38:59,243 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
-2023-06-21 13:39:00,095 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:39:00,104 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:39:00,105 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:39:00,144 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:39:00,145 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:39:00,151 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:39:00,191 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:39:00,193 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:39:00,194 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:39:00,195 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.243 seconds (process running for 169.104)
-2023-06-21 13:39:00,196 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:39:03,170 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 13:39:03,170 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-06-21 13:39:03,171 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 0 ms
-2023-06-21 13:39:03,176 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "tt"]
-2023-06-21 13:40:46,864 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:40:46,875 INFO o.a.j.l.DirectJDKLog [Thread-15] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:40:46,875 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping service [Tomcat]
-2023-06-21 13:40:46,875 INFO o.a.j.l.DirectJDKLog [Thread-15] Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-21 13:40:46,876 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:40:46,878 INFO o.a.j.l.DirectJDKLog [Thread-15] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:40:46,879 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:40:46,880 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown initiated...
-2023-06-21 13:40:46,897 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown completed.
-2023-06-21 13:40:46,982 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:40:46,983 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:40:47,066 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:40:47,104 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 37 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:40:47,145 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:40:47,145 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:40:47,146 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:40:47,146 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:40:47,152 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:40:47,153 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 169 ms
-2023-06-21 13:40:47,167 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:40:47,167 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
-2023-06-21 13:40:47,183 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ce99fa5
-2023-06-21 13:40:47,183 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
-2023-06-21 13:40:48,121 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:40:48,130 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:40:48,130 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:40:48,172 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:40:48,173 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:40:48,179 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:40:48,221 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:40:48,223 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:40:48,224 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:40:48,225 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.273 seconds (process running for 277.135)
-2023-06-21 13:40:48,226 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:44:25,330 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:44:25,332 INFO o.a.j.l.DirectJDKLog [Thread-19] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:44:25,332 INFO o.a.j.l.DirectJDKLog [Thread-19] Stopping service [Tomcat]
-2023-06-21 13:44:25,333 INFO o.a.j.l.DirectJDKLog [Thread-19] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:44:25,334 INFO o.a.j.l.DirectJDKLog [Thread-19] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:44:25,334 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-19] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:44:25,334 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown initiated...
-2023-06-21 13:44:25,350 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown completed.
-2023-06-21 13:44:25,420 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:44:25,421 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:44:25,473 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:44:25,481 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:44:25,520 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:44:25,520 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:44:25,520 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:44:25,521 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:44:25,527 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:44:25,527 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 106 ms
-2023-06-21 13:44:25,540 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:44:25,541 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
-2023-06-21 13:44:25,560 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1432cbb1
-2023-06-21 13:44:25,560 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
-2023-06-21 13:44:26,493 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:44:26,503 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:44:26,503 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:44:26,535 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:44:26,537 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:44:26,541 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:44:26,581 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:44:26,583 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:44:26,583 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:44:26,585 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.189 seconds (process running for 495.495)
-2023-06-21 13:44:26,585 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:44:30,377 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 13:44:30,377 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-06-21 13:44:30,379 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2023-06-21 13:44:35,719 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "tt"]
-2023-06-21 13:45:02,447 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:45:02,450 INFO o.a.j.l.DirectJDKLog [Thread-23] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:02,450 INFO o.a.j.l.DirectJDKLog [Thread-23] Stopping service [Tomcat]
-2023-06-21 13:45:02,450 INFO o.a.j.l.DirectJDKLog [Thread-23] Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-21 13:45:02,452 INFO o.a.j.l.DirectJDKLog [Thread-23] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:02,453 INFO o.a.j.l.DirectJDKLog [Thread-23] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:02,454 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-23] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:45:02,454 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown initiated...
-2023-06-21 13:45:02,468 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown completed.
-2023-06-21 13:45:02,701 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:45:02,702 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:45:02,737 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:45:02,742 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 4 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:45:02,771 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:45:02,771 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:02,772 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:45:02,772 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:45:02,777 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:45:02,777 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 75 ms
-2023-06-21 13:45:02,796 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:45:02,796 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Starting...
-2023-06-21 13:45:02,818 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58ce71f5
-2023-06-21 13:45:02,818 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Start completed.
-2023-06-21 13:45:03,605 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:45:03,613 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:45:03,614 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:45:03,656 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:45:03,658 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:45:03,663 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:45:03,701 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:45:03,702 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:03,703 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:45:03,704 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.189 seconds (process running for 532.615)
-2023-06-21 13:45:03,705 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:45:25,332 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:45:25,335 INFO o.a.j.l.DirectJDKLog [Thread-27] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:25,335 INFO o.a.j.l.DirectJDKLog [Thread-27] Stopping service [Tomcat]
-2023-06-21 13:45:25,336 INFO o.a.j.l.DirectJDKLog [Thread-27] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:25,337 INFO o.a.j.l.DirectJDKLog [Thread-27] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:25,337 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-27] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:45:25,338 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-7 - Shutdown initiated...
-2023-06-21 13:45:25,354 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-7 - Shutdown completed.
-2023-06-21 13:45:25,412 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:45:25,413 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:45:25,448 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:45:25,454 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:45:25,500 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:45:25,501 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:25,501 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:45:25,501 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:45:25,506 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:45:25,506 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 92 ms
-2023-06-21 13:45:25,518 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:45:25,518 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Starting...
-2023-06-21 13:45:25,544 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@50742c39
-2023-06-21 13:45:25,544 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Start completed.
-2023-06-21 13:45:26,419 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:45:26,428 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:45:26,428 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:45:26,462 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:45:26,464 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:45:26,469 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:45:26,504 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:45:26,506 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:45:26,507 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:45:26,508 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.115 seconds (process running for 555.419)
-2023-06-21 13:45:26,508 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-06-21 13:45:27,712 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 13:45:27,712 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2023-06-21 13:45:27,713 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
-2023-06-21 13:45:47,893 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "s5"]
-2023-06-21 13:47:07,171 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-06-21 13:47:07,174 INFO o.a.j.l.DirectJDKLog [Thread-31] Pausing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:47:07,174 INFO o.a.j.l.DirectJDKLog [Thread-31] Stopping service [Tomcat]
-2023-06-21 13:47:07,174 INFO o.a.j.l.DirectJDKLog [Thread-31] Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-06-21 13:47:07,175 INFO o.a.j.l.DirectJDKLog [Thread-31] Stopping ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:47:07,176 INFO o.a.j.l.DirectJDKLog [Thread-31] Destroying ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:47:07,176 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-31] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:47:07,176 INFO c.z.h.HikariDataSource [Thread-31] HikariPool-8 - Shutdown initiated...
-2023-06-21 13:47:07,202 INFO c.z.h.HikariDataSource [Thread-31] HikariPool-8 - Shutdown completed.
-2023-06-21 13:47:07,257 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 93740 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-06-21 13:47:07,258 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-06-21 13:47:07,291 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 13:47:07,296 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 4 ms. Found 7 JPA repository interfaces.
-2023-06-21 13:47:07,327 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-06-21 13:47:07,328 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:47:07,328 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-06-21 13:47:07,328 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-06-21 13:47:07,333 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-06-21 13:47:07,333 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 74 ms
-2023-06-21 13:47:07,344 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-06-21 13:47:07,344 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Starting...
-2023-06-21 13:47:07,377 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c60c0e1
-2023-06-21 13:47:07,377 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Start completed.
-2023-06-21 13:47:08,201 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 13:47:08,209 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
-2023-06-21 13:47:08,209 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
-2023-06-21 13:47:08,246 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
-2023-06-21 13:47:08,247 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
-2023-06-21 13:47:08,252 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
-2023-06-21 13:47:08,290 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-06-21 13:47:08,292 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-06-21 13:47:08,293 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 13:47:08,295 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.054 seconds (process running for 657.206)
-2023-06-21 13:47:08,295 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-06-25 18:07:36,793 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:07:36,797 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:07:36,826 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-25 18:07:36,826 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-25 18:07:37,027 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:07:37,054 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 23 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:07:37,416 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:07:37,421 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:07:37,422 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:07:37,423 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:07:37,451 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:07:37,452 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 625 ms
+2023-06-25 18:07:37,667 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:07:37,677 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-06-25 18:07:37,855 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@14c5f699
+2023-06-25 18:07:37,856 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-06-25 18:07:39,246 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:07:39,275 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:07:39,281 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:07:39,447 INFO o.s.d.j.r.q.QueryEnhancerFactory [restartedMain] Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-06-25 18:07:39,512 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:07:39,596 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:07:39,609 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:07:39,627 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:07:39,807 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:07:39,814 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:07:39,821 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:07:39,828 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 3.238 seconds (process running for 3.812)
+2023-06-25 18:07:40,586 ERROR o.s.s.s.TaskUtils$LoggingErrorHandler [scheduling-1] Unexpected error occurred in scheduled task
+org.springframework.web.client.HttpClientErrorException$Unauthorized: 401 Unauthorized: "{ "statusCode": 401, "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription." }"
+	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:106) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:183) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:137) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:915) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:864) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:764) ~[spring-web-6.0.10.jar:6.0.10]
+	at org.springframework.web.client.RestTemplate.getForEntity(RestTemplate.java:405) ~[spring-web-6.0.10.jar:6.0.10]
+	at com.example.sport_api.DataSyncService.fetchData(DataSyncService.java:140) ~[classes/:?]
+	at com.example.sport_api.DataSyncService.fetchMembershipAndUpdate(DataSyncService.java:219) ~[classes/:?]
+	at com.example.sport_api.config.DataUpdaterScheduler.updateMembershipDB(DataUpdaterScheduler.java:46) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-6.0.10.jar:6.0.10]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-6.0.10.jar:6.0.10]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) [?:?]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) [?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+2023-06-25 18:08:13,663 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 5 class path changes (0 additions, 0 deletions, 5 modifications)
+2023-06-25 18:08:13,673 INFO o.a.j.l.DirectJDKLog [Thread-5] Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:08:13,673 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping service [Tomcat]
+2023-06-25 18:08:13,676 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:08:13,678 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:08:13,680 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:08:13,681 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2023-06-25 18:08:13,696 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2023-06-25 18:08:13,746 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:08:13,747 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:08:13,796 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:08:13,803 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:08:13,862 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:08:13,863 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:08:13,863 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:08:13,863 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:08:13,868 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:08:13,868 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 120 ms
+2023-06-25 18:08:13,887 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:08:13,887 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2023-06-25 18:08:13,909 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a2a384f
+2023-06-25 18:08:13,909 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2023-06-25 18:08:14,784 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:08:14,799 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:08:14,799 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:08:14,849 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:08:14,851 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:08:14,858 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:08:14,872 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:08:14,929 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:08:14,931 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:08:14,932 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:08:14,934 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.206 seconds (process running for 38.917)
+2023-06-25 18:08:14,935 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-06-25 18:10:17,394 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-06-25 18:10:17,400 INFO o.a.j.l.DirectJDKLog [Thread-7] Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:10:17,400 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping service [Tomcat]
+2023-06-25 18:10:17,402 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:10:17,403 INFO o.a.j.l.DirectJDKLog [Thread-7] Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:10:17,405 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:10:17,406 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
+2023-06-25 18:10:17,423 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
+2023-06-25 18:10:17,552 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:10:17,552 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:10:17,617 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:10:17,624 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:10:17,668 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:10:17,668 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:10:17,668 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:10:17,668 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:10:17,673 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:10:17,673 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 120 ms
+2023-06-25 18:10:17,688 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:10:17,689 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2023-06-25 18:10:17,709 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7a784007
+2023-06-25 18:10:17,710 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2023-06-25 18:10:18,509 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:10:18,520 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:10:18,521 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:10:18,562 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:10:18,564 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:10:18,573 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:10:18,586 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:10:18,628 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:10:18,630 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:10:18,631 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:10:18,633 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.169 seconds (process running for 162.615)
+2023-06-25 18:10:18,633 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-06-25 18:10:23,453 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-25 18:10:23,454 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-06-25 18:10:23,454 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2023-06-25 18:11:44,139 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 5 class path changes (0 additions, 0 deletions, 5 modifications)
+2023-06-25 18:11:44,148 INFO o.a.j.l.DirectJDKLog [Thread-11] Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:44,148 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping service [Tomcat]
+2023-06-25 18:11:44,150 INFO o.a.j.l.DirectJDKLog [Thread-11] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-06-25 18:11:44,152 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:44,154 INFO o.a.j.l.DirectJDKLog [Thread-11] Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:44,155 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:11:44,156 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown initiated...
+2023-06-25 18:11:44,172 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown completed.
+2023-06-25 18:11:44,247 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:11:44,247 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:11:44,295 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:11:44,302 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:11:44,345 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:11:44,345 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:44,345 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:11:44,345 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:11:44,352 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:11:44,352 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 104 ms
+2023-06-25 18:11:44,372 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:11:44,372 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
+2023-06-25 18:11:44,390 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@93aacf5
+2023-06-25 18:11:44,390 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
+2023-06-25 18:11:45,346 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:11:45,357 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:11:45,357 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:11:45,398 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:11:45,399 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:11:45,405 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:11:45,418 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:11:45,466 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:11:45,468 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:45,469 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:11:45,471 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.243 seconds (process running for 249.451)
+2023-06-25 18:11:45,471 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-06-25 18:11:57,999 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-06-25 18:11:58,005 INFO o.a.j.l.DirectJDKLog [Thread-15] Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:58,005 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping service [Tomcat]
+2023-06-25 18:11:58,007 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:58,008 INFO o.a.j.l.DirectJDKLog [Thread-15] Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:58,009 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:11:58,010 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown initiated...
+2023-06-25 18:11:58,035 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown completed.
+2023-06-25 18:11:58,095 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:11:58,095 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:11:58,137 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:11:58,143 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:11:58,178 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:11:58,179 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:58,179 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:11:58,179 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:11:58,184 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:11:58,184 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 88 ms
+2023-06-25 18:11:58,195 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:11:58,195 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2023-06-25 18:11:58,215 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@581d091a
+2023-06-25 18:11:58,215 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2023-06-25 18:11:59,070 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:11:59,080 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:11:59,080 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:11:59,119 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:11:59,121 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:11:59,126 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:11:59,135 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:11:59,176 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:11:59,178 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:11:59,179 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:11:59,181 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.104 seconds (process running for 263.161)
+2023-06-25 18:11:59,181 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-06-25 18:13:54,241 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-25 18:13:54,242 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-06-25 18:13:54,243 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2023-06-25 18:17:36,373 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-06-25 18:17:36,379 INFO o.a.j.l.DirectJDKLog [Thread-19] Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:17:36,379 INFO o.a.j.l.DirectJDKLog [Thread-19] Stopping service [Tomcat]
+2023-06-25 18:17:36,379 INFO o.a.j.l.DirectJDKLog [Thread-19] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-06-25 18:17:36,381 INFO o.a.j.l.DirectJDKLog [Thread-19] Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:17:36,382 INFO o.a.j.l.DirectJDKLog [Thread-19] Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:17:36,383 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-19] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:17:36,384 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown initiated...
+2023-06-25 18:17:36,412 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown completed.
+2023-06-25 18:17:36,617 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:17:36,617 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:17:36,655 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:17:36,660 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:17:36,694 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:17:36,695 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:17:36,695 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:17:36,695 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:17:36,700 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:17:36,700 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 82 ms
+2023-06-25 18:17:36,712 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:17:36,712 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
+2023-06-25 18:17:36,741 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@dd8089b
+2023-06-25 18:17:36,742 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
+2023-06-25 18:17:37,628 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:17:37,638 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:17:37,638 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:17:37,672 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:17:37,673 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:17:37,677 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:17:37,686 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:17:37,724 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:17:37,726 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:17:37,727 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:17:37,728 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.255 seconds (process running for 601.712)
+2023-06-25 18:17:37,729 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-06-25 18:18:24,333 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-25 18:18:24,334 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-06-25 18:18:24,334 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2023-06-25 18:19:48,371 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-06-25 18:19:48,377 INFO o.a.j.l.DirectJDKLog [Thread-23] Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:19:48,377 INFO o.a.j.l.DirectJDKLog [Thread-23] Stopping service [Tomcat]
+2023-06-25 18:19:48,378 INFO o.a.j.l.DirectJDKLog [Thread-23] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-06-25 18:19:48,379 INFO o.a.j.l.DirectJDKLog [Thread-23] Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:19:48,381 INFO o.a.j.l.DirectJDKLog [Thread-23] Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:19:48,382 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-23] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:19:48,382 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown initiated...
+2023-06-25 18:19:48,397 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown completed.
+2023-06-25 18:19:48,611 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 44135 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-06-25 18:19:48,612 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-06-25 18:19:48,649 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-25 18:19:48,654 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 4 ms. Found 8 JPA repository interfaces.
+2023-06-25 18:19:48,682 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-06-25 18:19:48,682 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:19:48,682 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-06-25 18:19:48,682 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-06-25 18:19:48,687 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-06-25 18:19:48,687 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 74 ms
+2023-06-25 18:19:48,697 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-06-25 18:19:48,697 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Starting...
+2023-06-25 18:19:48,719 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fa9ac00
+2023-06-25 18:19:48,719 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Start completed.
+2023-06-25 18:19:49,507 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-25 18:19:49,516 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Initializing JpaMetamodelMappingContext…
+2023-06-25 18:19:49,516 DEBUG o.s.d.j.r.c.JpaMetamodelMappingContextFactoryBean [restartedMain] Finished initializing JpaMetamodelMappingContext
+2023-06-25 18:19:49,547 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitions.count
+2023-06-25 18:19:49,549 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Competition.findAllCompetitionIds.count
+2023-06-25 18:19:49,553 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Game.findByDateTimeAndCompetitionId.count
+2023-06-25 18:19:49,562 DEBUG o.s.d.j.r.q.NamedQuery [restartedMain] Did not find named query Membership.findByCompetitionId.count
+2023-06-25 18:19:49,599 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-06-25 18:19:49,601 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-25 18:19:49,602 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-25 18:19:49,603 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.147 seconds (process running for 733.585)
+2023-06-25 18:19:49,603 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged

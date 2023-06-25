@@ -62,10 +62,6 @@ public class TeamDetail {
         super();
     }
 
-    public int getTeamId() {
-        return TeamId;
-    }
-
     public TeamDetail(int teamId, int areaId, int venueId, String stringKey, String name, String fullName,
             boolean active, String areaName, String venueName, String gender, String type, String address, String city,
             String zip, String phone, String fax, String website, String email, int founded, String clubColor1,
@@ -102,6 +98,10 @@ public class TeamDetail {
         GlobalTeamId = globalTeamId;
         Players = players;
         this.competition = competition;
+    }
+
+    public int getTeamId() {
+        return TeamId;
     }
 
     public void setTeamId(int teamId) {

@@ -27,22 +27,27 @@ public class GameController {
 
     @GetMapping("/scores/gamesByDate/{competition}/{date}")
     public ResponseEntity<List<Game>> retriveGamesByCompetitionIdAndDate(
-            @PathVariable Integer competition, @PathVariable String date) {
+            @PathVariable String competition, @PathVariable String date) {
 
         try {
-            System.out.println("start");
+
+            Integer competitionId = Integer.parseInt(competition);
+
             if (date == null || !gameService.isValidDate(date)) {
                 throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
             }
 
             if (competition == null ||
-                    !competitionService.isCompetitionIdValid(competition)) {
+                    !competitionService.isCompetitionIdValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
-            List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(competition, date);
+            List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(competitionId, date);
 
             return ResponseUtil.createOkResponse(games);
 
+        } catch (NumberFormatException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    "Invalid Argument: The competition parameter should be an integer");
         } catch (DateTimeParseException e) {
             return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         } catch (IllegalArgumentException e) {

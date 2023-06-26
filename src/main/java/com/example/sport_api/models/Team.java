@@ -1,16 +1,20 @@
 package com.example.sport_api.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+@JsonPropertyOrder({ "teamId", "areaId", "venueId", "stringKey", "name", "fullName", "active",
+        "areaName", "venueName", "gender", "type", "address", "city", "zip", "phone", "fax", "website", "email",
+        "founded", "clubColor1", "clubColor2", "clubColor3", "nickname1", "nickname2", "nickname3", "wikipediaLogoUrl",
+        "wikipediaWordMarkUrl", "globalTeamId", "players" })
 @Entity
 public class Team {
 
     @Id
     private int TeamId;
-
     private int AreaId;
     private int VenueId;
     private String shortName;

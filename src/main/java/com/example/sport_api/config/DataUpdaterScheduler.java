@@ -16,7 +16,7 @@ public class DataUpdaterScheduler {
 
     // (fixedRate = 4 * 60 * 60 * 1000)
 
-    // @Scheduled(cron = "0 48 13 * * *", zone = "Asia/Jerusalem")
+    // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateTeamsDB() throws JsonMappingException,
     // JsonProcessingException {
 

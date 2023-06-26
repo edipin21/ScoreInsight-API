@@ -5,6 +5,8 @@ import com.example.sport_api.models.AreaDto;
 import com.example.sport_api.services.AreaService;
 import com.example.sport_api.util.ResponseUtil;
 
+// import org.apache.logging.log4j.LogManager;
+// import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AreaConrtoller {
 
+    // private static final Logger logger =
+    // LogManager.getLogger(AreaConrtoller.class);
+
     @Autowired
     private AreaService areaService;
 
@@ -22,14 +27,13 @@ public class AreaConrtoller {
         this.areaService = areaService;
     }
 
-    @GetMapping("/areas")
+    @GetMapping("scores/areas")
     public ResponseEntity<List<AreaDto>> retriveAllArea() {
 
         try {
             List<AreaDto> areaDtos = areaService.getAllAreasWithCompetitions();
             return ResponseUtil.createOkResponse(areaDtos);
         } catch (DataAccessException e) {
-
             return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
 
         }

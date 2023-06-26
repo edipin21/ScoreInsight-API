@@ -1,16 +1,23 @@
 package com.example.sport_api.controllers;
 
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.services.TeamService;
+import com.example.sport_api.util.ResponseUtil;
 
 @RestController
 public class TeamController {
+
+    private static final Logger logger = LogManager.getLogger(TeamController.class);
 
     private TeamService teamService;
 
@@ -19,11 +26,28 @@ public class TeamController {
     }
 
     @GetMapping("/team/{teamId}")
-    public Team retrieveTeamById(@PathVariable int teamId) {
-        Team team = teamService.retrieveTeamById(teamId);
-        if (team == null)
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        return team;
+    public ResponseEntity<Team> retrieveTeamById(@PathVariable String teamId) {
+        try {
+            Integer id = Integer.parseInt(teamId);
+
+            if (teamId == null || !teamService.isTeamIdValid(id)) {
+                throw new IllegalArgumentException("Invalid Argument: The teamId parameter is invalid ");
+            }
+
+            Team team = teamService.retrieveTeamById(id);
+
+            return ResponseUtil.createOkResponse(team);
+        } catch (NumberFormatException e) {
+            logger.error("Invalid Argument: The teamId parameter should be an integer", e);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    "Invalid Argument: The teamId parameter should be an integer");
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (DataAccessException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+
     }
 
     @GetMapping("/teams")

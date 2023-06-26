@@ -12,4 +12,9 @@ public interface MembershipRepository extends JpaRepository<Membership, Integer>
 
     @Query(value = "SELECT * FROM membership WHERE  competition_id = :competitionId", nativeQuery = true)
     List<Membership> findByCompetitionId(@Param("competitionId") Integer competitionId);
+
+    @Query(value = "SELECT * FROM membership WHERE competition_id = :competitionId AND Updated >= DATE_SUB(NOW(), INTERVAL :days DAY)", nativeQuery = true)
+    List<Membership> findRecentMembershipsByCompetitionId(@Param("competitionId") Integer competitionId,
+            @Param("days") int days);
+
 }

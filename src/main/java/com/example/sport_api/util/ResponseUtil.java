@@ -1,19 +1,13 @@
 package com.example.sport_api.util;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.LinkedHashMap;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ResponseUtil {
 
@@ -41,7 +35,6 @@ public class ResponseUtil {
     public static <T> ResponseEntity<T> createErrorResponse(HttpStatus status, String description) {
         HttpHeaders headers = new HttpHeaders();
 
-        // headers.add(HttpHeaders.CONNECTION, "keep-alive");
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         headers.add(HttpHeaders.ACCEPT_RANGES, "bytes");
@@ -58,17 +51,4 @@ public class ResponseUtil {
         return new ResponseEntity<>((T) responseBody, headers, status);
 
     }
-
-    // public static int calculateContentLength(Object body) {
-    // try {
-    // String json = objectMapper.writeValueAsString(body);
-    // System.out.println(json.getBytes().length);
-    // return json.getBytes().length;
-
-    // } catch (Exception e) {
-    // System.out.println(e.getMessage());
-    // e.printStackTrace();
-    // return -1;
-    // }
-    // }
 }

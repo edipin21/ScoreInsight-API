@@ -80,6 +80,7 @@ public class DataSyncService {
             teams = objectMapper.readValue(teamsJson, new TypeReference<List<Team>>() {
             });
 
+            System.out.println(teams.get(0));
             teamRepository.saveAll(teams);
         } catch (Exception e) {
             handleException(e);

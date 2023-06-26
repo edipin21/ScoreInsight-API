@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-
 import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.CompetitionDto;
 import com.example.sport_api.repositories.CompetitionRepository;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
 @Service
@@ -28,27 +27,33 @@ public class CompetitionService {
 
     public List<CompetitionDto> getAllCompetitions() {
 
-        List<Competition> competitions = competitionRepository.findAll();
+        try {
+            List<Competition> competitions = competitionRepository.findAll();
 
-        List<CompetitionDto> competitionDtos = new ArrayList<>();
+            List<CompetitionDto> competitionDtos = new ArrayList<>();
 
-        for (Competition competition : competitions) {
+            for (Competition competition : competitions) {
 
-            CompetitionDto competitionDto = new CompetitionDto();
+                CompetitionDto competitionDto = new CompetitionDto();
 
-            competitionDto.setAreaId(competition.getAreaId());
-            competitionDto.setAreaName(competition.getAreaName());
-            competitionDto.setCompetitionId(competition.getCompetitionId());
-            competitionDto.setFormat(competition.getFormat());
-            competitionDto.setGender(competition.getGender());
-            competitionDto.setName(competition.getName());
-            competitionDto.setSeasons(competition.getSeasons());
-            competitionDto.setStringKey(competition.getStringKey());
-            competitionDto.setType(competition.getType());
+                competitionDto.setAreaId(competition.getAreaId());
+                competitionDto.setAreaName(competition.getAreaName());
+                competitionDto.setCompetitionId(competition.getCompetitionId());
+                competitionDto.setFormat(competition.getFormat());
+                competitionDto.setGender(competition.getGender());
+                competitionDto.setName(competition.getName());
+                competitionDto.setSeasons(competition.getSeasons());
+                competitionDto.setStringKey(competition.getStringKey());
+                competitionDto.setType(competition.getType());
 
-            competitionDtos.add(competitionDto);
+                competitionDtos.add(competitionDto);
+            }
+            return competitionDtos;
+        } catch (DataAccessException e) {
+            logger.error("A data access error occurred while retrieving competitions: " + e.getMessage());
+            throw e;
         }
-        return competitionDtos;
+
     }
 
     public Competition getCompetitionById(int competitionId) {
@@ -61,14 +66,28 @@ public class CompetitionService {
                 throw new NotFoundException("Competition not found");
             }
         } catch (NotFoundException e) {
-            logger.log(Level.WARN, "Competition not found for ID: " + competitionId, e);
+            logger.error("Competition not found for ID: " + competitionId, e.getMessage());
+            throw e;
+        } catch (DataAccessException e) {
+            logger.error("A data access error occurred: " + e.getMessage());
             throw e;
         }
 
     }
 
     public boolean isCompetitionIdValid(Integer competitionId) {
-        List<Integer> allCompetitionIds = competitionRepository.findAllCompetitionIds();
-        return allCompetitionIds.contains(competitionId);
+        try {
+            List<Integer> allCompetitionIds = competitionRepository.findAllCompetitionIds();
+            return allCompetitionIds.contains(competitionId);
+        } catch (DataAccessException e) {
+            logger.error("A data access error occurred while validating competition ID: " + e.getMessage());
+            throw e;
+        }
+
     }
 }
+// catch (NotFoundException e) {
+// logger.error("Competition not found: " + e.getMessage());
+// return ResponseUtil.createErrorResponse(HttpStatus.NOT_FOUND,
+// e.getMessage());
+// }

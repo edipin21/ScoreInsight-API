@@ -4,16 +4,18 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Optional;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import com.example.sport_api.models.Game;
-import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.GameRepository;
 
 @Service
 public class GameService {
+
+    private static final Logger logger = LogManager.getLogger(GameService.class);
 
     @Autowired
     private GameRepository gameRepository;
@@ -24,9 +26,14 @@ public class GameService {
 
     public List<Game> getGamesByDateTimeAndCompetitionId(Integer id, String date) {
 
-        Date theDate = Date.valueOf(date);
-        List<Game> games = gameRepository.findByDateTimeAndCompetitionId(theDate, id);
-        return games;
+        try {
+            Date theDate = Date.valueOf(date);
+            List<Game> games = gameRepository.findByDateTimeAndCompetitionId(theDate, id);
+            return games;
+        } catch (DataAccessException e) {
+            logger.error("Data access error occurred while retrieving games: " + e.getMessage());
+            throw e;
+        }
 
     }
 

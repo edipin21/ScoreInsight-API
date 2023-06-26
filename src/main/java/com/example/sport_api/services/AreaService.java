@@ -54,7 +54,7 @@ public class AreaService {
             return areaDtos;
 
         } catch (DataAccessException e) {
-            logger.error("Error occurred while accessing data: " + e.getMessage(), e);
+            logger.error("Error occurred while accessing data while retrieving areas: " + e.getMessage(), e);
             throw e;
         }
     }

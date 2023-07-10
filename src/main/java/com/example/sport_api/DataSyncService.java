@@ -21,7 +21,9 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +44,8 @@ public class DataSyncService {
     private final String areasResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Areas?key=";
     private final String competitionsResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Competitions?key=";
     private final String competitionFixturesResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/";
-    private final String membershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/ActiveMemberships/";
+    private final String activeMembershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/ActiveMemberships/";
+    private final String recentlyChangedMembershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/RecentlyChangedMemberships/";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -206,33 +209,61 @@ public class DataSyncService {
         }
     }
 
-    public void fetchMembershipAndUpdate() throws JsonProcessingException {
+    public void fetchActiveMembershipAndUpdate() throws JsonProcessingException {
 
         try {
 
+            ObjectMapper objectMapper = initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
             competitioIntegers.sort(null);
 
-            for (Integer competitionId : competitioIntegers) {
-                String membershipJson = fetchData(membershipResourceUrl + competitionId + "?key=");
+            // for (Integer competitionId : competitioIntegers) {
+            String activeMembershipJson = fetchData(activeMembershipResourceUrl + 3 + "?key=");
 
-                ObjectMapper objectMapper = initializeObjectMapper();
+            List<Membership> activeMemberships = new ArrayList<>();
 
-                List<Membership> memberships;
+            activeMemberships = objectMapper.readValue(activeMembershipJson, new TypeReference<List<Membership>>() {
+            });
 
-                memberships = objectMapper.readValue(membershipJson, new TypeReference<List<Membership>>() {
-                });
+            activeMemberships.forEach(membership -> membership.setCompetitionId(3));
 
-                memberships.forEach(membership -> membership.setCompetitionId(competitionId));
-
-                membershipRepository.saveAll(memberships);
-            }
+            membershipRepository.saveAll(activeMemberships);
+            // }
 
         } catch (Exception e) {
             handleException(e);
             throw e;
         }
 
+    }
+
+    public void fetchRecentlyChangedMembershipAndUpdate() throws JsonProcessingException {
+
+        try {
+            ObjectMapper objectMapper = initializeObjectMapper();
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            competitioIntegers.sort(null);
+
+            // for (Integer competitionId : competitioIntegers) {
+
+            String recentlyChangedMembershipsJson = fetchData(
+                    recentlyChangedMembershipResourceUrl + 3 + "/" + 30 + "?key=");
+
+            List<Membership> recentlyChangedMemberships = new ArrayList<>();
+
+            recentlyChangedMemberships = objectMapper.readValue(recentlyChangedMembershipsJson,
+                    new TypeReference<List<Membership>>() {
+                    });
+
+            recentlyChangedMemberships.forEach(membership -> membership.setCompetitionId(3));
+
+            membershipRepository.saveAll(recentlyChangedMemberships);
+
+            // }
+        } catch (Exception e) {
+            handleException(e);
+            throw e;
+        }
     }
 
     public void handleException(Exception e) {

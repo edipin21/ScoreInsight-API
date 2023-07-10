@@ -60,12 +60,32 @@ public class MembershipController {
             @PathVariable String competition,
             @PathVariable String days) {
 
-        Integer competitionId = Integer.parseInt(competition);
-        Integer day = Integer.parseInt(days);
+        try {
+            Integer competitionId = Integer.parseInt(competition);
+            Integer theDays = Integer.parseInt(days);
 
-        List<Membership> memberships = membershipService.getRecentlyChangedMemberships(competitionId, day);
+            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+                throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
+            }
 
-        return ResponseUtil.createOkResponse(memberships);
+            if (theDays < 1 || theDays > 30 || theDays == null) {
+                throw new IllegalArgumentException("Invalid Argument: The days parameter is invalid ");
+            }
+
+            List<Membership> memberships = membershipService.getRecentlyChangedMemberships(competitionId, theDays);
+
+            return ResponseUtil.createOkResponse(memberships);
+        } catch (NumberFormatException e) {
+            logger.error("Invalid Argument: The competition and days parameteres should be an integer", e);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    "Invalid Argument: The competition and days parameteres should be an integer");
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (DataAccessException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+
     }
 
 }

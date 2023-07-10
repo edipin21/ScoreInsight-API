@@ -29,7 +29,7 @@ public class MembershipService {
 
     }
 
-    public List<Membership> getRecentlyChangedMemberships(Integer days, Integer competitionId) {
+    public List<Membership> getRecentlyChangedMemberships(Integer competitionId, Integer days) {
 
         try {
             List<Membership> memberships = membershipRepository.findRecentMembershipsByCompetitionId(competitionId,

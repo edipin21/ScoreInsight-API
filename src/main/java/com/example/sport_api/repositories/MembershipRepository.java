@@ -10,7 +10,7 @@ import com.example.sport_api.models.Membership;
 
 public interface MembershipRepository extends JpaRepository<Membership, Integer> {
 
-    @Query(value = "SELECT * FROM membership WHERE  competition_id = :competitionId", nativeQuery = true)
+    @Query(value = "SELECT * FROM membership WHERE  competition_id = :competitionId AND active = true ", nativeQuery = true)
     List<Membership> findByCompetitionId(@Param("competitionId") Integer competitionId);
 
     @Query(value = "SELECT * FROM membership WHERE competition_id = :competitionId AND Updated >= DATE_SUB(NOW(), INTERVAL :days DAY)", nativeQuery = true)

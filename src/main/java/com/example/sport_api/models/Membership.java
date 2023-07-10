@@ -1,9 +1,8 @@
 package com.example.sport_api.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 

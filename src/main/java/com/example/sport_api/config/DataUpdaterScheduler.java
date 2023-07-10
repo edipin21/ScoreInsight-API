@@ -42,8 +42,13 @@ public class DataUpdaterScheduler {
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
-    // public void updateMembershipDB() throws IOException {
-    // apiService.fetchMembershipAndUpdate();
+    // public void updateActiveMembershipDB() throws IOException {
+    // apiService.fetchActiveMembershipAndUpdate();
+    // }
+
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateRecentlyChangedMembershipDB() throws IOException {
+    // apiService.fetchRecentlyChangedMembershipAndUpdate();
     // }
 
 }

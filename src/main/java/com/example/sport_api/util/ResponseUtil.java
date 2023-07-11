@@ -43,12 +43,18 @@ public class ResponseUtil {
         headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
 
         Map<String, Object> responseBody = new LinkedHashMap<>();
-        responseBody.put("HttpStatusCode", status.value());
-        responseBody.put("Code", status.value());
-        responseBody.put("Description", description);
-        responseBody.put("Help", "Please contact support@eddie.sportdata for assistance");
+        if (status != HttpStatus.NOT_FOUND) {
+            responseBody.put("HttpStatusCode", status.value());
+            responseBody.put("Code", status.value());
+            responseBody.put("Description", description);
+            responseBody.put("Help", "Please contact support@eddie.sportdata for assistance");
+        } else {
+            responseBody.put("statusCode", status.value());
+            responseBody.put("message", "Resource not found");
+        }
 
         return new ResponseEntity<>((T) responseBody, headers, status);
 
     }
+
 }

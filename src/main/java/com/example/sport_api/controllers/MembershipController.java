@@ -55,7 +55,7 @@ public class MembershipController {
 
     }
 
-    @GetMapping("scores/recentlychangedMemberships/{competition}/{days}")
+    @GetMapping(value = "scores/recentlychangedMemberships/{competition}/{days}")
     public ResponseEntity<List<Membership>> retriveMembershipByCompetitionAndUpdateDate(
             @PathVariable String competition,
             @PathVariable String days) {

@@ -17,4 +17,8 @@ public interface MembershipRepository extends JpaRepository<Membership, Integer>
     List<Membership> findRecentMembershipsByCompetitionId(@Param("competitionId") Integer competitionId,
             @Param("days") int days);
 
+    @Query(value = "SELECT * FROM membership WHERE  competition_id = :competitionId AND team_id =:teamId ", nativeQuery = true)
+    List<Membership> findByCompetitionIdAndTeamId(@Param("competitionId") Integer competitionId,
+            @Param("teamId") Integer teamId);
+
 }

@@ -42,4 +42,16 @@ public class MembershipService {
         }
     }
 
+    public List<Membership> getMembershipsByCompetitionAndTeam(Integer Competition, Integer team) {
+        try {
+            List<Membership> memberships = membershipRepository.findByCompetitionIdAndTeamId(Competition, team);
+
+            return memberships;
+        } catch (DataAccessException e) {
+            logger.error("A data access error occurred while retrieving memberships  " + e.getMessage());
+            throw e;
+        }
+
+    }
+
 }

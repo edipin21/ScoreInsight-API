@@ -9,8 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 
 @JsonPropertyOrder({ "teamId", "areaId", "venueId", "stringKey", "name", "fullName", "active",
         "areaName", "venueName", "gender", "type", "address", "city", "zip", "phone", "fax", "website", "email",
@@ -49,14 +51,16 @@ public class TeamDetail {
     private String WikipediaWordMarkUrl;
     private int GlobalTeamId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "team_id")
+    @Transient
+    // @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "team_id", insertable = false, updatable = false)
     private List<Player> Players;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "competition_id")
     @JsonIgnore
-    private Competition competition;
+    private List<Competition> competition;
 
     public TeamDetail() {
         super();
@@ -67,7 +71,7 @@ public class TeamDetail {
             String zip, String phone, String fax, String website, String email, int founded, String clubColor1,
             String clubColor2, String clubColor3, String nickname1, String nickname2, String nickname3,
             String wikipediaLogoUrl, String wikipediaWordMarkUrl, int globalTeamId, List<Player> players,
-            Competition competition) {
+            List<Competition> competition) {
         TeamId = teamId;
         AreaId = areaId;
         VenueId = venueId;
@@ -342,11 +346,11 @@ public class TeamDetail {
         Players = players;
     }
 
-    public Competition getCompetition() {
+    public List<Competition> getCompetition() {
         return competition;
     }
 
-    public void setCompetition(Competition competition) {
+    public void setCompetition(List<Competition> competition) {
         this.competition = competition;
     }
 

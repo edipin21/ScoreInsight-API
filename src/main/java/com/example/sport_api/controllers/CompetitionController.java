@@ -38,7 +38,7 @@ public class CompetitionController {
 
     }
 
-    @GetMapping("/c/{competition}")
+    @GetMapping("/scores/{competition}")
     public ResponseEntity<Competition> retrieveCompetitionById(@PathVariable String competition) {
         try {
 

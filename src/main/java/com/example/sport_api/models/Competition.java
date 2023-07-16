@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -42,8 +43,8 @@ public class Competition {
     @OneToOne
     private Season CurrentSeason;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
-    @JoinColumn(name = "competition_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
+    // @JoinColumn(name = "competition_id")
     private List<TeamDetail> Teams;
 
     @OneToMany(fetch = FetchType.EAGER) // CompetitionDetail

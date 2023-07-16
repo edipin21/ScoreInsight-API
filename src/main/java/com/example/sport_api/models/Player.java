@@ -47,8 +47,9 @@ public class Player {
     private Date UsaTodayHeadshotUpdated;
     private Date UsaTodayHeadshotNoBackgroundUpdated;
 
+    // @ManyToMany(fetch = FetchType.EAGER)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "team_id", insertable = true, updatable = false)
+    @JoinColumn(name = "team_id")
     @JsonIgnore
     private TeamDetail teamDetail;
 
@@ -282,6 +283,14 @@ public class Player {
 
     public void setUsaTodayHeadshotNoBackgroundUpdated(Date usaTodayHeadshotNoBackgroundUpdated) {
         UsaTodayHeadshotNoBackgroundUpdated = usaTodayHeadshotNoBackgroundUpdated;
+    }
+
+    public TeamDetail getTeamDetail() {
+        return teamDetail;
+    }
+
+    public void setTeamDetail(TeamDetail teamDetail) {
+        this.teamDetail = teamDetail;
     }
 
 }

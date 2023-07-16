@@ -4,12 +4,14 @@ import com.example.sport_api.models.Area;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.Game;
 import com.example.sport_api.models.Membership;
+import com.example.sport_api.models.Player;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.models.TeamDetail;
 import com.example.sport_api.repositories.AreaRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.GameRepository;
 import com.example.sport_api.repositories.MembershipRepository;
+import com.example.sport_api.repositories.PlayerRepository;
 import com.example.sport_api.repositories.TeamDetailRepository;
 import com.example.sport_api.repositories.TeamRepository;
 import com.example.sport_api.services.CompetitionService;
@@ -45,6 +47,7 @@ public class DataSyncService {
     private final String competitionFixturesResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/";
     private final String activeMembershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/ActiveMemberships/";
     private final String recentlyChangedMembershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/RecentlyChangedMemberships/";
+    private final String plyersByTeamUrl = "https://api.sportsdata.io/v4/soccer/scores/json/PlayersByTeam/";
 
     Dotenv dotenv = Dotenv.load();
 
@@ -68,6 +71,9 @@ public class DataSyncService {
 
     @Autowired
     private MembershipRepository membershipRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
 
     public void fetchTeamsAndUpdate() throws JsonMappingException,
             JsonProcessingException {
@@ -159,12 +165,12 @@ public class DataSyncService {
 
         try {
 
-            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
-            competitioIntegers.sort(null);
+            List<Integer> competitionIntegers = competitionRepository.findAllCompetitionIds();
+            competitionIntegers.sort(null);
 
             // Partial loop for sanity checks - Change it later
-            for (int i = 0; i < 5; i++) {
-                Integer competitionId = competitioIntegers.get(i);
+            for (Integer competitionId : competitionIntegers) {
+                // Integer competitionId = competitioIntegers.get(i);
                 System.out.println(competitionId);
                 String competitionFixturesJson = fetchData(competitionFixturesResourceUrl +
                         competitionId + "?key=");
@@ -173,6 +179,9 @@ public class DataSyncService {
 
                 Competition competition = objectMapper.readValue(competitionFixturesJson,
                         Competition.class);
+
+                List<Competition> competitions = new ArrayList<>();
+                competitions.add(0, competition);
 
                 Optional<List<Game>> games = Optional.of(competition.getGames());
                 List<Game> theGames = new ArrayList<>();
@@ -185,7 +194,7 @@ public class DataSyncService {
                 List<TeamDetail> theTeams = new ArrayList<>();
                 if (teams.isPresent()) {
                     theTeams = teams.get();
-                    theTeams.forEach(team -> team.setCompetition(competition));
+                    theTeams.forEach(team -> team.setCompetition(competitions));
 
                 }
                 competitionRepository.save(competition);
@@ -243,6 +252,8 @@ public class DataSyncService {
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
             competitioIntegers.sort(null);
 
+            // Partial loop for sanity checks - Change it later
+
             // for (Integer competitionId : competitioIntegers) {
 
             String recentlyChangedMembershipsJson = fetchData(
@@ -272,6 +283,34 @@ public class DataSyncService {
             logger.error("Error occurred during I/O operation: {}", e.getMessage(), e);
         } else if (e instanceof DataAccessException) {
             logger.error("Error occurred during data access: {}", e.getMessage(), e);
+        }
+
+    }
+
+    public void fetchPlayersbyTeamsAndUpdate() throws JsonProcessingException {
+
+        ObjectMapper objectMapper = initializeObjectMapper();
+
+        List<TeamDetail> teams = teamDetailRepository.findAll();
+
+        // Partial loop for sanity checks - Change it later
+        for (int i = 0; i < 1; i++) {
+
+            List<Player> players = new ArrayList<>();
+
+            String playersbyTeamJson = fetchData(
+                    plyersByTeamUrl + teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
+                            + teams.get(i).getTeamId()
+                            + "?key=");
+
+            players = objectMapper.readValue(playersbyTeamJson,
+                    new TypeReference<List<Player>>() {
+                    });
+            int num = i;
+            players.forEach(player -> player.setTeamDetail(teams.get(num)));
+
+            playerRepository.saveAll(players);
+
         }
 
     }

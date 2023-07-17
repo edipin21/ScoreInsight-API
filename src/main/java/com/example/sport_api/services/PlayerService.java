@@ -23,10 +23,10 @@ public class PlayerService {
     public List<Player> retrievePlayersByTeam(Integer teamID) {
 
         try {
-            List<Player> thePlayers = playerRepository.findplayersByTeam(teamID);
+            List<Player> thePlayers = playerRepository.findPlayersByTeam(teamID);
             return thePlayers;
         } catch (DataAccessException e) {
-            logger.error("A data access error occurred while validating competition ID: " + e.getMessage());
+            logger.error("A data access error occurred: " + e.getMessage());
             throw e;
         }
 

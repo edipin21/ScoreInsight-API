@@ -56,4 +56,9 @@ public class DataUpdaterScheduler {
     // apiService.fetchPlayersbyTeamsAndUpdate();
     // }
 
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updatePlayersByTeamDB() throws IOException {
+    // apiService.fetchAndUpdateScheduleAndStandings();
+    // }
+
 }

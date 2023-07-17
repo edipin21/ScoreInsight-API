@@ -10,5 +10,5 @@ import com.example.sport_api.models.Player;
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
     @Query(value = "SELECT * FROM player WHERE team_id = :teamId", nativeQuery = true)
-    List<Player> findplayersByTeam(@Param("teamId") Integer teamId);
+    List<Player> findPlayersByTeam(@Param("teamId") Integer teamId);
 }

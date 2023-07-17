@@ -26,14 +26,15 @@ public class Round {
     private int SeasonId;
 
     // @JsonProperty("Season")
-    private int SoccerSeason;
-    private int SeasonType;
+    private Integer SoccerSeason;
+    private Integer SeasonType;
     private String Name;
     private String Type;
     private Date StartDate;
     private Date EndDate;
-    private int CurrentWeek;
+    private Integer CurrentWeek;
     private boolean CurrentRound;
+    private Integer CompetitionId;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
@@ -44,7 +45,8 @@ public class Round {
     @JoinColumn(name = "round_id")
     private List<Game> Games;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "round_id")
     private List<Standing> Standings;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -77,19 +79,19 @@ public class Round {
         PlayerSeasons = playerSeasons;
     }
 
-    public int getRoundId() {
+    public Integer getRoundId() {
         return RoundId;
     }
 
-    public void setRoundId(int roundId) {
+    public void setRoundId(Integer roundId) {
         RoundId = roundId;
     }
 
-    public int getSeasonType() {
+    public Integer getSeasonType() {
         return SeasonType;
     }
 
-    public void setSeasonType(int seasonType) {
+    public void setSeasonType(Integer seasonType) {
         SeasonType = seasonType;
     }
 
@@ -125,11 +127,11 @@ public class Round {
         EndDate = endDate;
     }
 
-    public int getCurrentWeek() {
+    public Integer getCurrentWeek() {
         return CurrentWeek;
     }
 
-    public void setCurrentWeek(int currentWeek) {
+    public void setCurrentWeek(Integer currentWeek) {
         CurrentWeek = currentWeek;
     }
 
@@ -191,12 +193,20 @@ public class Round {
         PlayerSeasons = playerSeasons;
     }
 
-    public int getSeasonId() {
+    public Integer getSeasonId() {
         return SeasonId;
     }
 
     public void setSeasonId(int seasonId) {
         SeasonId = seasonId;
+    }
+
+    public Integer getCompetitionId() {
+        return CompetitionId;
+    }
+
+    public void setCompetitionId(Integer competitionId) {
+        CompetitionId = competitionId;
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.Game;
 import com.example.sport_api.models.Membership;
 import com.example.sport_api.models.Player;
+import com.example.sport_api.models.Round;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.models.TeamDetail;
 import com.example.sport_api.repositories.AreaRepository;
@@ -12,6 +13,7 @@ import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.GameRepository;
 import com.example.sport_api.repositories.MembershipRepository;
 import com.example.sport_api.repositories.PlayerRepository;
+import com.example.sport_api.repositories.RoundRepository;
 import com.example.sport_api.repositories.TeamDetailRepository;
 import com.example.sport_api.repositories.TeamRepository;
 import com.example.sport_api.services.CompetitionService;
@@ -47,8 +49,9 @@ public class DataSyncService {
     private final String competitionFixturesResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/CompetitionDetails/";
     private final String activeMembershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/ActiveMemberships/";
     private final String recentlyChangedMembershipResourceUrl = "https://api.sportsdata.io/v4/soccer/scores/json/RecentlyChangedMemberships/";
-    private final String plyersByTeamUrl = "https://api.sportsdata.io/v4/soccer/scores/json/PlayersByTeam/";
-
+    private final String plyersByTeamResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/PlayersByTeam/";
+    private final String scheduleResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Schedule/";
+    private final String standingsResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Standings/";
     Dotenv dotenv = Dotenv.load();
 
     @Autowired
@@ -74,6 +77,9 @@ public class DataSyncService {
 
     @Autowired
     private PlayerRepository playerRepository;
+
+    @Autowired
+    private RoundRepository roundRepository;
 
     public void fetchTeamsAndUpdate() throws JsonMappingException,
             JsonProcessingException {
@@ -276,6 +282,82 @@ public class DataSyncService {
         }
     }
 
+    public void fetchPlayersbyTeamsAndUpdate() throws JsonProcessingException {
+
+        try {
+            ObjectMapper objectMapper = initializeObjectMapper();
+
+            List<TeamDetail> teams = teamDetailRepository.findAll();
+
+            // Partial loop for sanity checks - Change it later
+            for (int i = 0; i < 1; i++) {
+
+                List<Player> players = new ArrayList<>();
+
+                String playersbyTeamJson = fetchData(
+                        plyersByTeamResourcUrl + teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
+                                + teams.get(i).getTeamId()
+                                + "?key=");
+
+                players = objectMapper.readValue(playersbyTeamJson,
+                        new TypeReference<List<Player>>() {
+                        });
+                int num = i;
+                players.forEach(player -> player.setTeamDetail(teams.get(num)));
+
+                playerRepository.saveAll(players);
+
+            }
+        } catch (Exception e) {
+            handleException(e);
+            throw e;
+        }
+
+    }
+
+    public void fetchAndUpdateScheduleAndStandings() throws JsonProcessingException {
+        int[] seasonsArr = { 2016 };// , 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
+        ObjectMapper objectMapper = initializeObjectMapper();
+
+        List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+        competitioIntegers.sort(null);
+
+        // Partial loop for sanity checks - Change it later
+        // for (Integer competitonId : competitioIntegers) {
+        for (int i = 0; i < seasonsArr.length; i++) {
+            String scheduleJson = fetchData(
+                    scheduleResourcUrl + 1 + "/"
+                            + seasonsArr[i]
+                            + "?key=");
+
+            List<Round> rounds = new ArrayList<>();
+
+            List<Round> standingsRounds = new ArrayList<>();
+
+            rounds = objectMapper.readValue(scheduleJson, new TypeReference<List<Round>>() {
+            });
+
+            rounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+            String standingsJson = fetchData(
+                    standingsResourcUrl + 1 + "/"
+                            + seasonsArr[i]
+                            + "?key=");
+            standingsRounds = objectMapper.readValue(standingsJson, new TypeReference<List<Round>>() {
+            });
+
+            standingsRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+            for (int j = 0; j < rounds.size(); j++) {
+                rounds.get(i).setStandings(standingsRounds.get(i).getStandings());
+            }
+
+            roundRepository.saveAll(rounds);
+        }
+        // }
+
+    }
+
     public void handleException(Exception e) {
         if (e instanceof JsonProcessingException) {
             logger.error("Error occurred during JSON processing: {}", e.getMessage(), e);
@@ -286,33 +368,4 @@ public class DataSyncService {
         }
 
     }
-
-    public void fetchPlayersbyTeamsAndUpdate() throws JsonProcessingException {
-
-        ObjectMapper objectMapper = initializeObjectMapper();
-
-        List<TeamDetail> teams = teamDetailRepository.findAll();
-
-        // Partial loop for sanity checks - Change it later
-        for (int i = 0; i < 1; i++) {
-
-            List<Player> players = new ArrayList<>();
-
-            String playersbyTeamJson = fetchData(
-                    plyersByTeamUrl + teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
-                            + teams.get(i).getTeamId()
-                            + "?key=");
-
-            players = objectMapper.readValue(playersbyTeamJson,
-                    new TypeReference<List<Player>>() {
-                    });
-            int num = i;
-            players.forEach(player -> player.setTeamDetail(teams.get(num)));
-
-            playerRepository.saveAll(players);
-
-        }
-
-    }
-
 }

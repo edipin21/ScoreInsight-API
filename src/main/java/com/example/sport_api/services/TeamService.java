@@ -53,7 +53,7 @@ public class TeamService {
             List<Integer> allTeamsIds = teamRepository.findAllTeamsIds();
             return allTeamsIds.contains(teamId);
         } catch (DataAccessException e) {
-            logger.error("A data access error occurred while validating competition ID: " + e.getMessage());
+            logger.error("A data access error occurred: " + e.getMessage());
             throw e;
         }
     }

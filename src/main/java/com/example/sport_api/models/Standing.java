@@ -1,38 +1,42 @@
 package com.example.sport_api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+@JsonPropertyOrder({ "standingId", "TeamId", "name", "shortName", "scope", "teamsOrder", "games", "wins", "losses",
+        "draws", "goalsScored", "goalsAgainst", "goalsDifferential", "points", "groupName", "globalTeamID" })
 @Entity
 public class Standing {
 
     @Id
-    private int StandingId;
-    private int TeamId;
+    private Integer StandingId;
+    private Integer TeamId;
     private String Name;
     private String ShortName;
     private String Scope;
-    private int TeamsOrder;
-    private int Games;
-    private int Wins;
-    private int Losses;
-    private int Draws;
-    private int GoalsScored;
-    private int GoalsAgainst;
-    private int GoalsDifferential;
-    private int Points;
-
-    @ManyToOne
-    @JoinColumn(name = "RoundId")
-    // @JsonBackReference("round-standings")
-    private Round round;
-
-    @JsonProperty("Group")
+    private Integer TeamsOrder;
+    private Integer Games;
+    private Integer Wins;
+    private Integer Losses;
+    private Integer Draws;
+    private Integer GoalsScored;
+    private Integer GoalsAgainst;
+    private Integer GoalsDifferential;
+    private Integer Points;
     private String GroupName;
     private int GlobalTeamID;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "round_id", insertable = false, updatable = false)
+    private Round round;
 
     public Standing() {
         super();
@@ -61,19 +65,29 @@ public class Standing {
         GlobalTeamID = globalTeamID;
     }
 
-    public int getStandingId() {
+    @JsonProperty("Order")
+    public Integer getTeamsOrder() {
+        return TeamsOrder;
+    }
+
+    @JsonProperty("Order")
+    public void setTeamsOrder(Integer TeamsOrder) {
+        this.TeamsOrder = TeamsOrder;
+    }
+
+    public Integer getStandingId() {
         return StandingId;
     }
 
-    public void setStandingId(int standingId) {
+    public void setStandingId(Integer standingId) {
         StandingId = standingId;
     }
 
-    public int getTeamId() {
+    public Integer getTeamId() {
         return TeamId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(Integer teamId) {
         TeamId = teamId;
     }
 
@@ -101,86 +115,76 @@ public class Standing {
         Scope = scope;
     }
 
-    @JsonProperty("order")
-    public int getTeamsOrder() {
-        return TeamsOrder;
-    }
-
-    @JsonProperty("order")
-    public void setTeamsOrder(int TeamsOrder) {
-        this.TeamsOrder = TeamsOrder;
-    }
-
-    public int getGames() {
+    public Integer getGames() {
         return Games;
     }
 
-    public void setGames(int games) {
+    public void setGames(Integer games) {
         Games = games;
     }
 
-    public int getWins() {
+    public Integer getWins() {
         return Wins;
     }
 
-    public void setWins(int wins) {
+    public void setWins(Integer wins) {
         Wins = wins;
     }
 
-    public int getLosses() {
+    public Integer getLosses() {
         return Losses;
     }
 
-    public void setLosses(int losses) {
+    public void setLosses(Integer losses) {
         Losses = losses;
     }
 
-    public int getDraws() {
+    public Integer getDraws() {
         return Draws;
     }
 
-    public void setDraws(int draws) {
+    public void setDraws(Integer draws) {
         Draws = draws;
     }
 
-    public int getGoalsScored() {
+    public Integer getGoalsScored() {
         return GoalsScored;
     }
 
-    public void setGoalsScored(int goalsScored) {
+    public void setGoalsScored(Integer goalsScored) {
         GoalsScored = goalsScored;
     }
 
-    public int getGoalsAgainst() {
+    public Integer getGoalsAgainst() {
         return GoalsAgainst;
     }
 
-    public void setGoalsAgainst(int goalsAgainst) {
+    public void setGoalsAgainst(Integer goalsAgainst) {
         GoalsAgainst = goalsAgainst;
     }
 
-    public int getGoalsDifferential() {
+    public Integer getGoalsDifferential() {
         return GoalsDifferential;
     }
 
-    public void setGoalsDifferential(int goalsDifferential) {
+    public void setGoalsDifferential(Integer goalsDifferential) {
         GoalsDifferential = goalsDifferential;
     }
 
-    public int getPoints() {
+    public Integer getPoints() {
         return Points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(Integer points) {
         Points = points;
     }
 
-    public int getGlobalTeamID() {
-        return GlobalTeamID;
+    public Round getRound() {
+        return round;
     }
 
-    public void setGlobalTeamID(int globalTeamID) {
-        GlobalTeamID = globalTeamID;
+    public void setRound(Round round) {
+        this.round = round;
     }
 
     public String getGroupName() {
@@ -191,12 +195,12 @@ public class Standing {
         GroupName = groupName;
     }
 
-    public Round getRound() {
-        return round;
+    public int getGlobalTeamID() {
+        return GlobalTeamID;
     }
 
-    public void setRound(Round round) {
-        this.round = round;
+    public void setGlobalTeamID(int globalTeamID) {
+        GlobalTeamID = globalTeamID;
     }
 
     @Override

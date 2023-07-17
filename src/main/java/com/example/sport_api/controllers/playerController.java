@@ -18,7 +18,7 @@ import com.example.sport_api.services.TeamService;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController
-public class playerComtroller {
+public class playerController {
 
     private static final Logger logger = LogManager.getLogger(MembershipController.class);
 
@@ -29,7 +29,7 @@ public class playerComtroller {
     private TeamService teamService;
 
     @GetMapping("/scores/PlayersByTeam/{teamId}")
-    public ResponseEntity<List<Player>> retrivePlayersByTeam(@PathVariable String teamId) {
+    public ResponseEntity<List<Player>> retrivePlayersByTeamId(@PathVariable String teamId) {
 
         try {
             Integer team = Integer.parseInt(teamId);
@@ -42,7 +42,7 @@ public class playerComtroller {
 
             return ResponseUtil.createOkResponse(players);
         } catch (NumberFormatException e) {
-            logger.error("Invalid Argument: The teamId parameter should be an integer!!!!!!!!!!!!!!!", e);
+            logger.error("Invalid Argument: The teamId parameter should be an integer", e);
             return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
                     "Invalid Argument: The teamId parameter should be an integer");
         } catch (IllegalArgumentException e) {

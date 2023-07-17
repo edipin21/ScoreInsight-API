@@ -23,7 +23,7 @@ public class MembershipService {
 
             return memberships;
         } catch (DataAccessException e) {
-            logger.error("A data access error occurred while retrieving memberships  " + e.getMessage());
+            logger.error("A data access error occurred: " + e.getMessage());
             throw e;
         }
 

@@ -1,14 +1,18 @@
 package com.example.sport_api;
 
 import com.example.sport_api.models.Area;
+import com.example.sport_api.models.BoxScore;
 import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.Game;
 import com.example.sport_api.models.Membership;
 import com.example.sport_api.models.Player;
+import com.example.sport_api.models.Referee;
 import com.example.sport_api.models.Round;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.models.TeamDetail;
+import com.example.sport_api.models.Venue;
 import com.example.sport_api.repositories.AreaRepository;
+import com.example.sport_api.repositories.BoxScoreRepository;
 import com.example.sport_api.repositories.CompetitionRepository;
 import com.example.sport_api.repositories.GameRepository;
 import com.example.sport_api.repositories.MembershipRepository;
@@ -16,6 +20,7 @@ import com.example.sport_api.repositories.PlayerRepository;
 import com.example.sport_api.repositories.RoundRepository;
 import com.example.sport_api.repositories.TeamDetailRepository;
 import com.example.sport_api.repositories.TeamRepository;
+import com.example.sport_api.repositories.VenueRepository;
 import com.example.sport_api.services.CompetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -34,7 +39,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.Map;
 import org.apache.logging.log4j.Logger;
+
 import org.apache.logging.log4j.LogManager;
 
 //need to add the HistoricalMembershipsByTeam function 
@@ -52,6 +60,10 @@ public class DataSyncService {
     private final String plyersByTeamResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/PlayersByTeam/";
     private final String scheduleResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Schedule/";
     private final String standingsResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Standings/";
+    private final String teamSeasonStateResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/TeamSeasonStats/";
+    private final String venuesResourcUrl = "https://api.sportsdata.io/v4/soccer/scores/json/Venues?key=";
+    private final String boxScoreResourcUrl = "https://api.sportsdata.io/v4/soccer/stats/json/BoxScore/";
+
     Dotenv dotenv = Dotenv.load();
 
     @Autowired
@@ -80,6 +92,12 @@ public class DataSyncService {
 
     @Autowired
     private RoundRepository roundRepository;
+
+    @Autowired
+    private VenueRepository venueRepository;
+
+    @Autowired
+    private BoxScoreRepository boxScoreRepository;
 
     public void fetchTeamsAndUpdate() throws JsonMappingException,
             JsonProcessingException {
@@ -315,47 +333,104 @@ public class DataSyncService {
 
     }
 
-    public void fetchAndUpdateScheduleAndStandings() throws JsonProcessingException {
-        int[] seasonsArr = { 2016 };// , 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
-        ObjectMapper objectMapper = initializeObjectMapper();
+    public void fetchAndUpdateScheduleAndStandingsAndTeamSeason() throws JsonProcessingException {
 
-        List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
-        competitioIntegers.sort(null);
+        try {
+            int[] seasonsArr = { 2016 };// , 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
+            ObjectMapper objectMapper = initializeObjectMapper();
 
-        // Partial loop for sanity checks - Change it later
-        // for (Integer competitonId : competitioIntegers) {
-        for (int i = 0; i < seasonsArr.length; i++) {
-            String scheduleJson = fetchData(
-                    scheduleResourcUrl + 1 + "/"
-                            + seasonsArr[i]
-                            + "?key=");
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            competitioIntegers.sort(null);
 
-            List<Round> rounds = new ArrayList<>();
+            // Partial loop for sanity checks - Change it later
+            // for (Integer competitonId : competitioIntegers) {
+            for (int i = 0; i < 1; i++) {
+                String scheduleJson = fetchData(
+                        scheduleResourcUrl + 1 + "/"
+                                + seasonsArr[i]
+                                + "?key=");
 
-            List<Round> standingsRounds = new ArrayList<>();
+                List<Round> rounds = new ArrayList<>();
 
-            rounds = objectMapper.readValue(scheduleJson, new TypeReference<List<Round>>() {
-            });
+                List<Round> standingsRounds = new ArrayList<>();
 
-            rounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+                List<Round> teamSeasonRounds = new ArrayList<>();
 
-            String standingsJson = fetchData(
-                    standingsResourcUrl + 1 + "/"
-                            + seasonsArr[i]
-                            + "?key=");
-            standingsRounds = objectMapper.readValue(standingsJson, new TypeReference<List<Round>>() {
-            });
+                rounds = objectMapper.readValue(scheduleJson, new TypeReference<List<Round>>() {
+                });
 
-            standingsRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+                rounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
 
-            for (int j = 0; j < rounds.size(); j++) {
-                rounds.get(i).setStandings(standingsRounds.get(i).getStandings());
+                String standingsJson = fetchData(
+                        standingsResourcUrl + 1 + "/"
+                                + seasonsArr[i]
+                                + "?key=");
+                standingsRounds = objectMapper.readValue(standingsJson, new TypeReference<List<Round>>() {
+                });
+
+                standingsRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+                String teamSeasonJson = fetchData(teamSeasonStateResourcUrl + 1 + '/' + seasonsArr[i] + "?key=");
+
+                teamSeasonRounds = objectMapper.readValue(teamSeasonJson, new TypeReference<List<Round>>() {
+                });
+                teamSeasonRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+                for (int j = 0; j < rounds.size(); j++) {
+                    rounds.get(i).setStandings(standingsRounds.get(i).getStandings());
+                    rounds.get(i).setTeamSeasons(teamSeasonRounds.get(i).getTeamSeasons());
+                }
+
+                roundRepository.saveAll(rounds);
             }
+            // }
 
-            roundRepository.saveAll(rounds);
+        } catch (Exception e) {
+            handleException(e);
+            throw e;
         }
-        // }
 
+    }
+
+    public void fetchVenuesAndUpdate() throws JsonProcessingException {
+        try {
+            String venuesJson = fetchData(venuesResourcUrl);
+
+            ObjectMapper objectMapper = initializeObjectMapper();
+
+            List<Venue> venues = new ArrayList<>();
+
+            venues = objectMapper.readValue(venuesJson, new TypeReference<List<Venue>>() {
+            });
+
+            venueRepository.saveAll(venues);
+
+        } catch (Exception e) {
+            handleException(e);
+        }
+    }
+
+    public void fetchAndUpdateBoxScore() throws JsonProcessingException {
+
+        // ObjectMapper objectMapper = initializeObjectMapper();
+
+        // String boxScoreFixturesJson = fetchData(boxScoreResourcUrl + 1 + "/" + 691
+        // + "?key=");
+
+        // List<BoxScore> boxScores = objectMapper.readValue(boxScoreFixturesJson, new
+        // TypeReference<List<BoxScore>>() {
+        // });
+
+        // Integer id = 2;
+        // boxScores.get(0).setBoxScoreId(id);
+
+        // boxScoreRepository.saveAll(boxScores);
+
+        // List<BoxScore> b = boxScoreRepository.findAll();
+
+        Map<Integer, Integer> gameIdToCompetitionMap = gameRepository.findGameIdAndCompetitionMap();
+
+        System.out.println(gameIdToCompetitionMap.get(690));
     }
 
     public void handleException(Exception e) {
@@ -368,4 +443,5 @@ public class DataSyncService {
         }
 
     }
+
 }

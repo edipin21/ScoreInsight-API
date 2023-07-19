@@ -96,4 +96,38 @@ public class RoundController {
 
     }
 
+    @GetMapping("/scores/teamSeasonStats/{competition}/{year}")
+    public ResponseEntity<List<Round>> retriveTeamSeasonStatsByCompetitionAndYear(@PathVariable String competition,
+            @PathVariable String year) {
+
+        List<Integer> years = Arrays.asList(2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024);
+
+        try {
+            Integer competitionId = Integer.parseInt(competition);
+            Integer theYear = Integer.parseInt(year);
+
+            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+                throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
+            }
+
+            if (theYear == null || !years.contains(theYear)) {
+                throw new IllegalArgumentException("Invalid Argument: The year parameter is invalid ");
+            }
+
+            List<Round> teamSeasonStats = roundService.getTeamSeasonStatsByCompetitionAndYear(competitionId, theYear);
+
+            return ResponseUtil.createOkResponse(teamSeasonStats);
+        } catch (NumberFormatException e) {
+            logger.error("Invalid Argument: The competition and year parameters should be an integers", e);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    "Invalid Argument: The competition and year parameters should be an integers");
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (DataAccessException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+
+    }
+
 }

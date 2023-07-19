@@ -8,9 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-
 import com.example.sport_api.models.Round;
-import com.example.sport_api.models.Standing;
 import com.example.sport_api.repositories.RoundRepository;
 
 @Service
@@ -27,6 +25,7 @@ public class RoundService {
             List<Round> schedule = roundRepository.findRoundsByCompetitionAndYear(Competition, year);
 
             schedule.forEach(round -> round.setStandings(new ArrayList<>()));
+            schedule.forEach(round -> round.setTeamSeasons(new ArrayList<>()));
 
             return schedule;
         } catch (DataAccessException e) {
@@ -38,11 +37,27 @@ public class RoundService {
     public List<Round> getStandingsByCompetitionAndYear(Integer Competition, Integer year) {
 
         try {
-            List<Round> schedule = roundRepository.findRoundsByCompetitionAndYear(Competition, year);
+            List<Round> standings = roundRepository.findRoundsByCompetitionAndYear(Competition, year);
 
-            schedule.forEach(round -> round.setGames(new ArrayList<>()));
+            standings.forEach(round -> round.setGames(new ArrayList<>()));
+            standings.forEach(round -> round.setTeamSeasons(new ArrayList<>()));
 
-            return schedule;
+            return standings;
+        } catch (DataAccessException e) {
+            logger.error("A data access error occurred: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public List<Round> getTeamSeasonStatsByCompetitionAndYear(Integer Competition, Integer year) {
+
+        try {
+            List<Round> teamSeasonStats = roundRepository.findRoundsByCompetitionAndYear(Competition, year);
+
+            teamSeasonStats.forEach(round -> round.setStandings(new ArrayList<>()));
+            teamSeasonStats.forEach(round -> round.setGames(new ArrayList<>()));
+
+            return teamSeasonStats;
         } catch (DataAccessException e) {
             logger.error("A data access error occurred: " + e.getMessage());
             throw e;

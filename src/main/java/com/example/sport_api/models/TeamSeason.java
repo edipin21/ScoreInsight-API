@@ -1,7 +1,11 @@
 package com.example.sport_api.models;
 
 import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -61,9 +65,9 @@ public class TeamSeason {
     private float OpponentScore;
     private float Tackles;
 
-    @ManyToOne
-    @JoinColumn(name = "RoundId")
-    // @JsonBackReference("round-TeamSeasons")
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "round_id", insertable = false, updatable = false)
     private Round round;
 
     public TeamSeason() {

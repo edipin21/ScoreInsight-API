@@ -49,7 +49,8 @@ public class Round {
     @JoinColumn(name = "round_id")
     private List<Standing> Standings;
 
-    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "round_id")
     private List<TeamSeason> TeamSeasons;
 
     @OneToMany(mappedBy = "round", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

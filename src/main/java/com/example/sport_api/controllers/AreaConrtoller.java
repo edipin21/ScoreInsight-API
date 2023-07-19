@@ -4,9 +4,6 @@ import java.util.List;
 import com.example.sport_api.models.AreaDto;
 import com.example.sport_api.services.AreaService;
 import com.example.sport_api.util.ResponseUtil;
-
-// import org.apache.logging.log4j.LogManager;
-// import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -16,9 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AreaConrtoller {
-
-    // private static final Logger logger =
-    // LogManager.getLogger(AreaConrtoller.class);
 
     @Autowired
     private AreaService areaService;

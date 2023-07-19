@@ -58,7 +58,17 @@ public class DataUpdaterScheduler {
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updatePlayersByTeamDB() throws IOException {
-    // apiService.fetchAndUpdateScheduleAndStandings();
+    // apiService.fetchAndUpdateScheduleAndStandingsAndTeamSeason();
     // }
+
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateVenueDB() throws IOException {
+    // apiService.fetchVenuesAndUpdate();
+    // }
+
+    @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    public void updateBoxScoreDB() throws IOException {
+        apiService.fetchAndUpdateBoxScore();
+    }
 
 }

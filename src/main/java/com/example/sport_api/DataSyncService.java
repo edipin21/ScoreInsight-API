@@ -6,8 +6,8 @@ import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.Game;
 import com.example.sport_api.models.Membership;
 import com.example.sport_api.models.Player;
-import com.example.sport_api.models.Referee;
 import com.example.sport_api.models.Round;
+import com.example.sport_api.models.Season;
 import com.example.sport_api.models.Team;
 import com.example.sport_api.models.TeamDetail;
 import com.example.sport_api.models.Venue;
@@ -21,7 +21,7 @@ import com.example.sport_api.repositories.RoundRepository;
 import com.example.sport_api.repositories.TeamDetailRepository;
 import com.example.sport_api.repositories.TeamRepository;
 import com.example.sport_api.repositories.VenueRepository;
-import com.example.sport_api.services.CompetitionService;
+import com.example.sport_api.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +39,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.Map;
 import org.apache.logging.log4j.Logger;
 
@@ -75,8 +74,8 @@ public class DataSyncService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
-    @Autowired
-    CompetitionService competitionService;
+    // @Autowired
+    // private CompetitionService competitionService;
 
     @Autowired
     private GameRepository gameRepository;
@@ -98,6 +97,9 @@ public class DataSyncService {
 
     @Autowired
     private BoxScoreRepository boxScoreRepository;
+
+    @Autowired
+    private GameService gameService;
 
     public void fetchTeamsAndUpdate() throws JsonMappingException,
             JsonProcessingException {
@@ -151,6 +153,13 @@ public class DataSyncService {
 
             competitions = objectMapper.readValue(areasJson, new TypeReference<List<Competition>>() {
             });
+            for (Competition competition : competitions) {
+                List<Season> seasons = competition.getSeasons();
+                for (Season season : seasons) {
+                    List<Round> sRounds = season.getRounds();
+                    sRounds.forEach(round -> round.setCompetitionId(competition.getCompetitionId()));
+                }
+            }
 
             competitionRepository.saveAll(competitions);
         } catch (Exception e) {
@@ -160,42 +169,20 @@ public class DataSyncService {
 
     }
 
-    public String fetchData(String resourceUrl) {
-
-        String apiKey = dotenv.get("SPORT_DATA_IO_API_KEY");
-
-        System.out.println(resourceUrl + apiKey);
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl +
-                apiKey,
-                String.class);
-        String responsesData = response.getBody();
-
-        return responsesData;
-    }
-
-    public ObjectMapper initializeObjectMapper() {
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
-                false);
-        objectMapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
-        objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
-        return objectMapper;
-    }
-
     public void fetchCompetitionFixturesAndUpdate() throws JsonProcessingException, IOException {
 
         try {
+            int count = 0;
 
             List<Integer> competitionIntegers = competitionRepository.findAllCompetitionIds();
             competitionIntegers.sort(null);
 
-            // Partial loop for sanity checks - Change it later
+            // Partial loop for sanity checks - delete count
             for (Integer competitionId : competitionIntegers) {
-                // Integer competitionId = competitioIntegers.get(i);
-                System.out.println(competitionId);
+                if (count == 3) {
+                    break;
+                }
+
                 String competitionFixturesJson = fetchData(competitionFixturesResourceUrl +
                         competitionId + "?key=");
 
@@ -205,7 +192,7 @@ public class DataSyncService {
                         Competition.class);
 
                 List<Competition> competitions = new ArrayList<>();
-                competitions.add(0, competition);
+                competitions.add(competition);
 
                 Optional<List<Game>> games = Optional.of(competition.getGames());
                 List<Game> theGames = new ArrayList<>();
@@ -219,8 +206,19 @@ public class DataSyncService {
                 if (teams.isPresent()) {
                     theTeams = teams.get();
                     theTeams.forEach(team -> team.setCompetition(competitions));
+                    for (TeamDetail team : theTeams) {
+                        team.setPlayers(new ArrayList<>());
+                    }
 
                 }
+                for (Competition theCompetition : competitions) {
+                    List<Season> seasons = theCompetition.getSeasons();
+                    for (Season season : seasons) {
+                        List<Round> rounds = season.getRounds();
+                        rounds.forEach(round -> round.setCompetitionId(competition.getCompetitionId()));
+                    }
+                }
+
                 competitionRepository.save(competition);
 
                 if (!theGames.isEmpty()) {
@@ -229,7 +227,7 @@ public class DataSyncService {
                 if (!theTeams.isEmpty()) {
                     teamDetailRepository.saveAll(theTeams);
                 }
-
+                count++;
             }
 
         } catch (IllegalArgumentException e) {
@@ -245,22 +243,31 @@ public class DataSyncService {
 
         try {
 
+            int count = 0;
+
             ObjectMapper objectMapper = initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
             competitioIntegers.sort(null);
+            // Partial loop for sanity checks - delete count
+            for (Integer competitionId : competitioIntegers) {
 
-            // for (Integer competitionId : competitioIntegers) {
-            String activeMembershipJson = fetchData(activeMembershipResourceUrl + 3 + "?key=");
+                if (count == 3) {
+                    break;
+                }
 
-            List<Membership> activeMemberships = new ArrayList<>();
+                String activeMembershipJson = fetchData(activeMembershipResourceUrl + competitionId + "?key=");
 
-            activeMemberships = objectMapper.readValue(activeMembershipJson, new TypeReference<List<Membership>>() {
-            });
+                List<Membership> activeMemberships = new ArrayList<>();
 
-            activeMemberships.forEach(membership -> membership.setCompetitionId(3));
+                activeMemberships = objectMapper.readValue(activeMembershipJson, new TypeReference<List<Membership>>() {
+                });
 
-            membershipRepository.saveAll(activeMemberships);
-            // }
+                activeMemberships.forEach(membership -> membership.setCompetitionId(3));
+
+                membershipRepository.saveAll(activeMemberships);
+
+                count++;
+            }
 
         } catch (Exception e) {
             handleException(e);
@@ -308,24 +315,31 @@ public class DataSyncService {
             List<TeamDetail> teams = teamDetailRepository.findAll();
 
             // Partial loop for sanity checks - Change it later
-            for (int i = 0; i < 1; i++) {
+            // for (int i = 0; i < 1; i++) {
 
-                List<Player> players = new ArrayList<>();
+            List<Player> players = new ArrayList<>();
 
-                String playersbyTeamJson = fetchData(
-                        plyersByTeamResourcUrl + teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
-                                + teams.get(i).getTeamId()
-                                + "?key=");
+            // need to replace the static fetchData
+            // String playersbyTeamJson = fetchData(
+            // plyersByTeamResourcUrl +
+            // teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
+            // + teams.get(i).getTeamId()
+            // + "?key=");
 
-                players = objectMapper.readValue(playersbyTeamJson,
-                        new TypeReference<List<Player>>() {
-                        });
-                int num = i;
-                players.forEach(player -> player.setTeamDetail(teams.get(num)));
+            String playersbyTeamJson = fetchData(
+                    plyersByTeamResourcUrl + 3 + "/"
+                            + 516
+                            + "?key=");
 
-                playerRepository.saveAll(players);
+            players = objectMapper.readValue(playersbyTeamJson,
+                    new TypeReference<List<Player>>() {
+                    });
+            // int teamNum = i;
+            players.forEach(player -> player.setTeamDetail(teamDetailRepository.getById(516)));
 
-            }
+            playerRepository.saveAll(players);
+
+            // }
         } catch (Exception e) {
             handleException(e);
             throw e;
@@ -412,10 +426,39 @@ public class DataSyncService {
 
     public void fetchAndUpdateBoxScore() throws JsonProcessingException {
 
-        // ObjectMapper objectMapper = initializeObjectMapper();
+        List<Object[]> gameIdToCompetitionMap = gameRepository.findGameIdAndCompetitionId();
 
-        // String boxScoreFixturesJson = fetchData(boxScoreResourcUrl + 1 + "/" + 691
-        // + "?key=");
+        Map<Integer, Integer> map = gameService.getGameIdAndCompetitionIdMap();
+
+        // for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+        // System.out.println("Key: " + entry.getKey() + ", Value: " +
+        // entry.getValue());
+        // }
+
+        ObjectMapper objectMapper = initializeObjectMapper();
+        int count = 0;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (count == 2) {
+                break;
+            }
+            Integer competitionId = entry.getValue();
+            Integer gameId = entry.getKey();
+            System.out.println(competitionId + "      " + gameId);
+            String boxScoreFixturesJson = fetchData(boxScoreResourcUrl + competitionId + "/" + gameId
+                    + "?key=");
+
+            List<BoxScore> boxScores = objectMapper.readValue(boxScoreFixturesJson,
+                    new TypeReference<List<BoxScore>>() {
+                    });
+            boxScores.get(0).setBoxScoreId(BoxScoreIdGenerator.generateId());
+
+            boxScoreRepository.saveAll(boxScores);
+
+            System.out.println(boxScoreRepository.findAll().get(0));
+
+            count++;
+
+        }
 
         // List<BoxScore> boxScores = objectMapper.readValue(boxScoreFixturesJson, new
         // TypeReference<List<BoxScore>>() {
@@ -428,9 +471,6 @@ public class DataSyncService {
 
         // List<BoxScore> b = boxScoreRepository.findAll();
 
-        Map<Integer, Integer> gameIdToCompetitionMap = gameRepository.findGameIdAndCompetitionMap();
-
-        System.out.println(gameIdToCompetitionMap.get(690));
     }
 
     public void handleException(Exception e) {
@@ -442,6 +482,31 @@ public class DataSyncService {
             logger.error("Error occurred during data access: {}", e.getMessage(), e);
         }
 
+    }
+
+    public String fetchData(String resourceUrl) {
+
+        String apiKey = dotenv.get("SPORT_DATA_IO_API_KEY");
+
+        System.out.println(resourceUrl + apiKey);
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl +
+                apiKey,
+                String.class);
+        String responsesData = response.getBody();
+
+        return responsesData;
+    }
+
+    public ObjectMapper initializeObjectMapper() {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+                false);
+        objectMapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
+        objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+        return objectMapper;
     }
 
 }

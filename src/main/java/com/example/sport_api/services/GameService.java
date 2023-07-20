@@ -3,7 +3,10 @@ package com.example.sport_api.services;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +31,7 @@ public class GameService {
 
         try {
             Date theDate = Date.valueOf(date);
-            List<Game> games = gameRepository.findByDateTimeAndCompetitionId(theDate, id);
+            List<Game> games = gameRepository.findByDateAndCompetitionId(theDate, id);
             return games;
         } catch (DataAccessException e) {
             logger.error("Data access error occurred while retrieving games: " + e.getMessage());
@@ -47,5 +50,21 @@ public class GameService {
         } catch (ParseException e) {
             return false;
         }
+    }
+
+    public Map<Integer, Integer> getGameIdAndCompetitionIdMap() {
+        List<Object[]> results = gameRepository.findGameIdAndCompetitionId();
+
+        Map<Integer, Integer> gameIdToCompetitionMap = new HashMap<>();
+        for (Object[] result : results) {
+            Integer gameId = (Integer) result[0];
+            Integer competitionId = (Integer) result[1];
+
+            if (gameId != null && competitionId != null) {
+                gameIdToCompetitionMap.put(gameId, competitionId);
+            }
+        }
+
+        return gameIdToCompetitionMap;
     }
 }

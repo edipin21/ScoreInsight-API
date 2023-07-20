@@ -1,5 +1,6 @@
 package com.example.sport_api.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,9 +52,7 @@ public class TeamDetail {
     private String WikipediaWordMarkUrl;
     private int GlobalTeamId;
 
-    @Transient
-    // @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id", insertable = false, updatable = false)
     private List<Player> Players;
 
@@ -320,13 +319,6 @@ public class TeamDetail {
         GlobalTeamId = globalTeamId;
     }
 
-    // public Player[] getPlayers() {
-    // return Players;
-    // }
-
-    // public void setPlayers(Player[] players) {
-    // Players = players;
-    // }
     @JsonProperty("Key")
     public String getStringKey() {
         return StringKey;
@@ -342,7 +334,6 @@ public class TeamDetail {
     }
 
     public void setPlayers(List<Player> players) {
-
         Players = players;
     }
 

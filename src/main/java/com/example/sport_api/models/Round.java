@@ -24,13 +24,20 @@ public class Round {
 
     @Column(name = "season_id")
     private int SeasonId;
-
-    // @JsonProperty("Season")
     private Integer SoccerSeason;
     private Integer SeasonType;
     private String Name;
     private String Type;
     private Date StartDate;
+
+    public void setRoundId(int roundId) {
+        RoundId = roundId;
+    }
+
+    public void setSoccerSeason(Integer soccerSeason) {
+        SoccerSeason = soccerSeason;
+    }
+
     private Date EndDate;
     private Integer CurrentWeek;
     private boolean CurrentRound;

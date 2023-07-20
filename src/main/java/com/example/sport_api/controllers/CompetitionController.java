@@ -38,7 +38,7 @@ public class CompetitionController {
 
     }
 
-    @GetMapping("/scores/{competition}")
+    @GetMapping("/scores/CompetitionDetails/{competition}")
     public ResponseEntity<Competition> retrieveCompetitionById(@PathVariable String competition) {
         try {
 
@@ -49,6 +49,9 @@ public class CompetitionController {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
             Competition theCompetition = competitionService.getCompetitionById(competitionId);
+
+            // System.out.println(theCompetition);
+            System.out.println(theCompetition.getTeams().get(0).getPlayers());
 
             return ResponseUtil.createOkResponse(theCompetition);
         } catch (NumberFormatException e) {

@@ -20,7 +20,6 @@ public class DataUpdaterScheduler {
     // public void updateTeamsDB() throws JsonMappingException,
     // JsonProcessingException {
 
-    // // System.out.println(apiService.fetchData(teamsResourceUrl));
     // apiService.fetchTeamsAndUpdate();
     // }
 
@@ -57,7 +56,8 @@ public class DataUpdaterScheduler {
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
-    // public void updatePlayersByTeamDB() throws IOException {
+    // public void updateScheduleAndStandingsAndTeamSeasonByTeamDB() throws
+    // IOException {
     // apiService.fetchAndUpdateScheduleAndStandingsAndTeamSeason();
     // }
 
@@ -66,9 +66,9 @@ public class DataUpdaterScheduler {
     // apiService.fetchVenuesAndUpdate();
     // }
 
-    @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
-    public void updateBoxScoreDB() throws IOException {
-        apiService.fetchAndUpdateBoxScore();
-    }
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateBoxScoreDB() throws IOException {
+    // apiService.fetchAndUpdateBoxScore();
+    // }
 
 }

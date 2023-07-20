@@ -279,28 +279,35 @@ public class DataSyncService {
     public void fetchRecentlyChangedMembershipAndUpdate() throws JsonProcessingException {
 
         try {
+            int count = 0;
+
             ObjectMapper objectMapper = initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            int numOfDays = 30;
             competitioIntegers.sort(null);
 
-            // Partial loop for sanity checks - Change it later
+            // Partial loop for sanity checks - delete count
 
-            // for (Integer competitionId : competitioIntegers) {
+            for (Integer competitionId : competitioIntegers) {
+                if (count == 3) {
+                    break;
+                }
 
-            String recentlyChangedMembershipsJson = fetchData(
-                    recentlyChangedMembershipResourceUrl + 3 + "/" + 30 + "?key=");
+                String recentlyChangedMembershipsJson = fetchData(
+                        recentlyChangedMembershipResourceUrl + competitionId + "/" + numOfDays + "?key=");
 
-            List<Membership> recentlyChangedMemberships = new ArrayList<>();
+                List<Membership> recentlyChangedMemberships = new ArrayList<>();
 
-            recentlyChangedMemberships = objectMapper.readValue(recentlyChangedMembershipsJson,
-                    new TypeReference<List<Membership>>() {
-                    });
+                recentlyChangedMemberships = objectMapper.readValue(recentlyChangedMembershipsJson,
+                        new TypeReference<List<Membership>>() {
+                        });
 
-            recentlyChangedMemberships.forEach(membership -> membership.setCompetitionId(3));
+                recentlyChangedMemberships.forEach(membership -> membership.setCompetitionId(3));
 
-            membershipRepository.saveAll(recentlyChangedMemberships);
+                membershipRepository.saveAll(recentlyChangedMemberships);
 
-            // }
+                count++;
+            }
         } catch (Exception e) {
             handleException(e);
             throw e;
@@ -310,36 +317,37 @@ public class DataSyncService {
     public void fetchPlayersbyTeamsAndUpdate() throws JsonProcessingException {
 
         try {
+            int count = 0;
+
             ObjectMapper objectMapper = initializeObjectMapper();
 
             List<TeamDetail> teams = teamDetailRepository.findAll();
 
-            // Partial loop for sanity checks - Change it later
-            // for (int i = 0; i < 1; i++) {
+            // Partial loop for sanity checks - delete count
+            for (int i = 0; i < teams.size(); i++) {
 
-            List<Player> players = new ArrayList<>();
+                if (count == 3) {
+                    break;
+                }
+                List<Player> players = new ArrayList<>();
 
-            // need to replace the static fetchData
-            // String playersbyTeamJson = fetchData(
-            // plyersByTeamResourcUrl +
-            // teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
-            // + teams.get(i).getTeamId()
-            // + "?key=");
+                String playersbyTeamJson = fetchData(
+                        plyersByTeamResourcUrl +
+                                teams.get(i).getCompetition().get(0).getCompetitionId() + "/"
+                                + teams.get(i).getTeamId()
+                                + "?key=");
 
-            String playersbyTeamJson = fetchData(
-                    plyersByTeamResourcUrl + 3 + "/"
-                            + 516
-                            + "?key=");
+                players = objectMapper.readValue(playersbyTeamJson,
+                        new TypeReference<List<Player>>() {
+                        });
+                int teamNum = i;
+                players.forEach(player -> player.setTeamDetail(teams.get(teamNum)));
 
-            players = objectMapper.readValue(playersbyTeamJson,
-                    new TypeReference<List<Player>>() {
-                    });
-            // int teamNum = i;
-            players.forEach(player -> player.setTeamDetail(teamDetailRepository.getById(516)));
+                playerRepository.saveAll(players);
 
-            playerRepository.saveAll(players);
+                count++;
 
-            // }
+            }
         } catch (Exception e) {
             handleException(e);
             throw e;
@@ -350,54 +358,63 @@ public class DataSyncService {
     public void fetchAndUpdateScheduleAndStandingsAndTeamSeason() throws JsonProcessingException {
 
         try {
-            int[] seasonsArr = { 2016 };// , 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
+            int count = 0;
+
+            int[] seasonsArr = { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
             ObjectMapper objectMapper = initializeObjectMapper();
 
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
             competitioIntegers.sort(null);
 
-            // Partial loop for sanity checks - Change it later
-            // for (Integer competitonId : competitioIntegers) {
-            for (int i = 0; i < 1; i++) {
-                String scheduleJson = fetchData(
-                        scheduleResourcUrl + 1 + "/"
-                                + seasonsArr[i]
-                                + "?key=");
-
-                List<Round> rounds = new ArrayList<>();
-
-                List<Round> standingsRounds = new ArrayList<>();
-
-                List<Round> teamSeasonRounds = new ArrayList<>();
-
-                rounds = objectMapper.readValue(scheduleJson, new TypeReference<List<Round>>() {
-                });
-
-                rounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
-
-                String standingsJson = fetchData(
-                        standingsResourcUrl + 1 + "/"
-                                + seasonsArr[i]
-                                + "?key=");
-                standingsRounds = objectMapper.readValue(standingsJson, new TypeReference<List<Round>>() {
-                });
-
-                standingsRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
-
-                String teamSeasonJson = fetchData(teamSeasonStateResourcUrl + 1 + '/' + seasonsArr[i] + "?key=");
-
-                teamSeasonRounds = objectMapper.readValue(teamSeasonJson, new TypeReference<List<Round>>() {
-                });
-                teamSeasonRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
-
-                for (int j = 0; j < rounds.size(); j++) {
-                    rounds.get(i).setStandings(standingsRounds.get(i).getStandings());
-                    rounds.get(i).setTeamSeasons(teamSeasonRounds.get(i).getTeamSeasons());
+            // Partial loop for sanity checks - delete count
+            for (Integer competitonId : competitioIntegers) {
+                if (count == 10) {
+                    break;
                 }
 
-                roundRepository.saveAll(rounds);
+                for (int i = 0; i < seasonsArr.length; i++) {
+                    count++;
+                    String scheduleJson = fetchData(
+                            scheduleResourcUrl + competitonId + "/"
+                                    + seasonsArr[i]
+                                    + "?key=");
+
+                    List<Round> rounds = new ArrayList<>();
+
+                    List<Round> standingsRounds = new ArrayList<>();
+
+                    List<Round> teamSeasonRounds = new ArrayList<>();
+
+                    rounds = objectMapper.readValue(scheduleJson, new TypeReference<List<Round>>() {
+                    });
+
+                    rounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+                    String standingsJson = fetchData(
+                            standingsResourcUrl + 1 + "/"
+                                    + seasonsArr[i]
+                                    + "?key=");
+                    standingsRounds = objectMapper.readValue(standingsJson, new TypeReference<List<Round>>() {
+                    });
+
+                    standingsRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+                    String teamSeasonJson = fetchData(teamSeasonStateResourcUrl + 1 + '/' + seasonsArr[i] + "?key=");
+
+                    teamSeasonRounds = objectMapper.readValue(teamSeasonJson, new TypeReference<List<Round>>() {
+                    });
+                    teamSeasonRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+
+                    for (int j = 0; j < rounds.size(); j++) {
+                        rounds.get(i).setStandings(standingsRounds.get(i).getStandings());
+                        rounds.get(i).setTeamSeasons(teamSeasonRounds.get(i).getTeamSeasons());
+                    }
+
+                    roundRepository.saveAll(rounds);
+                }
+                count++;
+
             }
-            // }
 
         } catch (Exception e) {
             handleException(e);

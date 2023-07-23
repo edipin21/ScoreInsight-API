@@ -14,5 +14,5 @@ public interface CompetitionRepository extends JpaRepository<Competition, Intege
     List<CompetitionDto> findAllCompetitions();
 
     @Query(value = "SELECT competition_id FROM competition", nativeQuery = true)
-    List<Integer> findAllCompetitionIds();
+    List<Integer> findAllCompetitionsNumbers();
 }

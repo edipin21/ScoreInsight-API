@@ -77,7 +77,7 @@ public class CompetitionService {
 
     public boolean isCompetitionIdValid(Integer competitionId) {
         try {
-            List<Integer> allCompetitionIds = competitionRepository.findAllCompetitionIds();
+            List<Integer> allCompetitionIds = competitionRepository.findAllCompetitionsNumbers();
             return allCompetitionIds.contains(competitionId);
         } catch (DataAccessException e) {
             logger.error("A data access error occurred while validating competition ID: " + e.getMessage());

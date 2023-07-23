@@ -39,6 +39,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.swing.Box;
+
 import java.util.Map;
 import org.apache.logging.log4j.Logger;
 
@@ -174,7 +177,7 @@ public class DataSyncService {
         try {
             int count = 0;
 
-            List<Integer> competitionIntegers = competitionRepository.findAllCompetitionIds();
+            List<Integer> competitionIntegers = competitionRepository.findAllCompetitionsNumbers();
             competitionIntegers.sort(null);
 
             // Partial loop for sanity checks - delete count
@@ -246,7 +249,7 @@ public class DataSyncService {
             int count = 0;
 
             ObjectMapper objectMapper = initializeObjectMapper();
-            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             competitioIntegers.sort(null);
             // Partial loop for sanity checks - delete count
             for (Integer competitionId : competitioIntegers) {
@@ -282,7 +285,7 @@ public class DataSyncService {
             int count = 0;
 
             ObjectMapper objectMapper = initializeObjectMapper();
-            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             int numOfDays = 30;
             competitioIntegers.sort(null);
 
@@ -363,7 +366,7 @@ public class DataSyncService {
             int[] seasonsArr = { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
             ObjectMapper objectMapper = initializeObjectMapper();
 
-            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionIds();
+            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             competitioIntegers.sort(null);
 
             // Partial loop for sanity checks - delete count
@@ -443,51 +446,39 @@ public class DataSyncService {
 
     public void fetchAndUpdateBoxScore() throws JsonProcessingException {
 
-        List<Object[]> gameIdToCompetitionMap = gameRepository.findGameIdAndCompetitionId();
-
-        Map<Integer, Integer> map = gameService.getGameIdAndCompetitionIdMap();
-
-        // for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-        // System.out.println("Key: " + entry.getKey() + ", Value: " +
-        // entry.getValue());
-        // }
-
+        Map<Integer, Integer> map = gameService.getGameIdAndCompetitionMap();
         ObjectMapper objectMapper = initializeObjectMapper();
+        List<BoxScore> boxScores = new ArrayList<>();
         int count = 0;
+
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             if (count == 2) {
                 break;
             }
-            Integer competitionId = entry.getValue();
+            Integer competition = entry.getValue();
             Integer gameId = entry.getKey();
-            System.out.println(competitionId + "      " + gameId);
-            String boxScoreFixturesJson = fetchData(boxScoreResourcUrl + competitionId + "/" + gameId
+            System.out.println(competition + "      " + gameId);
+            String boxScoreFixturesJson = fetchData(boxScoreResourcUrl + competition + "/" + gameId
                     + "?key=");
 
-            List<BoxScore> boxScores = objectMapper.readValue(boxScoreFixturesJson,
+            boxScores = objectMapper.readValue(boxScoreFixturesJson,
                     new TypeReference<List<BoxScore>>() {
                     });
-            boxScores.get(0).setBoxScoreId(BoxScoreIdGenerator.generateId());
 
-            boxScoreRepository.saveAll(boxScores);
+            BoxScore boxScore = boxScoreRepository.findByGameId(boxScores.get(0).getGame().getGameId());
 
-            System.out.println(boxScoreRepository.findAll().get(0));
+            if (boxScore == null) {
+                boxScores.get(0).setCompetition(competition);
+                boxScores.get(0).setBoxScoreId(BoxScoreIdGenerator.generateId());
+                boxScoreRepository.saveAll(boxScores);
+            } else {
+                boxScores.get(0).setCompetition(competition);
+                boxScores.get(0).setBoxScoreId(boxScore.getBoxScoreId());
+                boxScoreRepository.saveAll(boxScores);
 
+            }
             count++;
-
         }
-
-        // List<BoxScore> boxScores = objectMapper.readValue(boxScoreFixturesJson, new
-        // TypeReference<List<BoxScore>>() {
-        // });
-
-        // Integer id = 2;
-        // boxScores.get(0).setBoxScoreId(id);
-
-        // boxScoreRepository.saveAll(boxScores);
-
-        // List<BoxScore> b = boxScoreRepository.findAll();
-
     }
 
     public void handleException(Exception e) {

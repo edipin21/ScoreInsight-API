@@ -5,7 +5,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -23,6 +22,8 @@ public class BoxScore {
 
     @Id
     private Integer boxScoreId;
+
+    private Integer competition;
 
     @JsonProperty("Game")
     @OneToOne(cascade = CascadeType.ALL)
@@ -241,6 +242,14 @@ public class BoxScore {
 
     public void setBoxScoreId(Integer boxScoreId) {
         this.boxScoreId = boxScoreId;
+    }
+
+    public Integer getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(Integer competition) {
+        this.competition = competition;
     }
 
 }

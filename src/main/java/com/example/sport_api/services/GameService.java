@@ -52,8 +52,8 @@ public class GameService {
         }
     }
 
-    public Map<Integer, Integer> getGameIdAndCompetitionIdMap() {
-        List<Object[]> results = gameRepository.findGameIdAndCompetitionId();
+    public Map<Integer, Integer> getGameIdAndCompetitionMap() {
+        List<Object[]> results = gameRepository.findGameIdAndCompetition();
 
         Map<Integer, Integer> gameIdToCompetitionMap = new HashMap<>();
         for (Object[] result : results) {
@@ -66,5 +66,19 @@ public class GameService {
         }
 
         return gameIdToCompetitionMap;
+    }
+
+    public boolean isValidGameId(Integer gameId) {
+
+        try {
+            List<Integer> gameIds = gameRepository.findAllGameIds();
+
+            return gameIds.contains(gameId);
+
+        } catch (DataAccessException e) {
+            logger.error("Data access error occurred while retrieving game ids: " + e.getMessage());
+            throw e;
+        }
+
     }
 }

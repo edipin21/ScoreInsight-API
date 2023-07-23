@@ -7,6 +7,10 @@ import com.example.sport_api.models.BoxScore;
 
 public interface BoxScoreRepository extends JpaRepository<BoxScore, Long> {
 
-    @Query(value = "SELECT * FROM box_score WHERE game_id = :gameId", nativeQuery = true)
+    @Query(value = "SELECT * FROM box_score WHERE game_game_id = :gameId", nativeQuery = true)
     BoxScore findByGameId(@Param("gameId") Integer gameId);
+
+    @Query(value = "SELECT * FROM box_score WHERE competition = :competition AND game_game_id = :gameId", nativeQuery = true)
+    BoxScore findByCompetitionAndGameId(@Param("competition") Integer competition, @Param("gameId") Integer gameId);
+
 }

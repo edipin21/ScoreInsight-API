@@ -15,6 +15,9 @@ public interface GameRepository extends JpaRepository<Game, Integer> {
             @Param("competitionId") Integer competitionId);
 
     @Query(value = "SELECT game_id AS gameId, competition_id FROM game", nativeQuery = true)
-    List<Object[]> findGameIdAndCompetitionId();
+    List<Object[]> findGameIdAndCompetition();
+
+    @Query(value = "SELECT game_id FROM game", nativeQuery = true)
+    List<Integer> findAllGameIds();
 
 }

@@ -33,17 +33,17 @@ public class GameController {
 
         try {
 
-            Integer competitionId = Integer.parseInt(competition);
+            Integer theCompetition = Integer.parseInt(competition);
 
             if (date == null || !gameService.isValidDate(date)) {
                 throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
             }
 
             if (competition == null ||
-                    !competitionService.isCompetitionIdValid(competitionId)) {
+                    !competitionService.isCompetitionIdValid(theCompetition)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
-            List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(competitionId, date);
+            List<Game> games = gameService.getGamesByDateTimeAndCompetitionId(theCompetition, date);
 
             return ResponseUtil.createOkResponse(games);
 

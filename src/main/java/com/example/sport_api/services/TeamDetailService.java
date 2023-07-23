@@ -1,12 +1,7 @@
 package com.example.sport_api.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.sport_api.models.Competition;
-import com.example.sport_api.models.TeamDetail;
 import com.example.sport_api.repositories.TeamDetailRepository;
 
 @Service

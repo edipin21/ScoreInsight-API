@@ -39,7 +39,7 @@ public class MembershipController {
 
             Integer competitionId = Integer.parseInt(competition);
 
-            if (competition == null || !competitionService.isCompetitionIdValid(competitionId)) {
+            if (competition == null || !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 
@@ -68,7 +68,7 @@ public class MembershipController {
             Integer competitionId = Integer.parseInt(competition);
             Integer theDays = Integer.parseInt(days);
 
-            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+            if (competitionId == null || !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 
@@ -101,7 +101,7 @@ public class MembershipController {
             Integer competitionId = Integer.parseInt(competition);
             Integer team = Integer.parseInt(teamId);
 
-            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+            if (competitionId == null || !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 

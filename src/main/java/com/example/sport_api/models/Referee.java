@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 
 @Entity
 @JsonPropertyOrder({ "refereeId", "firstName", "lastName", "shortName", "nationality" })
@@ -17,10 +15,6 @@ public class Referee {
     private String LastName;
     private String ShortName;
     private String Nationality;
-
-    // @OneToOne
-    // @JoinColumn(name = "box_score_id")
-    // private BoxScore boxScore;
 
     public Referee() {
     }
@@ -72,14 +66,6 @@ public class Referee {
     public void setNationality(String nationality) {
         Nationality = nationality;
     }
-
-    // public BoxScore getBoxScore() {
-    // return boxScore;
-    // }
-
-    // public void setBoxScore(BoxScore boxScore) {
-    // this.boxScore = boxScore;
-    // }
 
     @Override
     public String toString() {

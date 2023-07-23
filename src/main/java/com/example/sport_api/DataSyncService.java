@@ -6,6 +6,7 @@ import com.example.sport_api.models.Competition;
 import com.example.sport_api.models.Game;
 import com.example.sport_api.models.Membership;
 import com.example.sport_api.models.Player;
+import com.example.sport_api.models.PlayerGame;
 import com.example.sport_api.models.Round;
 import com.example.sport_api.models.Season;
 import com.example.sport_api.models.Team;
@@ -35,17 +36,13 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.cdimascio.dotenv.Dotenv;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import javax.swing.Box;
-
 import java.util.Map;
-import org.apache.logging.log4j.Logger;
-
-import org.apache.logging.log4j.LogManager;
 
 //need to add the HistoricalMembershipsByTeam function 
 @Service
@@ -467,12 +464,15 @@ public class DataSyncService {
 
             BoxScore boxScore = boxScoreRepository.findByGameId(boxScores.get(0).getGame().getGameId());
 
+            boxScores.get(0).setCompetition(competition);
+            boxScores.get(0).setDateTime(boxScores.get(0).getGame().getDateTime());
+            List<PlayerGame> playerGames = boxScores.get(0).getPlayerGames();
+            playerGames.forEach(player -> player.setCompetition(competition));
+
             if (boxScore == null) {
-                boxScores.get(0).setCompetition(competition);
                 boxScores.get(0).setBoxScoreId(BoxScoreIdGenerator.generateId());
                 boxScoreRepository.saveAll(boxScores);
             } else {
-                boxScores.get(0).setCompetition(competition);
                 boxScores.get(0).setBoxScoreId(boxScore.getBoxScoreId());
                 boxScoreRepository.saveAll(boxScores);
 

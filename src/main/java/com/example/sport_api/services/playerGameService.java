@@ -12,34 +12,23 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.example.sport_api.models.BoxScore;
-import com.example.sport_api.repositories.BoxScoreRepository;
+import com.example.sport_api.models.PlayerGame;
+import com.example.sport_api.repositories.playerGameRepository;
 
 @Service
-public class BoxScoreService {
+public class playerGameService {
 
-    private static final Logger logger = LogManager.getLogger(BoxScoreService.class);
+    private static final Logger logger = LogManager.getLogger(playerGameService.class);
 
     @Autowired
-    private BoxScoreRepository boxScoreRepository;
+    private playerGameRepository playerGameRepository;
 
-    public BoxScore getBoxScoreByCompetitionAndGameId(Integer competition, Integer gameId) {
-
+    public List<PlayerGame> getPlayerGameStatByCompetitionAndDate(Integer competition, String date) {
         try {
-            BoxScore boxScore = boxScoreRepository.findByCompetitionAndGameId(competition, gameId);
-            return boxScore;
-        } catch (DataAccessException e) {
-            logger.error("A data access error occurred: " + e.getMessage());
-            throw e;
-        }
-    }
+            Date theDate = Date.valueOf(date);
 
-    public List<BoxScore> getBoxScoresByCompetitionAndDate(Integer competition, String dateTime) {
-
-        try {
-            Date theDate = Date.valueOf(dateTime);
-
-            List<BoxScore> boxScores = boxScoreRepository.findByCompetitionAndDate(competition, theDate);
-            return boxScores;
+            List<PlayerGame> playerGames = playerGameRepository.findByCompetitionAndDate(competition, theDate);
+            return playerGames;
         } catch (DataAccessException e) {
             logger.error("A data access error occurred: " + e.getMessage());
             throw e;

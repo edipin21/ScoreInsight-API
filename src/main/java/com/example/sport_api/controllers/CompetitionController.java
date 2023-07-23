@@ -45,7 +45,7 @@ public class CompetitionController {
             Integer competitionId = Integer.parseInt(competition);
 
             if (competitionId == null ||
-                    !competitionService.isCompetitionIdValid(competitionId)) {
+                    !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
             Competition theCompetition = competitionService.getCompetitionById(competitionId);

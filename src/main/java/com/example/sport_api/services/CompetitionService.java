@@ -75,7 +75,7 @@ public class CompetitionService {
 
     }
 
-    public boolean isCompetitionIdValid(Integer competitionId) {
+    public boolean isCompetitionValid(Integer competitionId) {
         try {
             List<Integer> allCompetitionIds = competitionRepository.findAllCompetitionsNumbers();
             return allCompetitionIds.contains(competitionId);

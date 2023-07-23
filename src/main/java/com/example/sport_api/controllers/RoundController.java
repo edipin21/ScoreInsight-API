@@ -38,7 +38,7 @@ public class RoundController {
             Integer competitionId = Integer.parseInt(competition);
             Integer theYear = Integer.parseInt(year);
 
-            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+            if (competitionId == null || !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 
@@ -72,7 +72,7 @@ public class RoundController {
             Integer competitionId = Integer.parseInt(competition);
             Integer theYear = Integer.parseInt(year);
 
-            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+            if (competitionId == null || !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 
@@ -106,7 +106,7 @@ public class RoundController {
             Integer competitionId = Integer.parseInt(competition);
             Integer theYear = Integer.parseInt(year);
 
-            if (competitionId == null || !competitionService.isCompetitionIdValid(competitionId)) {
+            if (competitionId == null || !competitionService.isCompetitionValid(competitionId)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 

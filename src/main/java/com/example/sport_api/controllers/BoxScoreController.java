@@ -1,5 +1,8 @@
 package com.example.sport_api.controllers;
 
+import java.time.format.DateTimeParseException;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +43,7 @@ public class BoxScoreController {
             Integer theGameId = Integer.parseInt(gameId);
 
             if (competition == null ||
-                    !competitionService.isCompetitionIdValid(theCompetition)) {
+                    !competitionService.isCompetitionValid(theCompetition)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 
@@ -62,6 +65,42 @@ public class BoxScoreController {
         } catch (DataAccessException e) {
             return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
+    }
+
+    @GetMapping("stats/BoxScoresByDate/{competition}/{date}")
+    public ResponseEntity<List<BoxScore>> retriveBoxScoresBycompetitionAndDate(@PathVariable String competition,
+            @PathVariable String date) {
+
+        try {
+            Integer theCompetition = Integer.parseInt(competition);
+
+            if (date == null || !boxScoreService.isValidDate(date)) {
+                throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
+            }
+
+            if (competition == null ||
+                    !competitionService.isCompetitionValid(theCompetition)) {
+                throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
+            }
+
+            List<BoxScore> boxScores = boxScoreService.getBoxScoresByCompetitionAndDate(theCompetition, date);
+
+            return ResponseUtil.createOkResponse(boxScores);
+
+        } catch (NumberFormatException e) {
+            logger.error("Invalid Argument: The competition parameter should be an integer", e);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    "Invalid Argument: The competition parameter should be an integer");
+        } catch (DateTimeParseException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (DataAccessException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+
     }
 
 }

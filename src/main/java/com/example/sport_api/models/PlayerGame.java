@@ -5,25 +5,22 @@ import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
-@JsonPropertyOrder({ "StatId", "SeasonType", "Season", "RoundId", "TeamId", "PlayerId", "Name", "ShortName", "Team",
-        "PositionCategory", "Position", "Jersey", "Started", "Captain", "Suspension", "SuspensionReason",
-        "FanDuelSalary", "DraftKingsSalary", "YahooSalary", "MondogoalSalary", "FanDuelPosition", "DraftKingsPosition",
-        "YahooPosition", "MondogoalPosition", "InjuryStatus", "InjuryBodyPart", "InjuryNotes", "InjuryStartDate",
-        "GlobalTeamId", "GameId", "OpponentId", "Opponent", "Day", "DateTime", "HomeOrAway", "IsGameOver",
-        "GlobalOpponentId", "Updated", "UpdatedUtc", "Games", "FantasyPoints", "FantasyPointsFanDuel",
-        "FantasyPointsDraftKings", "FantasyPointsMondogoal", "Minutes", "Goals",
-        "Assists", "Shots", "ShotsOnGoal", "YellowCards", "RedCards", "YellowRedCards", "Crosses", "TacklesWon",
-        "Interceptions", "OwnGoals", "Fouls", "Fouled", "Offsides", "Passes", "PassesCompleted", "LastManTackle",
-        "CornersWon", "BlockedShots", "Touches", "DefenderCleanSheets", "GoalkeeperSaves", "GoalkeeperGoalsAgainst",
-        "GoalkeeperSingleGoalAgainst", "GoalkeeperCleanSheets", "GoalkeeperWins", "PenaltyKickGoals",
-        "PenaltyKickMisses", "PenaltyKickSaves", "PenaltiesWon", "PenaltiesConceded", "Score", "OpponentScore",
-        "Tackles" })
+@JsonPropertyOrder({ "statId", "seasonType", "season", "roundId", "teamId", "playerId", "name", "shortName", "team",
+        "positionCategory", "position", "jersey", "started", "captain", "suspension", "suspensionReason",
+        "fanDuelSalary", "draftKingsSalary", "yahooSalary", "mondogoalSalary", "fanDuelPosition", "draftKingsPosition",
+        "yahooPosition", "mondogoalPosition", "injuryStatus", "injuryBodyPart", "injuryNotes", "injuryStartDate",
+        "globalTeamId", "gameId", "opponentId", "opponent", "day", "dateTime", "homeOrAway", "isGameOver",
+        "globalOpponentId", "updated", "updatedUtc", "games", "fantasyPoints", "fantasyPointsFanDuel",
+        "fantasyPointsDraftKings", "fantasyPointsMondogoal", "minutes", "goals",
+        "assists", "shots", "shotsOnGoal", "yellowCards", "redCards", "yellowRedCards", "crosses", "tacklesWon",
+        "interceptions", "ownGoals", "fouls", "fouled", "offsides", "passes", "passesCompleted", "lastManTackle",
+        "cornersWon", "blockedShots", "touches", "defenderCleanSheets", "goalkeeperSaves", "goalkeeperGoalsAgainst",
+        "goalkeeperSingleGoalAgainst", "goalkeeperCleanSheets", "goalkeeperWins", "penaltyKickGoals",
+        "penaltyKickMisses", "penaltyKickSaves", "penaltiesWon", "penaltiesConceded", "score", "opponentScore",
+        "tackles" })
 public class PlayerGame {
 
     @Id
@@ -109,10 +106,8 @@ public class PlayerGame {
     private int OpponentScore;
     private int Tackles;
 
-    // @JsonIgnore
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "box_score_id", insertable = false, updatable = false)
-    // private BoxScore boxScore;
+    @JsonIgnore
+    private Integer competition;
 
     public PlayerGame() {
     }
@@ -864,12 +859,12 @@ public class PlayerGame {
         Tackles = tackles;
     }
 
-    // public BoxScore getBoxScore() {
-    // return boxScore;
-    // }
+    public Integer getCompetition() {
+        return competition;
+    }
 
-    // public void setBoxScore(BoxScore boxScore) {
-    // this.boxScore = boxScore;
-    // }
+    public void setCompetition(Integer competition) {
+        this.competition = competition;
+    }
 
 }

@@ -1,11 +1,8 @@
 package com.example.sport_api.models;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 
 @Entity
 @JsonPropertyOrder({ "coachId", "firstName", "lastName", "shortName", "nationality" })

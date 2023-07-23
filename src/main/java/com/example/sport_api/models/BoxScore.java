@@ -1,7 +1,9 @@
 package com.example.sport_api.models;
 
+import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
@@ -21,9 +23,14 @@ import jakarta.persistence.OneToOne;
 public class BoxScore {
 
     @Id
+    @JsonIgnore
     private Integer boxScoreId;
 
+    @JsonIgnore
     private Integer competition;
+
+    @JsonIgnore
+    private Date dateTime;
 
     @JsonProperty("Game")
     @OneToOne(cascade = CascadeType.ALL)
@@ -250,6 +257,14 @@ public class BoxScore {
 
     public void setCompetition(Integer competition) {
         this.competition = competition;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
 }

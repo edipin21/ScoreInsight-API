@@ -2,9 +2,10 @@ package com.example.sport_api.controllers;
 
 import java.util.List;
 import java.time.format.DateTimeParseException;
-import com.example.sport_api.models.Game;
+
 import com.example.sport_api.services.GameService;
 import com.example.sport_api.util.ResponseUtil;
+import com.example.sport_api.models.sport.Game;
 import com.example.sport_api.services.CompetitionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

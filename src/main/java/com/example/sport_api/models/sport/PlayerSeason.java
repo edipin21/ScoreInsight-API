@@ -1,26 +1,27 @@
-package com.example.sport_api.models;
+package com.example.sport_api.models.sport;
 
 import java.sql.Date;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class TeamSeason {
+public class PlayerSeason {
     @Id
     private int StatId;
+
     private int SeasonType;
     private int Season;
     private int TeamId;
+    private int PlayerId;
     private String Name;
+    private String ShortName;
     private String Team;
+    private String PositionCategory;
+    private String Position;
+    private int Started;
     private int GlobalTeamId;
-    private float Possession;
     private Date Updated;
     private Date UpdatedUtc;
     private int Games;
@@ -65,33 +66,39 @@ public class TeamSeason {
     private float OpponentScore;
     private float Tackles;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "round_id", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "RoundId")
+    // @JsonBackReference("round-PlayerSeasons")
     private Round round;
 
-    public TeamSeason() {
+    public PlayerSeason() {
         super();
     }
 
-    public TeamSeason(int statId, int seasonType, int season, int teamId, String name, String team, int globalTeamId,
-            float possession, Date updated, Date updatedUtc, int games, float fantasyPoints, float fantasyPointsFanDuel,
-            float fantasyPointsDraftKings, float fantasyPointsYahoo, float fantasyPointsMondogoal, float minutes,
-            float goals, float assists, float shots, float shotsOnGoal, float yellowCards, float redCards,
-            float yellowRedCards, float crosses, float tacklesWon, float interceptions, float ownGoals, float fouls,
-            float fouled, float offsides, float passes, float passesCompleted, float lastManTackle, float cornersWon,
-            float blockedShots, float touches, float defenderCleanSheets, float goalkeeperSaves,
-            float goalkeeperGoalsAgainst, float goalkeeperSingleGoalAgainst, float goalkeeperCleanSheets,
-            float goalkeeperWins, float penaltyKickGoals, float penaltyKickMisses, float penaltyKickSaves,
-            float penaltiesWon, float penaltiesConceded, float score, float opponentScore, float tackles, Round round) {
+    public PlayerSeason(int statId, int seasonType, int season, int teamId, int playerId, String name, String shortName,
+            String team, String positionCategory, String position, int started, int globalTeamId, Date updated,
+            Date updatedUtc, int games, float fantasyPoints, float fantasyPointsFanDuel, float fantasyPointsDraftKings,
+            float fantasyPointsYahoo, float fantasyPointsMondogoal, float minutes, float goals, float assists,
+            float shots, float shotsOnGoal, float yellowCards, float redCards, float yellowRedCards, float crosses,
+            float tacklesWon, float interceptions, float ownGoals, float fouls, float fouled, float offsides,
+            float passes, float passesCompleted, float lastManTackle, float cornersWon, float blockedShots,
+            float touches, float defenderCleanSheets, float goalkeeperSaves, float goalkeeperGoalsAgainst,
+            float goalkeeperSingleGoalAgainst, float goalkeeperCleanSheets, float goalkeeperWins,
+            float penaltyKickGoals, float penaltyKickMisses, float penaltyKickSaves, float penaltiesWon,
+            float penaltiesConceded, float score, float opponentScore, float tackles, Round round) {
+        super();
         StatId = statId;
         SeasonType = seasonType;
         Season = season;
         TeamId = teamId;
+        PlayerId = playerId;
         Name = name;
+        ShortName = shortName;
         Team = team;
+        PositionCategory = positionCategory;
+        Position = position;
+        Started = started;
         GlobalTeamId = globalTeamId;
-        Possession = possession;
         Updated = updated;
         UpdatedUtc = updatedUtc;
         Games = games;
@@ -170,12 +177,28 @@ public class TeamSeason {
         TeamId = teamId;
     }
 
+    public int getPlayerId() {
+        return PlayerId;
+    }
+
+    public void setPlayerId(int playerId) {
+        PlayerId = playerId;
+    }
+
     public String getName() {
         return Name;
     }
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getShortName() {
+        return ShortName;
+    }
+
+    public void setShortName(String shortName) {
+        ShortName = shortName;
     }
 
     public String getTeam() {
@@ -186,20 +209,36 @@ public class TeamSeason {
         Team = team;
     }
 
+    public String getPositionCategory() {
+        return PositionCategory;
+    }
+
+    public void setPositionCategory(String positionCategory) {
+        PositionCategory = positionCategory;
+    }
+
+    public String getPosition() {
+        return Position;
+    }
+
+    public void setPosition(String position) {
+        Position = position;
+    }
+
+    public int getStarted() {
+        return Started;
+    }
+
+    public void setStarted(int started) {
+        Started = started;
+    }
+
     public int getGlobalTeamId() {
         return GlobalTeamId;
     }
 
     public void setGlobalTeamId(int globalTeamId) {
         GlobalTeamId = globalTeamId;
-    }
-
-    public float getPossession() {
-        return Possession;
-    }
-
-    public void setPossession(float possession) {
-        Possession = possession;
     }
 
     public Date getUpdated() {
@@ -556,10 +595,11 @@ public class TeamSeason {
 
     @Override
     public String toString() {
-        return "TeamSeason [StatId=" + StatId + ", SeasonType=" + SeasonType + ", Season=" + Season + ", TeamId="
-                + TeamId + ", Name=" + Name + ", Team=" + Team + ", GlobalTeamId=" + GlobalTeamId + ", Possession="
-                + Possession + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", Games=" + Games
-                + ", FantasyPoints=" + FantasyPoints + ", FantasyPointsFanDuel=" + FantasyPointsFanDuel
+        return "PlayerSeason [StatId=" + StatId + ", SeasonType=" + SeasonType + ", Season=" + Season + ", TeamId="
+                + TeamId + ", PlayerId=" + PlayerId + ", Name=" + Name + ", ShortName=" + ShortName + ", Team=" + Team
+                + ", PositionCategory=" + PositionCategory + ", Position=" + Position + ", Started=" + Started
+                + ", GlobalTeamId=" + GlobalTeamId + ", Updated=" + Updated + ", UpdatedUtc=" + UpdatedUtc + ", Games="
+                + Games + ", FantasyPoints=" + FantasyPoints + ", FantasyPointsFanDuel=" + FantasyPointsFanDuel
                 + ", FantasyPointsDraftKings=" + FantasyPointsDraftKings + ", FantasyPointsYahoo=" + FantasyPointsYahoo
                 + ", FantasyPointsMondogoal=" + FantasyPointsMondogoal + ", Minutes=" + Minutes + ", Goals=" + Goals
                 + ", Assists=" + Assists + ", Shots=" + Shots + ", ShotsOnGoal=" + ShotsOnGoal + ", YellowCards="

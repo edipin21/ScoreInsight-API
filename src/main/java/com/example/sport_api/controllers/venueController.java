@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.sport_api.models.Venue;
+import com.example.sport_api.models.sport.Venue;
 import com.example.sport_api.services.VenueService;
 import com.example.sport_api.util.ResponseUtil;
 

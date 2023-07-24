@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.sport_api.models.Membership;
+import com.example.sport_api.models.sport.Membership;
 import com.example.sport_api.services.CompetitionService;
 import com.example.sport_api.services.MembershipService;
 import com.example.sport_api.services.TeamService;

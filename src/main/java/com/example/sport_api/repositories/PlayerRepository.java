@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.example.sport_api.models.Player;
+import com.example.sport_api.models.sport.Player;
 
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 

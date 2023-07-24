@@ -1,7 +1,8 @@
 package com.example.sport_api.controllers;
 
 import java.util.List;
-import com.example.sport_api.models.AreaDto;
+
+import com.example.sport_api.models.sport.AreaDto;
 import com.example.sport_api.services.AreaService;
 import com.example.sport_api.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;

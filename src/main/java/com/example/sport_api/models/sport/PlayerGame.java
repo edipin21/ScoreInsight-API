@@ -1,22 +1,27 @@
-package com.example.sport_api.models;
+package com.example.sport_api.models.sport;
 
 import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-@JsonPropertyOrder({ "statId", "seasonType", "season", "roundId", "teamId", "name", "team", "globalTeamId",
-        "possession", "gameId", "opponentId", "opponent", "day", "dateTime", "homeOrAway", "isGameOver", "globalGameId",
+@JsonPropertyOrder({ "statId", "seasonType", "season", "roundId", "teamId", "playerId", "name", "shortName", "team",
+        "positionCategory", "position", "jersey", "started", "captain", "suspension", "suspensionReason",
+        "fanDuelSalary", "draftKingsSalary", "yahooSalary", "mondogoalSalary", "fanDuelPosition", "draftKingsPosition",
+        "yahooPosition", "mondogoalPosition", "injuryStatus", "injuryBodyPart", "injuryNotes", "injuryStartDate",
+        "globalTeamId", "gameId", "opponentId", "opponent", "day", "dateTime", "homeOrAway", "isGameOver",
         "globalOpponentId", "updated", "updatedUtc", "games", "fantasyPoints", "fantasyPointsFanDuel",
-        "fantasyPointsDraftKings", "fantasyPointsYahoo", "fantasyPointsMondogoal", "minutes", "goals", "assists",
-        "shots", "shotsOnGoal", "yellowCards", "redCards", "yellowRedCards", "crosses", "tacklesWon", "interceptions",
-        "ownGoals", "fouls", "fouled", "offsides", "passes", "passesCompleted", "lastManTackle", "cornersWon",
-        "blockedShots", "touches", "defenderCleanSheets", "goalkeeperSaves", "goalkeeperGoalsAgainst",
+        "fantasyPointsDraftKings", "fantasyPointsMondogoal", "minutes", "goals",
+        "assists", "shots", "shotsOnGoal", "yellowCards", "redCards", "yellowRedCards", "crosses", "tacklesWon",
+        "interceptions", "ownGoals", "fouls", "fouled", "offsides", "passes", "passesCompleted", "lastManTackle",
+        "cornersWon", "blockedShots", "touches", "defenderCleanSheets", "goalkeeperSaves", "goalkeeperGoalsAgainst",
         "goalkeeperSingleGoalAgainst", "goalkeeperCleanSheets", "goalkeeperWins", "penaltyKickGoals",
         "penaltyKickMisses", "penaltyKickSaves", "penaltiesWon", "penaltiesConceded", "score", "opponentScore",
         "tackles" })
-public class TeamGame {
+public class PlayerGame {
 
     @Id
     private Integer StatId;
@@ -24,17 +29,37 @@ public class TeamGame {
     private Integer Season;
     private Integer RoundId;
     private Integer TeamId;
+    private Integer PlayerId;
     private String Name;
+    private String ShortName;
     private String Team;
+    private String PositionCategory;
+    private String Position;
+    private Integer Jersey;
+    private Integer Started;
+    private boolean Captain;
+    private boolean Suspension;
+    private String SuspensionReason;
+    private Integer FanDuelSalary;
+    private Integer DraftKingsSalary;
+    private Integer YahooSalary;
+    private Integer MondogoalSalary;
+    private String FanDuelPosition;
+    private String DraftKingsPosition;
+    private String YahooPosition;
+    private String MondogoalPosition;
+    private String InjuryStatus;
+    private String InjuryBodyPart;
+    private String InjuryNotes;
+    private Date InjuryStartDate;
     private Integer GlobalTeamId;
-    private int Possession;
     private Integer GameId;
     private Integer OpponentId;
     private String Opponent;
     private Date Day;
     private Date DateTime;
     private String HomeOrAway;
-    private Boolean IsGameOver;
+    private boolean IsGameOver;
     private Integer GlobalGameId;
     private Integer GlobalOpponentId;
     private Date Updated;
@@ -81,30 +106,57 @@ public class TeamGame {
     private int OpponentScore;
     private int Tackles;
 
-    public TeamGame() {
+    @JsonIgnore
+    private Integer competition;
+
+    public PlayerGame() {
     }
 
-    public TeamGame(Integer statId, Integer seasonType, Integer season, Integer roundId, Integer teamId, String name,
-            String team, Integer globalTeamId, int possession, Integer gameId, Integer opponentId, String opponent,
-            Date day, Date dateTime, String homeOrAway, Boolean isGameOver, Integer globalGameId,
-            Integer globalOpponentId, Date updated, Date updatedUtc, Integer games, int fantasyPoints,
-            int fantasyPointsFanDuel, int fantasyPointsDraftKings, int fantasyPointsYahoo, int fantasyPointsMondogoal,
-            int minutes, int goals, int assists, int shots, int shotsOnGoal, int yellowCards, int redCards,
-            int yellowRedCards, int crosses, int tacklesWon, int interceptions, int ownGoals, int fouls, int fouled,
-            int offsides, int passes, int passesCompleted, int lastManTackle, int cornersWon, int blockedShots,
-            int touches, int defenderCleanSheets, int goalkeeperSaves, int goalkeeperGoalsAgainst,
-            int goalkeeperSingleGoalAgainst, int goalkeeperCleanSheets, int goalkeeperWins, int penaltyKickGoals,
-            int penaltyKickMisses, int penaltyKickSaves, int penaltiesWon, int penaltiesConceded, int score,
-            int opponentScore, int tackles) {
+    public PlayerGame(Integer statId, Integer seasonType, Integer season, Integer roundId, Integer teamId,
+            Integer playerId, String name, String shortName, String team, String positionCategory, String position,
+            Integer jersey, Integer started, boolean captain, boolean suspension, String suspensionReason,
+            Integer fanDuelSalary, Integer draftKingsSalary, Integer yahooSalary, Integer mondogoalSalary,
+            String fanDuelPosition, String draftKingsPosition, String yahooPosition, String mondogoalPosition,
+            String injuryStatus, String injuryBodyPart, String injuryNotes, Date injuryStartDate, Integer globalTeamId,
+            Integer gameId, Integer opponentId, String opponent, Date day, Date dateTime, String homeOrAway,
+            boolean isGameOver, Integer globalGameId, Integer globalOpponentId, Date updated, Date updatedUtc,
+            Integer games, int fantasyPoints, int fantasyPointsFanDuel, int fantasyPointsDraftKings,
+            int fantasyPointsYahoo, int fantasyPointsMondogoal, int minutes, int goals, int assists, int shots,
+            int shotsOnGoal, int yellowCards, int redCards, int yellowRedCards, int crosses, int tacklesWon,
+            int interceptions, int ownGoals, int fouls, int fouled, int offsides, int passes, int passesCompleted,
+            int lastManTackle, int cornersWon, int blockedShots, int touches, int defenderCleanSheets,
+            int goalkeeperSaves, int goalkeeperGoalsAgainst, int goalkeeperSingleGoalAgainst, int goalkeeperCleanSheets,
+            int goalkeeperWins, int penaltyKickGoals, int penaltyKickMisses, int penaltyKickSaves, int penaltiesWon,
+            int penaltiesConceded, int score, int opponentScore, int tackles) {
         StatId = statId;
         SeasonType = seasonType;
         Season = season;
         RoundId = roundId;
         TeamId = teamId;
+        PlayerId = playerId;
         Name = name;
+        ShortName = shortName;
         Team = team;
+        PositionCategory = positionCategory;
+        Position = position;
+        Jersey = jersey;
+        Started = started;
+        Captain = captain;
+        Suspension = suspension;
+        SuspensionReason = suspensionReason;
+        FanDuelSalary = fanDuelSalary;
+        DraftKingsSalary = draftKingsSalary;
+        YahooSalary = yahooSalary;
+        MondogoalSalary = mondogoalSalary;
+        FanDuelPosition = fanDuelPosition;
+        DraftKingsPosition = draftKingsPosition;
+        YahooPosition = yahooPosition;
+        MondogoalPosition = mondogoalPosition;
+        InjuryStatus = injuryStatus;
+        InjuryBodyPart = injuryBodyPart;
+        InjuryNotes = injuryNotes;
+        InjuryStartDate = injuryStartDate;
         GlobalTeamId = globalTeamId;
-        Possession = possession;
         GameId = gameId;
         OpponentId = opponentId;
         Opponent = opponent;
@@ -199,12 +251,28 @@ public class TeamGame {
         TeamId = teamId;
     }
 
+    public Integer getPlayerId() {
+        return PlayerId;
+    }
+
+    public void setPlayerId(Integer playerId) {
+        PlayerId = playerId;
+    }
+
     public String getName() {
         return Name;
     }
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getShortName() {
+        return ShortName;
+    }
+
+    public void setShortName(String shortName) {
+        ShortName = shortName;
     }
 
     public String getTeam() {
@@ -215,20 +283,164 @@ public class TeamGame {
         Team = team;
     }
 
+    public String getPositionCategory() {
+        return PositionCategory;
+    }
+
+    public void setPositionCategory(String positionCategory) {
+        PositionCategory = positionCategory;
+    }
+
+    public String getPosition() {
+        return Position;
+    }
+
+    public void setPosition(String position) {
+        Position = position;
+    }
+
+    public Integer getJersey() {
+        return Jersey;
+    }
+
+    public void setJersey(Integer jersey) {
+        Jersey = jersey;
+    }
+
+    public Integer getStarted() {
+        return Started;
+    }
+
+    public void setStarted(Integer started) {
+        Started = started;
+    }
+
+    public boolean isCaptain() {
+        return Captain;
+    }
+
+    public void setCaptain(boolean captain) {
+        Captain = captain;
+    }
+
+    public boolean isSuspension() {
+        return Suspension;
+    }
+
+    public void setSuspension(boolean suspension) {
+        Suspension = suspension;
+    }
+
+    public String getSuspensionReason() {
+        return SuspensionReason;
+    }
+
+    public void setSuspensionReason(String suspensionReason) {
+        SuspensionReason = suspensionReason;
+    }
+
+    public Integer getFanDuelSalary() {
+        return FanDuelSalary;
+    }
+
+    public void setFanDuelSalary(Integer fanDuelSalary) {
+        FanDuelSalary = fanDuelSalary;
+    }
+
+    public Integer getDraftKingsSalary() {
+        return DraftKingsSalary;
+    }
+
+    public void setDraftKingsSalary(Integer draftKingsSalary) {
+        DraftKingsSalary = draftKingsSalary;
+    }
+
+    public Integer getYahooSalary() {
+        return YahooSalary;
+    }
+
+    public void setYahooSalary(Integer yahooSalary) {
+        YahooSalary = yahooSalary;
+    }
+
+    public Integer getMondogoalSalary() {
+        return MondogoalSalary;
+    }
+
+    public void setMondogoalSalary(Integer mondogoalSalary) {
+        MondogoalSalary = mondogoalSalary;
+    }
+
+    public String getFanDuelPosition() {
+        return FanDuelPosition;
+    }
+
+    public void setFanDuelPosition(String fanDuelPosition) {
+        FanDuelPosition = fanDuelPosition;
+    }
+
+    public String getDraftKingsPosition() {
+        return DraftKingsPosition;
+    }
+
+    public void setDraftKingsPosition(String draftKingsPosition) {
+        DraftKingsPosition = draftKingsPosition;
+    }
+
+    public String getYahooPosition() {
+        return YahooPosition;
+    }
+
+    public void setYahooPosition(String yahooPosition) {
+        YahooPosition = yahooPosition;
+    }
+
+    public String getMondogoalPosition() {
+        return MondogoalPosition;
+    }
+
+    public void setMondogoalPosition(String mondogoalPosition) {
+        MondogoalPosition = mondogoalPosition;
+    }
+
+    public String getInjuryStatus() {
+        return InjuryStatus;
+    }
+
+    public void setInjuryStatus(String injuryStatus) {
+        InjuryStatus = injuryStatus;
+    }
+
+    public String getInjuryBodyPart() {
+        return InjuryBodyPart;
+    }
+
+    public void setInjuryBodyPart(String injuryBodyPart) {
+        InjuryBodyPart = injuryBodyPart;
+    }
+
+    public String getInjuryNotes() {
+        return InjuryNotes;
+    }
+
+    public void setInjuryNotes(String injuryNotes) {
+        InjuryNotes = injuryNotes;
+    }
+
+    public Date getInjuryStartDate() {
+        return InjuryStartDate;
+    }
+
+    public void setInjuryStartDate(Date injuryStartDate) {
+        InjuryStartDate = injuryStartDate;
+    }
+
     public Integer getGlobalTeamId() {
         return GlobalTeamId;
     }
 
     public void setGlobalTeamId(Integer globalTeamId) {
         GlobalTeamId = globalTeamId;
-    }
-
-    public int getPossession() {
-        return Possession;
-    }
-
-    public void setPossession(int possession) {
-        Possession = possession;
     }
 
     public Integer getGameId() {
@@ -279,11 +491,11 @@ public class TeamGame {
         HomeOrAway = homeOrAway;
     }
 
-    public Boolean getIsGameOver() {
+    public boolean isIsGameOver() {
         return IsGameOver;
     }
 
-    public void setIsGameOver(Boolean isGameOver) {
+    public void setIsGameOver(boolean isGameOver) {
         IsGameOver = isGameOver;
     }
 
@@ -646,4 +858,13 @@ public class TeamGame {
     public void setTackles(int tackles) {
         Tackles = tackles;
     }
+
+    public Integer getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(Integer competition) {
+        this.competition = competition;
+    }
+
 }

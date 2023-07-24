@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.example.sport_api.models.Competition;
-import com.example.sport_api.models.CompetitionDto;
+import com.example.sport_api.models.sport.Competition;
+import com.example.sport_api.models.sport.CompetitionDto;
 
 public interface CompetitionRepository extends JpaRepository<Competition, Integer> {
 

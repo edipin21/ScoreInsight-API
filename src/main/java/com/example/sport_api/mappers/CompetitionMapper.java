@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
-import com.example.sport_api.models.Competition;
-import com.example.sport_api.models.CompetitionDto;
+import com.example.sport_api.models.sport.Competition;
+import com.example.sport_api.models.sport.CompetitionDto;
 
 public class CompetitionMapper {
 

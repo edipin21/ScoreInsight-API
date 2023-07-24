@@ -6,11 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.dao.DataAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.sport_api.models.Area;
-import com.example.sport_api.models.AreaDto;
-import com.example.sport_api.models.Competition;
-import com.example.sport_api.models.CompetitionDto;
+
 import com.example.sport_api.mappers.CompetitionMapper;
+import com.example.sport_api.models.sport.Area;
+import com.example.sport_api.models.sport.AreaDto;
+import com.example.sport_api.models.sport.Competition;
+import com.example.sport_api.models.sport.CompetitionDto;
 import com.example.sport_api.repositories.AreaRepository;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;

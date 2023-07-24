@@ -8,7 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-import com.example.sport_api.models.Team;
+
+import com.example.sport_api.models.sport.Team;
 import com.example.sport_api.repositories.TeamRepository;
 
 @Service

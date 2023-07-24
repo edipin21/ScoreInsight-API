@@ -12,7 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.sport_api.models.Round;
+
+import com.example.sport_api.models.sport.Round;
 import com.example.sport_api.services.CompetitionService;
 import com.example.sport_api.services.RoundService;
 import com.example.sport_api.util.ResponseUtil;

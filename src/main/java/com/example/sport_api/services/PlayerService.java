@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.example.sport_api.models.Player;
+import com.example.sport_api.models.sport.Player;
 import com.example.sport_api.repositories.PlayerRepository;
 
 @Service

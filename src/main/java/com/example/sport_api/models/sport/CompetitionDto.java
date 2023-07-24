@@ -1,4 +1,4 @@
-package com.example.sport_api.models;
+package com.example.sport_api.models.sport;
 
 import java.util.ArrayList;
 import java.util.List;

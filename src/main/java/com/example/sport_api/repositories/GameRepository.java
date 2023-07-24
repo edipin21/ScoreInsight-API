@@ -5,7 +5,8 @@ import java.sql.Date;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import com.example.sport_api.models.Game;
+
+import com.example.sport_api.models.sport.Game;
 
 public interface GameRepository extends JpaRepository<Game, Integer> {
 

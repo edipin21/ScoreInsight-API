@@ -12,7 +12,8 @@ import com.example.sport_api.models.sport.Area;
 import com.example.sport_api.models.sport.AreaDto;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.CompetitionDto;
-import com.example.sport_api.repositories.AreaRepository;
+import com.example.sport_api.repositories.soccer.AreaRepository;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 

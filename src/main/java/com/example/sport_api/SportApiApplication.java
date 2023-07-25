@@ -2,11 +2,12 @@ package com.example.sport_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@EnableJpaRepositories(basePackages = "com.example.sport_api.repositories", entityManagerFactoryRef = "entityManagerFactory")
-@SpringBootApplication
+@EntityScan("com.example.sport_api.models.sport")
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @EnableScheduling
 public class SportApiApplication {
 

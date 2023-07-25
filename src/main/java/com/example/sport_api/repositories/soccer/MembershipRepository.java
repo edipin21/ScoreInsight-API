@@ -1,4 +1,4 @@
-package com.example.sport_api.repositories;
+package com.example.sport_api.repositories.soccer;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ import com.example.sport_api.models.sport.Membership;
 
 public interface MembershipRepository extends JpaRepository<Membership, Integer> {
 
-        @Query(value = "SELECT * FROM membership WHERE  competition_id = :competitionId AND active = true ", nativeQuery = true)
+        @Query(value = "SELECT * FROM Membership WHERE  CompetitionId = :competitionId AND Active = true ", nativeQuery = true)
         List<Membership> findByCompetitionId(@Param("competitionId") Integer competitionId);
 
-        @Query(value = "SELECT * FROM membership WHERE competition_id = :competitionId AND Updated >= DATE_SUB(NOW(), INTERVAL :days DAY)", nativeQuery = true)
+        @Query(value = "SELECT * FROM Membership WHERE CompetitionId = :competitionId AND Updated >= DATE_SUB(NOW(), INTERVAL :days DAY)", nativeQuery = true)
         List<Membership> findRecentMembershipsByCompetitionId(@Param("competitionId") Integer competitionId,
                         @Param("days") int days);
 
-        @Query(value = "SELECT * FROM membership WHERE  competition_id = :competitionId AND team_id =:teamId ", nativeQuery = true)
+        @Query(value = "SELECT * FROM Membership WHERE  CompetitionId = :competitionId AND teamId =:teamId ", nativeQuery = true)
         List<Membership> findByCompetitionIdAndTeamId(@Param("competitionId") Integer competitionId,
                         @Param("teamId") Integer teamId);
 

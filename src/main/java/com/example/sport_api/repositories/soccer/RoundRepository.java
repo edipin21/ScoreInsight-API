@@ -1,4 +1,4 @@
-package com.example.sport_api.repositories;
+package com.example.sport_api.repositories.soccer;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.example.sport_api.models.sport.Round;
 
 public interface RoundRepository extends JpaRepository<Round, Integer> {
 
-    @Query(value = "SELECT * FROM round WHERE competition_id = :competitionId AND soccer_season = :year ", nativeQuery = true)
+    @Query(value = "SELECT * FROM Round WHERE competitionId = :competitionId AND soccerSeason = :year ", nativeQuery = true)
     List<Round> findRoundsByCompetitionAndYear(@Param("competitionId") Integer competitionId,
             @Param("year") Integer year);
 }

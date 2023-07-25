@@ -8,7 +8,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.example.sport_api.models.sport.Player;
-import com.example.sport_api.repositories.PlayerRepository;
+import com.example.sport_api.repositories.soccer.PlayerRepository;
 
 @Service
 public class PlayerService {

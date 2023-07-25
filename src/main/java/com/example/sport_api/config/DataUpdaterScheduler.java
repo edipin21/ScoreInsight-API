@@ -15,7 +15,6 @@ public class DataUpdaterScheduler {
     private DataSyncService apiService;
 
     // (fixedRate = 4 * 60 * 60 * 1000)
-
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateTeamsDB() throws JsonMappingException,
     // JsonProcessingException {

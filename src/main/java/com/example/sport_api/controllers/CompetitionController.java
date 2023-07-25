@@ -51,9 +51,6 @@ public class CompetitionController {
             }
             Competition theCompetition = competitionService.getCompetitionById(competitionId);
 
-            // System.out.println(theCompetition);
-            System.out.println(theCompetition.getTeams().get(0).getPlayers());
-
             return ResponseUtil.createOkResponse(theCompetition);
         } catch (NumberFormatException e) {
             logger.error("Invalid Argument: The competition parameter should be an integer", e);

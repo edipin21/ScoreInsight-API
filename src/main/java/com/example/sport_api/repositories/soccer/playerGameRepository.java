@@ -1,4 +1,4 @@
-package com.example.sport_api.repositories;
+package com.example.sport_api.repositories.soccer;
 
 import java.sql.Date;
 import java.util.List;
@@ -10,7 +10,7 @@ import com.example.sport_api.models.sport.PlayerGame;
 
 public interface playerGameRepository extends JpaRepository<PlayerGame, Integer> {
 
-    @Query(value = "SELECT * FROM player_game WHERE competition = :competition AND date_time = :date", nativeQuery = true)
+    @Query(value = "SELECT * FROM PlayerGame WHERE competition = :competition AND DateTime = :date", nativeQuery = true)
     List<PlayerGame> findByCompetitionAndDate(@Param("competition") Integer competition, @Param("date") Date date);
 
 }

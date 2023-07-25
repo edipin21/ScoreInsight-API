@@ -12,16 +12,16 @@ import com.example.sport_api.models.sport.Season;
 import com.example.sport_api.models.sport.Team;
 import com.example.sport_api.models.sport.TeamDetail;
 import com.example.sport_api.models.sport.Venue;
-import com.example.sport_api.repositories.AreaRepository;
-import com.example.sport_api.repositories.BoxScoreRepository;
-import com.example.sport_api.repositories.CompetitionRepository;
-import com.example.sport_api.repositories.GameRepository;
-import com.example.sport_api.repositories.MembershipRepository;
-import com.example.sport_api.repositories.PlayerRepository;
-import com.example.sport_api.repositories.RoundRepository;
-import com.example.sport_api.repositories.TeamDetailRepository;
-import com.example.sport_api.repositories.TeamRepository;
-import com.example.sport_api.repositories.VenueRepository;
+import com.example.sport_api.repositories.soccer.AreaRepository;
+import com.example.sport_api.repositories.soccer.BoxScoreRepository;
+import com.example.sport_api.repositories.soccer.CompetitionRepository;
+import com.example.sport_api.repositories.soccer.GameRepository;
+import com.example.sport_api.repositories.soccer.MembershipRepository;
+import com.example.sport_api.repositories.soccer.PlayerRepository;
+import com.example.sport_api.repositories.soccer.RoundRepository;
+import com.example.sport_api.repositories.soccer.TeamDetailRepository;
+import com.example.sport_api.repositories.soccer.TeamRepository;
+import com.example.sport_api.repositories.soccer.VenueRepository;
 import com.example.sport_api.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -74,9 +74,6 @@ public class DataSyncService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
-    // @Autowired
-    // private CompetitionService competitionService;
-
     @Autowired
     private GameRepository gameRepository;
 
@@ -114,7 +111,6 @@ public class DataSyncService {
             teams = objectMapper.readValue(teamsJson, new TypeReference<List<Team>>() {
             });
 
-            System.out.println(teams.get(0));
             teamRepository.saveAll(teams);
         } catch (Exception e) {
             handleException(e);
@@ -207,7 +203,8 @@ public class DataSyncService {
                     theTeams = teams.get();
                     theTeams.forEach(team -> team.setCompetition(competitions));
                     for (TeamDetail team : theTeams) {
-                        team.setPlayers(new ArrayList<>());
+                        team.setPlayers(playerRepository.findPlayersByTeam(team.getTeamId()));
+
                     }
 
                 }
@@ -368,7 +365,7 @@ public class DataSyncService {
 
             // Partial loop for sanity checks - delete count
             for (Integer competitonId : competitioIntegers) {
-                if (count == 10) {
+                if (count > 1) {
                     break;
                 }
 
@@ -388,10 +385,10 @@ public class DataSyncService {
                     rounds = objectMapper.readValue(scheduleJson, new TypeReference<List<Round>>() {
                     });
 
-                    rounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
+                    rounds.forEach(round -> round.setCompetitionId(competitonId));
 
                     String standingsJson = fetchData(
-                            standingsResourcUrl + 1 + "/"
+                            standingsResourcUrl + competitonId + "/"
                                     + seasonsArr[i]
                                     + "?key=");
                     standingsRounds = objectMapper.readValue(standingsJson, new TypeReference<List<Round>>() {
@@ -399,15 +396,16 @@ public class DataSyncService {
 
                     standingsRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
 
-                    String teamSeasonJson = fetchData(teamSeasonStateResourcUrl + 1 + '/' + seasonsArr[i] + "?key=");
+                    String teamSeasonJson = fetchData(
+                            teamSeasonStateResourcUrl + competitonId + '/' + seasonsArr[i] + "?key=");
 
                     teamSeasonRounds = objectMapper.readValue(teamSeasonJson, new TypeReference<List<Round>>() {
                     });
                     teamSeasonRounds.forEach(round -> round.setCompetitionId(competitioIntegers.get(0)));
-
+                    System.out.println(rounds.size());
                     for (int j = 0; j < rounds.size(); j++) {
-                        rounds.get(i).setStandings(standingsRounds.get(i).getStandings());
-                        rounds.get(i).setTeamSeasons(teamSeasonRounds.get(i).getTeamSeasons());
+                        rounds.get(j).setStandings(standingsRounds.get(j).getStandings());
+                        rounds.get(j).setTeamSeasons(teamSeasonRounds.get(j).getTeamSeasons());
                     }
 
                     roundRepository.saveAll(rounds);

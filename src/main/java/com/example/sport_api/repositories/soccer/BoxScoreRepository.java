@@ -1,4 +1,4 @@
-package com.example.sport_api.repositories;
+package com.example.sport_api.repositories.soccer;
 
 import java.sql.Date;
 import java.util.List;
@@ -11,13 +11,13 @@ import com.example.sport_api.models.sport.BoxScore;
 
 public interface BoxScoreRepository extends JpaRepository<BoxScore, Long> {
 
-    @Query(value = "SELECT * FROM box_score WHERE game_game_id = :gameId", nativeQuery = true)
+    @Query(value = "SELECT * FROM BoxScore WHERE game_GameId = :gameId", nativeQuery = true)
     BoxScore findByGameId(@Param("gameId") Integer gameId);
 
-    @Query(value = "SELECT * FROM box_score WHERE competition = :competition AND game_game_id = :gameId", nativeQuery = true)
+    @Query(value = "SELECT * FROM BoxScore WHERE competition = :competition AND game_GameId = :gameId", nativeQuery = true)
     BoxScore findByCompetitionAndGameId(@Param("competition") Integer competition, @Param("gameId") Integer gameId);
 
-    @Query(value = "SELECT * FROM box_score WHERE competition = :competition AND date_time = :date", nativeQuery = true)
+    @Query(value = "SELECT * FROM BoxScore WHERE competition = :competition AND dateTime = :date", nativeQuery = true)
     List<BoxScore> findByCompetitionAndDate(@Param("competition") Integer competition, @Param("date") Date date);
 
 }

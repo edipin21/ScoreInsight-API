@@ -16,9 +16,9 @@ import com.example.sport_api.services.VenueService;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController
-public class venueController {
+public class VenueController {
 
-    private static final Logger logger = LogManager.getLogger(venueController.class);
+    private static final Logger logger = LogManager.getLogger(VenueController.class);
 
     @Autowired
     private VenueService venueService;

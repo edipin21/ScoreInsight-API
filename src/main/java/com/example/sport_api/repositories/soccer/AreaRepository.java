@@ -1,4 +1,4 @@
-package com.example.sport_api.repositories;
+package com.example.sport_api.repositories.soccer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

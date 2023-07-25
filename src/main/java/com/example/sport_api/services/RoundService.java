@@ -10,7 +10,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.example.sport_api.models.sport.Round;
-import com.example.sport_api.repositories.RoundRepository;
+import com.example.sport_api.repositories.soccer.RoundRepository;
 
 @Service
 public class RoundService {

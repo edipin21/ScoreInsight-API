@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.CompetitionDto;
-import com.example.sport_api.repositories.CompetitionRepository;
+import com.example.sport_api.repositories.soccer.CompetitionRepository;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 

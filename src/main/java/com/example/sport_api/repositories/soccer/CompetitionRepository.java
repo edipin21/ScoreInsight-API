@@ -1,4 +1,4 @@
-package com.example.sport_api.repositories;
+package com.example.sport_api.repositories.soccer;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ public interface CompetitionRepository extends JpaRepository<Competition, Intege
     @Query(value = "SELECT c.CompetitionId AS competitionId,c.Format AS format,c.AreaName AS areaName, c.Name AS name,c.Gender AS gender,c.Type AS type,c.StringKey AS stringKey , c.Seasons AS seasons, c.AreaId AS areaId FROM Competition c")
     List<CompetitionDto> findAllCompetitions();
 
-    @Query(value = "SELECT competition_id FROM competition", nativeQuery = true)
+    @Query(value = "SELECT competitionId FROM Competition", nativeQuery = true)
     List<Integer> findAllCompetitionsNumbers();
 }

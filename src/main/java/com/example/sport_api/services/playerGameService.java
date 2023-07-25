@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.sport_api.models.sport.BoxScore;
 import com.example.sport_api.models.sport.PlayerGame;
-import com.example.sport_api.repositories.playerGameRepository;
+import com.example.sport_api.repositories.soccer.playerGameRepository;
 
 @Service
 public class playerGameService {

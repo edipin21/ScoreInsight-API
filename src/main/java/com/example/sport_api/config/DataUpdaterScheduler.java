@@ -4,7 +4,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import com.example.sport_api.DataSyncService;
+import com.example.sport_api.SoccerDataSyncService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 public class DataUpdaterScheduler {
 
     @Autowired
-    private DataSyncService apiService;
+    private SoccerDataSyncService apiService;
 
     // (fixedRate = 4 * 60 * 60 * 1000)
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)

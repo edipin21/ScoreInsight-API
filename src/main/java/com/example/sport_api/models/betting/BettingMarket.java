@@ -3,11 +3,14 @@ package com.example.sport_api.models.betting;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -43,6 +46,11 @@ public class BettingMarket {
     @JoinColumn(name = "BettingMarketID")
     private List<ConsensusOutcome> ConsensusOutcomes;
 
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BettingEventID", insertable = false, updatable = false)
+    private BettingEvent bettingEvent;
+
     public BettingMarket() {
     }
 
@@ -50,7 +58,7 @@ public class BettingMarket {
             int bettingBetTypeID, String bettingBetType, int bettingPeriodTypeID, String bettingPeriodType, String name,
             int teamID, String teamKey, int playerID, String playerName, Date created, Date updated,
             boolean anyBetsAvailable, List<SportsBook> availableSportsbooks, List<BettingOutcome> bettingOutcomes,
-            List<ConsensusOutcome> consensusOutcomes) {
+            List<ConsensusOutcome> consensusOutcomes, BettingEvent bettingEvent) {
         BettingMarketID = bettingMarketID;
         BettingEventID = bettingEventID;
         BettingMarketTypeID = bettingMarketTypeID;
@@ -70,6 +78,7 @@ public class BettingMarket {
         AvailableSportsbooks = availableSportsbooks;
         BettingOutcomes = bettingOutcomes;
         ConsensusOutcomes = consensusOutcomes;
+        this.bettingEvent = bettingEvent;
     }
 
     public int getBettingMarketID() {
@@ -222,6 +231,14 @@ public class BettingMarket {
 
     public void setConsensusOutcomes(List<ConsensusOutcome> consensusOutcomes) {
         ConsensusOutcomes = consensusOutcomes;
+    }
+
+    public BettingEvent getBettingEvent() {
+        return bettingEvent;
+    }
+
+    public void setBettingEvent(BettingEvent bettingEvent) {
+        this.bettingEvent = bettingEvent;
     }
 
 }

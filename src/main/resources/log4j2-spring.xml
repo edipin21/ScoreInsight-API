@@ -28,6 +28,7 @@
 
         <!-- LOG "com.baeldung*" at TRACE level -->
         <Logger name="com.baeldung" level="trace"></Logger>
+        <!-- <Logger name="org.apache.http" level="INFO" /> -->
     </Loggers>
 
 </Configuration>

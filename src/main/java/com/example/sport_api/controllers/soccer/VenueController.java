@@ -1,4 +1,4 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sport_api.models.sport.Venue;
-import com.example.sport_api.services.VenueService;
+import com.example.sport_api.services.soccer.VenueService;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController

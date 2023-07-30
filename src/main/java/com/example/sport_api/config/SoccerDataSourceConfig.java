@@ -2,6 +2,7 @@ package com.example.sport_api.config;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,6 @@ public class SoccerDataSourceConfig {
 
     Dotenv dotenv = Dotenv.load();
 
-    @Primary
     @Bean("soccerDBEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean soccerDBEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -30,7 +30,7 @@ public class SoccerDataSourceConfig {
         em.setPackagesToScan("com.example.sport_api.models.sport");
         em.setPersistenceUnitName("soccer");
         em.setJpaVendorAdapter(new org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter());
-        em.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        em.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         em.getJpaPropertyMap().put("hibernate.hbm2ddl.auto", "update");
 
         return em;
@@ -48,9 +48,9 @@ public class SoccerDataSourceConfig {
                 .build();
     }
 
-    @Primary
     @Bean("soccerDBTransactionManager")
-    public PlatformTransactionManager soccerDBTransactionManager(EntityManagerFactory db1EntityManagerFactory) {
+    public PlatformTransactionManager soccerDBTransactionManager(
+            @Qualifier("soccerDBEntityManagerFactory") EntityManagerFactory db1EntityManagerFactory) {
         return new JpaTransactionManager(db1EntityManagerFactory);
     }
 

@@ -1,4 +1,4 @@
-package com.example.sport_api.services;
+package com.example.sport_api.services.soccer;
 
 import java.sql.Date;
 import java.text.ParseException;

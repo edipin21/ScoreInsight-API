@@ -4,6 +4,8 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import com.example.sport_api.BettingDataSyncService;
 import com.example.sport_api.SoccerDataSyncService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -12,7 +14,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 public class DataUpdaterScheduler {
 
     @Autowired
-    private SoccerDataSyncService apiService;
+    private SoccerDataSyncService soccerApiService;
+
+    @Autowired
+    private BettingDataSyncService bettingApiService;
 
     // (fixedRate = 4 * 60 * 60 * 1000)
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
@@ -57,7 +62,7 @@ public class DataUpdaterScheduler {
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateScheduleAndStandingsAndTeamSeasonByTeamDB() throws
     // IOException {
-    // apiService.fetchAndUpdateScheduleAndStandingsAndTeamSeason();
+    // soccerApiService.fetchAndUpdateScheduleAndStandingsAndTeamSeason();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
@@ -68,6 +73,11 @@ public class DataUpdaterScheduler {
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateBoxScoreDB() throws IOException {
     // apiService.fetchAndUpdateBoxScore();
+    // }
+
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateBettingEvenntsDB() throws IOException {
+    // bettingApiService.fetchBettingEventesAndUpdate();
     // }
 
 }

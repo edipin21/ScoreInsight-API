@@ -1,10 +1,11 @@
 package com.example.sport_api.config;
 
 import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -28,7 +29,7 @@ public class BettingDataSourceConfig {
         em.setPackagesToScan("com.example.sport_api.models.betting");
         em.setPersistenceUnitName("betting");
         em.setJpaVendorAdapter(new org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter());
-        em.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        em.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         em.getJpaPropertyMap().put("hibernate.hbm2ddl.auto", "update");
 
         return em;
@@ -45,10 +46,10 @@ public class BettingDataSourceConfig {
                 .build();
     }
 
-    @Primary
     @Bean("bettingDBTransactionManager")
-    public PlatformTransactionManager bettingDBTransactionManager(EntityManagerFactory db1EntityManagerFactory) {
-        return new JpaTransactionManager(db1EntityManagerFactory);
+    public PlatformTransactionManager bettingDBTransactionManager(
+            @Qualifier("bettingDBEntityManagerFactory") EntityManagerFactory bettingDBEntityManagerFactory) {
+        return new JpaTransactionManager(bettingDBEntityManagerFactory);
     }
 
 }

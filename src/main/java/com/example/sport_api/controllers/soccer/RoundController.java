@@ -1,4 +1,4 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sport_api.models.sport.Round;
-import com.example.sport_api.services.CompetitionService;
-import com.example.sport_api.services.RoundService;
+import com.example.sport_api.services.soccer.CompetitionService;
+import com.example.sport_api.services.soccer.RoundService;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController

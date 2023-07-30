@@ -3,7 +3,7 @@ package com.example.sport_api.models.betting;
 import java.sql.Date;
 import java.util.List;
 
-import com.example.sport_api.models.sport.Season;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -13,6 +13,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
+@JsonPropertyOrder({ "bettingEventID", "name", "season", "bettingEventTypeID", "bettingEventType", "startDate",
+        "created", "updated", "gameID", "globalGameID", "gameStatus", "quarter", "awayTeam", "homeTeam", "awayTeamID",
+        "homeTeamID", "globalAwayTeamID", "globalHomeTeamID", "awayTeamScore", "homeTeamScore", "totalScore",
+        "awayRotationNumber", "homeRotationNumber", "competitionId" })
 public class BettingEvent {
 
     @Id
@@ -278,6 +282,19 @@ public class BettingEvent {
 
     public void setBettingMarkets(List<BettingMarket> bettingMarkets) {
         BettingMarkets = bettingMarkets;
+    }
+
+    @Override
+    public String toString() {
+        return "BettingEvent [BettingEventID=" + BettingEventID + ", Name=" + Name + ", Season=" + Season
+                + ", BettingEventTypeID=" + BettingEventTypeID + ", BettingEventType=" + BettingEventType
+                + ", StartDate=" + StartDate + ", Created=" + Created + ", Updated=" + Updated + ", GameID=" + GameID
+                + ", GlobalGameID=" + GlobalGameID + ", GameStatus=" + GameStatus + ", Quarter=" + Quarter
+                + ", AwayTeam=" + AwayTeam + ", HomeTeam=" + HomeTeam + ", AwayTeamID=" + AwayTeamID + ", HomeTeamID="
+                + HomeTeamID + ", GlobalAwayTeamID=" + GlobalAwayTeamID + ", GlobalHomeTeamID=" + GlobalHomeTeamID
+                + ", AwayTeamScore=" + AwayTeamScore + ", HomeTeamScore=" + HomeTeamScore + ", TotalScore=" + TotalScore
+                + ", AwayRotationNumber=" + AwayRotationNumber + ", HomeRotationNumber=" + HomeRotationNumber
+                + ", CompetitionId=" + CompetitionId + ", BettingMarkets=" + BettingMarkets + "]";
     }
 
 }

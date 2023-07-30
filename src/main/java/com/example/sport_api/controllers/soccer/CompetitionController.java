@@ -1,4 +1,4 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.CompetitionDto;
-import com.example.sport_api.services.CompetitionService;
+import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.util.ResponseUtil;
 import java.util.List;
 

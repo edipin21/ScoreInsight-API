@@ -1,12 +1,13 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import java.util.List;
 import java.time.format.DateTimeParseException;
 
-import com.example.sport_api.services.GameService;
 import com.example.sport_api.util.ResponseUtil;
 import com.example.sport_api.models.sport.Game;
-import com.example.sport_api.services.CompetitionService;
+import com.example.sport_api.services.soccer.CompetitionService;
+import com.example.sport_api.services.soccer.GameService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

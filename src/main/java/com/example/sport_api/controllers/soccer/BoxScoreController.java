@@ -1,4 +1,4 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sport_api.models.sport.BoxScore;
-import com.example.sport_api.services.BoxScoreService;
-import com.example.sport_api.services.CompetitionService;
-import com.example.sport_api.services.GameService;
+import com.example.sport_api.services.soccer.BoxScoreService;
+import com.example.sport_api.services.soccer.CompetitionService;
+import com.example.sport_api.services.soccer.GameService;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController

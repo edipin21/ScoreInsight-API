@@ -1,4 +1,4 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.betting;
 
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -12,48 +12,48 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.sport_api.models.sport.PlayerGame;
-import com.example.sport_api.services.CompetitionService;
-import com.example.sport_api.services.playerGameService;
+import com.example.sport_api.models.betting.BettingEvent;
+import com.example.sport_api.services.betting.BettingEventService;
+import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController
-public class PlayerGameController {
+public class BettingEventController {
 
-    private static final Logger logger = LogManager.getLogger(PlayerGameController.class);
+    private static final Logger logger = LogManager.getLogger(BettingEventController.class);
 
     @Autowired
-    private playerGameService playerGameService;
+    private BettingEventService bettingEventService;
 
     @Autowired
     private CompetitionService competitionService;
 
-    @GetMapping("stats/PlayerGameStatsByDate/{competition}/{date}")
-    public ResponseEntity<List<PlayerGame>> retrivePlayerGameStatByCompetitionAndDate(@PathVariable String competition,
-            @PathVariable String date) {
+    @GetMapping("/odds/BettingEventsBySeason/{competition}/{season}")
+    public ResponseEntity<List<BettingEvent>> retriveBettingEventsByCompetitionAndSeason(
+            @PathVariable String competition, @PathVariable String season) {
 
         try {
-
             Integer theCompetition = Integer.parseInt(competition);
-
-            if (date == null || !playerGameService.isValidDate(date)) {
-                throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
-            }
+            Integer theSeason = Integer.parseInt(season);
 
             if (competition == null ||
                     !competitionService.isCompetitionValid(theCompetition)) {
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
             }
 
-            List<PlayerGame> playerGames = playerGameService.getPlayerGameStatByCompetitionAndDate(theCompetition,
-                    date);
+            if (season == null || !bettingEventService.isValidSeason(theSeason)) {
+                throw new IllegalArgumentException("Invalid Argument: The season parameter is invalid ");
+            }
 
-            return ResponseUtil.createOkResponse(playerGames);
+            List<BettingEvent> bettingEvents = bettingEventService.getBettingEventsByCompetitionAndSeason(
+                    theCompetition,
+                    theSeason);
+
+            return ResponseUtil.createOkResponse(bettingEvents);
         } catch (NumberFormatException e) {
-            logger.error("Invalid Argument: The competition parameter should be an integer", e);
+            logger.error("Invalid Argument: The competition and season parameters should be an integers", e);
             return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
-                    "Invalid Argument: The competition parameter should be an integer");
+                    "Invalid Argument: The competition and season parameters should be an integers");
         } catch (DateTimeParseException e) {
             logger.error("Invalid Argument: " + e.getMessage());
             return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
@@ -63,6 +63,7 @@ public class PlayerGameController {
         } catch (DataAccessException e) {
             return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
+
     }
 
 }

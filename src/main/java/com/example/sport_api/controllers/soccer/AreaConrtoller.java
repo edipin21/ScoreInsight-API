@@ -1,9 +1,9 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import java.util.List;
 
 import com.example.sport_api.models.sport.AreaDto;
-import com.example.sport_api.services.AreaService;
+import com.example.sport_api.services.soccer.AreaService;
 import com.example.sport_api.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

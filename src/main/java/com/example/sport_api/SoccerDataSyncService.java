@@ -22,9 +22,10 @@ import com.example.sport_api.repositories.soccer.RoundRepository;
 import com.example.sport_api.repositories.soccer.TeamDetailRepository;
 import com.example.sport_api.repositories.soccer.TeamRepository;
 import com.example.sport_api.repositories.soccer.VenueRepository;
-import com.example.sport_api.services.GameService;
+import com.example.sport_api.services.soccer.GameService;
 import com.example.sport_api.util.CompetitionUtils;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.PlayerGameUtils;
 import com.example.sport_api.util.RoundUtils;
 import com.example.sport_api.util.TeamDetailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//need to add the HistoricalMembershipsByTeam function 
 @Service
 public class SoccerDataSyncService {
+
+    static final int[] seasonsArr = { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
 
     @Autowired
     private ExternalApiDataFetcherUtil eApiDataFetcherUtil;
@@ -172,9 +174,9 @@ public class SoccerDataSyncService {
 
                 List<Game> gameWithCompetitionId = CompetitionUtils.setCompetitionIdToGames(competition);
 
-                List<TeamDetail> TeamsWithCompetitionIdAndPlayers = CompetitionUtils
+                List<TeamDetail> teamsWithCompetitionIdAndPlayers = CompetitionUtils
                         .setCompetitionIdToTeamsDetail(competition);
-                TeamDetailUtils.setPlayersToTeams(TeamsWithCompetitionIdAndPlayers, playerRepository);
+                TeamDetailUtils.setPlayersToTeams(teamsWithCompetitionIdAndPlayers, playerRepository);
 
                 CompetitionUtils.setCompetitionsIdToRounds(competitions);
 
@@ -183,8 +185,8 @@ public class SoccerDataSyncService {
                 if (!gameWithCompetitionId.isEmpty()) {
                     gameRepository.saveAll(gameWithCompetitionId);
                 }
-                if (!TeamsWithCompetitionIdAndPlayers.isEmpty()) {
-                    teamDetailRepository.saveAll(TeamsWithCompetitionIdAndPlayers);
+                if (!teamsWithCompetitionIdAndPlayers.isEmpty()) {
+                    teamDetailRepository.saveAll(teamsWithCompetitionIdAndPlayers);
                 }
                 count++;
             }
@@ -327,7 +329,7 @@ public class SoccerDataSyncService {
             List<Round> rounds = new ArrayList<>();
             List<Round> standingsRounds = new ArrayList<>();
             List<Round> teamSeasonRounds = new ArrayList<>();
-            int[] seasonsArr = { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
+
             ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             TypeReference<List<Round>> roundTypeRef = new TypeReference<>() {
@@ -363,7 +365,7 @@ public class SoccerDataSyncService {
                     standingsRounds = objectMapper.readValue(standingsJson, roundTypeRef);
                     teamSeasonRounds = objectMapper.readValue(teamSeasonJson, roundTypeRef);
 
-                    rounds.forEach(round -> round.setCompetitionId(competitonId));
+                    RoundUtils.setCompetitionToRounds(rounds, competitonId);
                     RoundUtils.setStandingsAndTeamSeasonsToRounds(rounds, standingsRounds, teamSeasonRounds);
 
                     roundRepository.saveAll(rounds);
@@ -408,6 +410,9 @@ public class SoccerDataSyncService {
             List<BoxScore> boxScores = new ArrayList<>();
             int count = 0;
 
+            TypeReference<List<BoxScore>> boxScoreTypeRef = new TypeReference<>() {
+            };
+
             for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
                 if (count == 2) {
                     break;
@@ -415,26 +420,26 @@ public class SoccerDataSyncService {
                 Integer competition = entry.getValue();
                 Integer gameId = entry.getKey();
                 System.out.println(competition + "      " + gameId);
+
                 String boxScoreFixturesJson = eApiDataFetcherUtil
                         .fetchData(ExternalSoccerApiEndpoints.BOX_SCORE_RESOURCE_URL + competition + "/" + gameId
                                 + "?key=");
 
-                boxScores = objectMapper.readValue(boxScoreFixturesJson,
-                        new TypeReference<List<BoxScore>>() {
-                        });
+                boxScores = objectMapper.readValue(boxScoreFixturesJson, boxScoreTypeRef);
 
-                BoxScore boxScore = boxScoreRepository.findByGameId(boxScores.get(0).getGame().getGameId());
+                BoxScore currentBoxScore = boxScores.get(0);
+                BoxScore existingBoxScore = boxScoreRepository.findByGameId(gameId);
 
-                boxScores.get(0).setCompetition(competition);
-                boxScores.get(0).setDateTime(boxScores.get(0).getGame().getDateTime());
-                List<PlayerGame> playerGames = boxScores.get(0).getPlayerGames();
-                playerGames.forEach(player -> player.setCompetition(competition));
+                currentBoxScore.setCompetition(competition);
+                currentBoxScore.setDateTime(currentBoxScore.getGame().getDateTime());
+                List<PlayerGame> playersGames = currentBoxScore.getPlayerGames();
+                PlayerGameUtils.setCompetitionToPlayerGame(playersGames, competition);
 
-                if (boxScore == null) {
-                    boxScores.get(0).setBoxScoreId(BoxScoreIdGenerator.generateId());
+                if (existingBoxScore == null) {
+                    currentBoxScore.setBoxScoreId(BoxScoreIdGenerator.generateId());
                     boxScoreRepository.saveAll(boxScores);
                 } else {
-                    boxScores.get(0).setBoxScoreId(boxScore.getBoxScoreId());
+                    currentBoxScore.setBoxScoreId(existingBoxScore.getBoxScoreId());
                     boxScoreRepository.saveAll(boxScores);
 
                 }

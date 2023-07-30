@@ -1,4 +1,4 @@
-package com.example.sport_api.controllers;
+package com.example.sport_api.controllers.soccer;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

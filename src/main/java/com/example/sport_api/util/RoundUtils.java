@@ -27,4 +27,8 @@ public class RoundUtils {
 
     }
 
+    public static void setCompetitionToRounds(List<Round> rounds, Integer competition) {
+        rounds.forEach(round -> round.setCompetitionId(competition));
+    }
+
 }

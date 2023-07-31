@@ -87,8 +87,3 @@ public class CompetitionService {
 
     }
 }
-// catch (NotFoundException e) {
-// logger.error("Competition not found: " + e.getMessage());
-// return ResponseUtil.createErrorResponse(HttpStatus.NOT_FOUND,
-// e.getMessage());
-// }

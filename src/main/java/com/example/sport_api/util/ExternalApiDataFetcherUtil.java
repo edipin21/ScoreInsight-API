@@ -29,7 +29,7 @@ public class ExternalApiDataFetcherUtil {
         System.out.println(resourceUrl + apiKey);
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl +
+        ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl + "?key=" +
                 apiKey,
                 String.class);
         String responsesData = response.getBody();

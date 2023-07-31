@@ -17,6 +17,7 @@ import com.example.sport_api.models.sport.BoxScore;
 import com.example.sport_api.services.soccer.BoxScoreService;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.GameService;
+import com.example.sport_api.util.DateUtils;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController
@@ -74,7 +75,7 @@ public class BoxScoreController {
         try {
             Integer theCompetition = Integer.parseInt(competition);
 
-            if (date == null || !boxScoreService.isValidDate(date)) {
+            if (date == null || !DateUtils.isValidDate(date)) {
                 throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
             }
 

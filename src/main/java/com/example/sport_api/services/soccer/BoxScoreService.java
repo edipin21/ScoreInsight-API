@@ -1,8 +1,6 @@
 package com.example.sport_api.services.soccer;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -47,15 +45,4 @@ public class BoxScoreService {
 
     }
 
-    public boolean isValidDate(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        dateFormat.setLenient(false);
-
-        try {
-            dateFormat.parse(dateString);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
 }

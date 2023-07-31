@@ -77,7 +77,11 @@ public class DataUpdaterScheduler {
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateBettingEvenntsDB() throws IOException {
-    // bettingApiService.fetchBettingEventesAndUpdate();
+    // bettingApiService.fetchBettingEventesAndUpdateDB();
     // }
 
+    // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
+    // public void updateBettingMarketDB() throws IOException {
+    // bettingApiService.fetchBettingMarketByEventAndUpdateDB();
+    // }
 }

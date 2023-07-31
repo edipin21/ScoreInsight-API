@@ -1,7 +1,9 @@
 package com.example.sport_api.services.betting;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,6 +37,22 @@ public class BettingEventService {
     public boolean isValidSeason(Integer season) {
         List<Integer> seasons = Arrays.asList(2022, 2023, 2024);
         return seasons.contains(season);
+    }
+
+    public Map<Integer, Integer> getEventIdAndCompetitionMap() {
+        List<Object[]> results = bettingEventRepository.findBettingEventIdAndCompetition();
+
+        Map<Integer, Integer> eventIdToCompetitionMap = new HashMap<>();
+        for (Object[] result : results) {
+            Integer eventId = (Integer) result[0];
+            Integer competitionId = (Integer) result[1];
+
+            if (eventId != null && competitionId != null) {
+                eventIdToCompetitionMap.put(eventId, competitionId);
+            }
+        }
+
+        return eventIdToCompetitionMap;
     }
 
 }

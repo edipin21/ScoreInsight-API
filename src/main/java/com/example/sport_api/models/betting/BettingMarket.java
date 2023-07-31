@@ -2,18 +2,21 @@ package com.example.sport_api.models.betting;
 
 import java.sql.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
+@JsonPropertyOrder({ "bettingMarketID", "bettingEventID", "bettingMarketTypeID", "bettingMarketType",
+        "bettingBetTypeID", "bettingBetType", "bettingPeriodTypeID", "bettingPeriodType", "name", "teamID", "teamKey",
+        "playerID", "playerName", "created", "updated", "anyBetsAvailable", "availableSportsbooks", "bettingOutcomes",
+        "consensusOutcomes" })
 public class BettingMarket {
 
     @Id
@@ -33,6 +36,7 @@ public class BettingMarket {
     private Date Created;
     private Date Updated;
     private boolean AnyBetsAvailable;
+    private Integer CompetitionId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "BettingMarketID")
@@ -46,19 +50,14 @@ public class BettingMarket {
     @JoinColumn(name = "BettingMarketID")
     private List<ConsensusOutcome> ConsensusOutcomes;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BettingEventID", insertable = false, updatable = false)
-    private BettingEvent bettingEvent;
-
     public BettingMarket() {
     }
 
     public BettingMarket(int bettingMarketID, int bettingEventID, int bettingMarketTypeID, String bettingMarketType,
             int bettingBetTypeID, String bettingBetType, int bettingPeriodTypeID, String bettingPeriodType, String name,
             int teamID, String teamKey, int playerID, String playerName, Date created, Date updated,
-            boolean anyBetsAvailable, List<SportsBook> availableSportsbooks, List<BettingOutcome> bettingOutcomes,
-            List<ConsensusOutcome> consensusOutcomes, BettingEvent bettingEvent) {
+            boolean anyBetsAvailable, Integer competitionId, List<SportsBook> availableSportsbooks,
+            List<BettingOutcome> bettingOutcomes, List<ConsensusOutcome> consensusOutcomes) {
         BettingMarketID = bettingMarketID;
         BettingEventID = bettingEventID;
         BettingMarketTypeID = bettingMarketTypeID;
@@ -75,10 +74,10 @@ public class BettingMarket {
         Created = created;
         Updated = updated;
         AnyBetsAvailable = anyBetsAvailable;
+        CompetitionId = competitionId;
         AvailableSportsbooks = availableSportsbooks;
         BettingOutcomes = bettingOutcomes;
         ConsensusOutcomes = consensusOutcomes;
-        this.bettingEvent = bettingEvent;
     }
 
     public int getBettingMarketID() {
@@ -233,12 +232,13 @@ public class BettingMarket {
         ConsensusOutcomes = consensusOutcomes;
     }
 
-    public BettingEvent getBettingEvent() {
-        return bettingEvent;
+    @JsonIgnore
+    public Integer getCompetitionId() {
+        return CompetitionId;
     }
 
-    public void setBettingEvent(BettingEvent bettingEvent) {
-        this.bettingEvent = bettingEvent;
+    public void setCompetitionId(Integer competitionId) {
+        CompetitionId = competitionId;
     }
 
 }

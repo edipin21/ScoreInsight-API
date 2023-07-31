@@ -13,4 +13,7 @@ public interface BettingEventRepository extends JpaRepository<BettingEvent, Inte
     List<BettingEvent> findByCompetitionAndSeason(@Param("competition") Integer competition,
             @Param("season") Integer season);
 
+    @Query(value = "SELECT BettingEventID,CompetitionId  FROM BettingEvent", nativeQuery = true)
+    List<Object[]> findBettingEventIdAndCompetition();
+
 }

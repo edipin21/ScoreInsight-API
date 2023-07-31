@@ -1,17 +1,18 @@
 package com.example.sport_api.models.betting;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
+@JsonPropertyOrder({ "consensusOutcomeId", "numberOfSportsbooks", "bettingOutcomeID", "bettingMarketID",
+        "bettingOutcomeTypeID", "bettingOutcomeType", "payoutAmerican", "payoutDecimal", "value", "participant",
+        "isAvailable", "isAlternate", "created", "updated", "unlisted", "teamID", "playerID", "globalTeamID",
+        "sportsbookUrl", "isInPlay", "sportsBook" })
 public class ConsensusOutcome {
 
     @Id
@@ -39,11 +40,6 @@ public class ConsensusOutcome {
     @OneToOne
     private SportsBook sportsBook;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BettingMarketId", insertable = false, updatable = false)
-    private BettingMarket bettingMarket;
-
     public ConsensusOutcome() {
     }
 
@@ -51,7 +47,7 @@ public class ConsensusOutcome {
             int bettingOutcomeTypeID, String bettingOutcomeType, int payoutAmerican, BigDecimal payoutDecimal,
             BigDecimal value, String participant, boolean isAvailable, boolean isAlternate, Date created, Date updated,
             Date unlisted, int teamID, int playerID, int globalTeamID, String sportsbookUrl, boolean isInPlay,
-            SportsBook sportsBook, BettingMarket bettingMarket) {
+            SportsBook sportsBook) {
         ConsensusOutcomeId = consensusOutcomeId;
         NumberOfSportsbooks = numberOfSportsbooks;
         BettingOutcomeID = bettingOutcomeID;
@@ -73,7 +69,6 @@ public class ConsensusOutcome {
         SportsbookUrl = sportsbookUrl;
         IsInPlay = isInPlay;
         this.sportsBook = sportsBook;
-        this.bettingMarket = bettingMarket;
     }
 
     public int getConsensusOutcomeId() {
@@ -242,14 +237,6 @@ public class ConsensusOutcome {
 
     public void setSportsBook(SportsBook sportsBook) {
         this.sportsBook = sportsBook;
-    }
-
-    public BettingMarket getBettingMarket() {
-        return bettingMarket;
-    }
-
-    public void setBettingMarket(BettingMarket bettingMarket) {
-        this.bettingMarket = bettingMarket;
     }
 
 }

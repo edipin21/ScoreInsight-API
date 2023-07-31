@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.models.sport.PlayerGame;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.playerGameService;
+import com.example.sport_api.util.DateUtils;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController
@@ -37,7 +38,7 @@ public class PlayerGameController {
 
             Integer theCompetition = Integer.parseInt(competition);
 
-            if (date == null || !playerGameService.isValidDate(date)) {
+            if (date == null || !DateUtils.isValidDate(date)) {
                 throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
             }
 

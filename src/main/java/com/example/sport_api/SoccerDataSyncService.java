@@ -23,11 +23,12 @@ import com.example.sport_api.repositories.soccer.TeamDetailRepository;
 import com.example.sport_api.repositories.soccer.TeamRepository;
 import com.example.sport_api.repositories.soccer.VenueRepository;
 import com.example.sport_api.services.soccer.GameService;
-import com.example.sport_api.util.CompetitionUtils;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
-import com.example.sport_api.util.PlayerGameUtils;
-import com.example.sport_api.util.RoundUtils;
-import com.example.sport_api.util.TeamDetailUtils;
+import com.example.sport_api.util.soccerUtil.CompetitionUtils;
+import com.example.sport_api.util.soccerUtil.PlayerGameUtils;
+import com.example.sport_api.util.soccerUtil.RoundUtils;
+import com.example.sport_api.util.soccerUtil.TeamDetailUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -164,7 +165,7 @@ public class SoccerDataSyncService {
 
                 String competitionFixturesJson = eApiDataFetcherUtil
                         .fetchData(ExternalSoccerApiEndpoints.COMPETITION_FIXTURES_RESOURCE_URL +
-                                competitionId + "?key=");
+                                competitionId);
 
                 Competition competition = objectMapper.readValue(competitionFixturesJson,
                         Competition.class);
@@ -217,7 +218,7 @@ public class SoccerDataSyncService {
 
                 String activeMembershipJson = eApiDataFetcherUtil
                         .fetchData(
-                                ExternalSoccerApiEndpoints.ACTIVE_MEMBERSHIPS_RESOURCE_URL + competitionId + "?key=");
+                                ExternalSoccerApiEndpoints.ACTIVE_MEMBERSHIPS_RESOURCE_URL + competitionId);
 
                 List<Membership> activeMemberships = new ArrayList<>();
 
@@ -259,7 +260,7 @@ public class SoccerDataSyncService {
 
                 String recentlyChangedMembershipsJson = eApiDataFetcherUtil.fetchData(
                         ExternalSoccerApiEndpoints.RECENTLY_CHANGED_MEMBERSHIPS_RESOURCE_URL + competitionId + "/"
-                                + numOfDays + "?key=");
+                                + numOfDays);
 
                 recentlyChangedMemberships = objectMapper.readValue(recentlyChangedMembershipsJson, MembershipTypeRef);
 
@@ -301,9 +302,7 @@ public class SoccerDataSyncService {
 
                 String playersbyTeamJson = eApiDataFetcherUtil.fetchData(
                         ExternalSoccerApiEndpoints.PLAYERS_BY_TEAM_RESOURCE_URL +
-                                competitionId + "/"
-                                + teamId
-                                + "?key=");
+                                competitionId + "/" + teamId);
 
                 players = objectMapper.readValue(playersbyTeamJson, playerTypeRef);
 
@@ -349,17 +348,15 @@ public class SoccerDataSyncService {
                     count++;
                     String scheduleJson = eApiDataFetcherUtil.fetchData(
                             ExternalSoccerApiEndpoints.SCHEDULE_RESOURCE_URL + competitonId + "/"
-                                    + seasonYear
-                                    + "?key=");
+                                    + seasonYear);
 
                     String standingsJson = eApiDataFetcherUtil.fetchData(
                             ExternalSoccerApiEndpoints.STANDINGS_RESOURCE_URL + competitonId + "/"
-                                    + seasonYear
-                                    + "?key=");
+                                    + seasonYear);
 
                     String teamSeasonJson = eApiDataFetcherUtil.fetchData(
                             ExternalSoccerApiEndpoints.TEAM_SEASON_STATS_RESOURCE_URL + competitonId + '/'
-                                    + seasonYear + "?key=");
+                                    + seasonYear);
 
                     rounds = objectMapper.readValue(scheduleJson, roundTypeRef);
                     standingsRounds = objectMapper.readValue(standingsJson, roundTypeRef);
@@ -422,8 +419,7 @@ public class SoccerDataSyncService {
                 System.out.println(competition + "      " + gameId);
 
                 String boxScoreFixturesJson = eApiDataFetcherUtil
-                        .fetchData(ExternalSoccerApiEndpoints.BOX_SCORE_RESOURCE_URL + competition + "/" + gameId
-                                + "?key=");
+                        .fetchData(ExternalSoccerApiEndpoints.BOX_SCORE_RESOURCE_URL + competition + "/" + gameId);
 
                 boxScores = objectMapper.readValue(boxScoreFixturesJson, boxScoreTypeRef);
 

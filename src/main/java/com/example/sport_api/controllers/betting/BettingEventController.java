@@ -29,7 +29,7 @@ public class BettingEventController {
     private CompetitionService competitionService;
 
     @GetMapping("/odds/BettingEventsBySeason/{competition}/{season}")
-    public ResponseEntity<List<BettingEvent>> retriveBettingEventsByCompetitionAndSeason(
+    public ResponseEntity<?> retriveBettingEventsByCompetitionAndSeason(
             @PathVariable String competition, @PathVariable String season) {
 
         try {

@@ -30,7 +30,7 @@ public class PlayerGameController {
     private CompetitionService competitionService;
 
     @GetMapping("stats/PlayerGameStatsByDate/{competition}/{date}")
-    public ResponseEntity<List<PlayerGame>> retrivePlayerGameStatByCompetitionAndDate(@PathVariable String competition,
+    public ResponseEntity<?> retrivePlayerGameStatByCompetitionAndDate(@PathVariable String competition,
             @PathVariable String date) {
 
         try {

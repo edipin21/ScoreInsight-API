@@ -34,7 +34,7 @@ public class BoxScoreController {
     private GameService gameService;
 
     @GetMapping("stats/boxScore/{competition}/{gameId}")
-    public ResponseEntity<BoxScore> retriveBoxScoreByCompetitionAndGameId(@PathVariable String competition,
+    public ResponseEntity<?> retriveBoxScoreByCompetitionAndGameId(@PathVariable String competition,
             @PathVariable String gameId) {
 
         try {
@@ -68,7 +68,7 @@ public class BoxScoreController {
     }
 
     @GetMapping("stats/BoxScoresByDate/{competition}/{date}")
-    public ResponseEntity<List<BoxScore>> retriveBoxScoresBycompetitionAndDate(@PathVariable String competition,
+    public ResponseEntity<?> retriveBoxScoresBycompetitionAndDate(@PathVariable String competition,
             @PathVariable String date) {
 
         try {

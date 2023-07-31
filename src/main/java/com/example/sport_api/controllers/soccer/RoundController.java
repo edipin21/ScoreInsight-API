@@ -30,7 +30,7 @@ public class RoundController {
     private CompetitionService competitionService;
 
     @GetMapping("/scores/Schedule/{competition}/{year}")
-    public ResponseEntity<List<Round>> retriveScheduleByCompetitionAndYear(@PathVariable String competition,
+    public ResponseEntity<?> retriveScheduleByCompetitionAndYear(@PathVariable String competition,
             @PathVariable String year) {
 
         List<Integer> years = Arrays.asList(2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024);
@@ -64,7 +64,7 @@ public class RoundController {
     }
 
     @GetMapping("/scores/Standings/{competition}/{year}")
-    public ResponseEntity<List<Round>> retriveStandingsByCompetitionAndYear(@PathVariable String competition,
+    public ResponseEntity<?> retriveStandingsByCompetitionAndYear(@PathVariable String competition,
             @PathVariable String year) {
 
         List<Integer> years = Arrays.asList(2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024);
@@ -98,7 +98,7 @@ public class RoundController {
     }
 
     @GetMapping("/scores/teamSeasonStats/{competition}/{year}")
-    public ResponseEntity<List<Round>> retriveTeamSeasonStatsByCompetitionAndYear(@PathVariable String competition,
+    public ResponseEntity<?> retriveTeamSeasonStatsByCompetitionAndYear(@PathVariable String competition,
             @PathVariable String year) {
 
         List<Integer> years = Arrays.asList(2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024);

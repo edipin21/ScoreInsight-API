@@ -23,7 +23,7 @@ public class AreaConrtoller {
     }
 
     @GetMapping("scores/areas")
-    public ResponseEntity<List<AreaDto>> retriveAllArea() {
+    public ResponseEntity<?> retriveAllArea() {
 
         try {
             List<AreaDto> areaDtos = areaService.getAllAreasWithCompetitions();

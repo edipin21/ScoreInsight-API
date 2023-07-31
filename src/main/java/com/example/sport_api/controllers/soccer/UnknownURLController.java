@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class UnknownURLController {
 
     @GetMapping("/scores/**")
-    public ResponseEntity<String> handleUnknownURL(HttpServletRequest request) {
+    public ResponseEntity<?> handleUnknownURL(HttpServletRequest request) {
         return ResponseUtil.createErrorResponse(HttpStatus.NOT_FOUND, "");
     }
 

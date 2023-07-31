@@ -27,7 +27,7 @@ public class TeamController {
     }
 
     @GetMapping("/team/{teamId}")
-    public ResponseEntity<Team> retrieveTeamById(@PathVariable String teamId) {
+    public ResponseEntity<?> retrieveTeamById(@PathVariable String teamId) {
         try {
             Integer id = Integer.parseInt(teamId);
 

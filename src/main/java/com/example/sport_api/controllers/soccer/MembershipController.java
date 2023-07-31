@@ -33,7 +33,7 @@ public class MembershipController {
     private MembershipService membershipService;
 
     @GetMapping("scores/ActiveMemberships/{competition}")
-    public ResponseEntity<List<Membership>> retriveMembershipByCompetition(@PathVariable String competition) {
+    public ResponseEntity<?> retriveMembershipByCompetition(@PathVariable String competition) {
 
         try {
 
@@ -60,7 +60,7 @@ public class MembershipController {
     }
 
     @GetMapping(value = "scores/recentlychangedMemberships/{competition}/{days}")
-    public ResponseEntity<List<Membership>> retriveMembershipByCompetitionAndUpdateDate(
+    public ResponseEntity<?> retriveMembershipByCompetitionAndUpdateDate(
             @PathVariable String competition,
             @PathVariable String days) {
 
@@ -93,7 +93,7 @@ public class MembershipController {
     }
 
     @GetMapping(value = "scores/HistoricalMembershipsByTeam/{competition}/{teamId}")
-    public ResponseEntity<List<Membership>> retriveMembershipByCompetitionAndTeamId(
+    public ResponseEntity<?> retriveMembershipByCompetitionAndTeamId(
             @PathVariable String competition,
             @PathVariable String teamId) {
 

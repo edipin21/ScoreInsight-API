@@ -24,7 +24,7 @@ public class VenueController {
     private VenueService venueService;
 
     @GetMapping("scores/venues")
-    public ResponseEntity<List<Venue>> retriveAllVenues() {
+    public ResponseEntity<?> retriveAllVenues() {
 
         try {
             List<Venue> venues = venueService.getAllVenues();

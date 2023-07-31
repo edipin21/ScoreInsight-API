@@ -25,7 +25,7 @@ public class CompetitionController {
     private CompetitionService competitionService;
 
     @GetMapping("/scores/competitions")
-    public ResponseEntity<List<CompetitionDto>> retrieveAllCompetitions() {
+    public ResponseEntity<?> retrieveAllCompetitions() {
 
         try {
             List<CompetitionDto> competitions = competitionService.getAllCompetitions();
@@ -40,7 +40,7 @@ public class CompetitionController {
     }
 
     @GetMapping("/scores/CompetitionDetails/{competition}")
-    public ResponseEntity<Competition> retrieveCompetitionById(@PathVariable String competition) {
+    public ResponseEntity<?> retrieveCompetitionById(@PathVariable String competition) {
         try {
 
             Integer competitionId = Integer.parseInt(competition);

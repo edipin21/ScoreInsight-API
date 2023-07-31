@@ -32,7 +32,7 @@ public class ResponseUtil {
         return new ResponseEntity<>(body, headers, HttpStatus.OK);
     }
 
-    public static <T> ResponseEntity<T> createErrorResponse(HttpStatus status, String description) {
+    public static ResponseEntity<Map<String, Object>> createErrorResponse(HttpStatus status, String description) {
         HttpHeaders headers = new HttpHeaders();
 
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
@@ -53,7 +53,7 @@ public class ResponseUtil {
             responseBody.put("message", "Resource not found");
         }
 
-        return new ResponseEntity<>((T) responseBody, headers, status);
+        return ResponseEntity.status(status).body(responseBody);
 
     }
 

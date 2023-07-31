@@ -29,7 +29,7 @@ public class playerController {
     private TeamService teamService;
 
     @GetMapping("/scores/PlayersByTeam/{teamId}")
-    public ResponseEntity<List<Player>> retrivePlayersByTeamId(@PathVariable String teamId) {
+    public ResponseEntity<?> retrivePlayersByTeamId(@PathVariable String teamId) {
 
         try {
             Integer team = Integer.parseInt(teamId);

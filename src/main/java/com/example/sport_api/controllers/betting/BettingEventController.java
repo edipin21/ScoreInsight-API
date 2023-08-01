@@ -1,8 +1,7 @@
 package com.example.sport_api.controllers.betting;
 
-import java.time.format.DateTimeParseException;
 import java.util.List;
-
+import java.time.format.DateTimeParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +11,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.betting.BettingEvent;
 import com.example.sport_api.services.betting.BettingEventService;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.util.DateUtils;
 import com.example.sport_api.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
+@Tag(name = "Betting Event", description = "Endpoints for retrieving Betting Event information")
 public class BettingEventController {
 
     private static final Logger logger = LogManager.getLogger(BettingEventController.class);
@@ -29,9 +38,20 @@ public class BettingEventController {
     @Autowired
     private CompetitionService competitionService;
 
+    @Operation(summary = "Get Betting Event by competition and season . ", description = "Retrieves  Betting Event by competition and season.  \n"
+            + "Recommended Call Interval: 10 Minutes")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successful response", content = {
+                    @Content(array = @ArraySchema(schema = @Schema(implementation = BettingEvent.class)), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {
+                    @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
+                    @Content(schema = @Schema()) }) })
+
     @GetMapping("/odds/BettingEventsBySeason/{competition}/{season}")
     public ResponseEntity<?> retriveBettingEventsByCompetitionAndSeason(
-            @PathVariable String competition, @PathVariable String season) {
+            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
+            @Parameter(description = OpenApiParameters.YEAR_DESCRITION) @PathVariable String season) {
 
         try {
             Integer theCompetition = Integer.parseInt(competition);
@@ -67,9 +87,19 @@ public class BettingEventController {
 
     }
 
+    @Operation(summary = "Get Betting Event by competition and date . ", description = "Retrieves  Betting Event by competition and date.  \n"
+            + "Recommended Call Interval: 10 Minutes")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successful response", content = {
+                    @Content(array = @ArraySchema(schema = @Schema(implementation = BettingEvent.class)), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {
+                    @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
+                    @Content(schema = @Schema()) }) })
     @GetMapping("/odds/BettingEventsByDate/{competition}/{date}")
     public ResponseEntity<?> retriveBettingEventsByCompetitionAndDate(
-            @PathVariable String competition, @PathVariable String date) {
+            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
+            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date) {
 
         try {
             Integer theCompetition = Integer.parseInt(competition);

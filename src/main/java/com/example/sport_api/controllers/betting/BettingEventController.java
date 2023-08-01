@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.models.betting.BettingEvent;
 import com.example.sport_api.services.betting.BettingEventService;
 import com.example.sport_api.services.soccer.CompetitionService;
+import com.example.sport_api.util.DateUtils;
 import com.example.sport_api.util.ResponseUtil;
 
 @RestController
@@ -66,4 +67,39 @@ public class BettingEventController {
 
     }
 
+    @GetMapping("/odds/BettingEventsByDate/{competition}/{date}")
+    public ResponseEntity<?> retriveBettingEventsByCompetitionAndDate(
+            @PathVariable String competition, @PathVariable String date) {
+
+        try {
+            Integer theCompetition = Integer.parseInt(competition);
+
+            if (competition == null ||
+                    !competitionService.isCompetitionValid(theCompetition)) {
+                throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
+            }
+
+            if (date == null || !DateUtils.isValidDate(date)) {
+                throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
+            }
+
+            List<BettingEvent> bettingEvents = bettingEventService.getBettingEventsByCompetitionAndDate(theCompetition,
+                    date);
+
+            return ResponseUtil.createOkResponse(bettingEvents);
+        } catch (NumberFormatException e) {
+            logger.error("Invalid Argument: The competition parameter should be an integer", e);
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST,
+                    "Invalid Argument: The competition parameter should be an integer");
+        } catch (DateTimeParseException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid Argument: " + e.getMessage());
+            return ResponseUtil.createErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (DataAccessException e) {
+            return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+
+    }
 }

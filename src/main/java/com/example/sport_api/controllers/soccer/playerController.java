@@ -11,13 +11,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Player;
 import com.example.sport_api.services.soccer.PlayerService;
 import com.example.sport_api.services.soccer.TeamService;
 import com.example.sport_api.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
+@Tag(name = "Players", description = "Endpoints for retrieving players information")
 public class playerController {
 
     private static final Logger logger = LogManager.getLogger(MembershipController.class);
@@ -28,8 +37,19 @@ public class playerController {
     @Autowired
     private TeamService teamService;
 
+    @Operation(summary = " Get players by teamId. ", description = "Retrieves players by teamId.  \n"
+            + "Recommended Call Interval: 1 Hour")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successful response", content = {
+                    @Content(array = @ArraySchema(schema = @Schema(implementation = Player.class)), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {
+                    @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
+                    @Content(schema = @Schema()) }) })
+
     @GetMapping("/scores/PlayersByTeam/{teamId}")
-    public ResponseEntity<?> retrivePlayersByTeamId(@PathVariable String teamId) {
+    public ResponseEntity<?> retrivePlayersByTeamId(
+            @Parameter(description = OpenApiParameters.TEAM_ID_DESCRIPTION) @PathVariable String teamId) {
 
         try {
             Integer team = Integer.parseInt(teamId);

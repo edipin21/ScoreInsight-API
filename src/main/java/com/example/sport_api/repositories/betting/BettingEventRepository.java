@@ -1,5 +1,6 @@
 package com.example.sport_api.repositories.betting;
 
+import java.sql.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,9 @@ public interface BettingEventRepository extends JpaRepository<BettingEvent, Inte
 
     @Query(value = "SELECT BettingEventID,CompetitionId  FROM BettingEvent", nativeQuery = true)
     List<Object[]> findBettingEventIdAndCompetition();
+
+    @Query(value = "SELECT * FROM BettingEvent WHERE CompetitionId = :competition AND StartDate = :date  ", nativeQuery = true)
+    List<BettingEvent> findBettingEventByCompetitionAndDate(@Param("competition") Integer competition,
+            @Param("date") Date date);
 
 }

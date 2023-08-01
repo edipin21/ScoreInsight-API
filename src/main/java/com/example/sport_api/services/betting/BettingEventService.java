@@ -1,5 +1,6 @@
 package com.example.sport_api.services.betting;
 
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +35,19 @@ public class BettingEventService {
 
     }
 
-    public boolean isValidSeason(Integer season) {
-        List<Integer> seasons = Arrays.asList(2022, 2023, 2024);
-        return seasons.contains(season);
+    public List<BettingEvent> getBettingEventsByCompetitionAndDate(Integer competition, String date) {
+
+        try {
+            Date theDate = Date.valueOf(date);
+            List<BettingEvent> bettingEvents = bettingEventRepository.findBettingEventByCompetitionAndDate(competition,
+                    theDate);
+
+            return bettingEvents;
+        } catch (DataAccessException e) {
+            logger.error("Data access error occurred while retrieving bettingEvents: " + e.getMessage());
+            throw e;
+        }
+
     }
 
     public Map<Integer, Integer> getEventIdAndCompetitionMap() {
@@ -55,4 +66,8 @@ public class BettingEventService {
         return eventIdToCompetitionMap;
     }
 
+    public boolean isValidSeason(Integer season) {
+        List<Integer> seasons = Arrays.asList(2022, 2023, 2024);
+        return seasons.contains(season);
+    }
 }

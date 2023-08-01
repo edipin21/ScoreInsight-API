@@ -2,7 +2,6 @@ package com.example.sport_api.controllers.soccer;
 
 import java.time.format.DateTimeParseException;
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +11,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.BoxScore;
 import com.example.sport_api.services.soccer.BoxScoreService;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.GameService;
 import com.example.sport_api.util.DateUtils;
 import com.example.sport_api.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Box Score", description = "Endpoints for retrieving box score information")
 @RestController
 public class BoxScoreController {
 
@@ -34,9 +42,19 @@ public class BoxScoreController {
     @Autowired
     private GameService gameService;
 
+    @Operation(summary = " Get Box Scores by competition and gameId. ", description = "Retrieves box scores by competitioId and gameId.  \n"
+            + "Recommended Call Interval: 1 Minute")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successful response", content = {
+                    @Content(schema = @Schema(implementation = BoxScore.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {
+                    @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
+                    @Content(schema = @Schema()) }) })
     @GetMapping("stats/boxScore/{competition}/{gameId}")
-    public ResponseEntity<?> retriveBoxScoreByCompetitionAndGameId(@PathVariable String competition,
-            @PathVariable String gameId) {
+    public ResponseEntity<?> retriveBoxScoreByCompetitionAndGameId(
+            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
+            @Parameter(description = OpenApiParameters.GAME_ID_DESCRIPTION) @PathVariable String gameId) {
 
         try {
 
@@ -68,9 +86,19 @@ public class BoxScoreController {
         }
     }
 
+    @Operation(summary = " Get Box Scores by competition and date. ", description = "Retrieves box scores by competitioId and date.  \n"
+            + "Recommended Call Interval: 1 Minute")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successful response", content = {
+                    @Content(array = @ArraySchema(schema = @Schema(implementation = BoxScore.class)), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {
+                    @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
+                    @Content(schema = @Schema()) }) })
     @GetMapping("stats/BoxScoresByDate/{competition}/{date}")
-    public ResponseEntity<?> retriveBoxScoresBycompetitionAndDate(@PathVariable String competition,
-            @PathVariable String date) {
+    public ResponseEntity<?> retriveBoxScoresBycompetitionAndDate(
+            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
+            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date) {
 
         try {
             Integer theCompetition = Integer.parseInt(competition);

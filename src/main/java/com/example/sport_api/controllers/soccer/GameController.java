@@ -2,12 +2,20 @@ package com.example.sport_api.controllers.soccer;
 
 import java.util.List;
 import java.time.format.DateTimeParseException;
-
+import com.example.sport_api.util.DateUtils;
 import com.example.sport_api.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Game;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.GameService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +26,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
+@Tag(name = "Game", description = "Endpoints for retrieving games information")
 @RestController
 public class GameController {
 
@@ -29,15 +38,26 @@ public class GameController {
     @Autowired
     private CompetitionService competitionService;
 
+    @Operation(summary = " Get games by competition and date. ", description = "Retrieves games by competitioId and date.  \n"
+            + "Recommended Call Interval: 5 Seconds")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Successful response", content = {
+                    @Content(array = @ArraySchema(schema = @Schema(implementation = Game.class)), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {
+                    @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
+                    @Content(schema = @Schema()) }) })
+
     @GetMapping("/scores/gamesByDate/{competition}/{date}")
     public ResponseEntity<?> retriveGamesByCompetitionIdAndDate(
-            @PathVariable String competition, @PathVariable String date) {
+            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
+            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date) {
 
         try {
 
             Integer theCompetition = Integer.parseInt(competition);
 
-            if (date == null || !gameService.isValidDate(date)) {
+            if (date == null || !DateUtils.isValidDate(date)) {
                 throw new IllegalArgumentException("Invalid Argument: The date parameter is invalid ");
             }
 

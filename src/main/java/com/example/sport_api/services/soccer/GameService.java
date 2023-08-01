@@ -1,18 +1,14 @@
 package com.example.sport_api.services.soccer;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-
 import com.example.sport_api.models.sport.Game;
 import com.example.sport_api.repositories.soccer.GameRepository;
 
@@ -39,18 +35,6 @@ public class GameService {
             throw e;
         }
 
-    }
-
-    public boolean isValidDate(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        dateFormat.setLenient(false);
-
-        try {
-            dateFormat.parse(dateString);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
     }
 
     public Map<Integer, Integer> getGameIdAndCompetitionMap() {

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.PlayerGame;
@@ -28,6 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "Player game stats", description = "Endpoints for retrieving Player game stats information")
+@RequestMapping("/soccer/stats")
 public class PlayerGameController {
 
     private static final Logger logger = LogManager.getLogger(PlayerGameController.class);
@@ -47,10 +50,11 @@ public class PlayerGameController {
                     @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
-    @GetMapping("stats/PlayerGameStatsByDate/{competition}/{date}")
+    @GetMapping("/PlayerGameStatsByDate/{competition}/{date}")
     public ResponseEntity<?> retrivePlayerGameStatByCompetitionAndDate(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date) {
+            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
 

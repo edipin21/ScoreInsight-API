@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Membership;
@@ -28,6 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "Membership", description = "Endpoints for retrieving membership information")
+@RequestMapping("/soccer/scores")
 public class MembershipController {
 
     private static final Logger logger = LogManager.getLogger(MembershipController.class);
@@ -50,9 +53,10 @@ public class MembershipController {
                     @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
-    @GetMapping("scores/ActiveMemberships/{competition}")
+    @GetMapping("ActiveMemberships/{competition}")
     public ResponseEntity<?> retriveMembershipByCompetition(
-            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition) {
+            @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
 
@@ -88,10 +92,11 @@ public class MembershipController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
 
-    @GetMapping(value = "scores/recentlychangedMemberships/{competition}/{days}")
+    @GetMapping(value = "/recentlychangedMemberships/{competition}/{days}")
     public ResponseEntity<?> retriveMembershipByCompetitionAndUpdateDate(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.DAYS_DESCRIPTION) @PathVariable String days) {
+            @Parameter(description = OpenApiParameters.DAYS_DESCRIPTION) @PathVariable String days,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
             Integer competitionId = Integer.parseInt(competition);
@@ -131,10 +136,11 @@ public class MembershipController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
 
-    @GetMapping(value = "scores/HistoricalMembershipsByTeam/{competition}/{teamId}")
+    @GetMapping(value = "/HistoricalMembershipsByTeam/{competition}/{teamId}")
     public ResponseEntity<?> retriveMembershipByCompetitionAndTeamId(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.GAME_ID_DESCRIPTION) @PathVariable String teamId) {
+            @Parameter(description = OpenApiParameters.GAME_ID_DESCRIPTION) @PathVariable String teamId,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
             Integer competitionId = Integer.parseInt(competition);

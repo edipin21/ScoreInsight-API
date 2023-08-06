@@ -4,21 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class user {
+public class User {
 
     @Id
     int userId;
     String name;
     String email;
+    String password;
     String apiKey;
 
-    public user() {
+    public User() {
     }
 
-    public user(int userId, String name, String email, String apiKey) {
+    public User(int userId, String name, String email, String password, String apiKey) {
         this.userId = userId;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.apiKey = apiKey;
     }
 
@@ -52,6 +54,14 @@ public class user {
 
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Team;
@@ -24,6 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Team", description = "Endpoints for retrieving teams information")
 @RestController
+@RequestMapping("/soccer/scores")
 public class TeamController {
 
     private static final Logger logger = LogManager.getLogger(TeamController.class);
@@ -44,7 +47,8 @@ public class TeamController {
                     @Content(schema = @Schema()) }) })
     @GetMapping("/team/{teamId}")
     public ResponseEntity<?> retrieveTeamById(
-            @PathVariable @Parameter(description = OpenApiParameters.TEAM_ID_DESCRIPTION) String teamId) {
+            @PathVariable @Parameter(description = OpenApiParameters.TEAM_ID_DESCRIPTION) String teamId,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
         try {
             Integer id = Integer.parseInt(teamId);
 
@@ -75,7 +79,8 @@ public class TeamController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
     @GetMapping("/teams")
-    public ResponseEntity<?> retrieveAllTeams() {
+    public ResponseEntity<?> retrieveAllTeams(
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
         try {
             List<Team> teams = teamService.retrieveAllTeams();
 

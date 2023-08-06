@@ -18,7 +18,7 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.example.sport_api.repositories.users", entityManagerFactoryRef = "usersDBEntityManagerFactory", transactionManagerRef = "userDBTransactionManager")
+@EnableJpaRepositories(basePackages = "com.example.sport_api.repositories.users", entityManagerFactoryRef = "usersDBEntityManagerFactory", transactionManagerRef = "usersDBTransactionManager")
 public class UsersDataSourceConfig {
 
     Dotenv dotenv = Dotenv.load();
@@ -50,7 +50,7 @@ public class UsersDataSourceConfig {
 
     @Bean("usersDBTransactionManager")
     public PlatformTransactionManager usersDBTransactionManager(
-            @Qualifier("usersDBEntityManagerFactory") EntityManagerFactory db1EntityManagerFactory) {
-        return new JpaTransactionManager(db1EntityManagerFactory);
+            @Qualifier("usersDBEntityManagerFactory") EntityManagerFactory userEntityManagerFactory) {
+        return new JpaTransactionManager(userEntityManagerFactory);
     }
 }

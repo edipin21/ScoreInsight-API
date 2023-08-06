@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.betting.BettingEvent;
@@ -28,6 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "Betting Event", description = "Endpoints for retrieving Betting Event information")
+@RequestMapping("/soccer/odds")
 public class BettingEventController {
 
     private static final Logger logger = LogManager.getLogger(BettingEventController.class);
@@ -48,10 +51,11 @@ public class BettingEventController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
 
-    @GetMapping("/odds/BettingEventsBySeason/{competition}/{season}")
+    @GetMapping("/BettingEventsBySeason/{competition}/{season}")
     public ResponseEntity<?> retriveBettingEventsByCompetitionAndSeason(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.YEAR_DESCRITION) @PathVariable String season) {
+            @Parameter(description = OpenApiParameters.YEAR_DESCRITION) @PathVariable String season,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
             Integer theCompetition = Integer.parseInt(competition);
@@ -96,10 +100,11 @@ public class BettingEventController {
                     @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
-    @GetMapping("/odds/BettingEventsByDate/{competition}/{date}")
+    @GetMapping("/BettingEventsByDate/{competition}/{date}")
     public ResponseEntity<?> retriveBettingEventsByCompetitionAndDate(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date) {
+            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
             Integer theCompetition = Integer.parseInt(competition);

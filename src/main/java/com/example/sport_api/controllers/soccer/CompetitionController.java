@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Competition;
@@ -27,6 +29,7 @@ import java.util.List;
 
 @Tag(name = "Compettion", description = "Endpoints for retrieving competitons information")
 @RestController
+@RequestMapping("/soccer/scores")
 public class CompetitionController {
 
     private static final Logger logger = LogManager.getLogger(CompetitionController.class);
@@ -41,8 +44,9 @@ public class CompetitionController {
                     @Content(array = @ArraySchema(schema = @Schema(implementation = CompetitionDto.class)), mediaType = "application/json") }),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
-    @GetMapping("/scores/competitions")
-    public ResponseEntity<?> retrieveAllCompetitions() {
+    @GetMapping("/competitions")
+    public ResponseEntity<?> retrieveAllCompetitions(
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
             List<CompetitionDto> competitions = competitionService.getAllCompetitions();
@@ -62,9 +66,10 @@ public class CompetitionController {
                     @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
-    @GetMapping("/scores/CompetitionDetails/{competition}")
+    @GetMapping("/CompetitionDetails/{competition}")
     public ResponseEntity<?> retrieveCompetitionById(
-            @PathVariable @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) String competition) {
+            @PathVariable @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) String competition,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
         try {
 
             Integer competitionId = Integer.parseInt(competition);

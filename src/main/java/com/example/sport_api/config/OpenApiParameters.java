@@ -9,5 +9,5 @@ public class OpenApiParameters {
     public static final String DAYS_DESCRIPTION = "The number of days since memberships were updated. For example, if you pass 3, you'll receive all memberships that have been updated in the past 3 days. Valid entries are: 1, 2 ... 30";
     public static final String YEAR_DESCRITION = "Year of the season  \n" + "Examples: 2020, 2021, etc.";
     public static final String EVENT_ID_DESCRIPTION = "The EventId of the desired event/game for which to pull all betting markets (includes outcomes/bets).";
-
+    public static final String API_KEY_DESCRIPTION = "API Key for authentication";
 }

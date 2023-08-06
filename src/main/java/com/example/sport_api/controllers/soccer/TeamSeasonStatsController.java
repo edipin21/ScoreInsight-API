@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Round;
@@ -25,6 +28,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+@RestController
+@RequestMapping("/soccer/scores")
 public class TeamSeasonStatsController {
     private static final Logger logger = LogManager.getLogger(TeamSeasonStatsController.class);
 
@@ -44,10 +49,11 @@ public class TeamSeasonStatsController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
 
-    @GetMapping("/scores/teamSeasonStats/{competition}/{year}")
+    @GetMapping("/teamSeasonStats/{competition}/{year}")
     public ResponseEntity<?> retriveTeamSeasonStatsByCompetitionAndYear(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.YEAR_DESCRITION) @PathVariable String year) {
+            @Parameter(description = OpenApiParameters.YEAR_DESCRITION) @PathVariable String year,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         List<Integer> years = Arrays.asList(2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024);
 

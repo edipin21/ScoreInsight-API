@@ -8,11 +8,16 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.sport_api.config.OpenApiParameters;
 import com.example.sport_api.models.sport.Venue;
 import com.example.sport_api.services.soccer.VenueService;
 import com.example.sport_api.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,6 +27,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "Venue", description = "Endpoints for retrieving Venues information")
+@RequestMapping("/soccer/scores")
 public class VenueController {
 
     private static final Logger logger = LogManager.getLogger(VenueController.class);
@@ -36,8 +42,9 @@ public class VenueController {
                     @Content(array = @ArraySchema(schema = @Schema(implementation = Venue.class)), mediaType = "application/json") }),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
-    @GetMapping("scores/venues")
-    public ResponseEntity<?> retriveAllVenues() {
+    @GetMapping("/venues")
+    public ResponseEntity<?> retriveAllVenues(
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
             List<Venue> venues = venueService.getAllVenues();

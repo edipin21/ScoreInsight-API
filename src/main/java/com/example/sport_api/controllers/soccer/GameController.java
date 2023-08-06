@@ -20,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +30,7 @@ import org.springframework.dao.DataAccessException;
 
 @Tag(name = "Game", description = "Endpoints for retrieving games information")
 @RestController
+@RequestMapping("/soccer/scores")
 public class GameController {
 
     private static final Logger logger = LogManager.getLogger(GameController.class);
@@ -48,10 +51,11 @@ public class GameController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
                     @Content(schema = @Schema()) }) })
 
-    @GetMapping("/scores/gamesByDate/{competition}/{date}")
+    @GetMapping("/gamesByDate/{competition}/{date}")
     public ResponseEntity<?> retriveGamesByCompetitionIdAndDate(
             @Parameter(description = OpenApiParameters.COMPETITION_ID_DESCRIPTION) @PathVariable String competition,
-            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date) {
+            @Parameter(description = OpenApiParameters.DATE_FORMAT_DESCRIPTION) @PathVariable String date,
+            @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
 

@@ -1,4 +1,4 @@
-package com.example.sport_api.config;
+package com.example.sport_api.constants;
 
 public class OpenApiParameters {
 

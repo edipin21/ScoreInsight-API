@@ -2,7 +2,7 @@ package com.example.sport_api.controllers.soccer;
 
 import java.util.List;
 
-import com.example.sport_api.config.OpenApiParameters;
+import com.example.sport_api.constants.OpenApiParameters;
 import com.example.sport_api.models.sport.Area;
 import com.example.sport_api.models.sport.AreaDto;
 import com.example.sport_api.services.soccer.AreaService;

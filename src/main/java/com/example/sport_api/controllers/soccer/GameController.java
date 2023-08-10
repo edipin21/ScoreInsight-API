@@ -12,7 +12,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import com.example.sport_api.config.OpenApiParameters;
+
+import com.example.sport_api.constants.OpenApiParameters;
 import com.example.sport_api.models.sport.Game;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.GameService;

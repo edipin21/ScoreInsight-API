@@ -26,9 +26,6 @@ public class BettingDataSyncService {
     static final int[] seasonsArr = { 2022, 2023, 2024 };
 
     @Autowired
-    private ExternalApiDataFetcherUtil eApiDataFetcherUtil;
-
-    @Autowired
     private BettingEventRepository bettingEventRepository;
 
     @Autowired
@@ -53,7 +50,7 @@ public class BettingDataSyncService {
             };
             competitionIntegers.sort(null);
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
 
             // Partial loop for sanity checks - delete count
             for (Integer competition : competitionIntegers) {
@@ -61,7 +58,7 @@ public class BettingDataSyncService {
                 for (int i = 0; i < seasonsArr.length; i++) {
                     if (count > 8)
                         break;
-                    String bettingEventesJson = eApiDataFetcherUtil
+                    String bettingEventesJson = ExternalApiDataFetcherUtil
                             .fetchData(
                                     ExternalBettingApiEndpoints.BETTING_EVENTS_BY_SEASON_RESOURCE_URL + competition
                                             + "/" + seasonsArr[i]);
@@ -71,7 +68,7 @@ public class BettingDataSyncService {
                 }
             }
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
 
@@ -82,7 +79,7 @@ public class BettingDataSyncService {
         int count = 0;
 
         Map<Integer, Integer> map = bettingEventService.getEventIdAndCompetitionMap();
-        ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+        ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
         TypeReference<List<BettingMarket>> bettingMarketTypeRef = new TypeReference<>() {
         };
         // Partial loop for sanity checks - delete count
@@ -94,7 +91,7 @@ public class BettingDataSyncService {
             System.out.println(competition + "      " + eventId);
             List<BettingMarket> bettingMarkets = new ArrayList<>();
 
-            String bettingMarketsJson = eApiDataFetcherUtil
+            String bettingMarketsJson = ExternalApiDataFetcherUtil
                     .fetchData(ExternalBettingApiEndpoints.BETTING_MARKET_BY_EVENT_RESOURCE_URL + competition + "/"
                             + eventId);
 

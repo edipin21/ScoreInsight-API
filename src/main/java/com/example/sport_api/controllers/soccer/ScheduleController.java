@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.sport_api.config.OpenApiParameters;
+
+import com.example.sport_api.constants.OpenApiParameters;
 import com.example.sport_api.models.sport.Round;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.RoundService;

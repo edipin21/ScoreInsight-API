@@ -22,13 +22,15 @@ import com.example.sport_api.repositories.soccer.RoundRepository;
 import com.example.sport_api.repositories.soccer.TeamDetailRepository;
 import com.example.sport_api.repositories.soccer.TeamRepository;
 import com.example.sport_api.repositories.soccer.VenueRepository;
+import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.GameService;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.TimeMeasurementUtil;
+import com.example.sport_api.util.soccerUtil.CompetitionProcessingAsyncUtil;
 import com.example.sport_api.util.soccerUtil.CompetitionUtils;
 import com.example.sport_api.util.soccerUtil.PlayerGameUtils;
 import com.example.sport_api.util.soccerUtil.RoundUtils;
 import com.example.sport_api.util.soccerUtil.TeamDetailUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -39,14 +41,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 @Service
 public class SoccerDataSyncService {
 
     static final int[] seasonsArr = { 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 };
-
-    @Autowired
-    private ExternalApiDataFetcherUtil eApiDataFetcherUtil;
 
     @Autowired
     private TeamRepository teamRepository;
@@ -81,13 +82,16 @@ public class SoccerDataSyncService {
     @Autowired
     private GameService gameService;
 
+    @Autowired
+    private CompetitionService competitionService;
+
     public void fetchTeamsAndUpdate() throws JsonMappingException,
             JsonProcessingException {
 
         try {
-            String teamsJson = eApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.TEAMS_RESOURCE_URL);
+            String teamsJson = ExternalApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.TEAMS_RESOURCE_URL);
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
 
             List<Team> teams = new ArrayList<>();
 
@@ -97,7 +101,7 @@ public class SoccerDataSyncService {
             teams = objectMapper.readValue(teamsJson, teamTypeRef);
             teamRepository.saveAll(teams);
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
 
@@ -105,9 +109,9 @@ public class SoccerDataSyncService {
 
     public void fetchAreasAndUpdate() throws JsonProcessingException {
         try {
-            String areasJson = eApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.AREAS_RESOURCE_URL);
+            String areasJson = ExternalApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.AREAS_RESOURCE_URL);
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
 
             List<Area> areas = new ArrayList<>();
 
@@ -119,7 +123,7 @@ public class SoccerDataSyncService {
             areaRepository.saveAll(areas);
 
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
     }
@@ -127,9 +131,11 @@ public class SoccerDataSyncService {
     public void fetchCompetitionsAndUpdate() throws JsonProcessingException {
 
         try {
-            String areasJson = eApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.COMPETITIONS_RESOURCE_URL);
+            TimeMeasurementUtil.startTimer();
+            String areasJson = ExternalApiDataFetcherUtil
+                    .fetchData(ExternalSoccerApiEndpoints.COMPETITIONS_RESOURCE_URL);
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
 
             List<Competition> competitions;
 
@@ -138,12 +144,13 @@ public class SoccerDataSyncService {
 
             competitions = objectMapper.readValue(areasJson, competitionTypeRef);
 
-            CompetitionUtils.setCompetitionsIdToRounds(competitions);
+            CompetitionProcessingAsyncUtil.setCompetitionsIdToRoundsParallel(competitions);
 
             competitionRepository.saveAll(competitions);
+            TimeMeasurementUtil.timeTaken();
 
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
 
@@ -152,10 +159,10 @@ public class SoccerDataSyncService {
     public void fetchCompetitionFixturesAndUpdate() throws JsonProcessingException, IOException {
 
         try {
+            TimeMeasurementUtil.startTimer();
             int count = 0;
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
-            List<Integer> competitionIntegers = competitionRepository.findAllCompetitionsNumbers();
-            competitionIntegers.sort(null);
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
+            List<Integer> competitionIntegers = competitionService.getSortedCompetitionIds();
 
             // Partial loop for sanity checks - delete count
             for (Integer competitionId : competitionIntegers) {
@@ -163,15 +170,12 @@ public class SoccerDataSyncService {
                     break;
                 }
 
-                String competitionFixturesJson = eApiDataFetcherUtil
+                String competitionFixturesJson = ExternalApiDataFetcherUtil
                         .fetchData(ExternalSoccerApiEndpoints.COMPETITION_FIXTURES_RESOURCE_URL +
                                 competitionId);
 
                 Competition competition = objectMapper.readValue(competitionFixturesJson,
                         Competition.class);
-
-                List<Competition> competitions = new ArrayList<>();
-                competitions.add(competition);
 
                 List<Game> gameWithCompetitionId = CompetitionUtils.setCompetitionIdToGames(competition);
 
@@ -179,7 +183,7 @@ public class SoccerDataSyncService {
                         .setCompetitionIdToTeamsDetail(competition);
                 TeamDetailUtils.setPlayersToTeams(teamsWithCompetitionIdAndPlayers, playerRepository);
 
-                CompetitionUtils.setCompetitionsIdToRounds(competitions);
+                CompetitionUtils.setCompetitionIdToRounds(competition);
 
                 competitionRepository.save(competition);
 
@@ -191,9 +195,40 @@ public class SoccerDataSyncService {
                 }
                 count++;
             }
-
+            TimeMeasurementUtil.timeTaken();
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
+            throw e;
+        }
+    }
+
+    public void fetchCompetitionFixturesAndUpdateAsyncParallel() throws JsonProcessingException, IOException {
+        try {
+            TimeMeasurementUtil.startTimer();
+            List<Integer> competitionIds = competitionService.getSortedCompetitionIds();
+            List<String> competitionFixtureJsons = new ArrayList<>();
+            List<Competition> competitionFixtures = new ArrayList<>();
+
+            competitionFixtureJsons = CompetitionProcessingAsyncUtil.getCompetitionFixtureJsonsParallel(competitionIds);
+
+            competitionFixtures = CompetitionProcessingAsyncUtil
+                    .deserializeCompetitionFixturesParallel(competitionFixtureJsons);
+
+            List<CompletableFuture<Void>> competitionProcessingFutures = competitionFixtures.parallelStream()
+                    .map(competition -> {
+                        return CompetitionProcessingAsyncUtil.processCompetitionFixtureAndSaveToDBAsync(
+                                competition, playerRepository, competitionRepository, teamDetailRepository,
+                                gameRepository);
+                    }).collect(Collectors.toList());
+
+            CompletableFuture<Void> allCompetitionsProcessingFutures = CompletableFuture.allOf(
+                    competitionProcessingFutures.toArray(new CompletableFuture[0]));
+
+            allCompetitionsProcessingFutures.join();
+
+            TimeMeasurementUtil.timeTaken();
+        } catch (Exception e) {
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
     }
@@ -203,7 +238,7 @@ public class SoccerDataSyncService {
         try {
 
             int count = 0;
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             TypeReference<List<Membership>> membershipTypeRef = new TypeReference<>() {
             };
@@ -216,7 +251,7 @@ public class SoccerDataSyncService {
                     break;
                 }
 
-                String activeMembershipJson = eApiDataFetcherUtil
+                String activeMembershipJson = ExternalApiDataFetcherUtil
                         .fetchData(
                                 ExternalSoccerApiEndpoints.ACTIVE_MEMBERSHIPS_RESOURCE_URL + competitionId);
 
@@ -232,7 +267,7 @@ public class SoccerDataSyncService {
             }
 
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
 
@@ -243,7 +278,7 @@ public class SoccerDataSyncService {
         try {
             int count = 0;
             List<Membership> recentlyChangedMemberships = new ArrayList<>();
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             int numOfDays = 30;
             TypeReference<List<Membership>> MembershipTypeRef = new TypeReference<>() {
@@ -258,7 +293,7 @@ public class SoccerDataSyncService {
                     break;
                 }
 
-                String recentlyChangedMembershipsJson = eApiDataFetcherUtil.fetchData(
+                String recentlyChangedMembershipsJson = ExternalApiDataFetcherUtil.fetchData(
                         ExternalSoccerApiEndpoints.RECENTLY_CHANGED_MEMBERSHIPS_RESOURCE_URL + competitionId + "/"
                                 + numOfDays);
 
@@ -271,7 +306,7 @@ public class SoccerDataSyncService {
                 count++;
             }
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
     }
@@ -281,7 +316,7 @@ public class SoccerDataSyncService {
         try {
             int count = 0;
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
 
             List<TeamDetail> teams = teamDetailRepository.findAll();
 
@@ -300,7 +335,7 @@ public class SoccerDataSyncService {
                     break;
                 }
 
-                String playersbyTeamJson = eApiDataFetcherUtil.fetchData(
+                String playersbyTeamJson = ExternalApiDataFetcherUtil.fetchData(
                         ExternalSoccerApiEndpoints.PLAYERS_BY_TEAM_RESOURCE_URL +
                                 competitionId + "/" + teamId);
 
@@ -315,7 +350,7 @@ public class SoccerDataSyncService {
 
             }
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
 
@@ -329,7 +364,7 @@ public class SoccerDataSyncService {
             List<Round> standingsRounds = new ArrayList<>();
             List<Round> teamSeasonRounds = new ArrayList<>();
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
             List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
             TypeReference<List<Round>> roundTypeRef = new TypeReference<>() {
             };
@@ -346,15 +381,15 @@ public class SoccerDataSyncService {
                 for (int i = 0; i < seasonsArr.length; i++) {
                     int seasonYear = seasonsArr[i];
                     count++;
-                    String scheduleJson = eApiDataFetcherUtil.fetchData(
+                    String scheduleJson = ExternalApiDataFetcherUtil.fetchData(
                             ExternalSoccerApiEndpoints.SCHEDULE_RESOURCE_URL + competitonId + "/"
                                     + seasonYear);
 
-                    String standingsJson = eApiDataFetcherUtil.fetchData(
+                    String standingsJson = ExternalApiDataFetcherUtil.fetchData(
                             ExternalSoccerApiEndpoints.STANDINGS_RESOURCE_URL + competitonId + "/"
                                     + seasonYear);
 
-                    String teamSeasonJson = eApiDataFetcherUtil.fetchData(
+                    String teamSeasonJson = ExternalApiDataFetcherUtil.fetchData(
                             ExternalSoccerApiEndpoints.TEAM_SEASON_STATS_RESOURCE_URL + competitonId + '/'
                                     + seasonYear);
 
@@ -372,7 +407,7 @@ public class SoccerDataSyncService {
             }
 
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
             throw e;
         }
 
@@ -381,9 +416,9 @@ public class SoccerDataSyncService {
     public void fetchVenuesAndUpdate() throws JsonProcessingException {
         try {
 
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
 
-            String venuesJson = eApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.VENUES_RESOURCE_URL);
+            String venuesJson = ExternalApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.VENUES_RESOURCE_URL);
 
             List<Venue> venues = new ArrayList<>();
 
@@ -395,7 +430,7 @@ public class SoccerDataSyncService {
             venueRepository.saveAll(venues);
 
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
         }
     }
 
@@ -403,7 +438,7 @@ public class SoccerDataSyncService {
 
         try {
             Map<Integer, Integer> map = gameService.getGameIdAndCompetitionMap();
-            ObjectMapper objectMapper = eApiDataFetcherUtil.initializeObjectMapper();
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
             List<BoxScore> boxScores = new ArrayList<>();
             int count = 0;
 
@@ -418,7 +453,7 @@ public class SoccerDataSyncService {
                 Integer gameId = entry.getKey();
                 System.out.println(competition + "      " + gameId);
 
-                String boxScoreFixturesJson = eApiDataFetcherUtil
+                String boxScoreFixturesJson = ExternalApiDataFetcherUtil
                         .fetchData(ExternalSoccerApiEndpoints.BOX_SCORE_RESOURCE_URL + competition + "/" + gameId);
 
                 boxScores = objectMapper.readValue(boxScoreFixturesJson, boxScoreTypeRef);
@@ -442,7 +477,7 @@ public class SoccerDataSyncService {
                 count++;
             }
         } catch (Exception e) {
-            eApiDataFetcherUtil.handleException(e);
+            ExternalApiDataFetcherUtil.handleException(e);
         }
     }
 

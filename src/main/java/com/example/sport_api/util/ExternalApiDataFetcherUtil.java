@@ -20,9 +20,9 @@ public class ExternalApiDataFetcherUtil {
 
     private static final Logger logger = LogManager.getLogger(ExternalApiDataFetcherUtil.class);
 
-    Dotenv dotenv = Dotenv.load();
+    static Dotenv dotenv = Dotenv.load();
 
-    public String fetchData(String resourceUrl) {
+    public static String fetchData(String resourceUrl) {
 
         String apiKey = dotenv.get("SPORT_DATA_IO_API_KEY");
 
@@ -37,7 +37,7 @@ public class ExternalApiDataFetcherUtil {
         return responsesData;
     }
 
-    public ObjectMapper initializeObjectMapper() {
+    public static ObjectMapper initializeObjectMapper() {
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
@@ -47,7 +47,7 @@ public class ExternalApiDataFetcherUtil {
         return objectMapper;
     }
 
-    public void handleException(Exception e) {
+    public static void handleException(Exception e) {
         if (e instanceof JsonProcessingException) {
             logger.error("Error occurred during JSON processing: {}", e.getMessage(), e);
         } else if (e instanceof IOException) {

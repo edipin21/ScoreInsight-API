@@ -10,7 +10,6 @@ import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.CompetitionDto;
 import com.example.sport_api.repositories.soccer.CompetitionRepository;
-
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -86,4 +85,20 @@ public class CompetitionService {
         }
 
     }
+
+    public List<Integer> getSortedCompetitionIds() {
+        try {
+            List<Integer> competitionIds = competitionRepository.findAllCompetitionsNumbers();
+            competitionIds.sort(null);
+            // return competitionIntegers.subList(0, Math.min(3,
+            // competitionIntegers.size()));
+
+            return competitionIds;
+        } catch (DataAccessException e) {
+            logger.error("A data access error occurred while retrieving competitions ids: " + e.getMessage());
+            throw e;
+        }
+
+    }
+
 }

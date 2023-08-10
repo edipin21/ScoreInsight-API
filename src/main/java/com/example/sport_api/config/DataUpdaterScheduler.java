@@ -36,12 +36,12 @@ public class DataUpdaterScheduler {
     // @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateCompetitionDB() throws JsonMappingException,
     // JsonProcessingException {
-    // apiService.fetchCompetitionsAndUpdate();
+    // soccerApiService.fetchCompetitionsAndUpdate();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateCompetitionfeDB() throws IOException {
-    // apiService.fetchCompetitionFixturesAndUpdate();
+    // soccerApiService.fetchCompetitionFixturesAndUpdateAsyncParallel();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)

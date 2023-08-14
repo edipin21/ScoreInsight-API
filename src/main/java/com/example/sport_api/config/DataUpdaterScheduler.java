@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 
 import com.example.sport_api.BettingDataSyncService;
 import com.example.sport_api.SoccerDataSyncService;
+import com.example.sport_api.models.sport.Competition;
+import com.example.sport_api.services.soccer.AreaService;
+import com.example.sport_api.services.soccer.CompetitionService;
+import com.example.sport_api.services.soccer.MembershipService;
+import com.example.sport_api.services.soccer.TeamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -19,18 +24,31 @@ public class DataUpdaterScheduler {
     @Autowired
     private BettingDataSyncService bettingApiService;
 
-    // (fixedRate = 4 * 60 * 60 * 1000)
+    @Autowired
+    private TeamService teamService;
+
+    @Autowired
+    private AreaService areaService;
+
+    @Autowired
+    private CompetitionService competitionService;
+
+    @Autowired
+    private MembershipService membershipService;
+
+    // (fixedRate=4*60*60*1000)
+
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateTeamsDB() throws JsonMappingException,
     // JsonProcessingException {
 
-    // apiService.fetchTeamsAndUpdate();
+    // teamService.syncTeamsFromExternalApi();
     // }
 
     // @Scheduled(initialDelay = 0, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateAreasDB() throws JsonMappingException,
     // JsonProcessingException {
-    // apiService.fetchAreasAndUpdate();
+    // areaService.syncAreasFromExternalApi();
     // }
 
     // @Scheduled(initialDelay = 1, fixedRate = 4 * 60 * 60 * 1000)
@@ -41,17 +59,17 @@ public class DataUpdaterScheduler {
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateCompetitionfeDB() throws IOException {
-    // soccerApiService.fetchCompetitionFixturesAndUpdateAsyncParallel();
+    // competitionService.syncCompetitionsFixturesFromExternalApi();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateActiveMembershipDB() throws IOException {
-    // apiService.fetchActiveMembershipAndUpdate();
+    // membershipService.syncActiveMembershipsFromExternalApiParallel();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updateRecentlyChangedMembershipDB() throws IOException {
-    // apiService.fetchRecentlyChangedMembershipAndUpdate();
+    // membershipService.syncRecentlyChangedMembershipsFromExternalApiParallel();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)

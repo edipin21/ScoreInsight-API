@@ -2,24 +2,15 @@ package com.example.sport_api.util.soccerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.Game;
 import com.example.sport_api.models.sport.Round;
 import com.example.sport_api.models.sport.Season;
 import com.example.sport_api.models.sport.TeamDetail;
-import com.example.sport_api.repositories.soccer.CompetitionRepository;
-import com.example.sport_api.repositories.soccer.GameRepository;
-import com.example.sport_api.repositories.soccer.PlayerRepository;
-import com.example.sport_api.repositories.soccer.TeamDetailRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 
 public class CompetitionProcessingAsyncUtil {
-
-    private static final Logger logger = LogManager.getLogger(CompetitionProcessingAsyncUtil.class);
 
     public static void setCompetitionIdToRoundsParallel(Competition competition) {
 
@@ -80,41 +71,6 @@ public class CompetitionProcessingAsyncUtil {
         });
 
         return competitionFixtures;
-    }
-
-    public static CompletableFuture<Void> processCompetitionFixtureAndSaveToDBAsync(Competition competition,
-            PlayerRepository playerRepository, CompetitionRepository competitionRepository,
-            TeamDetailRepository teamDetailRepository, GameRepository gameRepository) {
-
-        CompletableFuture<List<Game>> gameFuture = CompletableFuture
-                .supplyAsync(() -> CompetitionUtils.setCompetitionIdToGames(competition));
-
-        CompletableFuture<List<TeamDetail>> teamsFuture = CompletableFuture
-                .supplyAsync(() -> CompetitionUtils.setCompetitionIdToTeamsDetail(competition));
-
-        CompletableFuture<Void> playersFuture = teamsFuture.thenAcceptAsync(
-                teams -> TeamDetailUtils.setPlayersToTeams(teams, playerRepository));
-
-        CompletableFuture<Void> roundsFuture = CompletableFuture.runAsync(
-                () -> CompetitionUtils.setCompetitionIdToRounds(competition));
-
-        CompletableFuture<Void> allOfCompetitionFuture = CompletableFuture.allOf(gameFuture, playersFuture,
-                roundsFuture);
-
-        return allOfCompetitionFuture
-                .thenRun(() -> saveCompetitionData(competition, gameFuture.join(), teamsFuture.join(),
-                        competitionRepository, gameRepository,
-                        teamDetailRepository));
-    }
-
-    private static void saveCompetitionData(Competition competition, List<Game> games, List<TeamDetail> teams,
-            CompetitionRepository competitionRepository, GameRepository gameRepository,
-            TeamDetailRepository teamDetailRepository) {
-        competitionRepository.save(competition);
-        if (!games.isEmpty())
-            gameRepository.saveAll(games);
-        if (!teams.isEmpty())
-            teamDetailRepository.saveAll(teams);
     }
 
 }

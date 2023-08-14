@@ -1,15 +1,28 @@
 package com.example.sport_api.services.soccer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.CompetitionDto;
 import com.example.sport_api.repositories.soccer.CompetitionRepository;
+import com.example.sport_api.repositories.soccer.GameRepository;
+import com.example.sport_api.repositories.soccer.PlayerRepository;
+import com.example.sport_api.repositories.soccer.TeamDetailRepository;
+import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.TimeMeasurementUtil;
+import com.example.sport_api.util.soccerUtil.CompetitionDtoUtils;
+import com.example.sport_api.util.soccerUtil.CompetitionUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -21,34 +34,99 @@ public class CompetitionService {
     @Autowired
     private CompetitionRepository competitionRepository;
 
-    public CompetitionService(CompetitionRepository competitionRepository) {
-        this.competitionRepository = competitionRepository;
+    @Autowired
+    private PlayerRepository playerRepository;
+
+    @Autowired
+    private GameRepository gameRepository;
+
+    @Autowired
+    private TeamDetailRepository teamDetailRepository;
+
+    public void syncCompetitionsFromExternalApi() throws JsonProcessingException {
+
+        try {
+            TimeMeasurementUtil.startTimer();
+            TypeReference<List<Competition>> competitionTypeRef = new TypeReference<>() {
+            };
+
+            List<Competition> competitions = ExternalApiDataFetcherUtil
+                    .fetchListDataFromExternalApi(ExternalSoccerApiEndpoints.COMPETITIONS_RESOURCE_URL,
+                            competitionTypeRef);
+
+            CompetitionUtils.setCompetitionsIdToRoundsParallel(competitions);
+            CompetitionUtils.saveCompetitionssToDatabase(competitions, competitionRepository);
+            TimeMeasurementUtil.timeTaken();
+
+        } catch (Exception e) {
+            CompetitionUtils.handleExternalApiException(e);
+            throw e;
+        }
+
     }
 
-    public List<CompetitionDto> getAllCompetitions() {
+    public void syncCompetitionsFixturesFromExternalApi() throws JsonProcessingException, IOException {
+
+        try {
+
+            TimeMeasurementUtil.startTimer();
+            List<Integer> competitionIntegers = getSortedCompetitionIds();
+
+            for (Integer competitionId : competitionIntegers) {
+
+                Competition competition = ExternalApiDataFetcherUtil.fetchDataFromExternalApi(
+                        ExternalSoccerApiEndpoints.COMPETITION_FIXTURES_RESOURCE_URL + competitionId,
+                        Competition.class);
+
+                CompetitionUtils.saveOrUpdateCompetitionDataToDB(competition, playerRepository, competitionRepository,
+                        gameRepository, teamDetailRepository);
+
+            }
+            TimeMeasurementUtil.timeTaken();
+        } catch (Exception e) {
+            CompetitionUtils.handleExternalApiException(e);
+            throw e;
+        }
+    }
+
+    public void syncCompetitionsFixturesFromExternalApiAsyncParallel() throws JsonProcessingException, IOException {
+        try {
+            TimeMeasurementUtil.startTimer();
+            List<Integer> competitionIds = getSortedCompetitionIds();
+            List<String> competitionFixtureJsons = new ArrayList<>();
+            List<Competition> competitionFixtures = new ArrayList<>();
+
+            competitionFixtureJsons = CompetitionUtils.getCompetitionFixtureJsonsParallel(competitionIds);
+
+            competitionFixtures = CompetitionUtils
+                    .deserializeCompetitionFixturesParallel(competitionFixtureJsons);
+
+            List<CompletableFuture<Void>> competitionProcessingFutures = competitionFixtures.parallelStream()
+                    .map(competition -> {
+                        return CompetitionUtils.processCompetitionFixtureAndSaveToDBAsync(
+                                competition, playerRepository, competitionRepository, teamDetailRepository,
+                                gameRepository);
+                    }).collect(Collectors.toList());
+
+            CompletableFuture<Void> allCompetitionsProcessingFutures = CompletableFuture.allOf(
+                    competitionProcessingFutures.toArray(new CompletableFuture[0]));
+
+            allCompetitionsProcessingFutures.join();
+
+            TimeMeasurementUtil.timeTaken();
+        } catch (Exception e) {
+            CompetitionUtils.handleExternalApiException(e);
+            throw e;
+        }
+    }
+
+    public List<CompetitionDto> getAllCompetitionsDtos() {
 
         try {
             List<Competition> competitions = competitionRepository.findAll();
 
-            List<CompetitionDto> competitionDtos = new ArrayList<>();
+            return CompetitionDtoUtils.mapCompetitionsToDtos(competitions);
 
-            for (Competition competition : competitions) {
-
-                CompetitionDto competitionDto = new CompetitionDto();
-
-                competitionDto.setAreaId(competition.getAreaId());
-                competitionDto.setAreaName(competition.getAreaName());
-                competitionDto.setCompetitionId(competition.getCompetitionId());
-                competitionDto.setFormat(competition.getFormat());
-                competitionDto.setGender(competition.getGender());
-                competitionDto.setName(competition.getName());
-                competitionDto.setSeasons(competition.getSeasons());
-                competitionDto.setStringKey(competition.getStringKey());
-                competitionDto.setType(competition.getType());
-
-                competitionDtos.add(competitionDto);
-            }
-            return competitionDtos;
         } catch (DataAccessException e) {
             logger.error("A data access error occurred while retrieving competitions: " + e.getMessage());
             throw e;
@@ -90,9 +168,6 @@ public class CompetitionService {
         try {
             List<Integer> competitionIds = competitionRepository.findAllCompetitionsNumbers();
             competitionIds.sort(null);
-            // return competitionIntegers.subList(0, Math.min(3,
-            // competitionIntegers.size()));
-
             return competitionIds;
         } catch (DataAccessException e) {
             logger.error("A data access error occurred while retrieving competitions ids: " + e.getMessage());

@@ -2,15 +2,20 @@ package com.example.sport_api.services.soccer;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.models.sport.Team;
 import com.example.sport_api.repositories.soccer.TeamRepository;
+import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.soccerUtil.TeamUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Service
 public class TeamService {
@@ -19,6 +24,23 @@ public class TeamService {
 
     @Autowired
     private TeamRepository teamRepository;
+
+    public void syncTeamsFromExternalApi() throws JsonMappingException,
+            JsonProcessingException {
+
+        try {
+            TypeReference<List<Team>> teamTypeRef = new TypeReference<>() {
+            };
+            List<Team> teams = ExternalApiDataFetcherUtil
+                    .fetchListDataFromExternalApi(ExternalSoccerApiEndpoints.TEAMS_RESOURCE_URL, teamTypeRef);
+            TeamUtils.saveTeamsToDatabase(teams, teamRepository);
+
+        } catch (Exception e) {
+            TeamUtils.handleExternalApiException(e);
+            throw e;
+        }
+
+    }
 
     public TeamService(TeamRepository teamRepository) {
         this.teamRepository = teamRepository;
@@ -56,6 +78,7 @@ public class TeamService {
         } catch (DataAccessException e) {
             logger.error("A data access error occurred: " + e.getMessage());
             throw e;
+
         }
     }
 

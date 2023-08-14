@@ -2,18 +2,17 @@ package com.example.sport_api.services.soccer;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.dao.DataAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.example.sport_api.mappers.CompetitionMapper;
+import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.models.sport.Area;
 import com.example.sport_api.models.sport.AreaDto;
-import com.example.sport_api.models.sport.Competition;
-import com.example.sport_api.models.sport.CompetitionDto;
 import com.example.sport_api.repositories.soccer.AreaRepository;
-
+import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.soccerUtil.AreaUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -25,12 +24,30 @@ public class AreaService {
     @Autowired
     private AreaRepository areaRepository;
 
-    public AreaService(AreaRepository areaRepository) {
-        this.areaRepository = areaRepository;
+    public void syncAreasFromExternalApi() throws JsonProcessingException {
+        try {
+            TypeReference<List<Area>> areaTypeRef = new TypeReference<>() {
+            };
+
+            List<Area> areas = ExternalApiDataFetcherUtil
+                    .fetchListDataFromExternalApi(ExternalSoccerApiEndpoints.AREAS_RESOURCE_URL, areaTypeRef);
+
+            AreaUtils.saveAreasToDatabase(areas, areaRepository);
+
+        } catch (Exception e) {
+            AreaUtils.handleExternalApiException(e);
+            throw e;
+        }
     }
 
     public List<Area> retrieveAllAreas() {
-        return areaRepository.findAll();
+        try {
+            return areaRepository.findAll();
+        } catch (DataAccessException e) {
+            logger.error("Error occurred while accessing data while retrieving areas: " + e.getMessage(), e);
+            throw e;
+        }
+
     }
 
     public List<AreaDto> getAllAreasWithCompetitions() {
@@ -39,20 +56,10 @@ public class AreaService {
             List<AreaDto> areaDtos = new ArrayList<>();
 
             for (Area area : areas) {
-                AreaDto areaDto = new AreaDto();
-                areaDto.setAreaId(area.getAreaId());
-                areaDto.setCountryCode(area.getCountryCode());
-                areaDto.setName(area.getName());
-
-                List<Competition> competitions = area.getCompetitions();
-                List<CompetitionDto> competitionDtos = competitions.stream()
-                        .map(CompetitionMapper::toDto)
-                        .collect(Collectors.toList());
-
-                areaDto.setCompetitions(competitionDtos);
-
+                AreaDto areaDto = AreaUtils.createAreaDtoFromArea(area);
                 areaDtos.add(areaDto);
             }
+
             return areaDtos;
 
         } catch (DataAccessException e) {

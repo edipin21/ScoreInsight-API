@@ -9,7 +9,6 @@ import com.example.sport_api.models.sport.Membership;
 import com.example.sport_api.models.sport.Player;
 import com.example.sport_api.models.sport.PlayerGame;
 import com.example.sport_api.models.sport.Round;
-import com.example.sport_api.models.sport.Team;
 import com.example.sport_api.models.sport.TeamDetail;
 import com.example.sport_api.models.sport.Venue;
 import com.example.sport_api.repositories.soccer.AreaRepository;
@@ -25,20 +24,16 @@ import com.example.sport_api.repositories.soccer.VenueRepository;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.GameService;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
-import com.example.sport_api.util.TimeMeasurementUtil;
-import com.example.sport_api.util.soccerUtil.CompetitionProcessingAsyncUtil;
-import com.example.sport_api.util.soccerUtil.CompetitionUtils;
 import com.example.sport_api.util.soccerUtil.PlayerGameUtils;
 import com.example.sport_api.util.soccerUtil.RoundUtils;
-import com.example.sport_api.util.soccerUtil.TeamDetailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -84,277 +79,6 @@ public class SoccerDataSyncService {
 
     @Autowired
     private CompetitionService competitionService;
-
-    public void fetchTeamsAndUpdate() throws JsonMappingException,
-            JsonProcessingException {
-
-        try {
-            String teamsJson = ExternalApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.TEAMS_RESOURCE_URL);
-
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-
-            List<Team> teams = new ArrayList<>();
-
-            TypeReference<List<Team>> teamTypeRef = new TypeReference<>() {
-            };
-
-            teams = objectMapper.readValue(teamsJson, teamTypeRef);
-            teamRepository.saveAll(teams);
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-
-    }
-
-    public void fetchAreasAndUpdate() throws JsonProcessingException {
-        try {
-            String areasJson = ExternalApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.AREAS_RESOURCE_URL);
-
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-
-            List<Area> areas = new ArrayList<>();
-
-            TypeReference<List<Area>> areaTypeRef = new TypeReference<>() {
-            };
-
-            areas = objectMapper.readValue(areasJson, areaTypeRef);
-
-            areaRepository.saveAll(areas);
-
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-    }
-
-    public void fetchCompetitionsAndUpdate() throws JsonProcessingException {
-
-        try {
-            TimeMeasurementUtil.startTimer();
-            String areasJson = ExternalApiDataFetcherUtil
-                    .fetchData(ExternalSoccerApiEndpoints.COMPETITIONS_RESOURCE_URL);
-
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-
-            List<Competition> competitions;
-
-            TypeReference<List<Competition>> competitionTypeRef = new TypeReference<>() {
-            };
-
-            competitions = objectMapper.readValue(areasJson, competitionTypeRef);
-
-            CompetitionProcessingAsyncUtil.setCompetitionsIdToRoundsParallel(competitions);
-
-            competitionRepository.saveAll(competitions);
-            TimeMeasurementUtil.timeTaken();
-
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-
-    }
-
-    public void fetchCompetitionFixturesAndUpdate() throws JsonProcessingException, IOException {
-
-        try {
-            TimeMeasurementUtil.startTimer();
-            int count = 0;
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-            List<Integer> competitionIntegers = competitionService.getSortedCompetitionIds();
-
-            // Partial loop for sanity checks - delete count
-            for (Integer competitionId : competitionIntegers) {
-                if (count == 3) {
-                    break;
-                }
-
-                String competitionFixturesJson = ExternalApiDataFetcherUtil
-                        .fetchData(ExternalSoccerApiEndpoints.COMPETITION_FIXTURES_RESOURCE_URL +
-                                competitionId);
-
-                Competition competition = objectMapper.readValue(competitionFixturesJson,
-                        Competition.class);
-
-                List<Game> gameWithCompetitionId = CompetitionUtils.setCompetitionIdToGames(competition);
-
-                List<TeamDetail> teamsWithCompetitionIdAndPlayers = CompetitionUtils
-                        .setCompetitionIdToTeamsDetail(competition);
-                TeamDetailUtils.setPlayersToTeams(teamsWithCompetitionIdAndPlayers, playerRepository);
-
-                CompetitionUtils.setCompetitionIdToRounds(competition);
-
-                competitionRepository.save(competition);
-
-                if (!gameWithCompetitionId.isEmpty()) {
-                    gameRepository.saveAll(gameWithCompetitionId);
-                }
-                if (!teamsWithCompetitionIdAndPlayers.isEmpty()) {
-                    teamDetailRepository.saveAll(teamsWithCompetitionIdAndPlayers);
-                }
-                count++;
-            }
-            TimeMeasurementUtil.timeTaken();
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-    }
-
-    public void fetchCompetitionFixturesAndUpdateAsyncParallel() throws JsonProcessingException, IOException {
-        try {
-            TimeMeasurementUtil.startTimer();
-            List<Integer> competitionIds = competitionService.getSortedCompetitionIds();
-            List<String> competitionFixtureJsons = new ArrayList<>();
-            List<Competition> competitionFixtures = new ArrayList<>();
-
-            competitionFixtureJsons = CompetitionProcessingAsyncUtil.getCompetitionFixtureJsonsParallel(competitionIds);
-
-            competitionFixtures = CompetitionProcessingAsyncUtil
-                    .deserializeCompetitionFixturesParallel(competitionFixtureJsons);
-
-            List<CompletableFuture<Void>> competitionProcessingFutures = competitionFixtures.parallelStream()
-                    .map(competition -> {
-                        return CompetitionProcessingAsyncUtil.processCompetitionFixtureAndSaveToDBAsync(
-                                competition, playerRepository, competitionRepository, teamDetailRepository,
-                                gameRepository);
-                    }).collect(Collectors.toList());
-
-            CompletableFuture<Void> allCompetitionsProcessingFutures = CompletableFuture.allOf(
-                    competitionProcessingFutures.toArray(new CompletableFuture[0]));
-
-            allCompetitionsProcessingFutures.join();
-
-            TimeMeasurementUtil.timeTaken();
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-    }
-
-    public void fetchActiveMembershipAndUpdate() throws JsonProcessingException {
-
-        try {
-
-            int count = 0;
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
-            TypeReference<List<Membership>> membershipTypeRef = new TypeReference<>() {
-            };
-
-            competitioIntegers.sort(null);
-            // Partial loop for sanity checks - delete count
-            for (Integer competitionId : competitioIntegers) {
-
-                if (count == 3) {
-                    break;
-                }
-
-                String activeMembershipJson = ExternalApiDataFetcherUtil
-                        .fetchData(
-                                ExternalSoccerApiEndpoints.ACTIVE_MEMBERSHIPS_RESOURCE_URL + competitionId);
-
-                List<Membership> activeMemberships = new ArrayList<>();
-
-                activeMemberships = objectMapper.readValue(activeMembershipJson, membershipTypeRef);
-
-                activeMemberships.forEach(membership -> membership.setCompetitionId(competitionId));
-
-                membershipRepository.saveAll(activeMemberships);
-
-                count++;
-            }
-
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-
-    }
-
-    public void fetchRecentlyChangedMembershipAndUpdate() throws JsonProcessingException {
-
-        try {
-            int count = 0;
-            List<Membership> recentlyChangedMemberships = new ArrayList<>();
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-            List<Integer> competitioIntegers = competitionRepository.findAllCompetitionsNumbers();
-            int numOfDays = 30;
-            TypeReference<List<Membership>> MembershipTypeRef = new TypeReference<>() {
-            };
-
-            competitioIntegers.sort(null);
-
-            // Partial loop for sanity checks - delete count
-
-            for (Integer competitionId : competitioIntegers) {
-                if (count == 3) {
-                    break;
-                }
-
-                String recentlyChangedMembershipsJson = ExternalApiDataFetcherUtil.fetchData(
-                        ExternalSoccerApiEndpoints.RECENTLY_CHANGED_MEMBERSHIPS_RESOURCE_URL + competitionId + "/"
-                                + numOfDays);
-
-                recentlyChangedMemberships = objectMapper.readValue(recentlyChangedMembershipsJson, MembershipTypeRef);
-
-                recentlyChangedMemberships.forEach(membership -> membership.setCompetitionId(competitionId));
-
-                membershipRepository.saveAll(recentlyChangedMemberships);
-
-                count++;
-            }
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-    }
-
-    public void fetchPlayersbyTeamsAndUpdate() throws JsonProcessingException {
-
-        try {
-            int count = 0;
-
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-
-            List<TeamDetail> teams = teamDetailRepository.findAll();
-
-            List<Player> players = new ArrayList<>();
-
-            TypeReference<List<Player>> playerTypeRef = new TypeReference<>() {
-            };
-
-            // Partial loop for sanity checks - delete count
-            for (int i = 0; i < teams.size(); i++) {
-                TeamDetail team = teams.get(i);
-                Integer competitionId = team.getCompetition().get(0).getCompetitionId();
-                int teamId = team.getTeamId();
-
-                if (count == 3) {
-                    break;
-                }
-
-                String playersbyTeamJson = ExternalApiDataFetcherUtil.fetchData(
-                        ExternalSoccerApiEndpoints.PLAYERS_BY_TEAM_RESOURCE_URL +
-                                competitionId + "/" + teamId);
-
-                players = objectMapper.readValue(playersbyTeamJson, playerTypeRef);
-
-                int teamNum = i;
-                players.forEach(player -> player.setTeamDetail(teams.get(teamNum)));
-
-                playerRepository.saveAll(players);
-
-                count++;
-
-            }
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-            throw e;
-        }
-
-    }
 
     public void fetchAndUpdateScheduleAndStandingsAndTeamSeason() throws JsonProcessingException {
 

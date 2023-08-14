@@ -50,7 +50,7 @@ public class CompetitionController {
             @Parameter(description = OpenApiParameters.API_KEY_DESCRIPTION) @RequestParam String key) {
 
         try {
-            List<CompetitionDto> competitions = competitionService.getAllCompetitions();
+            List<CompetitionDto> competitions = competitionService.getAllCompetitionsDtos();
             return ResponseUtil.createOkResponse(competitions);
         } catch (DataAccessException e) {
             return ResponseUtil.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());

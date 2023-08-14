@@ -1,6 +1,7 @@
 package com.example.sport_api.util;
 
 import java.io.IOException;
+import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -10,9 +11,9 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.github.cdimascio.dotenv.Dotenv;
 
 @Component
@@ -56,6 +57,22 @@ public class ExternalApiDataFetcherUtil {
             logger.error("Error occurred during data access: {}", e.getMessage(), e);
         }
 
+    }
+
+    public static <T> List<T> fetchListDataFromExternalApi(String apiUrl, TypeReference<List<T>> typeReference)
+            throws JsonProcessingException {
+
+        String jsonData = ExternalApiDataFetcherUtil.fetchData(apiUrl);
+        ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
+        return objectMapper.readValue(jsonData, typeReference);
+    }
+
+    public static <T> T fetchDataFromExternalApi(String apiUrl, Class<T> clazz)
+            throws JsonProcessingException {
+
+        String jsonData = ExternalApiDataFetcherUtil.fetchData(apiUrl);
+        ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
+        return objectMapper.readValue(jsonData, clazz);
     }
 
 }

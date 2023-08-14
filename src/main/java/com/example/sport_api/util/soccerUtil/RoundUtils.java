@@ -8,6 +8,7 @@ public class RoundUtils {
 
     public static void setStandingsAndTeamSeasonsToRounds(List<Round> rounds, List<Round> standingsRounds,
             List<Round> teamSeasonRounds) {
+
         if (rounds == null || standingsRounds == null || teamSeasonRounds == null) {
             throw new IllegalArgumentException("Lists cannot be null");
         }
@@ -21,14 +22,17 @@ public class RoundUtils {
             Round standingsRound = standingsRounds.get(i);
             Round teamSeasonRound = teamSeasonRounds.get(i);
 
-            round.setStandings(standingsRound.getStandings());
-            round.setTeamSeasons(teamSeasonRound.getTeamSeasons());
+            copyStandingsAndTeamSeasonsToRound(round, standingsRound, teamSeasonRound);
         }
-
     }
 
     public static void setCompetitionToRounds(List<Round> rounds, Integer competition) {
         rounds.forEach(round -> round.setCompetitionId(competition));
+    }
+
+    private static void copyStandingsAndTeamSeasonsToRound(Round round, Round standingsRound, Round teamSeasonRound) {
+        round.setStandings(standingsRound.getStandings());
+        round.setTeamSeasons(teamSeasonRound.getTeamSeasons());
     }
 
 }

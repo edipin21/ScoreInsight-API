@@ -137,27 +137,6 @@ public class SoccerDataSyncService {
 
     }
 
-    public void fetchVenuesAndUpdate() throws JsonProcessingException {
-        try {
-
-            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-
-            String venuesJson = ExternalApiDataFetcherUtil.fetchData(ExternalSoccerApiEndpoints.VENUES_RESOURCE_URL);
-
-            List<Venue> venues = new ArrayList<>();
-
-            TypeReference<List<Venue>> venueTypeRef = new TypeReference<>() {
-            };
-
-            venues = objectMapper.readValue(venuesJson, venueTypeRef);
-
-            venueRepository.saveAll(venues);
-
-        } catch (Exception e) {
-            ExternalApiDataFetcherUtil.handleException(e);
-        }
-    }
-
     public void fetchAndUpdateBoxScore() throws JsonProcessingException {
 
         try {

@@ -6,6 +6,8 @@ import java.util.concurrent.CompletableFuture;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
+
 import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.models.sport.Game;
@@ -23,8 +25,8 @@ public class CompetitionUtils {
 
     private static final Logger logger = LogManager.getLogger(CompetitionUtils.class);
 
-    public static void saveCompetitionssToDatabase(List<Competition> competitions,
-            CompetitionRepository competitionRepository) {
+    public static void saveCompetitionsToDB(List<Competition> competitions,
+            CompetitionRepository competitionRepository) throws DataAccessException {
 
         competitionRepository.saveAll(competitions);
     }

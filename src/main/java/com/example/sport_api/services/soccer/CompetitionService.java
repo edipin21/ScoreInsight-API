@@ -55,7 +55,7 @@ public class CompetitionService {
                             competitionTypeRef);
 
             CompetitionUtils.setCompetitionsIdToRoundsParallel(competitions);
-            CompetitionUtils.saveCompetitionssToDatabase(competitions, competitionRepository);
+            CompetitionUtils.saveCompetitionsToDB(competitions, competitionRepository);
             TimeMeasurementUtil.timeTaken();
 
         } catch (Exception e) {

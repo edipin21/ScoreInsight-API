@@ -3,7 +3,6 @@ package com.example.sport_api;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.sport_api.constants.ExternalBettingApiEndpoints;
@@ -11,7 +10,6 @@ import com.example.sport_api.models.betting.BettingEvent;
 import com.example.sport_api.models.betting.BettingMarket;
 import com.example.sport_api.repositories.betting.BettingEventRepository;
 import com.example.sport_api.repositories.betting.BettingMarketRepository;
-// import com.example.sport_api.repositories.betting.SportsBookRepository;
 import com.example.sport_api.repositories.soccer.CompetitionRepository;
 import com.example.sport_api.services.betting.BettingEventService;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;

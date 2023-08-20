@@ -1,13 +1,16 @@
 package com.example.sport_api.util.soccerUtil;
 
 import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+
 import com.example.sport_api.models.sport.Team;
 import com.example.sport_api.repositories.soccer.TeamRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 
 public class TeamUtils {
 
-    public static void saveTeamsToDatabase(List<Team> teams, TeamRepository teamRepository) {
+    public static void saveTeamsToDatabase(List<Team> teams, TeamRepository teamRepository) throws DataAccessException {
         teamRepository.saveAll(teams);
     }
 

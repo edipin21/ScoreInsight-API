@@ -59,12 +59,16 @@ public class ExternalApiDataFetcherUtil {
 
     }
 
-    public static <T> List<T> fetchListDataFromExternalApi(String apiUrl, TypeReference<List<T>> typeReference)
-            throws JsonProcessingException {
+    public static <T> List<T> fetchListDataFromExternalApi(String apiUrl, TypeReference<List<T>> typeReference) {
+        try {
+            String jsonData = ExternalApiDataFetcherUtil.fetchData(apiUrl);
+            ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
+            return objectMapper.readValue(jsonData, typeReference);
+        } catch (Exception e) {
+            handleException(e);
+            return null;
+        }
 
-        String jsonData = ExternalApiDataFetcherUtil.fetchData(apiUrl);
-        ObjectMapper objectMapper = ExternalApiDataFetcherUtil.initializeObjectMapper();
-        return objectMapper.readValue(jsonData, typeReference);
     }
 
     public static <T> T fetchDataFromExternalApi(String apiUrl, Class<T> clazz)

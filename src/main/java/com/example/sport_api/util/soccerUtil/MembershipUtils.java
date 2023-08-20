@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.function.Function;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
+
 import com.example.sport_api.models.sport.Membership;
 import com.example.sport_api.repositories.soccer.MembershipRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
@@ -83,9 +85,10 @@ public class MembershipUtils {
         memberships.forEach(membership -> membership.setCompetitionId(competitionId));
     }
 
-    public static void saveMemberships(List<Membership> memberships, MembershipRepository membershipRepository) {
-        if (!memberships.isEmpty()) {
-            membershipRepository.saveAll(memberships);
-        }
+    public static void saveMemberships(List<Membership> memberships, MembershipRepository membershipRepository)
+            throws DataAccessException {
+
+        membershipRepository.saveAll(memberships);
+
     }
 }

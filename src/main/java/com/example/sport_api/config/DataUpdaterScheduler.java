@@ -11,6 +11,7 @@ import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.services.soccer.AreaService;
 import com.example.sport_api.services.soccer.CompetitionService;
 import com.example.sport_api.services.soccer.MembershipService;
+import com.example.sport_api.services.soccer.PlayerService;
 import com.example.sport_api.services.soccer.TeamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -35,6 +36,9 @@ public class DataUpdaterScheduler {
 
     @Autowired
     private MembershipService membershipService;
+
+    @Autowired
+    private PlayerService playerService;
 
     // (fixedRate=4*60*60*1000)
 
@@ -74,7 +78,7 @@ public class DataUpdaterScheduler {
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
     // public void updatePlayersByTeamDB() throws IOException {
-    // apiService.fetchPlayersbyTeamsAndUpdate();
+    // playerService.syncPlayersByTeamsFromExternalApiParallel();
     // }
 
     // @Scheduled(initialDelay = 2, fixedRate = 4 * 60 * 60 * 1000)
@@ -102,4 +106,5 @@ public class DataUpdaterScheduler {
     // public void updateBettingMarketDB() throws IOException {
     // bettingApiService.fetchBettingMarketByEventAndUpdateDB();
     // }
+
 }

@@ -7,13 +7,12 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
-
-import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.models.sport.Player;
 import com.example.sport_api.models.sport.TeamDetail;
 import com.example.sport_api.repositories.soccer.PlayerRepository;
-import com.example.sport_api.repositories.soccer.TeamDetailRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.TimeMeasurementUtil;
+import com.example.sport_api.util.soccerUtil.PlayerUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -26,44 +25,55 @@ public class PlayerService {
     private PlayerRepository playerRepository;
 
     @Autowired
-    private TeamDetailRepository teamDetailRepository;
+    private TeamDetailService teamDetailService;
 
-    // need to add parllel implemtation !!!!!!
     public void syncPlayersByTeamsFromExternalApi() throws JsonProcessingException {
 
         try {
-            int count = 0;
-            List<TeamDetail> teams = teamDetailRepository.findAll();
-            List<Player> players = new ArrayList<>();
+            TimeMeasurementUtil.startTimer();
+            List<TeamDetail> teams = teamDetailService.retriveAllTeamsDetails();
+            List<Player> teamsPlayers = new ArrayList<>();
             TypeReference<List<Player>> playerTypeRef = new TypeReference<>() {
             };
+            List<String> playersByTeamUrls = PlayerUtils.getPlayerApiUrls(teamDetailService);
 
-            // Partial loop for sanity checks - delete count
-            for (int i = 0; i < teams.size(); i++) {
-                TeamDetail team = teams.get(i);
-                Integer competitionId = team.getCompetition().get(0).getCompetitionId();
-                int teamId = team.getTeamId();
-                String apiUrl = ExternalSoccerApiEndpoints.PLAYERS_BY_TEAM_RESOURCE_URL +
-                        competitionId + "/" + teamId;
+            for (String playerUrl : playersByTeamUrls) {
+                teamsPlayers = ExternalApiDataFetcherUtil
+                        .fetchListDataFromExternalApi(playerUrl, playerTypeRef);
 
-                if (count == 3) {
-                    break;
-                }
+                PlayerUtils.setTeamDetailToPlayers(teamsPlayers, teams);
 
-                players = ExternalApiDataFetcherUtil
-                        .fetchListDataFromExternalApi(apiUrl, playerTypeRef);
-
-                int teamNum = i;
-                players.forEach(player -> player.setTeamDetail(teams.get(teamNum)));
-
-                playerRepository.saveAll(players);
-
-                count++;
+                PlayerUtils.savePlayersToDB(teamsPlayers, playerRepository);
 
             }
+            TimeMeasurementUtil.timeTaken();
         } catch (Exception e) {
             ExternalApiDataFetcherUtil.handleException(e);
             throw e;
+        }
+
+    }
+
+    public void syncPlayersByTeamsFromExternalApiParallel() {
+
+        try {
+            TimeMeasurementUtil.startTimer();
+            List<TeamDetail> teams = teamDetailService.retriveAllTeamsDetails();
+            List<Player> teamsPlayers = new ArrayList<>();
+            TypeReference<List<Player>> playerTypeRef = new TypeReference<>() {
+            };
+            List<String> playersByTeamUrls = PlayerUtils.getPlayerApiUrlsParallel(teamDetailService);
+
+            for (String playerUrl : playersByTeamUrls) {
+                teamsPlayers = ExternalApiDataFetcherUtil
+                        .fetchListDataFromExternalApi(playerUrl, playerTypeRef);
+
+                PlayerUtils.setTeamDetailToPlayersParallel(teamsPlayers, teams);
+                PlayerUtils.savePlayersToDB(teamsPlayers, playerRepository);
+            }
+            TimeMeasurementUtil.timeTaken();
+        } catch (Exception e) {
+            ExternalApiDataFetcherUtil.handleException(e);
         }
 
     }

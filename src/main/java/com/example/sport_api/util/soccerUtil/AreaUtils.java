@@ -3,6 +3,8 @@ package com.example.sport_api.util.soccerUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.dao.DataAccessException;
+
 import com.example.sport_api.mappers.CompetitionMapper;
 import com.example.sport_api.models.sport.Area;
 import com.example.sport_api.models.sport.AreaDto;
@@ -12,7 +14,7 @@ import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 
 public class AreaUtils {
 
-    public static void saveAreasToDatabase(List<Area> areas, AreaRepository areaRepository) {
+    public static void saveAreasToDatabase(List<Area> areas, AreaRepository areaRepository) throws DataAccessException {
         areaRepository.saveAll(areas);
     }
 

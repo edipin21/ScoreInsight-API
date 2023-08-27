@@ -1,57 +1,57 @@
-2023-08-20 16:29:09,683 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 13015 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-08-20 16:29:09,690 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-08-20 16:29:09,730 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-08-20 16:29:09,730 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-08-20 16:29:10,020 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:29:10,044 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 19 ms. Found 3 JPA repository interfaces.
-2023-08-20 16:29:10,045 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:29:10,060 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 14 ms. Found 12 JPA repository interfaces.
-2023-08-20 16:29:10,060 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:29:10,062 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
-2023-08-20 16:29:10,523 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-08-20 16:29:10,529 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:29:10,530 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-08-20 16:29:10,531 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-08-20 16:29:10,564 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-08-20 16:29:10,565 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 834 ms
-2023-08-20 16:29:10,620 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
-2023-08-20 16:29:10,641 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.6.Final
-2023-08-20 16:29:10,642 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
-2023-08-20 16:29:10,750 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:29:10,804 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:29:10,815 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
-2023-08-20 16:29:10,976 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28cfa406
-2023-08-20 16:29:10,977 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
-2023-08-20 16:29:11,088 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:29:11,383 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:29:11,416 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:29:11,437 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
-2023-08-20 16:29:11,464 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:29:11,464 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:29:11,464 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
-2023-08-20 16:29:11,485 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7f81ef81
-2023-08-20 16:29:11,486 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
-2023-08-20 16:29:11,521 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:29:11,615 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:29:11,666 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:29:11,670 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
-2023-08-20 16:29:11,691 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:29:11,692 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:29:11,692 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
-2023-08-20 16:29:11,704 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105eb493
-2023-08-20 16:29:11,704 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
-2023-08-20 16:29:11,776 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:29:11,980 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:29:12,824 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:29:12,912 INFO o.s.d.j.r.q.QueryEnhancerFactory [restartedMain] Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-08-20 16:29:13,537 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-08-20 16:29:13,543 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:29:13,551 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-08-20 16:29:13,558 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 4.14 seconds (process running for 4.666)
-2023-08-20 16:31:36,729 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-08-20 16:31:36,795 INFO o.a.j.l.DirectJDKLog [Thread-5] Pausing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:31:36,795 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping service [Tomcat]
-2023-08-20 16:31:36,812 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:31:30,048 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 17:31:30,055 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 17:31:30,093 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-27 17:31:30,093 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-27 17:31:30,350 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:31:30,374 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 19 ms. Found 3 JPA repository interfaces.
+2023-08-27 17:31:30,375 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:31:30,391 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 15 ms. Found 12 JPA repository interfaces.
+2023-08-27 17:31:30,391 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:31:30,394 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
+2023-08-27 17:31:30,916 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 17:31:30,924 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:31:30,925 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 17:31:30,926 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 17:31:30,963 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 17:31:30,964 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 870 ms
+2023-08-27 17:31:31,061 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:31:31,085 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-08-27 17:31:31,086 INFO o.h.c.Environment [restartedMain] HHH000406: Using bytecode reflection optimizer
+2023-08-27 17:31:31,203 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:31:31,258 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:31:31,269 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-08-27 17:31:31,451 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@632831db
+2023-08-27 17:31:31,452 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-08-27 17:31:31,582 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:31:31,885 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:31:31,917 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:31:31,940 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 17:31:31,967 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:31:31,967 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:31:31,967 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2023-08-27 17:31:31,985 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4bcc64bf
+2023-08-27 17:31:31,985 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2023-08-27 17:31:32,023 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:31:32,121 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:31:32,183 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:31:32,190 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:31:32,211 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:31:32,211 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:31:32,212 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2023-08-27 17:31:32,227 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b91a637
+2023-08-27 17:31:32,228 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2023-08-27 17:31:32,311 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:31:32,525 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:31:33,321 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:31:33,411 INFO o.s.d.j.r.q.QueryEnhancerFactory [restartedMain] Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-08-27 17:31:34,024 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-08-27 17:31:34,031 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:31:34,038 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-27 17:31:34,046 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 4.328 seconds (process running for 4.751)
+2023-08-27 17:32:04,042 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-08-27 17:32:04,055 INFO o.a.j.l.DirectJDKLog [Thread-5] Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:04,056 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping service [Tomcat]
+2023-08-27 17:32:04,058 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -61,7 +61,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:31:36,813 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:32:04,059 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -71,7 +71,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:31:36,819 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:32:04,059 WARN o.a.j.l.DirectJDKLog [Thread-5] The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -81,67 +81,228 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:31:36,821 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:31:36,855 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:31:36,858 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:31:36,860 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-3 - Shutdown initiated...
-2023-08-20 16:31:36,911 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-3 - Shutdown completed.
-2023-08-20 16:31:36,912 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:31:36,913 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-2 - Shutdown initiated...
-2023-08-20 16:31:36,934 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-2 - Shutdown completed.
-2023-08-20 16:31:36,934 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:31:36,935 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
-2023-08-20 16:31:36,954 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
-2023-08-20 16:31:37,264 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 13015 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-08-20 16:31:37,264 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-08-20 16:31:37,440 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:31:37,449 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 3 JPA repository interfaces.
-2023-08-20 16:31:37,450 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:31:37,463 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 13 ms. Found 12 JPA repository interfaces.
-2023-08-20 16:31:37,464 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:31:37,466 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
-2023-08-20 16:31:37,785 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-08-20 16:31:37,785 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:31:37,785 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-08-20 16:31:37,786 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-08-20 16:31:37,794 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-08-20 16:31:37,794 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 526 ms
-2023-08-20 16:31:37,806 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
-2023-08-20 16:31:37,837 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:31:37,837 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:31:37,837 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
-2023-08-20 16:31:37,936 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f24dc36
-2023-08-20 16:31:37,938 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
-2023-08-20 16:31:37,943 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:31:37,983 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:31:37,995 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:31:38,007 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
-2023-08-20 16:31:38,049 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:31:38,050 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:31:38,050 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
-2023-08-20 16:31:38,077 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@cc4581a
-2023-08-20 16:31:38,077 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
-2023-08-20 16:31:38,090 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:31:38,124 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:31:38,174 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:31:38,178 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
-2023-08-20 16:31:38,201 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:31:38,202 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:31:38,202 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
-2023-08-20 16:31:38,228 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@654e9d58
-2023-08-20 16:31:38,229 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
-2023-08-20 16:31:38,274 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:31:38,418 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:31:39,607 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:31:39,834 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-08-20 16:31:39,836 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:31:39,837 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-08-20 16:31:39,840 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 2.754 seconds (process running for 150.947)
-2023-08-20 16:31:39,840 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-08-20 16:32:23,786 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-08-20 16:32:23,834 INFO o.a.j.l.DirectJDKLog [Thread-7] Pausing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:32:23,834 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping service [Tomcat]
-2023-08-20 16:32:23,842 WARN o.a.j.l.DirectJDKLog [Thread-7] The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:32:04,060 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:04,062 INFO o.a.j.l.DirectJDKLog [Thread-5] Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:04,065 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:32:04,066 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-3 - Shutdown initiated...
+2023-08-27 17:32:04,085 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-3 - Shutdown completed.
+2023-08-27 17:32:04,085 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:32:04,085 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-2 - Shutdown initiated...
+2023-08-27 17:32:04,102 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-2 - Shutdown completed.
+2023-08-27 17:32:04,103 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:32:04,104 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2023-08-27 17:32:04,120 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2023-08-27 17:32:04,190 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 17:32:04,190 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 17:32:04,271 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:32:04,277 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
+2023-08-27 17:32:04,277 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:32:04,290 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 12 ms. Found 12 JPA repository interfaces.
+2023-08-27 17:32:04,291 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:32:04,292 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
+2023-08-27 17:32:04,367 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 17:32:04,368 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:04,368 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 17:32:04,368 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 17:32:04,376 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 17:32:04,377 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 184 ms
+2023-08-27 17:32:04,383 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:32:04,401 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:04,402 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:04,402 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
+2023-08-27 17:32:04,417 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c3b8814
+2023-08-27 17:32:04,417 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
+2023-08-27 17:32:04,421 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:04,435 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:04,443 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:32:04,453 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 17:32:04,471 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:04,471 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:04,472 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2023-08-27 17:32:04,488 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5119a2e8
+2023-08-27 17:32:04,488 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2023-08-27 17:32:04,500 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:04,530 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:04,573 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:32:04,575 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:32:04,605 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:04,605 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:04,606 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
+2023-08-27 17:32:04,651 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5f42c83d
+2023-08-27 17:32:04,651 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
+2023-08-27 17:32:04,693 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:04,895 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:05,657 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:32:05,862 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-08-27 17:32:05,864 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:05,865 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-27 17:32:05,870 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.711 seconds (process running for 36.575)
+2023-08-27 17:32:05,872 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-08-27 17:32:06,913 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,914 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,915 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,916 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,917 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,918 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:06,918 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,034 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,034 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,557 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,558 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,559 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,560 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,561 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,561 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,673 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,673 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,789 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,790 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,901 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:07,901 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,479 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,480 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,481 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,482 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [boxScore] property of the [com.example.sport_api.models.sport.Lineup] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,591 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:08,591 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:09,054 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:09,054 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:09,149 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [competition] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:09,150 WARN o.h.p.e.m.UpdateCoordinatorStandard [scheduling-1] HHH000502: The [round] property of the [com.example.sport_api.models.sport.Game] entity was modified, but it won't be updated because the property is immutable.
+2023-08-27 17:32:25,571 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-08-27 17:32:25,573 INFO o.a.j.l.DirectJDKLog [Thread-7] Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:25,573 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping service [Tomcat]
+2023-08-27 17:32:25,574 WARN o.a.j.l.DirectJDKLog [Thread-7] The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -151,7 +312,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:32:23,842 WARN o.a.j.l.DirectJDKLog [Thread-7] The web application [ROOT] appears to have started a thread named [HikariPool-5 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:32:25,575 WARN o.a.j.l.DirectJDKLog [Thread-7] The web application [ROOT] appears to have started a thread named [HikariPool-5 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -161,7 +322,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:32:23,843 WARN o.a.j.l.DirectJDKLog [Thread-7] The web application [ROOT] appears to have started a thread named [HikariPool-6 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:32:25,576 WARN o.a.j.l.DirectJDKLog [Thread-7] The web application [ROOT] appears to have started a thread named [HikariPool-6 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -171,67 +332,154 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:32:23,843 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:32:23,854 INFO o.a.j.l.DirectJDKLog [Thread-7] Destroying ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:32:23,859 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:32:23,860 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-6 - Shutdown initiated...
-2023-08-20 16:32:23,937 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-6 - Shutdown completed.
-2023-08-20 16:32:23,937 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:32:23,937 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-5 - Shutdown initiated...
-2023-08-20 16:32:23,984 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-5 - Shutdown completed.
-2023-08-20 16:32:23,984 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:32:23,986 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-4 - Shutdown initiated...
-2023-08-20 16:32:24,022 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-4 - Shutdown completed.
-2023-08-20 16:32:24,262 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 13015 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-08-20 16:32:24,262 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-08-20 16:32:24,472 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:32:24,477 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
-2023-08-20 16:32:24,478 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:32:24,511 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 33 ms. Found 12 JPA repository interfaces.
-2023-08-20 16:32:24,511 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:32:24,513 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
-2023-08-20 16:32:24,735 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-08-20 16:32:24,764 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:32:24,765 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-08-20 16:32:24,765 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-08-20 16:32:24,780 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-08-20 16:32:24,781 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 515 ms
-2023-08-20 16:32:24,787 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
-2023-08-20 16:32:24,810 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:32:24,810 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:32:24,810 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Starting...
-2023-08-20 16:32:24,844 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a314df
-2023-08-20 16:32:24,844 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Start completed.
-2023-08-20 16:32:24,850 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:32:24,871 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:32:24,896 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:32:24,913 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
-2023-08-20 16:32:24,961 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:32:24,961 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:32:24,961 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Starting...
-2023-08-20 16:32:25,028 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1fab5e9b
-2023-08-20 16:32:25,028 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Start completed.
-2023-08-20 16:32:25,042 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:32:25,114 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:32:25,205 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:32:25,210 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
-2023-08-20 16:32:25,227 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:32:25,227 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:32:25,227 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Starting...
-2023-08-20 16:32:25,245 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7dac296b
-2023-08-20 16:32:25,245 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Start completed.
-2023-08-20 16:32:25,283 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:32:25,419 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:32:26,572 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:32:26,761 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-08-20 16:32:26,765 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:32:26,766 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-08-20 16:32:26,768 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 2.58 seconds (process running for 197.891)
-2023-08-20 16:32:26,769 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-08-20 16:33:46,679 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
-2023-08-20 16:33:46,703 INFO o.a.j.l.DirectJDKLog [Thread-11] Pausing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:33:46,703 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping service [Tomcat]
-2023-08-20 16:33:46,706 WARN o.a.j.l.DirectJDKLog [Thread-11] The web application [ROOT] appears to have started a thread named [HikariPool-7 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:32:25,576 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:25,577 INFO o.a.j.l.DirectJDKLog [Thread-7] Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:25,578 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:32:25,579 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-6 - Shutdown initiated...
+2023-08-27 17:32:25,593 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-6 - Shutdown completed.
+2023-08-27 17:32:25,593 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:32:25,593 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-5 - Shutdown initiated...
+2023-08-27 17:32:25,604 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-5 - Shutdown completed.
+2023-08-27 17:32:25,605 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:32:25,605 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-4 - Shutdown initiated...
+2023-08-27 17:32:25,611 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-4 - Shutdown completed.
+2023-08-27 17:32:25,675 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 17:32:25,675 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 17:32:25,678 INFO o.h.b.i.BytecodeProviderInitiator [scheduling-1] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,678 INFO o.s.o.j.p.SpringPersistenceUnitInfo [scheduling-1] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:25,679 INFO c.z.h.HikariDataSource [scheduling-1] HikariPool-7 - Starting...
+2023-08-27 17:32:25,703 INFO c.z.h.p.HikariPool [scheduling-1] HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ad6681
+2023-08-27 17:32:25,703 INFO c.z.h.HikariDataSource [scheduling-1] HikariPool-7 - Start completed.
+2023-08-27 17:32:25,712 INFO o.h.b.i.BytecodeProviderInitiator [scheduling-1] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,738 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [scheduling-1] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:25,747 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:32:25,751 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 3 JPA repository interfaces.
+2023-08-27 17:32:25,751 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:32:25,759 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 12 JPA repository interfaces.
+2023-08-27 17:32:25,759 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:32:25,760 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
+2023-08-27 17:32:25,790 INFO o.s.o.j.AbstractEntityManagerFactoryBean [scheduling-1] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:32:25,794 INFO o.h.j.i.u.LogHelper [scheduling-1] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:32:25,809 INFO o.h.b.i.BytecodeProviderInitiator [scheduling-1] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,809 INFO o.s.o.j.p.SpringPersistenceUnitInfo [scheduling-1] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:25,809 INFO c.z.h.HikariDataSource [scheduling-1] HikariPool-8 - Starting...
+2023-08-27 17:32:25,830 INFO c.z.h.p.HikariPool [scheduling-1] HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d212e8
+2023-08-27 17:32:25,830 INFO c.z.h.HikariDataSource [scheduling-1] HikariPool-8 - Start completed.
+2023-08-27 17:32:25,831 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 17:32:25,831 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:25,831 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 17:32:25,831 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 17:32:25,837 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 17:32:25,837 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 160 ms
+2023-08-27 17:32:25,841 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:32:25,858 INFO o.h.b.i.BytecodeProviderInitiator [scheduling-1] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,860 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,860 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:25,860 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Starting...
+2023-08-27 17:32:25,902 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@589ed575
+2023-08-27 17:32:25,902 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Start completed.
+2023-08-27 17:32:25,905 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,934 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:25,943 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:32:25,964 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 17:32:25,983 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:25,983 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:25,983 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Starting...
+2023-08-27 17:32:25,997 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47420e16
+2023-08-27 17:32:25,998 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Start completed.
+2023-08-27 17:32:26,007 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:26,026 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [scheduling-1] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:26,038 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:26,097 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:32:26,099 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:32:26,132 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:26,132 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:26,132 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Starting...
+2023-08-27 17:32:26,161 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1576ab86
+2023-08-27 17:32:26,161 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Start completed.
+2023-08-27 17:32:26,204 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:26,327 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:27,418 INFO o.s.o.j.AbstractEntityManagerFactoryBean [scheduling-1] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:32:27,420 INFO o.h.j.i.u.LogHelper [scheduling-1] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:32:27,435 INFO o.h.b.i.BytecodeProviderInitiator [scheduling-1] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:27,436 INFO o.s.o.j.p.SpringPersistenceUnitInfo [scheduling-1] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:32:27,436 INFO c.z.h.HikariDataSource [scheduling-1] HikariPool-12 - Starting...
+2023-08-27 17:32:27,445 INFO c.z.h.p.HikariPool [scheduling-1] HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@609f3c1f
+2023-08-27 17:32:27,445 INFO c.z.h.HikariDataSource [scheduling-1] HikariPool-12 - Start completed.
+2023-08-27 17:32:27,448 INFO o.h.b.i.BytecodeProviderInitiator [scheduling-1] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:32:27,453 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [scheduling-1] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:32:27,458 INFO o.s.o.j.AbstractEntityManagerFactoryBean [scheduling-1] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:32:27,459 ERROR c.e.s.u.ExternalApiDataFetcherUtil [scheduling-1] Error occurred during data access: EntityManagerFactory is closed
+org.springframework.dao.InvalidDataAccessApiUsageException: EntityManagerFactory is closed
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:368) ~[spring-orm-6.0.11.jar:6.0.11]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:234) ~[spring-orm-6.0.11.jar:6.0.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.0.11.jar:6.0.11]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.0.11.jar:6.0.11]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242) ~[spring-tx-6.0.11.jar:6.0.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152) ~[spring-tx-6.0.11.jar:6.0.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:244) ~[spring-aop-6.0.11.jar:6.0.11]
+	at jdk.proxy5.$Proxy192.findByGameId(Unknown Source) ~[?:?]
+	at com.example.sport_api.services.soccer.BoxScoreService.syncBoxScoreFromExternalDB(BoxScoreService.java:61) [classes/:?]
+	at com.example.sport_api.config.DataUpdaterScheduler.updateBoxScoreDB(DataUpdaterScheduler.java:102) [classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) [spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-6.0.11.jar:6.0.11]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) [?:?]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) [?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+Caused by: java.lang.IllegalStateException: EntityManagerFactory is closed
+	at org.hibernate.internal.SessionFactoryImpl.validateNotClosed(SessionFactoryImpl.java:642) ~[hibernate-core-6.2.6.Final.jar:6.2.6.Final]
+	at org.hibernate.internal.SessionFactoryImpl.createEntityManager(SessionFactoryImpl.java:700) ~[hibernate-core-6.2.6.Final.jar:6.2.6.Final]
+	at org.hibernate.internal.SessionFactoryImpl.createEntityManager(SessionFactoryImpl.java:155) ~[hibernate-core-6.2.6.Final.jar:6.2.6.Final]
+	at jdk.internal.reflect.GeneratedMethodAccessor22.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.invokeProxyMethod(AbstractEntityManagerFactoryBean.java:519) ~[spring-orm-6.0.11.jar:6.0.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean$ManagedEntityManagerFactoryInvocationHandler.invoke(AbstractEntityManagerFactoryBean.java:733) ~[spring-orm-6.0.11.jar:6.0.11]
+	at jdk.proxy5.$Proxy177.createEntityManager(Unknown Source) ~[?:?]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:305) ~[spring-orm-6.0.11.jar:6.0.11]
+	at jdk.proxy5.$Proxy178.createNativeQuery(Unknown Source) ~[?:?]
+	at org.springframework.data.jpa.repository.query.NativeJpaQuery.createJpaQuery(NativeJpaQuery.java:74) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.jpa.repository.query.AbstractStringBasedJpaQuery.doCreateQuery(AbstractStringBasedJpaQuery.java:99) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.createQuery(AbstractJpaQuery.java:234) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:223) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:136) ~[spring-data-jpa-3.1.2.jar:3.1.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:136) ~[spring-data-commons-3.1.2.jar:3.1.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:120) ~[spring-data-commons-3.1.2.jar:3.1.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.1.2.jar:3.1.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.1.2.jar:3.1.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:72) ~[spring-data-commons-3.1.2.jar:3.1.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.11.jar:6.0.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391) ~[spring-tx-6.0.11.jar:6.0.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.11.jar:6.0.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.11.jar:6.0.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.11.jar:6.0.11]
+	... 21 more
+2023-08-27 17:32:27,570 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:32:27,749 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-08-27 17:32:27,751 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:32:27,752 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-27 17:32:27,754 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 2.096 seconds (process running for 58.458)
+2023-08-27 17:32:27,754 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-08-27 17:34:11,018 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 1 deletion, 1 modification)
+2023-08-27 17:34:11,022 INFO o.a.j.l.DirectJDKLog [Thread-11] Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:11,022 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping service [Tomcat]
+2023-08-27 17:34:11,026 WARN o.a.j.l.DirectJDKLog [Thread-11] The web application [ROOT] appears to have started a thread named [HikariPool-9 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -241,7 +489,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:33:46,707 WARN o.a.j.l.DirectJDKLog [Thread-11] The web application [ROOT] appears to have started a thread named [HikariPool-8 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:34:11,026 WARN o.a.j.l.DirectJDKLog [Thread-11] The web application [ROOT] appears to have started a thread named [HikariPool-10 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -251,7 +499,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:33:46,710 WARN o.a.j.l.DirectJDKLog [Thread-11] The web application [ROOT] appears to have started a thread named [HikariPool-9 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:34:11,028 WARN o.a.j.l.DirectJDKLog [Thread-11] The web application [ROOT] appears to have started a thread named [HikariPool-11 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -261,76 +509,264 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 16:33:46,711 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:33:46,712 INFO o.a.j.l.DirectJDKLog [Thread-11] Destroying ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:33:46,715 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:33:46,716 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-9 - Shutdown initiated...
-2023-08-20 16:33:46,765 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-9 - Shutdown completed.
-2023-08-20 16:33:46,766 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:33:46,766 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-8 - Shutdown initiated...
-2023-08-20 16:33:46,782 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-8 - Shutdown completed.
-2023-08-20 16:33:46,782 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:33:46,782 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-7 - Shutdown initiated...
-2023-08-20 16:33:46,804 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-7 - Shutdown completed.
-2023-08-20 16:33:47,108 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 13015 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-08-20 16:33:47,108 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-08-20 16:33:47,198 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:33:47,202 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
-2023-08-20 16:33:47,203 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:33:47,213 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 9 ms. Found 12 JPA repository interfaces.
-2023-08-20 16:33:47,213 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 16:33:47,214 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
-2023-08-20 16:33:47,340 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-08-20 16:33:47,340 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:33:47,341 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-08-20 16:33:47,341 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-08-20 16:33:47,347 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-08-20 16:33:47,347 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 237 ms
-2023-08-20 16:33:47,353 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
-2023-08-20 16:33:47,369 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:33:47,369 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:33:47,369 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Starting...
-2023-08-20 16:33:47,405 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6896a6e4
-2023-08-20 16:33:47,405 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Start completed.
-2023-08-20 16:33:47,409 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:33:47,420 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:33:47,433 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 16:33:47,443 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
-2023-08-20 16:33:47,460 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:33:47,460 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:33:47,461 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Starting...
-2023-08-20 16:33:47,486 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70ee9efb
-2023-08-20 16:33:47,487 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Start completed.
-2023-08-20 16:33:47,498 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:33:47,531 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:33:47,576 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 16:33:47,578 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
-2023-08-20 16:33:47,599 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:33:47,599 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 16:33:47,599 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-12 - Starting...
-2023-08-20 16:33:47,635 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@784d2996
-2023-08-20 16:33:47,635 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-12 - Start completed.
-2023-08-20 16:33:47,674 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 16:33:47,837 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 16:33:48,940 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 16:33:49,116 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-08-20 16:33:49,118 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-08-20 16:33:49,119 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-08-20 16:33:49,121 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 2.217 seconds (process running for 280.245)
-2023-08-20 16:33:49,121 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-08-20 17:07:19,942 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-10 housekeeper] HikariPool-10 - Thread starvation or clock leap detected (housekeeper delta=7m2s94ms).
-2023-08-20 17:07:19,969 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-11 housekeeper] HikariPool-11 - Thread starvation or clock leap detected (housekeeper delta=7m2s95ms).
-2023-08-20 17:07:20,180 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-12 housekeeper] HikariPool-12 - Thread starvation or clock leap detected (housekeeper delta=7m2s95ms).
-2023-08-20 17:12:15,501 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-10 housekeeper] HikariPool-10 - Thread starvation or clock leap detected (housekeeper delta=4m55s568ms).
-2023-08-20 17:12:15,525 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-11 housekeeper] HikariPool-11 - Thread starvation or clock leap detected (housekeeper delta=4m55s555ms).
-2023-08-20 17:12:15,739 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-12 housekeeper] HikariPool-12 - Thread starvation or clock leap detected (housekeeper delta=4m55s559ms).
-2023-08-20 17:17:24,072 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-10 housekeeper] HikariPool-10 - Thread starvation or clock leap detected (housekeeper delta=4m38s557ms).
-2023-08-20 17:17:24,093 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-11 housekeeper] HikariPool-11 - Thread starvation or clock leap detected (housekeeper delta=4m38s558ms).
-2023-08-20 17:17:24,293 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-12 housekeeper] HikariPool-12 - Thread starvation or clock leap detected (housekeeper delta=4m38s554ms).
-2023-08-20 17:44:20,474 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (1 addition, 0 deletions, 1 modification)
-2023-08-20 17:44:20,583 INFO o.a.j.l.DirectJDKLog [Thread-15] Pausing ProtocolHandler ["http-nio-8080"]
-2023-08-20 17:44:20,584 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping service [Tomcat]
-2023-08-20 17:44:20,608 WARN o.a.j.l.DirectJDKLog [Thread-15] The web application [ROOT] appears to have started a thread named [HikariPool-10 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 17:34:11,029 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:11,033 INFO o.a.j.l.DirectJDKLog [Thread-11] Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:11,034 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:34:11,035 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-11 - Shutdown initiated...
+2023-08-27 17:34:11,047 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-11 - Shutdown completed.
+2023-08-27 17:34:11,047 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:34:11,047 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-10 - Shutdown initiated...
+2023-08-27 17:34:11,059 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-10 - Shutdown completed.
+2023-08-27 17:34:11,059 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:34:11,059 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-9 - Shutdown initiated...
+2023-08-27 17:34:11,067 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-9 - Shutdown completed.
+2023-08-27 17:34:11,353 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 17:34:11,354 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 17:34:11,484 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:11,493 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2023-08-27 17:34:11,493 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:11,513 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 19 ms. Found 12 JPA repository interfaces.
+2023-08-27 17:34:11,513 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:11,514 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
+2023-08-27 17:34:11,667 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 17:34:11,667 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:11,667 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 17:34:11,667 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 17:34:11,672 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 17:34:11,673 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 317 ms
+2023-08-27 17:34:11,678 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:34:11,694 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:11,694 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:11,694 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Starting...
+2023-08-27 17:34:11,715 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7282659c
+2023-08-27 17:34:11,715 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Start completed.
+2023-08-27 17:34:11,718 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:11,729 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:11,737 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:34:11,747 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 17:34:11,761 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:11,762 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:11,762 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-14 - Starting...
+2023-08-27 17:34:11,776 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7a81e39
+2023-08-27 17:34:11,776 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-14 - Start completed.
+2023-08-27 17:34:11,786 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:11,814 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:11,866 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:34:11,868 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:34:11,883 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:11,883 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:11,883 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-15 - Starting...
+2023-08-27 17:34:11,898 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@703a65d5
+2023-08-27 17:34:11,898 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-15 - Start completed.
+2023-08-27 17:34:11,930 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:12,035 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:12,898 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:34:12,955 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataUpdaterScheduler' defined in file [/Users/eddieabramov/Desktop/spring/sport_api/target/classes/com/example/sport_api/config/DataUpdaterScheduler.class]: Failed to instantiate [com.example.sport_api.config.DataUpdaterScheduler]: Constructor threw exception
+2023-08-27 17:34:12,955 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:34:12,955 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-15 - Shutdown initiated...
+2023-08-27 17:34:12,963 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-15 - Shutdown completed.
+2023-08-27 17:34:12,963 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:34:12,963 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-14 - Shutdown initiated...
+2023-08-27 17:34:12,970 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-14 - Shutdown completed.
+2023-08-27 17:34:12,970 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:34:12,970 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Shutdown initiated...
+2023-08-27 17:34:12,976 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Shutdown completed.
+2023-08-27 17:34:12,977 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2023-08-27 17:34:12,980 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-08-27 17:34:12,987 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataUpdaterScheduler' defined in file [/Users/eddieabramov/Desktop/spring/sport_api/target/classes/com/example/sport_api/config/DataUpdaterScheduler.class]: Failed to instantiate [com.example.sport_api.config.DataUpdaterScheduler]: Constructor threw exception
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1314) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1199) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-3.1.2.jar:3.1.2]
+	at com.example.sport_api.SportApiApplication.main(SportApiApplication.java:19) [classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.2.jar:3.1.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.sport_api.config.DataUpdaterScheduler]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:224) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1308) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 22 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import com.example.sport_api.SoccerDataSyncService cannot be resolved
+	SoccerDataSyncService cannot be resolved to a type
+
+	at com.example.sport_api.config.DataUpdaterScheduler.<init>(DataUpdaterScheduler.java:9) ~[classes/:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:198) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1308) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 22 more
+2023-08-27 17:34:28,650 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 17:34:28,651 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 17:34:28,711 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:28,729 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 17 ms. Found 3 JPA repository interfaces.
+2023-08-27 17:34:28,729 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:28,747 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 17 ms. Found 12 JPA repository interfaces.
+2023-08-27 17:34:28,747 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:28,748 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 0 ms. Found 1 JPA repository interfaces.
+2023-08-27 17:34:28,818 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 17:34:28,819 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:28,819 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 17:34:28,819 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 17:34:28,824 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 17:34:28,825 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 173 ms
+2023-08-27 17:34:28,829 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:34:28,844 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:28,844 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:28,844 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-16 - Starting...
+2023-08-27 17:34:28,859 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-16 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1afe7f2
+2023-08-27 17:34:28,859 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-16 - Start completed.
+2023-08-27 17:34:28,864 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:28,874 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:28,882 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:34:28,891 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 17:34:28,906 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:28,906 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:28,907 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-17 - Starting...
+2023-08-27 17:34:28,921 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-17 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7efe1121
+2023-08-27 17:34:28,921 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-17 - Start completed.
+2023-08-27 17:34:28,929 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:28,957 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:29,016 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:34:29,019 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:34:29,036 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:29,037 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:29,037 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-18 - Starting...
+2023-08-27 17:34:29,048 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-18 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7dad96b9
+2023-08-27 17:34:29,048 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-18 - Start completed.
+2023-08-27 17:34:29,087 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:29,233 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:30,158 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:34:30,213 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataUpdaterScheduler' defined in file [/Users/eddieabramov/Desktop/spring/sport_api/target/classes/com/example/sport_api/config/DataUpdaterScheduler.class]: Failed to instantiate [com.example.sport_api.config.DataUpdaterScheduler]: Constructor threw exception
+2023-08-27 17:34:30,214 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:34:30,214 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-18 - Shutdown initiated...
+2023-08-27 17:34:30,221 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-18 - Shutdown completed.
+2023-08-27 17:34:30,221 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:34:30,221 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-17 - Shutdown initiated...
+2023-08-27 17:34:30,227 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-17 - Shutdown completed.
+2023-08-27 17:34:30,227 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:34:30,227 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-16 - Shutdown initiated...
+2023-08-27 17:34:30,233 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-16 - Shutdown completed.
+2023-08-27 17:34:30,233 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2023-08-27 17:34:30,236 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-08-27 17:34:30,237 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataUpdaterScheduler' defined in file [/Users/eddieabramov/Desktop/spring/sport_api/target/classes/com/example/sport_api/config/DataUpdaterScheduler.class]: Failed to instantiate [com.example.sport_api.config.DataUpdaterScheduler]: Constructor threw exception
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1314) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1199) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-3.1.2.jar:3.1.2]
+	at com.example.sport_api.SportApiApplication.main(SportApiApplication.java:19) [classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.1.2.jar:3.1.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.sport_api.config.DataUpdaterScheduler]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:224) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1308) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 22 more
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	SoccerDataSyncService cannot be resolved to a type
+
+	at com.example.sport_api.config.DataUpdaterScheduler.<init>(DataUpdaterScheduler.java:23) ~[classes/:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:198) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1308) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 22 more
+2023-08-27 17:34:31,673 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 17:34:31,673 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 17:34:31,722 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:31,724 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 2 ms. Found 3 JPA repository interfaces.
+2023-08-27 17:34:31,724 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:31,732 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 12 JPA repository interfaces.
+2023-08-27 17:34:31,732 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 17:34:31,734 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
+2023-08-27 17:34:31,785 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 17:34:31,785 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:31,785 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 17:34:31,785 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 17:34:31,790 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 17:34:31,790 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 116 ms
+2023-08-27 17:34:31,794 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 17:34:31,843 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:31,843 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:31,843 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-19 - Starting...
+2023-08-27 17:34:31,865 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-19 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4333eb82
+2023-08-27 17:34:31,866 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-19 - Start completed.
+2023-08-27 17:34:31,885 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:31,894 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:31,903 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 17:34:31,914 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 17:34:31,939 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:31,940 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:31,940 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-20 - Starting...
+2023-08-27 17:34:31,957 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-20 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19f94d82
+2023-08-27 17:34:31,957 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-20 - Start completed.
+2023-08-27 17:34:31,967 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:32,029 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:32,227 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 17:34:32,230 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 17:34:32,244 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:32,244 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 17:34:32,244 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-21 - Starting...
+2023-08-27 17:34:32,296 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-21 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c17658a
+2023-08-27 17:34:32,296 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-21 - Start completed.
+2023-08-27 17:34:32,338 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 17:34:32,470 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 17:34:33,350 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 17:34:33,513 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-08-27 17:34:33,515 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-27 17:34:33,516 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-27 17:34:33,518 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 1.855 seconds (process running for 184.222)
+2023-08-27 17:34:33,518 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2023-08-27 18:24:07,867 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2023-08-27 18:24:07,875 INFO o.a.j.l.DirectJDKLog [Thread-15] Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-27 18:24:07,875 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping service [Tomcat]
+2023-08-27 18:24:07,888 WARN o.a.j.l.DirectJDKLog [Thread-15] The web application [ROOT] appears to have started a thread named [HikariPool-19 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -340,7 +776,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 17:44:20,608 WARN o.a.j.l.DirectJDKLog [Thread-15] The web application [ROOT] appears to have started a thread named [HikariPool-11 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 18:24:07,889 WARN o.a.j.l.DirectJDKLog [Thread-15] The web application [ROOT] appears to have started a thread named [HikariPool-20 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -350,7 +786,7 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 17:44:20,609 WARN o.a.j.l.DirectJDKLog [Thread-15] The web application [ROOT] appears to have started a thread named [HikariPool-12 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-08-27 18:24:07,890 WARN o.a.j.l.DirectJDKLog [Thread-15] The web application [ROOT] appears to have started a thread named [HikariPool-21 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.5/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.5/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.5/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -360,72 +796,60 @@
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.5/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.5/java.lang.Thread.run(Thread.java:833)
-2023-08-20 17:44:20,612 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping ProtocolHandler ["http-nio-8080"]
-2023-08-20 17:44:20,615 INFO o.a.j.l.DirectJDKLog [Thread-15] Destroying ProtocolHandler ["http-nio-8080"]
-2023-08-20 17:44:20,629 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 17:44:20,655 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-12 - Shutdown initiated...
-2023-08-20 17:44:20,724 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-12 - Shutdown completed.
-2023-08-20 17:44:20,725 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 17:44:20,727 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-11 - Shutdown initiated...
-2023-08-20 17:44:20,775 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-11 - Shutdown completed.
-2023-08-20 17:44:20,775 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 17:44:20,777 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-10 - Shutdown initiated...
-2023-08-20 17:44:20,809 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-10 - Shutdown completed.
-2023-08-20 17:44:21,140 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 13015 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-08-20 17:44:21,141 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-08-20 17:44:21,404 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 17:44:21,414 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 9 ms. Found 3 JPA repository interfaces.
-2023-08-20 17:44:21,414 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 17:44:21,449 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 34 ms. Found 12 JPA repository interfaces.
-2023-08-20 17:44:21,449 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-20 17:44:21,452 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interfaces.
-2023-08-20 17:44:21,577 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2023-08-20 17:44:21,578 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2023-08-20 17:44:21,578 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2023-08-20 17:44:21,578 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-08-20 17:44:21,587 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-08-20 17:44:21,587 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 442 ms
-2023-08-20 17:44:21,593 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
-2023-08-20 17:44:21,637 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 17:44:21,639 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 17:44:21,640 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Starting...
-2023-08-20 17:44:21,687 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@50401b1c
-2023-08-20 17:44:21,688 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Start completed.
-2023-08-20 17:44:21,695 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 17:44:21,715 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 17:44:21,765 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 17:44:21,779 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
-2023-08-20 17:44:21,811 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 17:44:21,811 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 17:44:21,811 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-14 - Starting...
-2023-08-20 17:44:21,846 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c5e4e01
-2023-08-20 17:44:21,846 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-14 - Start completed.
-2023-08-20 17:44:21,864 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 17:44:21,929 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 17:44:22,029 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 17:44:22,032 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
-2023-08-20 17:44:22,054 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 17:44:22,054 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-20 17:44:22,054 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-15 - Starting...
-2023-08-20 17:44:22,072 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62f4ccf3
-2023-08-20 17:44:22,073 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-15 - Start completed.
-2023-08-20 17:44:22,109 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
-2023-08-20 17:44:22,232 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-20 17:44:23,732 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 17:44:24,117 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-08-20 17:44:24,123 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2023-08-20 17:44:24,126 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2023-08-20 17:44:24,129 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 3.026 seconds (process running for 3609.042)
-2023-08-20 17:44:24,130 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2023-08-20 18:11:08,061 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-15 housekeeper] HikariPool-15 - Thread starvation or clock leap detected (housekeeper delta=4m45s630ms).
-2023-08-20 18:11:07,684 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-13 housekeeper] HikariPool-13 - Thread starvation or clock leap detected (housekeeper delta=4m45s532ms).
-2023-08-20 18:11:08,085 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-14 housekeeper] HikariPool-14 - Thread starvation or clock leap detected (housekeeper delta=4m45s860ms).
-2023-08-20 18:12:10,476 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'soccer'
-2023-08-20 18:12:10,486 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-15 - Shutdown initiated...
-2023-08-20 18:12:10,562 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-15 - Shutdown completed.
-2023-08-20 18:12:10,563 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'betting'
-2023-08-20 18:12:10,565 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-14 - Shutdown initiated...
-2023-08-20 18:12:10,612 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-14 - Shutdown completed.
-2023-08-20 18:12:10,613 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'users'
-2023-08-20 18:12:10,614 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-13 - Shutdown initiated...
-2023-08-20 18:12:10,638 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-13 - Shutdown completed.
+2023-08-27 18:24:07,890 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-27 18:24:07,896 INFO o.a.j.l.DirectJDKLog [Thread-15] Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-27 18:24:07,897 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 18:24:07,899 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-21 - Shutdown initiated...
+2023-08-27 18:24:07,921 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-21 - Shutdown completed.
+2023-08-27 18:24:07,922 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 18:24:07,922 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-20 - Shutdown initiated...
+2023-08-27 18:24:07,948 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-20 - Shutdown completed.
+2023-08-27 18:24:07,948 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 18:24:07,948 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-19 - Shutdown initiated...
+2023-08-27 18:24:07,969 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-19 - Shutdown completed.
+2023-08-27 18:24:08,170 INFO o.s.b.StartupInfoLogger [restartedMain] Starting SportApiApplication using Java 17.0.5 with PID 47462 (/Users/eddieabramov/Desktop/spring/sport_api/target/classes started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-08-27 18:24:08,173 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-27 18:24:08,248 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 18:24:08,251 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 2 ms. Found 3 JPA repository interfaces.
+2023-08-27 18:24:08,251 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 18:24:08,267 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 15 ms. Found 12 JPA repository interfaces.
+2023-08-27 18:24:08,267 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-27 18:24:08,268 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
+2023-08-27 18:24:08,370 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2023-08-27 18:24:08,370 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-27 18:24:08,370 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-08-27 18:24:08,370 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-27 18:24:08,376 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-27 18:24:08,377 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 202 ms
+2023-08-27 18:24:08,381 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-08-27 18:24:08,418 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 18:24:08,418 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 18:24:08,419 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-22 - Starting...
+2023-08-27 18:24:08,522 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-22 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2cf2cc89
+2023-08-27 18:24:08,522 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-22 - Start completed.
+2023-08-27 18:24:08,527 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 18:24:08,582 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 18:24:08,598 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-08-27 18:24:08,607 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-08-27 18:24:08,626 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 18:24:08,626 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 18:24:08,626 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-23 - Starting...
+2023-08-27 18:24:08,650 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-23 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6831da42
+2023-08-27 18:24:08,651 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-23 - Start completed.
+2023-08-27 18:24:08,699 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 18:24:08,824 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 18:24:08,996 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-08-27 18:24:08,998 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-08-27 18:24:09,018 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 18:24:09,018 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-27 18:24:09,019 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-24 - Starting...
+2023-08-27 18:24:09,048 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-24 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ead87e9
+2023-08-27 18:24:09,048 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-24 - Start completed.
+2023-08-27 18:24:09,080 INFO o.h.b.i.BytecodeProviderInitiator [restartedMain] HHH000021: Bytecode provider name : bytebuddy
+2023-08-27 18:24:09,191 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-27 18:24:10,160 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-08-27 18:24:10,338 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-08-27 18:24:10,340 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-27 18:24:10,343 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-27 18:24:10,345 INFO o.s.b.StartupInfoLogger [restartedMain] Started SportApiApplication in 2.254 seconds (process running for 3160.998)
+2023-08-27 18:24:10,346 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged

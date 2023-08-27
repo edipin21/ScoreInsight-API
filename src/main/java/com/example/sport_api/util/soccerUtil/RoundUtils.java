@@ -2,7 +2,10 @@ package com.example.sport_api.util.soccerUtil;
 
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
+
 import com.example.sport_api.models.sport.Round;
+import com.example.sport_api.repositories.soccer.RoundRepository;
 
 public class RoundUtils {
 
@@ -33,6 +36,10 @@ public class RoundUtils {
     private static void copyStandingsAndTeamSeasonsToRound(Round round, Round standingsRound, Round teamSeasonRound) {
         round.setStandings(standingsRound.getStandings());
         round.setTeamSeasons(teamSeasonRound.getTeamSeasons());
+    }
+
+    public static void saveRoundsToDB(RoundRepository roundRepository, List<Round> rounds) throws DataAccessException {
+        roundRepository.saveAll(rounds);
     }
 
 }

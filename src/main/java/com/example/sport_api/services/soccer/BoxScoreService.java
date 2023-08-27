@@ -1,7 +1,9 @@
 package com.example.sport_api.services.soccer;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.example.sport_api.BoxScoreIdGenerator;
+import com.example.sport_api.constants.ExternalSoccerApiEndpoints;
 import com.example.sport_api.models.sport.BoxScore;
+import com.example.sport_api.models.sport.PlayerGame;
 import com.example.sport_api.repositories.soccer.BoxScoreRepository;
+import com.example.sport_api.util.ExternalApiDataFetcherUtil;
+import com.example.sport_api.util.soccerUtil.BoxScoreUtils;
+import com.example.sport_api.util.soccerUtil.PlayerGameUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class BoxScoreService {
@@ -19,6 +30,44 @@ public class BoxScoreService {
 
     @Autowired
     private BoxScoreRepository boxScoreRepository;
+
+    @Autowired
+    private GameService gameService;
+
+    public void syncBoxScoreFromExternalDB() throws JsonProcessingException {
+
+        try {
+
+            Map<Integer, Integer> map = gameService.getGameIdAndCompetitionMap();
+            List<BoxScore> boxScores = new ArrayList<>();
+
+            TypeReference<List<BoxScore>> boxScoreTypeRef = new TypeReference<>() {
+            };
+
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+
+                Integer gameId = entry.getKey();
+                Integer competition = entry.getValue();
+
+                String boxScoreURlEndPoint = ExternalSoccerApiEndpoints.BOX_SCORE_RESOURCE_URL
+                        + competition
+                        + "/"
+                        + gameId;
+
+                boxScores = ExternalApiDataFetcherUtil.fetchListDataFromExternalApi(boxScoreURlEndPoint,
+                        boxScoreTypeRef);
+
+                BoxScore currentBoxScore = boxScores.get(0);
+                BoxScore existingBoxScore = boxScoreRepository.findByGameId(gameId);
+
+                BoxScoreUtils.saveOrUpdateBoxScore(currentBoxScore, existingBoxScore, boxScoreRepository, competition);
+
+            }
+
+        } catch (Exception e) {
+            ExternalApiDataFetcherUtil.handleException(e);
+        }
+    }
 
     public BoxScore getBoxScoreByCompetitionAndGameId(Integer competition, Integer gameId) {
 

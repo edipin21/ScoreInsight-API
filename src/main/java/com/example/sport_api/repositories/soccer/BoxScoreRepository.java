@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.sport_api.models.sport.BoxScore;
 
-public interface BoxScoreRepository extends JpaRepository<BoxScore, Long> {
+public interface BoxScoreRepository extends JpaRepository<BoxScore, Integer> {
 
     @Query(value = "SELECT * FROM BoxScore WHERE game_GameId = :gameId", nativeQuery = true)
     BoxScore findByGameId(@Param("gameId") Integer gameId);

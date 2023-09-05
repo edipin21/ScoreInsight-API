@@ -25,8 +25,9 @@ import jakarta.persistence.OneToOne;
         "clockDisplay", "isClosed", "homeTeamFormation", "awayTeamFormation" })
 @Entity
 public class Game {
+
     @Id
-    private Integer GameId;
+    private int GameId;
     @Column(name = "round_id")
     private Integer RoundId;
     private Integer Season;
@@ -97,7 +98,8 @@ public class Game {
         super();
     }
 
-    public Game(int gameId, Integer roundId, Integer season, Integer seasonType, String groupName, Integer awayTeamId,
+    public Game(int gameId, Integer roundId, Integer season, Integer seasonType, String groupName,
+            Integer awayTeamId,
             Integer homeTeamId, Integer venueId, Date day, Date dateTime, String status, Integer week, String period,
             Integer clock, String winner, String venueType, String awayTeamKey, String awayTeamName,
             String awayTeamCountryCode, Integer awayTeamScore, Integer awayTeamScorePeriod1,
@@ -197,16 +199,6 @@ public class Game {
 
     public void setSeasonType(Integer seasonType) {
         SeasonType = seasonType;
-    }
-
-    @JsonProperty("Group")
-    public String getGroupName() {
-        return GroupName;
-    }
-
-    @JsonProperty("Group")
-    public void setGroupName(String groupName) {
-        GroupName = groupName;
     }
 
     public Integer getAwayTeamId() {
@@ -609,8 +601,14 @@ public class Game {
         this.competition = competition;
     }
 
-    public void setGameId(Integer gameId) {
-        GameId = gameId;
+    @JsonProperty("Group")
+    public String getGroupName() {
+        return GroupName;
+    }
+
+    @JsonProperty("Group")
+    public void setGroupName(String groupName) {
+        GroupName = groupName;
     }
 
 }

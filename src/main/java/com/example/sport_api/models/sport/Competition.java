@@ -44,7 +44,6 @@ public class Competition {
     private Season CurrentSeason;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // CompetitionDetail
-    // @JoinColumn(name = "competition_id")
     private List<TeamDetail> Teams;
 
     @OneToMany(fetch = FetchType.EAGER) // CompetitionDetail

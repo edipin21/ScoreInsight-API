@@ -1,7 +1,6 @@
 package com.example.sport_api.services.betting;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;

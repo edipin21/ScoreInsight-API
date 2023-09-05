@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.sport_api.models.sport.PlayerGame;
 
-public interface playerGameRepository extends JpaRepository<PlayerGame, Integer> {
+public interface PlayerGameRepository extends JpaRepository<PlayerGame, Integer> {
 
     @Query(value = "SELECT * FROM PlayerGame WHERE competition = :competition AND DateTime = :date", nativeQuery = true)
     List<PlayerGame> findByCompetitionAndDate(@Param("competition") Integer competition, @Param("date") Date date);

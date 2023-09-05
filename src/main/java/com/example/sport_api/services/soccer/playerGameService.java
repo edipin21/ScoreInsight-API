@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import com.example.sport_api.models.sport.PlayerGame;
-import com.example.sport_api.repositories.soccer.playerGameRepository;
+import com.example.sport_api.repositories.soccer.PlayerGameRepository;
 
 @Service
 public class playerGameService {
@@ -16,7 +16,7 @@ public class playerGameService {
     private static final Logger logger = LogManager.getLogger(playerGameService.class);
 
     @Autowired
-    private playerGameRepository playerGameRepository;
+    private PlayerGameRepository playerGameRepository;
 
     public List<PlayerGame> getPlayerGameStatByCompetitionAndDate(Integer competition, String date) {
         try {

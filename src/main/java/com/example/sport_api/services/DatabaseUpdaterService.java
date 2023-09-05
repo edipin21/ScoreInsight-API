@@ -167,10 +167,10 @@ public class DatabaseUpdaterService {
 
     // }
 
-    @Async
-    @Scheduled(fixedDelay = 5000)
-    public void updateBettingDBEvery10Min() {
-        // bettingEventService.syncBettingEventesFromExternalApi();
-        bettingMarketService.syncBettingMarketsFromExternalApi();
-    }
+    // @Async
+    // @Scheduled(fixedDelay = 5000)
+    // public void updateBettingDBEvery10Min() {
+    // // bettingEventService.syncBettingEventesFromExternalApi();
+    // bettingMarketService.syncBettingMarketsFromExternalApi();
+    // }
 }

@@ -24,12 +24,12 @@ import jakarta.persistence.Id;
 public class PlayerGame {
 
     @Id
+    private Integer PlayerId;
     private Integer StatId;
     private Integer SeasonType;
     private Integer Season;
     private Integer RoundId;
     private Integer TeamId;
-    private Integer PlayerId;
     private String Name;
     private String ShortName;
     private String Team;

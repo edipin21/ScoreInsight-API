@@ -25,6 +25,9 @@ API documentation, facilitating seamless integration for developers.
 * **Data Persistence and Efficiency:** JPA (Java Persistence API) and Hibernate are at the heart of 
 this project, guaranteeing optimal data persistence and efficiency.
 
+* **Asynchronous Data Retrieval:** Data retrieval from the external API is implemented asynchronously,
+ensuring efficient and non-blocking operations.
+
 * **Testing Rigor:** JUnit testing is rigorously implemented to validate the reliability and accuracy 
 of the system.
 

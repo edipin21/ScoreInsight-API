@@ -10,7 +10,7 @@ external API to source data, which is then meticulously stored and managed withi
 SQL databases.
 
 ### Core Features
-***Football Data Excellence:** This API excels at retrieving, processing, and delivering football 
+**+Football Data Excellence:** This API excels at retrieving, processing, and delivering football 
 game results, statistical analyses, and vital gambling information.
 
 Robust Data Management: Data integrity and accessibility are assured through Dockerized SQL databases,

@@ -61,7 +61,11 @@ the accessible Swagger documentation.
 6. **Quality Assurance:** Maintain the project's integrity by executing the suite of JUnit tests
 provided.
 
+### Project Usage
 
+This project is open for public use, and you are welcome to use it for your own purposes or as a reference. There are no specific licensing restrictions, and you are not required to seek permission to use or modify it.
+
+If you have any questions or need assistance, please feel free to contact me.
 
 
 ### Contact Information

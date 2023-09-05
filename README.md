@@ -71,3 +71,10 @@ If you have any questions or need assistance, please feel free to contact me.
 ### Contact Information
 For inquiries, assistance, or collaboration opportunities, please reach out to ediabc11@gmail.com
 
+You can also find me on GitHub:https://github.com/edipin21
+
+Connect with me on LinkedIn:https://www.linkedin.com/in/eddie-abramov/
+
+
+
+

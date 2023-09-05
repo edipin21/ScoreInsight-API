@@ -1,10 +1,10 @@
-***Poject Overview***
+#**Project Overview**#
 
 Project Name: sport_api
 Introduction
 This Java Spring project represents a sophisticated API meticulously designed to deliver precise football game results, comprehensive statistical insights, and crucial gambling data. Leveraging cutting-edge technologies and methodologies, it seamlessly interfaces with an external API to source data, which is then meticulously stored and managed within Dockerized SQL databases.
 
-Core Features
+**Core Features**
 Football Data Excellence: This API excels at retrieving, processing, and delivering football game results, statistical analyses, and vital gambling information.
 Robust Data Management: Data integrity and accessibility are assured through Dockerized SQL databases, ensuring secure and efficient data storage.
 Data Security: Employing Spring Security, this project prioritizes data protection, safeguarding sensitive information from unauthorized access.

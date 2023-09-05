@@ -11,7 +11,6 @@ import com.example.sport_api.models.sport.AreaDto;
 import com.example.sport_api.repositories.soccer.AreaRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.soccerUtil.AreaUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +23,7 @@ public class AreaService {
     @Autowired
     private AreaRepository areaRepository;
 
-    public void syncAreasFromExternalApi() throws JsonProcessingException {
+    public void syncAreasFromExternalApi() {
         try {
             TypeReference<List<Area>> areaTypeRef = new TypeReference<>() {
             };

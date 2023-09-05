@@ -1,6 +1,5 @@
 package com.example.sport_api.services.soccer;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +20,6 @@ import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.TimeMeasurementUtil;
 import com.example.sport_api.util.soccerUtil.CompetitionDtoUtils;
 import com.example.sport_api.util.soccerUtil.CompetitionUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +41,7 @@ public class CompetitionService {
     @Autowired
     private TeamDetailRepository teamDetailRepository;
 
-    public void syncCompetitionsFromExternalApi() throws JsonProcessingException {
+    public void syncCompetitionsFromExternalApi() {
 
         try {
             TimeMeasurementUtil.startTimer();
@@ -65,7 +63,7 @@ public class CompetitionService {
 
     }
 
-    public void syncCompetitionsFixturesFromExternalApi() throws JsonProcessingException, IOException {
+    public void syncCompetitionsFixturesFromExternalApi() {
 
         try {
 
@@ -85,11 +83,10 @@ public class CompetitionService {
             TimeMeasurementUtil.timeTaken();
         } catch (Exception e) {
             CompetitionUtils.handleExternalApiException(e);
-            throw e;
         }
     }
 
-    public void syncCompetitionsFixturesFromExternalApiAsyncParallel() throws JsonProcessingException, IOException {
+    public void syncCompetitionsFixturesFromExternalApiAsyncParallel() {
         try {
             TimeMeasurementUtil.startTimer();
             List<Integer> competitionIds = getSortedCompetitionIds();

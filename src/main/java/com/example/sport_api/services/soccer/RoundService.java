@@ -12,7 +12,6 @@ import com.example.sport_api.models.sport.Round;
 import com.example.sport_api.repositories.soccer.RoundRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.soccerUtil.RoundUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Service
@@ -28,7 +27,7 @@ public class RoundService {
     @Autowired
     private CompetitionService competitionService;
 
-    public void syncScheduleAndStandingsAndTeamSeasonFromExternalApi() throws JsonProcessingException {
+    public void syncScheduleAndStandingsAndTeamSeasonFromExternalApi() {
 
         try {
 

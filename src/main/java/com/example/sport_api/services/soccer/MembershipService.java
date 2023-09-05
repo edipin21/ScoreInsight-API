@@ -16,7 +16,6 @@ import com.example.sport_api.repositories.soccer.MembershipRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.TimeMeasurementUtil;
 import com.example.sport_api.util.soccerUtil.MembershipUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Service
@@ -30,7 +29,7 @@ public class MembershipService {
     @Autowired
     private CompetitionService competitionService;
 
-    public void syncActiveMembershipsFromExternalApi() throws JsonProcessingException {
+    public void syncActiveMembershipsFromExternalApi() {
 
         try {
             List<Integer> competitioIntegers = competitionService.getSortedCompetitionIds();
@@ -56,7 +55,7 @@ public class MembershipService {
 
     }
 
-    public void syncActiveMembershipsFromExternalApiParallel() throws JsonProcessingException {
+    public void syncActiveMembershipsFromExternalApiParallel() {
 
         try {
 
@@ -85,7 +84,7 @@ public class MembershipService {
         }
     }
 
-    public void syncRecentlyChangedMembershipsFromExternalApi() throws JsonProcessingException {
+    public void syncRecentlyChangedMembershipsFromExternalApi() {
 
         try {
             List<Membership> recentlyChangedMemberships = new ArrayList<>();
@@ -116,7 +115,7 @@ public class MembershipService {
         }
     }
 
-    public void syncRecentlyChangedMembershipsFromExternalApiParallel() throws JsonProcessingException {
+    public void syncRecentlyChangedMembershipsFromExternalApiParallel() {
 
         try {
             final int NUM_OF_DAYS = 30;

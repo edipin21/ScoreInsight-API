@@ -13,9 +13,7 @@ import com.example.sport_api.models.sport.Team;
 import com.example.sport_api.repositories.soccer.TeamRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.soccerUtil.TeamUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Service
 public class TeamService {
@@ -25,8 +23,7 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public void syncTeamsFromExternalApi() throws JsonMappingException,
-            JsonProcessingException {
+    public void syncTeamsFromExternalApi() {
 
         try {
             TypeReference<List<Team>> teamTypeRef = new TypeReference<>() {

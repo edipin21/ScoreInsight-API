@@ -13,7 +13,6 @@ import com.example.sport_api.repositories.soccer.PlayerRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.TimeMeasurementUtil;
 import com.example.sport_api.util.soccerUtil.PlayerUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Service
@@ -27,7 +26,7 @@ public class PlayerService {
     @Autowired
     private TeamDetailService teamDetailService;
 
-    public void syncPlayersByTeamsFromExternalApi() throws JsonProcessingException {
+    public void syncPlayersByTeamsFromExternalApi() {
 
         try {
             TimeMeasurementUtil.startTimer();

@@ -11,7 +11,6 @@ import com.example.sport_api.models.sport.Venue;
 import com.example.sport_api.repositories.soccer.VenueRepository;
 import com.example.sport_api.util.ExternalApiDataFetcherUtil;
 import com.example.sport_api.util.soccerUtil.VenueUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Service
@@ -22,7 +21,7 @@ public class VenueService {
     @Autowired
     private VenueRepository venueRepository;
 
-    public void fetchVenuesAndUpdate() throws JsonProcessingException {
+    public void syncVenuesFromExternalApi() {
         try {
             String VenuesApiUrl = ExternalSoccerApiEndpoints.VENUES_RESOURCE_URL;
             TypeReference<List<Venue>> venueTypeRef = new TypeReference<>() {

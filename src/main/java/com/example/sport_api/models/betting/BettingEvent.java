@@ -45,8 +45,8 @@ public class BettingEvent {
     private int HomeRotationNumber;
     private int CompetitionId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "BettingEventID")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "bettingEventID")
     private List<BettingMarket> BettingMarkets;
 
     public BettingEvent() {

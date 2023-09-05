@@ -73,7 +73,7 @@ For inquiries, assistance, or collaboration opportunities, please reach out to e
 
 You can also find me on GitHub: https://github.com/edipin21
 
-Connect with me on LinkedIn: https://www.linkedin.com/in/eddie-abramov/
+Connect with me on LinkedIn: https://www.linkedin.com/in/eddie-abramov
 
 
 

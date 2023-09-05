@@ -79,6 +79,7 @@ You can also find me on GitHub: https://github.com/edipin21
 Connect with me on LinkedIn: https://www.linkedin.com/in/eddie-abramov
 
 ![Swagger Screenshot]![Screenshot 2023-09-05 at 21 02 03](https://github.com/edipin21/sport_api/assets/62808630/d9b6c426-61c0-4dc9-9969-4d7c2e4888bf)
+![Screenshot 2023-09-05 at 21 02 18](https://github.com/edipin21/sport_api/assets/62808630/3d51335b-f673-4103-8f1c-aa586739c9a3)
 
 
 

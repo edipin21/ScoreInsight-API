@@ -33,8 +33,11 @@ of the system.
 
 * **Logging:** The project utilizes a logging system to provide detailed information and monitoring of various operations.
 
-* **JSON Data Handling:** ObjectMapper is employed for efficient conversion between JSON data and Java objects, ensuring seamless interaction with JSON data files and database records.
+* **JSON Data Handling:** ObjectMapper is employed for efficient conversion between JSON data and Java objects,
+ensuring seamless interaction with JSON data files and database records.
 
+* **Environment Configuration:** This project follows best practices for configuration management by utilizing a `.env` file to
+store environment-specific variables, enhancing security and maintainability.
 
 
 ### Key Technologies

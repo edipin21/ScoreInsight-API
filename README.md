@@ -31,6 +31,8 @@ ensuring efficient and non-blocking operations.
 * **Testing Rigor:** JUnit testing is rigorously implemented to validate the reliability and accuracy 
 of the system.
 
+* **Logging:** The project utilizes a logging system to provide detailed information and monitoring of various operations.
+
 
 ### Key Technologies
 

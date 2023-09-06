@@ -33,6 +33,9 @@ of the system.
 
 * **Logging:** The project utilizes a logging system to provide detailed information and monitoring of various operations.
 
+* **JSON Data Handling:** ObjectMapper is employed for efficient conversion between JSON data and Java objects, ensuring seamless interaction with JSON data files and database records.
+
+
 
 ### Key Technologies
 

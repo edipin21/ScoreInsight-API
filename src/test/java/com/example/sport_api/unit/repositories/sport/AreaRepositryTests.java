@@ -1,4 +1,4 @@
-package com.example.sport_api.repository_tests.sport;
+package com.example.sport_api.unit.repositories.sport;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

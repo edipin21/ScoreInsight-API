@@ -112,6 +112,12 @@ lookup parent from repository
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.wiremock</groupId>
+			<artifactId>wiremock</artifactId>
+			<version>3.0.4</version>
+			<scope>test</scope>
+		</dependency>
 
 
 	</dependencies>

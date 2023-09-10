@@ -2,9 +2,7 @@ package com.example.sport_api.util.soccerUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.dao.DataAccessException;
-
 import com.example.sport_api.mappers.CompetitionMapper;
 import com.example.sport_api.models.sport.Area;
 import com.example.sport_api.models.sport.AreaDto;

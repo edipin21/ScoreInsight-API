@@ -8,6 +8,22 @@ public class AreaDto {
     private String name;
     private List<CompetitionDto> competitions;
 
+    public AreaDto() {
+    }
+
+    public AreaDto(int areaId, String countryCode, String name, List<CompetitionDto> competitions) {
+        this.areaId = areaId;
+        this.countryCode = countryCode;
+        this.name = name;
+        this.competitions = competitions;
+    }
+
+    public AreaDto(int areaId, String countryCode, String name) {
+        this.areaId = areaId;
+        this.countryCode = countryCode;
+        this.name = name;
+    }
+
     public int getAreaId() {
         return areaId;
     }

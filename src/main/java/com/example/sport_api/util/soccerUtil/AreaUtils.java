@@ -22,6 +22,9 @@ public class AreaUtils {
     }
 
     public static AreaDto createAreaDtoFromArea(Area area) {
+        if (area == null)
+            return null;
+
         AreaDto areaDto = new AreaDto();
         areaDto.setAreaId(area.getAreaId());
         areaDto.setCountryCode(area.getCountryCode());

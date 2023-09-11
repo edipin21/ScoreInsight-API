@@ -116,6 +116,17 @@ public class BoxScore {
         VideoAssistantReferee = videoAssistantReferee;
     }
 
+    public BoxScore(Integer boxScoreId, Integer competition) {
+        this.boxScoreId = boxScoreId;
+        this.competition = competition;
+    }
+
+    public BoxScore(Integer boxScoreId, Integer competition, Date dateTime) {
+        this.boxScoreId = boxScoreId;
+        this.competition = competition;
+        this.dateTime = dateTime;
+    }
+
     public Game getGame() {
         return game;
     }

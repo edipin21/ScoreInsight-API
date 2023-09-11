@@ -27,6 +27,7 @@ public class BoxScoreUtils {
 
         if (existingBoxScore == null) {
             currentBoxScore.setBoxScoreId(BoxScoreIdGenerator.generateId());
+            saveBoxScoreToDB(boxScoreRepository, currentBoxScore);
 
         } else {
             currentBoxScore.setBoxScoreId(existingBoxScore.getBoxScoreId());

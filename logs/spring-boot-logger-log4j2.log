@@ -1,49 +1,50 @@
-2023-09-10 21:01:47,000 INFO o.s.b.StartupInfoLogger [main] Starting AreaServiceTests using Java 17.0.5 with PID 68940 (started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
-2023-09-10 21:01:47,010 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "test"
-2023-09-10 21:01:47,258 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-10 21:01:47,277 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
-2023-09-10 21:01:47,278 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-10 21:01:47,292 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 13 ms. Found 13 JPA repository interfaces.
-2023-09-10 21:01:47,292 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-10 21:01:47,294 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interfaces.
-2023-09-10 21:01:47,586 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: betting]
-2023-09-10 21:01:47,607 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.7.Final
-2023-09-10 21:01:47,609 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
-2023-09-10 21:01:47,687 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
-2023-09-10 21:01:47,740 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-10 21:01:47,751 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2023-09-10 21:01:47,969 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4bca8eaf
-2023-09-10 21:01:47,970 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2023-09-10 21:01:48,111 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
-2023-09-10 21:01:48,518 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-10 21:01:48,594 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'betting'
-2023-09-10 21:01:48,600 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: soccer]
-2023-09-10 21:01:48,606 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
-2023-09-10 21:01:48,606 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-10 21:01:48,607 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Starting...
-2023-09-10 21:01:48,623 INFO c.z.h.p.HikariPool [main] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18fcfe7e
-2023-09-10 21:01:48,624 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Start completed.
-2023-09-10 21:01:48,692 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
-2023-09-10 21:01:48,883 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-10 21:01:49,808 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
-2023-09-10 21:01:49,811 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: users]
-2023-09-10 21:01:49,816 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
-2023-09-10 21:01:49,816 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-10 21:01:49,817 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Starting...
-2023-09-10 21:01:49,833 INFO c.z.h.p.HikariPool [main] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21b05a8a
-2023-09-10 21:01:49,833 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Start completed.
-2023-09-10 21:01:49,837 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
-2023-09-10 21:01:49,844 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-10 21:01:49,852 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'users'
-2023-09-10 21:01:49,966 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-09-10 21:01:50,686 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Databases available at 'jdbc:mysql://localhost:3307/betting', 'jdbc:mysql://localhost:3306/soccer', 'jdbc:mysql://localhost:3308/users'
-2023-09-10 21:01:50,709 INFO o.s.b.StartupInfoLogger [main] Started AreaServiceTests in 3.889 seconds (process running for 4.721)
-2023-09-10 21:01:51,166 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'users'
-2023-09-10 21:01:51,167 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-3 - Shutdown initiated...
-2023-09-10 21:01:51,190 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-3 - Shutdown completed.
-2023-09-10 21:01:51,191 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'soccer'
-2023-09-10 21:01:51,192 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown initiated...
-2023-09-10 21:01:51,202 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown completed.
-2023-09-10 21:01:51,202 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'betting'
-2023-09-10 21:01:51,203 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2023-09-10 21:01:51,212 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-09-11 17:34:24,908 INFO o.s.b.StartupInfoLogger [main] Starting MembershipServiceTests using Java 17.0.5 with PID 44149 (started by eddieabramov in /Users/eddieabramov/Desktop/spring/sport_api)
+2023-09-11 17:34:24,916 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-11 17:34:25,189 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-11 17:34:25,213 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 20 ms. Found 3 JPA repository interfaces.
+2023-09-11 17:34:25,214 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-11 17:34:25,234 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 19 ms. Found 13 JPA repository interfaces.
+2023-09-11 17:34:25,234 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-11 17:34:25,237 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interfaces.
+2023-09-11 17:34:25,567 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: betting]
+2023-09-11 17:34:25,590 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-11 17:34:25,591 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-09-11 17:34:25,675 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-11 17:34:25,737 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-11 17:34:25,747 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-11 17:34:25,939 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a3bc0da
+2023-09-11 17:34:25,940 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-11 17:34:26,081 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-11 17:34:26,458 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-11 17:34:26,544 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'betting'
+2023-09-11 17:34:26,550 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: soccer]
+2023-09-11 17:34:26,559 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-11 17:34:26,559 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-11 17:34:26,559 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Starting...
+2023-09-11 17:34:26,577 INFO c.z.h.p.HikariPool [main] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ce5a2ea
+2023-09-11 17:34:26,578 INFO c.z.h.HikariDataSource [main] HikariPool-2 - Start completed.
+2023-09-11 17:34:26,645 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-11 17:34:26,855 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-11 17:34:27,876 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'soccer'
+2023-09-11 17:34:27,879 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: users]
+2023-09-11 17:34:27,889 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-11 17:34:27,889 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-11 17:34:27,889 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Starting...
+2023-09-11 17:34:27,905 INFO c.z.h.p.HikariPool [main] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73daf6a6
+2023-09-11 17:34:27,905 INFO c.z.h.HikariDataSource [main] HikariPool-3 - Start completed.
+2023-09-11 17:34:27,909 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-11 17:34:27,917 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-11 17:34:27,944 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'users'
+2023-09-11 17:34:28,064 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-09-11 17:34:28,769 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Databases available at 'jdbc:mysql://localhost:3307/betting', 'jdbc:mysql://localhost:3306/soccer', 'jdbc:mysql://localhost:3308/users'
+2023-09-11 17:34:28,792 INFO o.s.b.StartupInfoLogger [main] Started MembershipServiceTests in 4.074 seconds (process running for 4.804)
+2023-09-11 17:34:29,273 ERROR c.e.s.s.s.MembershipService [main] A data access error occurred while validating competition ID: Mock Exception
+2023-09-11 17:34:29,292 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-09-11 17:34:29,293 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-3 - Shutdown initiated...
+2023-09-11 17:34:29,316 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-3 - Shutdown completed.
+2023-09-11 17:34:29,316 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-09-11 17:34:29,316 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown initiated...
+2023-09-11 17:34:29,327 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-2 - Shutdown completed.
+2023-09-11 17:34:29,327 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-09-11 17:34:29,327 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-11 17:34:29,334 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

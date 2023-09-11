@@ -43,6 +43,8 @@ public class BoxScoreService {
                 Integer gameId = entry.getKey();
                 Integer competition = entry.getValue();
 
+                System.out.println("Competition: " + competition + "," + "gameId: " + gameId);
+
                 String boxScoreURlEndPoint = ExternalSoccerApiEndpoints.BOX_SCORE_RESOURCE_URL
                         + competition
                         + "/"
@@ -55,7 +57,6 @@ public class BoxScoreService {
                 BoxScore existingBoxScore = boxScoreRepository.findByGameId(gameId);
 
                 BoxScoreUtils.saveOrUpdateBoxScore(currentBoxScore, existingBoxScore, boxScoreRepository, competition);
-
             }
 
         } catch (Exception e) {

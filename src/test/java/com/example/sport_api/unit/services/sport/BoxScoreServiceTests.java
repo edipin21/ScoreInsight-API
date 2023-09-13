@@ -3,24 +3,19 @@ package com.example.sport_api.unit.services.sport;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
-
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
-
 import com.example.sport_api.models.sport.BoxScore;
 import com.example.sport_api.repositories.soccer.BoxScoreRepository;
 import com.example.sport_api.services.soccer.BoxScoreService;
 
-@SpringBootTest
 public class BoxScoreServiceTests {
 
     @InjectMocks

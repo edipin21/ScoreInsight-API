@@ -9,6 +9,6 @@ import com.example.sport_api.models.users.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query(value = "SELECT apiKey FROM user", nativeQuery = true)
+    @Query(value = "SELECT apiKey FROM User", nativeQuery = true)
     List<String> findAllApiKeys();
 }

@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 import com.example.sport_api.models.sport.Game;
 import org.springframework.dao.DataAccessException;
 import com.example.sport_api.services.soccer.GameService;
-import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.sport_api.repositories.soccer.GameRepository;
 
-@SpringBootTest
 public class GameServiceTest {
     @InjectMocks
     private GameService gameService;

@@ -11,38 +11,45 @@ import java.time.format.DateTimeFormatter;
 
 public class ResponseUtil {
 
-    // @Autowired
-    // private static final ObjectMapper objectMapper = new ObjectMapper();
-
     public static <T> ResponseEntity<T> createOkResponse(T body) {
 
         HttpHeaders headers = new HttpHeaders();
 
+        addCommonHeaders(headers);
         headers.add(HttpHeaders.CONNECTION, "keep-alive");
-        // headers.add(HttpHeaders.CONTENT_LENGTH,
-        // String.valueOf(calculateContentLength(body)));
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        headers.add(HttpHeaders.VIA, "1.1 varnish");
-        headers.add(HttpHeaders.ACCEPT_RANGES, "bytes");
-        headers.add(HttpHeaders.DATE, ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-        headers.add(HttpHeaders.AGE, null);
-        headers.add(HttpHeaders.VARY, "Accept-Encoding");
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
 
         return new ResponseEntity<>(body, headers, HttpStatus.OK);
     }
 
     public static ResponseEntity<Map<String, Object>> createErrorResponse(HttpStatus status, String description) {
+
         HttpHeaders headers = new HttpHeaders();
 
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        headers.add(HttpHeaders.ACCEPT_RANGES, "bytes");
-        headers.add(HttpHeaders.VIA, "1.1 varnish");
-        headers.add(HttpHeaders.DATE, ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        addCommonHeaders(headers);
 
+        Map<String, Object> responseBody = createResponseBody(status, description);
+
+        return ResponseEntity.status(status).body(responseBody);
+
+    }
+
+    private static HttpHeaders addCommonHeaders(HttpHeaders headers) {
+        if (headers == null) {
+            headers = new HttpHeaders();
+        }
+
+        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        headers.add(HttpHeaders.VIA, "1.1 varnish");
+        headers.add(HttpHeaders.ACCEPT_RANGES, "bytes");
+        headers.add(HttpHeaders.DATE, ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
+        headers.add(HttpHeaders.VARY, "Accept-Encoding");
+        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        return headers;
+    }
+
+    private static Map<String, Object> createResponseBody(HttpStatus status, String description) {
         Map<String, Object> responseBody = new LinkedHashMap<>();
+
         if (status != HttpStatus.NOT_FOUND) {
             responseBody.put("HttpStatusCode", status.value());
             responseBody.put("Code", status.value());
@@ -53,8 +60,7 @@ public class ResponseUtil {
             responseBody.put("message", "Resource not found");
         }
 
-        return ResponseEntity.status(status).body(responseBody);
-
+        return responseBody;
     }
 
 }

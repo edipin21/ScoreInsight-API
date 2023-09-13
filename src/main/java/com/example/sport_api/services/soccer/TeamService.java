@@ -39,10 +39,6 @@ public class TeamService {
 
     }
 
-    public TeamService(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
-
     public Team retrieveTeamById(int teamId) {
 
         try {

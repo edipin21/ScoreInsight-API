@@ -14,14 +14,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 import com.example.sport_api.exceptions.NotFoundException;
 import com.example.sport_api.models.sport.Competition;
 import com.example.sport_api.repositories.soccer.CompetitionRepository;
 import com.example.sport_api.services.soccer.CompetitionService;
 
-@SpringBootTest
 public class CompetitionServiceTests {
 
     @InjectMocks

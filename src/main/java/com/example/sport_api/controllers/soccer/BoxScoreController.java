@@ -115,7 +115,9 @@ public class BoxScoreController {
 
             if (competition == null ||
                     !competitionService.isCompetitionValid(theCompetition)) {
+                System.out.println("inside!!!!!!!!!!!!!!!!!!!!!");
                 throw new IllegalArgumentException("Invalid Argument: The competition parameter is invalid ");
+
             }
 
             List<BoxScore> boxScores = boxScoreService.getBoxScoresByCompetitionAndDate(theCompetition, date);

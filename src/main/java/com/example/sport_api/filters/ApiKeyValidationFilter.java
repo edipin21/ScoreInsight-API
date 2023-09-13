@@ -26,7 +26,7 @@ public class ApiKeyValidationFilter implements Filter {
 
         String apiKey = request.getParameter("key");
 
-        if (apiKey != null && !userService.isValidApiKey(apiKey)) {
+        if (apiKey != null && userService.isValidApiKey(apiKey)) {
             chain.doFilter(request, response);
 
         } else {

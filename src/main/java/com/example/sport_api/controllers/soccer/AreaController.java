@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/soccer")
 @Tag(name = "Area", description = "Endpoints for retrieving areas information")
-public class AreaConrtoller {
+public class AreaController {
 
     @Autowired
     private AreaService areaService;

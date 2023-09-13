@@ -1,14 +1,11 @@
 package com.example.sport_api.unit.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,9 +16,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import com.example.sport_api.controllers.soccer.AreaController;
-import com.example.sport_api.models.sport.Area;
 import com.example.sport_api.models.sport.AreaDto;
 import com.example.sport_api.services.soccer.AreaService;
 import com.example.sport_api.util.ResponseUtil;

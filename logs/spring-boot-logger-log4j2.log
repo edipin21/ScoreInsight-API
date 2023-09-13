@@ -148,3 +148,12 @@
 2023-09-13 20:22:41,806 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-4 housekeeper] HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=4m36s119ms).
 2023-09-13 20:22:42,024 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-5 housekeeper] HikariPool-5 - Thread starvation or clock leap detected (housekeeper delta=4m36s119ms).
 2023-09-13 20:22:42,126 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-6 housekeeper] HikariPool-6 - Thread starvation or clock leap detected (housekeeper delta=4m36s113ms).
+2023-09-13 20:37:22,364 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'soccer'
+2023-09-13 20:37:22,367 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-6 - Shutdown initiated...
+2023-09-13 20:37:22,395 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-6 - Shutdown completed.
+2023-09-13 20:37:22,396 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'betting'
+2023-09-13 20:37:22,396 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-5 - Shutdown initiated...
+2023-09-13 20:37:22,405 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-5 - Shutdown completed.
+2023-09-13 20:37:22,405 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'users'
+2023-09-13 20:37:22,406 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-4 - Shutdown initiated...
+2023-09-13 20:37:22,416 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-4 - Shutdown completed.

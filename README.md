@@ -1,6 +1,6 @@
 #  **Project Overview**
 
-**Project Name: sport_api**
+**Project Name: ScoreInsight API**
 
 ### Introduction
 This Java Spring project represents a sophisticated API meticulously designed to deliver 
